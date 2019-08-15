@@ -1,4 +1,4 @@
 
 require "mkmf-rice"
 
-create__makefile("tatara/tatara") 
+create_makefile("tatara/tatara") 
