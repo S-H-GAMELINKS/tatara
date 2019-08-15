@@ -12,7 +12,7 @@ class Tatara {
 Tatara::Tatara() { std::cout << "Hello Tatara!" << std::endl; }
 
 extern "C" {
-    void Init_test() {
+    void Init_tatara() {
         Data_Type<Tatara> rb_cTatara = define_class<Tatara>("Tatara")
             .define_constructor(Constructor<Tatara>());
     }
