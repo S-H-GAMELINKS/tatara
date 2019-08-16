@@ -2,18 +2,22 @@
 #include <rice/Data_Type.hpp>
 #include <rice/Constructor.hpp>
 
+#include "vector/veci.hpp"
+
 using namespace Rice;
-
-class Tatara {
-    public:
-        Tatara();
-};
-
-Tatara::Tatara() { std::cout << "Hello Tatara!" << std::endl; }
 
 extern "C" {
     void Init_tatara() {
-        Data_Type<Tatara> rb_cTatara = define_class<Tatara>("Tatara")
-            .define_constructor(Constructor<Tatara>());
+        Rice::Module rb_mTatara = define_module("Tatara");
+
+        Data_Type<Veci> rb_cVeci = define_class_under<Veci>(rb_mTatara, "Veci")
+            .define_constructor(Constructor<Veci>())
+            .define_method("first", &Veci::first)
+            .define_method("last", &Veci::last)
+            .define_method("[]", &Veci::bracket)
+            .define_method("[]=", &Veci::bracket_equal)
+            .define_method("emplace_back", &Veci::emplace_back, Arg("var"))
+            .define_method("size", &Veci::size)
+            .define_method("clear", &Veci::clear);
     }
 } 
