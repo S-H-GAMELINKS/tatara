@@ -13,4 +13,10 @@ class TataraTest < Minitest::Test
     assert_equal @f.first, 42
     assert_equal @f.last, 5
   end
+
+  def test_tatara_veci_first
+    @f = Tatara::Veci.new
+    @f.emplace_back(42)
+    assert_equal @f.first, 42
+  end
 end
