@@ -9,11 +9,16 @@ class Veci {
 
     public:
         int first();
+        int last();
         void emplace_back(const int var);
 };
 
 int Veci::first() {
     return *this->container.begin();;
+}
+
+int Veci::last() {
+    return this->container.back();;
 }
 
 void Veci::emplace_back(const int var) {
