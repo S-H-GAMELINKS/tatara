@@ -29,5 +29,7 @@ class VeciTest < Minitest::Test
     @f = Tatara::Veci.new
     @f.emplace_back(42)
     assert_equal @f[0], 42
+    @f[0] = 5
+    assert_equal @f[0], 5
   end
 end
