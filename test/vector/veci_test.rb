@@ -38,4 +38,12 @@ class VeciTest < Minitest::Test
     @f.emplace_back(42)
     assert_equal @f.size, 1
   end
+
+  def test_tatara_veci_clear
+    @f = Tatara::Veci.new
+    @f.emplace_back(42)
+    assert_equal @f.size, 1
+    @f.clear
+    assert_equal @f.size, 0
+  end
 end

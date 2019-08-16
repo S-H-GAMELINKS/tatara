@@ -17,6 +17,7 @@ extern "C" {
             .define_method("[]", &Veci::bracket)
             .define_method("[]=", &Veci::bracket_equal)
             .define_method("emplace_back", &Veci::emplace_back, Arg("var"))
-            .define_method("size", &Veci::size);
+            .define_method("size", &Veci::size)
+            .define_method("clear", &Veci::clear);
     }
 } 
