@@ -15,7 +15,7 @@ class Veci {
 };
 
 int Veci::first() {
-    return *this->container.begin();;
+    return *this->container.front();
 }
 
 int Veci::last() {
