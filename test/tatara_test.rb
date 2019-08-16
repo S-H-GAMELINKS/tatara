@@ -7,6 +7,8 @@ class TataraTest < Minitest::Test
   end
 
   def test_init_tatara_veci
-    refute_nil Tatara::Veci.new
+    @f = Tatara::Veci.new
+    @f.emplace_back(42)
+    assert_equal @f.first, 42
   end
 end
