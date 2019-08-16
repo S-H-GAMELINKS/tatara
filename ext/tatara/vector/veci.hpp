@@ -13,6 +13,7 @@ class Veci {
         int bracket(const int index);
         int bracket_equal(const int index, const int var);
         void emplace_back(const int var);
+        const int size();
 };
 
 int Veci::first() {
@@ -33,6 +34,10 @@ int Veci::bracket_equal(const int index, const int var) {
 
 void Veci::emplace_back(const int var) {
     this->container.emplace_back(std::move(var));
+}
+
+const int Veci::size() {
+    return this->container.size();
 }
 
 #endif
