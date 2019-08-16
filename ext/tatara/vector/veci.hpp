@@ -10,6 +10,7 @@ class Veci {
     public:
         int first();
         int last();
+        int bracket(const int index);
         void emplace_back(const int var);
 };
 
@@ -19,6 +20,10 @@ int Veci::first() {
 
 int Veci::last() {
     return this->container.back();;
+}
+
+int Veci::bracket(const int index) {
+    return this->container[index];
 }
 
 void Veci::emplace_back(const int var) {

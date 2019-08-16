@@ -14,6 +14,7 @@ extern "C" {
             .define_constructor(Constructor<Veci>())
             .define_method("emplace_back", &Veci::emplace_back, Arg("var"))
             .define_method("first", &Veci::first)
-            .define_method("last", &Veci::last);
+            .define_method("last", &Veci::last)
+            .define_method("[]", &Veci::bracket);
     }
 } 
