@@ -9,6 +9,7 @@ class Vecf {
     public:
         int first();
         int last();
+        double bracket();
 };
 
 int Vecf::first() {
@@ -17,6 +18,10 @@ int Vecf::first() {
 
 int Vecf::last() {
     return this->container.back();
+}
+
+double Vecf::bracket(const int index) {
+    return this->container[index];
 }
 
 #endif
