@@ -9,7 +9,7 @@ class Vecf {
     public:
         double first();
         double last();
-        double bracket();
+        double bracket(const int index);
         double bracket_equal(const int index, const double var);
 };
 
