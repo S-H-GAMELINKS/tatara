@@ -34,4 +34,12 @@ class VecfTest < Minitest::Test
     @f.emplace_back(4.2)
     assert_equal @f.size, 1
   end
+
+  def test_tatara_vecf_clear
+    @f = Tatara::Vecf.new
+    @f.emplace_back(4.2)
+    assert_equal @f.size, 1
+    @f.clear
+    assert_equal @f.size, 0
+  end
 end
