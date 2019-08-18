@@ -3,6 +3,7 @@
 #include <rice/Constructor.hpp>
 
 #include "vector/veci.hpp"
+#include "vector/vecf.hpp"
 
 using namespace Rice;
 
@@ -19,5 +20,8 @@ extern "C" {
             .define_method("emplace_back", &Veci::emplace_back, Arg("var"))
             .define_method("size", &Veci::size)
             .define_method("clear", &Veci::clear);
+
+        Data_Type<Vecf> rb_cVecf = define_class_under<Vecf>(rb_mTatara, "Vecf")
+            .define_constructor(Constructor<Vecf>());
     }
 } 
