@@ -7,17 +7,17 @@ class Vecf {
     std::vector<double> container;
 
     public:
-        int first();
-        int last();
+        double first();
+        double last();
         double bracket();
         double bracket_equal(const int index, const double var);
 };
 
-int Vecf::first() {
+double Vecf::first() {
     return this->container.front();
 }
 
-int Vecf::last() {
+double Vecf::last() {
     return this->container.back();
 }
 
