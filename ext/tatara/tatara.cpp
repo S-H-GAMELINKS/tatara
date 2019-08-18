@@ -3,6 +3,7 @@
 #include <rice/Constructor.hpp>
 
 #include "vector/veci.hpp"
+#include "vector/vecf.hpp"
 
 using namespace Rice;
 
@@ -19,5 +20,15 @@ extern "C" {
             .define_method("emplace_back", &Veci::emplace_back, Arg("var"))
             .define_method("size", &Veci::size)
             .define_method("clear", &Veci::clear);
+
+        Data_Type<Vecf> rb_cVecf = define_class_under<Vecf>(rb_mTatara, "Vecf")
+            .define_constructor(Constructor<Vecf>())
+            .define_method("first", &Vecf::first)
+            .define_method("last", &Vecf::last)
+            .define_method("[]", &Vecf::bracket)
+            .define_method("[]=", &Vecf::bracket_equal)
+            .define_method("emplace_back", &Vecf::emplace_back)
+            .define_method("size", &Vecf::size)
+            .define_method("clear", &Vecf::clear);
     }
 } 
