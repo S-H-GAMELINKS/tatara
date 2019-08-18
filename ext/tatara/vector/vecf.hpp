@@ -5,6 +5,13 @@
 
 class Vecf {
     std::vector<double> container;
+
+    public:
+        int first();
 };
+
+int Vecf::first() {
+    return this->container.front();
+}
 
 #endif
