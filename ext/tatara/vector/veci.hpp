@@ -22,7 +22,7 @@ int Veci::first() {
 }
 
 int Veci::last() {
-    return this->container.back();;
+    return this->container.back();
 }
 
 int Veci::bracket(const int index) {
