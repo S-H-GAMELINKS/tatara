@@ -8,10 +8,15 @@ class Vecf {
 
     public:
         int first();
+        int last();
 };
 
 int Vecf::first() {
     return this->container.front();
+}
+
+int Vecf::last() {
+    return this->container.back();
 }
 
 #endif

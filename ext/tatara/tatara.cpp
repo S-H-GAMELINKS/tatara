@@ -23,6 +23,7 @@ extern "C" {
 
         Data_Type<Vecf> rb_cVecf = define_class_under<Vecf>(rb_mTatara, "Vecf")
             .define_constructor(Constructor<Vecf>())
-            .define_method("first", &Veci::first);
+            .define_method("first", &Veci::first)
+            .define_method("last", &Vecf::last);
     }
 } 
