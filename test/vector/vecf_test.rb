@@ -20,4 +20,12 @@ class VecfTest < Minitest::Test
     @f.emplace_back(5.5)
     assert_equal @f.last, 5.5
   end
+
+  def test_tatara_vecf_bracket
+    @f = Tatara::Vecf.new
+    @f.emplace_back(4.2)
+    assert_equal @f[0], 4.2
+    @f[0] = 5.5
+    assert_equal @f[0], 5.5
+  end
 end
