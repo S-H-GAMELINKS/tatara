@@ -25,6 +25,7 @@ extern "C" {
             .define_constructor(Constructor<Vecf>())
             .define_method("first", &Vecf::first)
             .define_method("last", &Vecf::last)
-            .define_method("[]", &Vecf::bracket);
+            .define_method("[]", &Vecf::bracket)
+            .define_method("[]=", &Vecf::bracket_equal);
     }
 } 

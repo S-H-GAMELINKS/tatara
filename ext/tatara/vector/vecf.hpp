@@ -10,6 +10,7 @@ class Vecf {
         int first();
         int last();
         double bracket();
+        double bracket_equal(const int index, const double var);
 };
 
 int Vecf::first() {
@@ -22,6 +23,10 @@ int Vecf::last() {
 
 double Vecf::bracket(const int index) {
     return this->container[index];
+}
+
+double Vecf::bracket_equal(const int index, const double var) {
+    return this->container[index] = var;
 }
 
 #endif
