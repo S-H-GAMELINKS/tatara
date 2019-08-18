@@ -26,6 +26,7 @@ extern "C" {
             .define_method("first", &Vecf::first)
             .define_method("last", &Vecf::last)
             .define_method("[]", &Vecf::bracket)
-            .define_method("[]=", &Vecf::bracket_equal);
+            .define_method("[]=", &Vecf::bracket_equal)
+            .define_method("emplace_back", &Vecf::emplace_back);
     }
 } 
