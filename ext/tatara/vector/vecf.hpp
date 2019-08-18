@@ -13,6 +13,7 @@ class Vecf {
         double bracket_equal(const int index, const double var);
         void emplace_back(const double var);
         int size();
+        void clear();
 };
 
 double Vecf::first() {
@@ -37,6 +38,10 @@ void Vecf::emplace_back(const double var) {
 
 int Vecf::size() {
     return this->container.size();
+}
+
+void Vecf::clear() {
+    this->container.clear();
 }
 
 #endif
