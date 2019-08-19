@@ -25,7 +25,7 @@ extern "C" {
             .define_method("last", &Vector<double>::last)
             .define_method("[]", &Vector<double>::bracket)
             .define_method("[]=", &Vector<double>::bracket_equal)
-            .define_method("emplace_back", &Vector<double>::emplace_back)
+            .define_method("emplace_back", &Vector<double>::emplace_back, Arg("var"))
             .define_method("size", &Vector<double>::size)
             .define_method("clear", &Vector<double>::clear);
 
@@ -35,7 +35,7 @@ extern "C" {
             .define_method("last", &Vector<std::string>::last)
             .define_method("[]", &Vector<std::string>::bracket)
             .define_method("[]=", &Vector<std::string>::bracket_equal)
-            .define_method("emplace_back", &Vector<std::string>::emplace_back)
+            .define_method("emplace_back", &Vector<std::string>::emplace_back, Arg("var"))
             .define_method("size", &Vector<std::string>::size)
             .define_method("clear", &Vector<std::string>::clear);
     }
