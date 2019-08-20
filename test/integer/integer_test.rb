@@ -12,4 +12,12 @@ class IntegerTest < Minitest::Test
     @i = 42
     assert_equal @i, 42
   end
+
+  def test_increment_tatara_integer
+    @i = Tatara::Integer.new
+    @i = 42
+    assert_equal @i, 42
+    @i++
+    assert_equal @f, 43
+  end
 end
