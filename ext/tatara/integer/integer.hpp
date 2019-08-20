@@ -7,10 +7,15 @@ class Integer {
     public:
         Integer();
         ~Integer();
+        int assignment(const int var);
 };
 
 Integer::Integer(){}
 
 Integer::~Integer(){}
+
+int Integer::assignment(const int var) {
+    return this->value = var;
+}
 
 #endif
