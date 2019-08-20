@@ -9,23 +9,23 @@ class IntegerTest < Minitest::Test
 
   def test_assignment_tatara_integer
     @i = Tatara::Integer.new
-    @i = 42
-    assert_equal @i, 42
+    @i.value = 42
+    assert_equal @i.value, 42
   end
 
   def test_increment_tatara_integer
     @i = Tatara::Integer.new
-    @i = 42
-    assert_equal @i, 42
+    @i.value = 42
+    assert_equal @i.value, 42
     @i++
-    assert_equal @i, 43
+    assert_equal @i.value, 43
   end
 
   def test_decrement_tatara_integer
     @i = Tatara::Integer.new
-    @i = 42
-    assert_equal @i, 42
+    @i.value = 42
+    assert_equal @i.value, 42
     @i--
-    assert_equal @i, 41
+    assert_equal @i.value, 41
   end
 end
