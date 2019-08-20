@@ -6,8 +6,11 @@ class Integer {
 
     public:
         Integer();
+        ~Integer();
 };
 
 Integer::Integer(){}
+
+Integer::~Integer(){}
 
 #endif
