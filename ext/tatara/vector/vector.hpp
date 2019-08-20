@@ -9,6 +9,7 @@ class Vector {
 
     public:
         Vector();
+        ~Vector();
         T first();
         T last();
         T bracket(const int index);
@@ -20,6 +21,9 @@ class Vector {
 
 template <class T>
 Vector<T>::Vector() {}
+
+template <class T>
+Vector<T>::~Vector() {}
 
 template <class T>
 T Vector<T>::first() {
