@@ -17,7 +17,7 @@ class IntegerTest < Minitest::Test
     @i = Tatara::Integer.new
     @i.value = 42
     assert_equal @i.value, 42
-    @i++
+    @i.inc
     assert_equal @i.value, 43
   end
 
@@ -25,7 +25,7 @@ class IntegerTest < Minitest::Test
     @i = Tatara::Integer.new
     @i.value = 42
     assert_equal @i.value, 42
-    @i--
+    @i.dec
     assert_equal @i.value, 41
   end
 end
