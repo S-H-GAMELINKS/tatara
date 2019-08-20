@@ -2,12 +2,20 @@
 #include <rice/Data_Type.hpp>
 #include <rice/Constructor.hpp>
 #include "vector/vector.hpp"
+#include "integer/integer.hpp"
 
 using namespace Rice;
 
 extern "C" {
     void Init_tatara() {
         Rice::Module rb_mTatara = define_module("Tatara");
+
+        Data_Type<Integer> rbcInteger = define_class_under<Integer>(rb_mTatara, "Integer")
+            .define_constructor(Constructor<Integer>())
+            .define_method("value", &Integer::return_value)
+            .define_method("value=", &Integer::assignment, Arg("var"))
+            .define_method("inc", &Integer::increment_value)
+            .define_method("dec", &Integer::decrement_value);
 
         Data_Type<Vector<int>> rb_cVeci = define_class_under<Vector<int>>(rb_mTatara, "Veci")
             .define_constructor(Constructor<Vector<int>>())
