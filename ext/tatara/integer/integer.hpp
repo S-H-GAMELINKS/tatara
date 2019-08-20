@@ -9,6 +9,7 @@ class Integer {
         ~Integer();
         int assignment(const int var);
         int return_value();
+        int increment_value();
 };
 
 Integer::Integer(){}
@@ -21,6 +22,10 @@ int Integer::assignment(const int var) {
 
 int Integer::return_value() {
     return this->value;
+}
+
+int Integer::increment_value() {
+    return this->value++;
 }
 
 #endif
