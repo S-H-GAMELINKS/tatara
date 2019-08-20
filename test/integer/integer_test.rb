@@ -18,7 +18,7 @@ class IntegerTest < Minitest::Test
     @i = 42
     assert_equal @i, 42
     @i++
-    assert_equal @f, 43
+    assert_equal @i, 43
   end
 
   def test_decrement_tatara_integer
@@ -26,6 +26,6 @@ class IntegerTest < Minitest::Test
     @i = 42
     assert_equal @i, 42
     @i--
-    assert_equal @f, 41
+    assert_equal @i, 41
   end
 end
