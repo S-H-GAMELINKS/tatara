@@ -3,6 +3,11 @@
 
 class Integer {
     int value;
+
+    public:
+        Integer();
 };
+
+Integer::Integer(){}
 
 #endif
