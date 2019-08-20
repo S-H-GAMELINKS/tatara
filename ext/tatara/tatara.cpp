@@ -14,7 +14,8 @@ extern "C" {
             .define_constructor(Constructor<Integer>())
             .define_method("value", &Integer::return_value)
             .define_method("value=", &Integer::assignment, Arg("var"))
-            .define_method("inc", &Integer::increment_value);
+            .define_method("inc", &Integer::increment_value)
+            .define_method("dec", &Integer::decrement_value);
 
         Data_Type<Vector<int>> rb_cVeci = define_class_under<Vector<int>>(rb_mTatara, "Veci")
             .define_constructor(Constructor<Vector<int>>())
