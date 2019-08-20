@@ -8,6 +8,8 @@ class Vector {
     std::vector<T> container;
 
     public:
+        Vector();
+        ~Vector();
         T first();
         T last();
         T bracket(const int index);
@@ -16,6 +18,12 @@ class Vector {
         int size();
         void clear();
 };
+
+template <class T>
+Vector<T>::Vector() {}
+
+template <class T>
+Vector<T>::~Vector() {}
 
 template <class T>
 T Vector<T>::first() {
