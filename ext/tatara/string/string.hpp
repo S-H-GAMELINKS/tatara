@@ -8,10 +8,15 @@ class CppString {
     public:
         CppString();
         ~CppString();
+        std::string assignment(const std::string var);
 };
 
 CppString::CppString() {}
 
 CppString::~CppString() {}
+
+std::string CppString::assignment(const std::string var) {
+    return this->value = var;
+}
 
 #endif
