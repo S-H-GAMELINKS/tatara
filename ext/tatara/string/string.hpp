@@ -4,7 +4,7 @@
 #include <string>
 
 class CppString {
-
+        std::string value;
     public:
         CppString();
         ~CppString();
