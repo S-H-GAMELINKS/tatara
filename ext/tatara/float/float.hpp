@@ -9,6 +9,7 @@ class Float {
         double assignment(const double var);
         double return_value();
         double increment_value();
+        double decrement_value();
 };
 
 Float::Float(){}
@@ -25,6 +26,10 @@ double Float::return_value() {
 
 double Float::increment_value() {
     return this->value++;
+}
+
+double Float::decrement_value() { {
+    return this->value--;
 }
 
 #endif
