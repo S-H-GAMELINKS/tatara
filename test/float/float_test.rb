@@ -12,4 +12,12 @@ class FloatTest < Minitest::Test
     @f.value = 4.2
     assert_equal @f.value, 4.2
   end
+
+  def test_increment_tatara_float
+    @f = Tatara::Float.new
+    @f.value = 4.2
+    assert_equal @f.value, 4.2
+    @f.inc
+    assert_equal @f.value, 5.2
+  end
 end
