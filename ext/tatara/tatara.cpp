@@ -21,7 +21,8 @@ extern "C" {
         Data_Type<Float> rbcFloat = define_class_under<Float>(rb_mTatara, "Float")
             .define_constructor(Constructor<Float>())
             .define_method("value", &Float::return_value)
-            .define_method("value=", &Float::assignment, Arg("var"));
+            .define_method("value=", &Float::assignment, Arg("var"))
+            .define_method("inc", &Float::increment_value);
 
         Data_Type<Vector<int>> rb_cVeci = define_class_under<Vector<int>>(rb_mTatara, "Veci")
             .define_constructor(Constructor<Vector<int>>())
