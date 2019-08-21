@@ -28,7 +28,7 @@ double Float::increment_value() {
     return this->value++;
 }
 
-double Float::decrement_value() { {
+double Float::decrement_value() {
     return this->value--;
 }
 
