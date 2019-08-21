@@ -28,6 +28,7 @@ extern "C" {
 
         Data_Type<CppString> rbcString = define_class_under<CppString>(rb_mTatara, "String")
             .define_constructor(Constructor<CppString>())
+            .define_method("value", &CppString::return_value)
             .define_method("value=", &CppString::assignment, Arg("var"));
 
         Data_Type<Vector<int>> rb_cVeci = define_class_under<Vector<int>>(rb_mTatara, "Veci")
