@@ -3,6 +3,15 @@
 
 #include <string>
 
-class CppString {};
+class CppString {
+
+    public:
+        CppString();
+        ~CppString();
+};
+
+CppString::CppString() {}
+
+CppString::~CppString() {}
 
 #endif
