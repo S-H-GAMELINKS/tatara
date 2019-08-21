@@ -4,6 +4,7 @@
 #include "vector/vector.hpp"
 #include "integer/integer.hpp"
 #include "float/float.hpp"
+#include "string/string.hpp"
 
 using namespace Rice;
 
@@ -24,6 +25,11 @@ extern "C" {
             .define_method("value=", &Float::assignment, Arg("var"))
             .define_method("inc", &Float::increment_value)
             .define_method("dec", &Float::decrement_value);
+
+        Data_Type<CppString> rbcString = define_class_under<CppString>(rb_mTatara, "String")
+            .define_constructor(Constructor<CppString>())
+            .define_method("value", &CppString::return_value)
+            .define_method("value=", &CppString::assignment, Arg("var"));
 
         Data_Type<Vector<int>> rb_cVeci = define_class_under<Vector<int>>(rb_mTatara, "Veci")
             .define_constructor(Constructor<Vector<int>>())
