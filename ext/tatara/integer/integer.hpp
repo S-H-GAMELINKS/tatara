@@ -1,6 +1,8 @@
 #ifndef INTEGER_H_
 #define INTEGER_H_
 
+#include <string>
+
 class Integer {
     int value;
 
@@ -11,6 +13,7 @@ class Integer {
         int return_value();
         int increment_value();
         int decrement_value();
+        std::string to_string();
 };
 
 Integer::Integer(){}
@@ -31,6 +34,10 @@ int Integer::increment_value() {
 
 int Integer::decrement_value() {
     return this->value--;
+}
+
+std::string Integer::to_string() {
+    return std::to_string(this->value);
 }
 
 #endif

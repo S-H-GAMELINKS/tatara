@@ -17,7 +17,8 @@ extern "C" {
             .define_method("value", &Integer::return_value)
             .define_method("value=", &Integer::assignment, Arg("var"))
             .define_method("inc", &Integer::increment_value)
-            .define_method("dec", &Integer::decrement_value);
+            .define_method("dec", &Integer::decrement_value)
+            .define_method("to_s", &Integer::to_string);
 
         Data_Type<Float> rbcFloat = define_class_under<Float>(rb_mTatara, "Float")
             .define_constructor(Constructor<Float>())
