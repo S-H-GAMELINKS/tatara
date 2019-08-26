@@ -1,6 +1,9 @@
 #ifndef FLOAT_H_
 #define FLOAT_H_
 
+#include <string>
+#include <regex>
+
 class Float {
         double value;
     public:
@@ -10,6 +13,7 @@ class Float {
         double return_value();
         double increment_value();
         double decrement_value();
+        std::string to_string();
 };
 
 Float::Float(){}
@@ -30,6 +34,15 @@ double Float::increment_value() {
 
 double Float::decrement_value() {
     return this->value--;
+}
+
+std::string Float::to_string() {
+
+    std::string null = "";
+
+    std::regex re("0+");
+
+    return std::regex_replace(std::to_string(this->value), re, null);
 }
 
 #endif
