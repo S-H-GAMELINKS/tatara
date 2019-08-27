@@ -16,6 +16,7 @@ extern "C" {
             .define_constructor(Constructor<Integer>())
             .define_method("value", &Integer::return_value)
             .define_method("value=", &Integer::assignment, Arg("var"))
+            .define_method("value+=", &Integer::plus_equal, Arg("var"))
             .define_method("inc", &Integer::increment_value)
             .define_method("dec", &Integer::decrement_value)
             .define_method("to_s", &Integer::to_string);
