@@ -10,6 +10,7 @@ class CppString {
         ~CppString();
         std::string assignment(const std::string var);
         std::string return_value();
+        int to_integer();
 };
 
 CppString::CppString() {}
@@ -22,6 +23,10 @@ std::string CppString::assignment(const std::string var) {
 
 std::string CppString::return_value() {
     return this->value;
+}
+
+int CppString::to_integer() {
+    return std::stoi(this->value);
 }
 
 #endif
