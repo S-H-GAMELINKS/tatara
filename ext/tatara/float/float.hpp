@@ -16,6 +16,7 @@ class Float {
         std::string to_string();
         int to_integer();
         double plus_equal(const double var);
+        double clear();
 };
 
 Float::Float(){}
@@ -53,6 +54,10 @@ int Float::to_integer() {
 
 double Float::plus_equal(const double var) {
     return this->value += var;
+}
+
+double Float::clear() {
+    return this->value = 0.0;
 }
 
 #endif
