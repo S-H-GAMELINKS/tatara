@@ -15,6 +15,7 @@ class Integer {
         int decrement_value();
         std::string to_string();
         int plus_equal(int var);
+        int clear();
 };
 
 Integer::Integer(){}
@@ -43,6 +44,10 @@ std::string Integer::to_string() {
 
 int Integer::plus_equal(int var) {
     return this->value += var;
+}
+
+int Integer::clear() {
+    return this->value = 0;
 }
 
 #endif
