@@ -14,6 +14,7 @@ class Integer {
         int increment_value();
         int decrement_value();
         std::string to_string();
+        int clear();
 };
 
 Integer::Integer(){}
@@ -38,6 +39,10 @@ int Integer::decrement_value() {
 
 std::string Integer::to_string() {
     return std::to_string(this->value);
+}
+
+int Integer::clear() {
+    return this->value = 0;
 }
 
 #endif
