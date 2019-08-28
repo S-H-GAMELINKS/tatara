@@ -52,14 +52,7 @@ int Float::to_integer() {
 }
 
 double Float::plus_equal(const double var) {
-
-    this->value += var;
-
-    std::string null = "";
-
-    std::regex re("0+");
-
-    return this->value = static_cast<double>(std::regex_replace(std::to_string(this->value), re, null));
+    return this->value += var;
 }
 
 #endif

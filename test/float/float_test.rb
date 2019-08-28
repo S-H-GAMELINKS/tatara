@@ -50,6 +50,6 @@ class FloatTest < Minitest::Test
     @f.value = 4.2
     assert_equal @f.value, 4.2
     @f.value += 1.1
-    assert_equal @f.value, 5.3
+    assert_equal @f.value.round(2), 5.3
   end
 end
