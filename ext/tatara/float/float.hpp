@@ -15,6 +15,7 @@ class Float {
         double decrement_value();
         std::string to_string();
         int to_integer();
+        double plus_equal(const double var);
 };
 
 Float::Float(){}
@@ -48,6 +49,17 @@ std::string Float::to_string() {
 
 int Float::to_integer() {
     return static_cast<int>(this->value);
+}
+
+double Float::plus_equal(const double var) {
+
+    this->value += var;
+
+    std::string null = "";
+
+    std::regex re("0+");
+
+    return this->value = static_cast<double>(std::regex_replace(std::to_string(this->value), re, null));
 }
 
 #endif
