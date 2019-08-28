@@ -44,4 +44,12 @@ class FloatTest < Minitest::Test
     @i = @f.to_i
     assert_equal @i, 4
   end
+
+  def test_plus_equal_tatara_float
+    @f = Tatara::Float.new
+    @f.value = 4.2
+    assert_equal @f.value, 4.2
+    @f.value += 1.1
+    assert_equal @f.value.round(2), 5.3
+  end
 end

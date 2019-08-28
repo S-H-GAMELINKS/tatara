@@ -15,6 +15,7 @@ class Float {
         double decrement_value();
         std::string to_string();
         int to_integer();
+        double plus_equal(const double var);
 };
 
 Float::Float(){}
@@ -48,6 +49,10 @@ std::string Float::to_string() {
 
 int Float::to_integer() {
     return static_cast<int>(this->value);
+}
+
+double Float::plus_equal(const double var) {
+    return this->value += var;
 }
 
 #endif
