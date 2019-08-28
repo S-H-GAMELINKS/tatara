@@ -29,4 +29,12 @@ class StringTest < Minitest::Test
     @s.value += "hoge"
     assert_equal @s.value, "42hoge"
   end
+
+  def test_clear_tatara_string
+    @s = Tatara::String.new
+    @s.value = "42"
+    assert_equal @s.value, "42"
+    @s.clear
+    assert_equal @s.value, ""
+  end
 end
