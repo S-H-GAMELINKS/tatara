@@ -52,4 +52,12 @@ class FloatTest < Minitest::Test
     @f.value += 1.1
     assert_equal @f.value.round(2), 5.3
   end
+
+  def test_clear_tatara_float
+    @f = Tatara::Float.new
+    @f.value = 4.2
+    assert_equal @f.value, 4.2
+    @f.clear
+    assert_equal @f.value, 0.0
+  end
 end
