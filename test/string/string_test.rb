@@ -13,7 +13,7 @@ class StringTest < Minitest::Test
     assert_equal @s.value, "42"
   end
 
-  def test_tos_tatara_string
+  def test_toi_tatara_string
     @s = Tatara::String.new
     @s.value = "42"
     assert_equal @s.value, "42"
