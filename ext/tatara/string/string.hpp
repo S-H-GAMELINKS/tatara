@@ -11,6 +11,7 @@ class CppString {
         std::string assignment(const std::string var);
         std::string return_value();
         int to_integer();
+        std::string plus_equal(const std::string var);
 };
 
 CppString::CppString() {}
@@ -27,6 +28,10 @@ std::string CppString::return_value() {
 
 int CppString::to_integer() {
     return std::stoi(this->value);
+}
+
+std::string CppString::plus_equal(const std::string var) {
+    return this->value += var;
 }
 
 #endif
