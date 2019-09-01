@@ -4,7 +4,7 @@
 #include <string>
 
 class Integer {
-    int value;
+    int value = 0;
 
     public:
         Integer();
