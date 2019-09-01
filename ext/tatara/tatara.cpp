@@ -32,7 +32,8 @@ extern "C" {
             .define_method("dec", &Float::decrement_value)
             .define_method("to_s", &Float::to_string)
             .define_method("to_i", &Float::to_integer)
-            .define_method("clear", &Float::clear);
+            .define_method("clear", &Float::clear)
+            .define_method("value==", &Float::equal, Arg("var"));
 
         Data_Type<CppString> rbcString = define_class_under<CppString>(rb_mTatara, "String")
             .define_constructor(Constructor<CppString>())
