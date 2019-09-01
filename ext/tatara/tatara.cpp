@@ -41,7 +41,8 @@ extern "C" {
             .define_method("value=", &CppString::assignment, Arg("var"))
             .define_method("value+=", &CppString::plus_equal, Arg("var"))
             .define_method("to_i", &CppString::to_integer)
-            .define_method("clear", &CppString::clear);
+            .define_method("clear", &CppString::clear)
+            .define_method("value==", &CppString::equal, Arg("var"));
 
         Data_Type<Vector<int>> rb_cVeci = define_class_under<Vector<int>>(rb_mTatara, "Veci")
             .define_constructor(Constructor<Vector<int>>())

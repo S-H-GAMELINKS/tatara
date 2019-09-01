@@ -13,6 +13,7 @@ class CppString {
         int to_integer();
         std::string plus_equal(const std::string var);
         std::string clear();
+        bool equal(const std::string var);
 };
 
 CppString::CppString() {}
@@ -37,6 +38,10 @@ std::string CppString::plus_equal(const std::string var) {
 
 std::string CppString::clear() {
     return this->value = "";
+}
+
+bool CppString::equal(const std::string var) {
+    return this->value == var;
 }
 
 #endif

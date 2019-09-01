@@ -43,7 +43,7 @@ class StringTest < Minitest::Test
   def test_equal_tatara_string
     @s = Tatara::String.new
     assert_equal @s.value, ""
-    @s.value == "42"
+    @s.value = "42"
     assert @s.value == "42"
   end
 end
