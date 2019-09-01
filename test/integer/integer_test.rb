@@ -4,7 +4,7 @@ require "tatara/tatara"
 class IntegerTest < Minitest::Test
 
   def test_init_tatara_integer
-    @i Tatara::Integer.new
+    @i = Tatara::Integer.new
     refute_nil @i
     assert_equal @i.value, 0
   end
