@@ -16,6 +16,7 @@ class Integer {
         std::string to_string();
         int plus_equal(int var);
         int clear();
+        bool equal(const int var);
 };
 
 Integer::Integer(){}
@@ -48,6 +49,10 @@ int Integer::plus_equal(int var) {
 
 int Integer::clear() {
     return this->value = 0;
+}
+
+bool Integer::equal(const int var) {
+    return this->value == var;
 }
 
 #endif
