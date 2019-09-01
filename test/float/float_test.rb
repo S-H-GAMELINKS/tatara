@@ -4,7 +4,9 @@ require "tatara/tatara"
 class FloatTest < Minitest::Test
 
   def test_init_tatara_float
-    refute_nil Tatara::Float.new
+    @f = Tatara::Float.new
+    refute_nil @f
+    assert_equal @f.value, 0.0
   end
 
   def test_assignment_tatara_float

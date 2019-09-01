@@ -5,7 +5,7 @@
 #include <regex>
 
 class Float {
-        double value;
+        double value = 0.0;
     public:
         Float();
         ~Float();
