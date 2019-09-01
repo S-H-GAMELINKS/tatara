@@ -4,7 +4,9 @@ require "tatara/tatara"
 class StringTest < Minitest::Test
 
   def test_init_tatara_string
-    refute_nil Tatara::String.new
+    @s = Tatara::String.new
+    refute_nil @s
+    assert_equal @s.value, ""
   end
 
   def test_assignment_tatara_string
