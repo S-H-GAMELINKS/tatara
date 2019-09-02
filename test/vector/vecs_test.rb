@@ -42,4 +42,12 @@ class VecsTest < Minitest::Test
     @f.clear
     assert_equal @f.size, 0
   end
+
+  def test_tatara_vecs_sum
+    @s = Tatara::Vecs.new
+
+    3.times { @s.emplace_back("42") }
+
+    assert_equal @s.value, "424242"
+  end
 end
