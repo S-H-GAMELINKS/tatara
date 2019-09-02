@@ -42,4 +42,12 @@ class VecfTest < Minitest::Test
     @f.clear
     assert_equal @f.size, 0
   end
+
+  def test_tatara_vecf_sum
+    @f = Tatara::Vecf.new
+
+    3.times { @f.emplace_back(4.2) }
+
+    assert_equal @f.sum, 12.8
+  end
 end
