@@ -52,7 +52,8 @@ extern "C" {
             .define_method("[]=", &Vector<int>::bracket_equal)
             .define_method("emplace_back", &Vector<int>::emplace_back, Arg("var"))
             .define_method("size", &Vector<int>::size)
-            .define_method("clear", &Vector<int>::clear);
+            .define_method("clear", &Vector<int>::clear)
+            .define_method("sum", &Vector<int>::sum);
 
         Data_Type<Vector<double>> rb_cVecf = define_class_under<Vector<double>>(rb_mTatara, "Vecf")
             .define_constructor(Constructor<Vector<double>>())
@@ -62,7 +63,8 @@ extern "C" {
             .define_method("[]=", &Vector<double>::bracket_equal)
             .define_method("emplace_back", &Vector<double>::emplace_back, Arg("var"))
             .define_method("size", &Vector<double>::size)
-            .define_method("clear", &Vector<double>::clear);
+            .define_method("clear", &Vector<double>::clear)
+            .define_method("sum", &Vector<double>::sum);
 
         Data_Type<Vector<std::string>> rb_cVecs = define_class_under<Vector<std::string>>(rb_mTatara, "Vecs")
             .define_constructor(Constructor<Vector<std::string>>())
@@ -72,6 +74,7 @@ extern "C" {
             .define_method("[]=", &Vector<std::string>::bracket_equal)
             .define_method("emplace_back", &Vector<std::string>::emplace_back, Arg("var"))
             .define_method("size", &Vector<std::string>::size)
-            .define_method("clear", &Vector<std::string>::clear);
+            .define_method("clear", &Vector<std::string>::clear)
+            .define_method("sum", &Vector<std::string>::sum);
     }
 }

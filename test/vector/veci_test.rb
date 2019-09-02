@@ -46,4 +46,12 @@ class VeciTest < Minitest::Test
     @f.clear
     assert_equal @f.size, 0
   end
+
+  def test_tatara_veci_sum
+    @f = Tatara::Veci.new
+
+    3.times { @f.emplace_back(42) }
+
+    assert_equal @f.sum, 126
+  end
 end

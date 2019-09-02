@@ -17,6 +17,7 @@ class Vector {
         void emplace_back(const T var);
         int size();
         void clear();
+        T sum();
 };
 
 template <class T>
@@ -58,6 +59,16 @@ int Vector<T>::size() {
 template <class T>
 void Vector<T>::clear() {
     this->container.clear();
+}
+
+template <class T>
+T Vector<T>::sum() {
+    T sum;
+
+    for (auto&& c : this->container)
+        sum += c;
+
+    return sum;
 }
 
 #endif
