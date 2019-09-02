@@ -50,9 +50,7 @@ class VeciTest < Minitest::Test
   def test_tatara_veci_sum
     @f = Tatara::Veci.new
 
-    3.times do
-      @f.emplace_back(42)
-    end
+    3.times { @f.emplace_back(42) }
 
     assert_equal @f.sum, 128
   end
