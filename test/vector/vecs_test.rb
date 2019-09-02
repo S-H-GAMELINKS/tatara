@@ -48,6 +48,6 @@ class VecsTest < Minitest::Test
 
     3.times { @s.emplace_back("42") }
 
-    assert_equal @s.value, "424242"
+    assert_equal @s.sum, "424242"
   end
 end

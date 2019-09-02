@@ -52,6 +52,6 @@ class VeciTest < Minitest::Test
 
     3.times { @f.emplace_back(42) }
 
-    assert_equal @f.sum, 128
+    assert_equal @f.sum, 126
   end
 end

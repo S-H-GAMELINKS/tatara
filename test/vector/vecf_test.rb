@@ -48,6 +48,6 @@ class VecfTest < Minitest::Test
 
     3.times { @f.emplace_back(4.2) }
 
-    assert_equal @f.sum, 12.8
+    assert_equal @f.sum.round(2), 12.6
   end
 end
