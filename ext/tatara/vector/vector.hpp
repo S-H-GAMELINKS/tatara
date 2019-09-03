@@ -27,50 +27,42 @@ template <class T>
 Vector<T>::~Vector() {}
 
 template <class T>
-constexpr T Vector<T>::first()
-{
+constexpr T Vector<T>::first() {
     return this->container.front();
 }
 
 template <class T>
-constexpr T Vector<T>::last()
-{
+constexpr T Vector<T>::last() {
     return this->container.back();
 }
 
 template <class T>
-constexpr T Vector<T>::bracket(const int index)
-{
+constexpr T Vector<T>::bracket(const int index) {
     return this->container[index];
 }
 
 template <class T>
-constexpr T Vector<T>::bracket_equal(const int index, const T var)
-{
+constexpr T Vector<T>::bracket_equal(const int index, const T var) {
     return this->container[index] = var;
 }
 
 template <class T>
-constexpr void Vector<T>::emplace_back(const T var)
-{
+constexpr void Vector<T>::emplace_back(const T var) {
     this->container.emplace_back(std::move(var));
 }
 
 template <class T>
-constexpr int Vector<T>::size()
-{
+constexpr int Vector<T>::size() {
     return this->container.size();
 }
 
 template <class T>
-constexpr void Vector<T>::clear()
-{
+constexpr void Vector<T>::clear() {
     this->container.clear();
 }
 
 template <class T>
-T Vector<T>::sum()
-{
+T Vector<T>::sum() {
     T sum;
 
     for (auto&& c : this->container)
