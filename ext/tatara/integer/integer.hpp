@@ -7,35 +7,35 @@ class Integer {
     int value = 0;
 
     public:
-        Integer();
+        constexpr Integer();
         ~Integer();
-        int assignment(const int var);
-        int return_value();
-        int increment_value();
-        int decrement_value();
+        constexpr int assignment(const int var);
+        constexpr int return_value();
+        constexpr int increment_value();
+        constexpr int decrement_value();
         std::string to_string();
-        int plus_equal(int var);
-        int clear();
-        bool equal(const int var);
+        constexpr int plus_equal(int var);
+        constexpr int clear();
+        constexpr bool equal(const int var);
 };
 
-Integer::Integer(){}
+constexpr Integer::Integer() {}
 
 Integer::~Integer(){}
 
-int Integer::assignment(const int var) {
+constexpr int Integer::assignment(const int var) {
     return this->value = var;
 }
 
-int Integer::return_value() {
+constexpr int Integer::return_value() {
     return this->value;
 }
 
-int Integer::increment_value() {
+constexpr int Integer::increment_value() {
     return this->value++;
 }
 
-int Integer::decrement_value() {
+constexpr int Integer::decrement_value() {
     return this->value--;
 }
 
@@ -43,15 +43,15 @@ std::string Integer::to_string() {
     return std::to_string(this->value);
 }
 
-int Integer::plus_equal(int var) {
+constexpr int Integer::plus_equal(int var) {
     return this->value += var;
 }
 
-int Integer::clear() {
+constexpr int Integer::clear() {
     return this->value = 0;
 }
 
-bool Integer::equal(const int var) {
+constexpr bool Integer::equal(const int var) {
     return this->value == var;
 }
 

@@ -8,61 +8,69 @@ class Vector {
     std::vector<T> container;
 
     public:
-        Vector();
+        constexpr Vector();
         ~Vector();
-        T first();
-        T last();
-        T bracket(const int index);
-        T bracket_equal(const int index, const T var);
-        void emplace_back(const T var);
-        int size();
-        void clear();
+        constexpr T first();
+        constexpr T last();
+        constexpr T bracket(const int index);
+        constexpr T bracket_equal(const int index, const T var);
+        constexpr void emplace_back(const T var);
+        constexpr int size();
+        constexpr void clear();
         T sum();
 };
 
 template <class T>
-Vector<T>::Vector() {}
+constexpr Vector<T>::Vector() {}
 
 template <class T>
 Vector<T>::~Vector() {}
 
 template <class T>
-T Vector<T>::first() {
+constexpr T Vector<T>::first()
+{
     return this->container.front();
 }
 
 template <class T>
-T Vector<T>::last() {
+constexpr T Vector<T>::last()
+{
     return this->container.back();
 }
 
 template <class T>
-T Vector<T>::bracket(const int index) {
+constexpr T Vector<T>::bracket(const int index)
+{
     return this->container[index];
 }
 
 template <class T>
-T Vector<T>::bracket_equal(const int index, const T var) {
+constexpr T Vector<T>::bracket_equal(const int index, const T var)
+{
     return this->container[index] = var;
 }
 
 template <class T>
-void Vector<T>::emplace_back(const T var) {
+constexpr void Vector<T>::emplace_back(const T var)
+{
     this->container.emplace_back(std::move(var));
 }
 
 template <class T>
-int Vector<T>::size() {
+constexpr int Vector<T>::size()
+{
     return this->container.size();
 }
 
 template <class T>
-void Vector<T>::clear() {
+constexpr void Vector<T>::clear()
+{
     this->container.clear();
 }
 
 template <class T>
-T Vector<T>::sum() {
+T Vector<T>::sum()
+{
     T sum;
 
     for (auto&& c : this->container)
