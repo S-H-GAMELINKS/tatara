@@ -7,36 +7,36 @@
 class Float {
         double value = 0.0;
     public:
-        Float();
+        constexpr Float();
         ~Float();
-        double assignment(const double var);
-        double return_value();
-        double increment_value();
-        double decrement_value();
+        constexpr double assignment(const double var);
+        constexpr double return_value();
+        constexpr double increment_value();
+        constexpr double decrement_value();
         std::string to_string();
-        int to_integer();
-        double plus_equal(const double var);
-        double clear();
-        bool equal(const double var);
+        constexpr int to_integer();
+        constexpr double plus_equal(const double var);
+        constexpr double clear();
+        constexpr bool equal(const double var);
 };
 
-Float::Float(){}
+constexpr Float::Float() {}
 
-Float::~Float(){}
+Float::~Float() {}
 
-double Float::assignment(const double var) {
+constexpr double Float::assignment(const double var) {
     return this->value = var;
 }
 
-double Float::return_value() {
+constexpr double Float::return_value() {
     return this->value;
 }
 
-double Float::increment_value() {
+constexpr double Float::increment_value() {
     return this->value++;
 }
 
-double Float::decrement_value() {
+constexpr double Float::decrement_value() {
     return this->value--;
 }
 
@@ -49,19 +49,19 @@ std::string Float::to_string() {
     return std::regex_replace(std::to_string(this->value), re, null);
 }
 
-int Float::to_integer() {
+constexpr int Float::to_integer() {
     return static_cast<int>(this->value);
 }
 
-double Float::plus_equal(const double var) {
+constexpr double Float::plus_equal(const double var) {
     return this->value += var;
 }
 
-double Float::clear() {
+constexpr double Float::clear() {
     return this->value = 0.0;
 }
 
-bool Float::equal(const double var) {
+constexpr bool Float::equal(const double var) {
     return this->value == var;
 }
 
