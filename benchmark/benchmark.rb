@@ -48,6 +48,17 @@ Benchmark.bm 10 do |r|
             f.value = 4.2
         }
     end
+
+    puts "Tatra::Float memory #{ObjectSpace.memsize_of_all(Tatara::Float)}\n"
+
+    r.report "Ruby::Float" do
+        NUM.times { 
+            f = 4.2
+        }
+    end
+
+    puts "Ruby::Float memory #{ObjectSpace.memsize_of_all(Float)}\n"
+
     r.report "Tatara::Vecs" do
         NUM.times { 
             vs = Tatara::Vecs.new
