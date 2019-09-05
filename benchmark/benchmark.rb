@@ -1,7 +1,10 @@
 require "tatara/tatara"
 require "benchmark"
+require "objspace"
 
 NUM = 1000000
+
+GC.disable
 
 Benchmark.bm 10 do |r|
     r.report "Tatara::String" do
@@ -10,12 +13,25 @@ Benchmark.bm 10 do |r|
             s.value = "42"
         }
     end
+
+    puts "Tatra::String memory #{ObjectSpace.memsize_of_all(Tatara::String)}\n"
+
+    r.report "Ruby::String" do
+        NUM.times { 
+            s = String.new
+            s = "42"
+        }
+    end
+
+    puts "Ruby::String #{ObjectSpace.memsize_of_all(String)}\n"
+
     r.report "Tatara::Integer" do
         NUM.times { 
             i = Tatara::Integer.new
             i.value = 42
         }
     end
+
     r.report "Tatara::Float" do
         NUM.times { 
             f = Tatara::Float.new 
