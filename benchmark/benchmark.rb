@@ -32,7 +32,7 @@ Benchmark.bm 10 do |r|
         }
     end
 
-    puts "Tatra::String memory #{ObjectSpace.memsize_of_all(Tatara::Integer)}\n"
+    puts "Tatra::Integr memory #{ObjectSpace.memsize_of_all(Tatara::Integer)}\n"
 
     r.report "Ruby::Integer" do
         NUM.times { 
@@ -40,7 +40,7 @@ Benchmark.bm 10 do |r|
         }
     end
 
-    puts "Ruby::String #{ObjectSpace.memsize_of_all(Integer)}\n"
+    puts "Ruby::Integer #{ObjectSpace.memsize_of_all(Integer)}\n"
 
     r.report "Tatara::Float" do
         NUM.times { 
