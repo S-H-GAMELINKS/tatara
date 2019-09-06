@@ -83,6 +83,18 @@ Benchmark.bm 10 do |r|
             vi.emplace_back(42) 
         }
     end
+
+    puts "Tatra::Veci memory #{ObjectSpace.memsize_of_all(Tatara::Veci)}\n"
+
+    r.report "Ruby::Array(Integer)" do
+        NUM.times { 
+            array = Array.new
+            array.push(42)
+        }
+    end
+
+    puts "Ruby::Array(Integer) memory #{ObjectSpace.memsize_of_all(Array)}\n"
+
     r.report "Tatara::Vecf" do
         NUM.times { 
             vf = Tatara::Vecf.new 
