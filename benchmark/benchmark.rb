@@ -101,4 +101,15 @@ Benchmark.bm 10 do |r|
             vf.emplace_back(4.2)
         }
     end
+
+    puts "Tatra::Vecf memory #{ObjectSpace.memsize_of_all(Tatara::Vecf)}\n"
+
+    r.report "Ruby::Array(Float)" do
+        NUM.times { 
+            array = Array.new
+            array.push(4.2)
+        }
+    end
+
+    puts "Ruby::Array(Float) memory #{ObjectSpace.memsize_of_all(Array)}\n"
 end
