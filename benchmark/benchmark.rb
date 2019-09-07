@@ -4,8 +4,6 @@ require "objspace"
 
 NUM = 1000000
 
-GC.disable
-
 Benchmark.bm 10 do |r|
     r.report "Tatara::String" do
         NUM.times { 
