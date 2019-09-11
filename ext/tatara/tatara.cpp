@@ -79,12 +79,15 @@ extern "C" {
             .define_method("sum", &Vector<std::string>::sum);
 
         Data_Type<CppArray<int>> rb_cIntArray = define_class_under<CppArray<int>>(rb_mTatara, "IntArray")
-            .define_constructor(Constructor<CppArray<int>>());
+            .define_constructor(Constructor<CppArray<int>>())
+            .define_method("push", &CppArray<int>::emplace_back);
 
         Data_Type<CppArray<double>> rb_cFloatArray = define_class_under<CppArray<double>>(rb_mTatara, "FloatArray")
-            .define_constructor(Constructor<CppArray<double>>());
+            .define_constructor(Constructor<CppArray<double>>())
+            .define_method("push", &CppArray<double>::emplace_back);
 
         Data_Type<CppArray<std::string>> rb_cStringArray = define_class_under<CppArray<std::string>>(rb_mTatara, "StringArray")
-            .define_constructor(Constructor<CppArray<std::string>>());
+            .define_constructor(Constructor<CppArray<std::string>>())
+            .define_method("push", &CppArray<std::string>::emplace_back);
     }
 }
