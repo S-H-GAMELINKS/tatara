@@ -11,6 +11,7 @@ class CppArray {
         ~CppArray();
         constexpr T first();
         constexpr T last();
+        constexpr T bracket(const int index);
         constexpr void emplace_back(const T value);
 };
 
@@ -28,6 +29,11 @@ constexpr T CppArray<T>::first() {
 template <class T>
 constexpr T CppArray<T>::last(){
     return this->container.back();
+}
+
+template <class T>
+constexpr T CppArray<T>::bracket(const int index) {
+    return this->container[index];
 }
 
 template <class T>

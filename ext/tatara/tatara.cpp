@@ -82,18 +82,21 @@ extern "C" {
             .define_constructor(Constructor<CppArray<int>>())
             .define_method("first", &CppArray<int>::first)
             .define_method("last", &CppArray<int>::last)
+            .define_method("[]", &CppArray<int>::bracket)
             .define_method("push", &CppArray<int>::emplace_back);
 
         Data_Type<CppArray<double>> rb_cFloatArray = define_class_under<CppArray<double>>(rb_mTatara, "FloatArray")
             .define_constructor(Constructor<CppArray<double>>())
             .define_method("first", &CppArray<double>::first)
             .define_method("last", &CppArray<double>::last)
+            .define_method("[]", &CppArray<double>::bracket)
             .define_method("push", &CppArray<double>::emplace_back);
 
         Data_Type<CppArray<std::string>> rb_cStringArray = define_class_under<CppArray<std::string>>(rb_mTatara, "StringArray")
             .define_constructor(Constructor<CppArray<std::string>>())
             .define_method("first", &CppArray<std::string>::first)
             .define_method("last", &CppArray<std::string>::last)
+            .define_method("[]", &CppArray<std::string>::bracket)            
             .define_method("push", &CppArray<std::string>::emplace_back);
     }
 }
