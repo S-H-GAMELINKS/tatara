@@ -83,7 +83,7 @@ extern "C" {
             .define_method("first", &CppArray<int>::first)
             .define_method("last", &CppArray<int>::last)
             .define_method("[]", &CppArray<int>::bracket)
-            .define_method("[]=", &Vector<int>::bracket_equal)
+            .define_method("[]=", &CppArray<int>::bracket_equal)
             .define_method("push", &CppArray<int>::emplace_back);
 
         Data_Type<CppArray<double>> rb_cFloatArray = define_class_under<CppArray<double>>(rb_mTatara, "FloatArray")
