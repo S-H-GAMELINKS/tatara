@@ -11,4 +11,12 @@ class IntArrayTest < Minitest::Test
     @array.push(42)
     assert_equal 42, @array.first
   end
+
+  def test_tatara_int_array_last
+    @array = Tatara::IntArray.new
+    @array.push(42)
+    assert_equal 42, @array.last
+    @array.push(55)
+    assert_equal 55, @array.last
+  end
 end
