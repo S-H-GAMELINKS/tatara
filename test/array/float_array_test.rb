@@ -19,4 +19,12 @@ class FloatArrayTest < Minitest::Test
     @array.push(5.5)
     assert_equal 5.5, @array.last
   end
+
+  def test_tatara_float_array_bracket
+    @array = Tatara::FloatArray.new
+    @array.push(4.2)
+    assert_equal 4.2, @array[0]
+    @array[0] = 5.5
+    assert_equal 5.5, @array[0]
+  end
 end
