@@ -7,13 +7,13 @@ template <class T>
 class CppArray {
         std::vector<T> container;
     public:
-        CppArray();
+        constexpr CppArray();
         ~CppArray();
         constexpr void emplace_back(const T value);
 };
 
 template <class T>
-CppArray<T>::CppArray() {}
+constexpr CppArray<T>::CppArray() {}
 
 template <class T>
 CppArray<T>::~CppArray() {}
