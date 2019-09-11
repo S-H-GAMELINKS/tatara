@@ -2,6 +2,7 @@
 #include <rice/Data_Type.hpp>
 #include <rice/Constructor.hpp>
 #include "vector/vector.hpp"
+#include "array/array.hpp"
 #include "integer/integer.hpp"
 #include "float/float.hpp"
 #include "string/string.hpp"
@@ -76,5 +77,14 @@ extern "C" {
             .define_method("size", &Vector<std::string>::size)
             .define_method("clear", &Vector<std::string>::clear)
             .define_method("sum", &Vector<std::string>::sum);
+
+        Data_Type<CppArray<int>> rb_cIntArray = define_class_under<CppArray<int>>(rb_mTatara, "IntArray")
+            .define_constructor(Constructor<CppArray<int>>());
+
+        Data_Type<CppArray<double>> rb_cFloatArray = define_class_under<CppArray<double>>(rb_mTatara, "FloatArray")
+            .define_constructor(Constructor<CppArray<double>>());
+
+        Data_Type<CppArray<std::string>> rb_cStringArray = define_class_under<CppArray<std::string>>(rb_mTatara, "StringArray")
+            .define_constructor(Constructor<CppArray<std::string>>());
     }
 }
