@@ -5,4 +5,10 @@ class FloatArrayTest < Minitest::Test
   def test_init_tatara_float_array
     refute_nil Tatara::FloatArray.new
   end
+
+  def test_tatara_float_array_first
+    @array = Tatara::FloatArray.new
+    @array.push(4.2)
+    assert_equal 4.2, @array.first
+  end
 end
