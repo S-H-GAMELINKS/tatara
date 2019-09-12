@@ -85,7 +85,8 @@ extern "C" {
             .define_method("[]", &CppArray<int>::bracket)
             .define_method("[]=", &CppArray<int>::bracket_equal)
             .define_method("push", &CppArray<int>::emplace_back)
-            .define_method("size", &CppArray<int>::size);
+            .define_method("size", &CppArray<int>::size)
+            .define_method("clear", &CppArray<int>::clear);
 
         Data_Type<CppArray<double>> rb_cFloatArray = define_class_under<CppArray<double>>(rb_mTatara, "FloatArray")
             .define_constructor(Constructor<CppArray<double>>())
@@ -94,7 +95,8 @@ extern "C" {
             .define_method("[]", &CppArray<double>::bracket)
             .define_method("[]=", &CppArray<double>::bracket_equal)
             .define_method("push", &CppArray<double>::emplace_back)
-            .define_method("size", &CppArray<double>::size);
+            .define_method("size", &CppArray<double>::size)
+            .define_method("clear", &CppArray<double>::clear);
 
         Data_Type<CppArray<std::string>> rb_cStringArray = define_class_under<CppArray<std::string>>(rb_mTatara, "StringArray")
             .define_constructor(Constructor<CppArray<std::string>>())
@@ -103,6 +105,7 @@ extern "C" {
             .define_method("[]", &CppArray<std::string>::bracket)
             .define_method("[]=", &CppArray<std::string>::bracket_equal)            
             .define_method("push", &CppArray<std::string>::emplace_back)
-            .define_method("size", &CppArray<std::string>::size);
+            .define_method("size", &CppArray<std::string>::size)
+            .define_method("clear", &CppArray<std::string>::clear);
     }
 }
