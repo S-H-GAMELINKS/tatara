@@ -14,6 +14,7 @@ class CppArray {
         constexpr T bracket(const int index);
         constexpr T bracket_equal(const int index, const T var);
         constexpr void emplace_back(const T var);
+        constexpr int size();
 };
 
 template <class T>
@@ -45,6 +46,11 @@ constexpr T CppArray<T>::bracket_equal(const int index, const T var) {
 template <class T>
 constexpr void CppArray<T>::emplace_back(const T var) {
     this->container.emplace_back(var);
+}
+
+template <class T>
+constexpr int CppArray<T>::size() {
+    return this->container.size();
 }
 
 #endif
