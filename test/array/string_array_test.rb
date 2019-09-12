@@ -30,7 +30,7 @@ class StringArrayTest < Minitest::Test
 
   def test_tatara_string_array_size
     @array = Tatara::StringArray.new
-    @array.emplace_back("42")
+    @array.push("42")
     assert_equal 1, @array.size
   end
 end

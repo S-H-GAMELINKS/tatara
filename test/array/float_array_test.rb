@@ -30,7 +30,7 @@ class FloatArrayTest < Minitest::Test
 
   def test_tatara_float_array_size
     @array = Tatara::FloatArray.new
-    @array.emplace_back(4.2)
+    @array.push(4.2)
     assert_equal 1, @array.size
   end
 end
