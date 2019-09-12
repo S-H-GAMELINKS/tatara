@@ -33,4 +33,12 @@ class StringArrayTest < Minitest::Test
     @array.push("42")
     assert_equal 1, @array.size
   end
+
+  def test_tatara_string_array_clear
+    @array = Tatara::StringArray.new
+    @array.push("42")
+    assert_equal 1, @array.size
+    @array.clear
+    assert_equal 0, @array.size
+  end
 end
