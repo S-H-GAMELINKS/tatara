@@ -27,4 +27,10 @@ class IntArrayTest < Minitest::Test
     @array[0] = 55
     assert_equal 55, @array[0]
   end
+
+  def test_tatara_int_array_size
+    @array = Tatara::IntArray.new
+    @array.emplace_back(42)
+    assert_equal 1, @array.size
+  end
 end
