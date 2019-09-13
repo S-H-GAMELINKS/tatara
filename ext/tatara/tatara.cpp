@@ -56,7 +56,7 @@ extern "C" {
             .define_method("clear", &Vector<int>::clear)
             .define_method("sum", &Vector<int>::sum);
 
-        Data_Type<Vector<double>> rb_cVecf = define_class_under<Vector<double>>(rb_mTatara, "Vecf")
+        Data_Type<Vector<double>> rb_cFloatVector = define_class_under<Vector<double>>(rb_mTatara, "FloatVector")
             .define_constructor(Constructor<Vector<double>>())
             .define_method("first", &Vector<double>::first)
             .define_method("last", &Vector<double>::last)
