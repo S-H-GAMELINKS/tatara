@@ -67,13 +67,13 @@ extern "C" {
             .define_method("clear", &Vector<double>::clear)
             .define_method("sum", &Vector<double>::sum);
 
-        Data_Type<Vector<std::string>> rb_cVecs = define_class_under<Vector<std::string>>(rb_mTatara, "Vecs")
+        Data_Type<Vector<std::string>> rb_cStringVector = define_class_under<Vector<std::string>>(rb_mTatara, "StringVector")
             .define_constructor(Constructor<Vector<std::string>>())
             .define_method("first", &Vector<std::string>::first)
             .define_method("last", &Vector<std::string>::last)
             .define_method("[]", &Vector<std::string>::bracket)
             .define_method("[]=", &Vector<std::string>::bracket_equal)
-            .define_method("emplace_back", &Vector<std::string>::emplace_back)
+            .define_method("emplace_back", &    Vector<std::string>::emplace_back)
             .define_method("size", &Vector<std::string>::size)
             .define_method("clear", &Vector<std::string>::clear)
             .define_method("sum", &Vector<std::string>::sum);
