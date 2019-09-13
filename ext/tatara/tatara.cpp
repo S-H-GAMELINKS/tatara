@@ -45,7 +45,7 @@ extern "C" {
             .define_method("clear", &CppString::clear)
             .define_method("value==", &CppString::equal);
 
-        Data_Type<Vector<int>> rb_cVeci = define_class_under<Vector<int>>(rb_mTatara, "Veci")
+        Data_Type<Vector<int>> rb_cIntVector = define_class_under<Vector<int>>(rb_mTatara, "IntVector")
             .define_constructor(Constructor<Vector<int>>())
             .define_method("first", &Vector<int>::first)
             .define_method("last", &Vector<int>::last)
