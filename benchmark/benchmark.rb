@@ -57,14 +57,14 @@ Benchmark.bm 10 do |r|
 
     puts "Ruby::Float memory #{ObjectSpace.memsize_of_all(Float)}\n"
 
-    r.report "Tatara::Vecs" do
+    r.report "Tatara::StringVector" do
         NUM.times { 
-            vs = Tatara::Vecs.new
+            vs = Tatara::StringVector.new
             vs.emplace_back("42")
         }
     end
 
-    puts "Tatra::Vecs memory #{ObjectSpace.memsize_of_all(Tatara::Vecs)}\n"
+    puts "Tatra::StringVector memory #{ObjectSpace.memsize_of_all(Tatara::StringVector)}\n"
 
     r.report "Ruby::Array(String)" do
         NUM.times { 
@@ -75,14 +75,14 @@ Benchmark.bm 10 do |r|
 
     puts "Ruby::Array(String) memory #{ObjectSpace.memsize_of_all(Array)}\n"
 
-    r.report "Tatara::Veci" do
+    r.report "Tatara::IntVector" do
         NUM.times { 
-            vi = Tatara::Veci.new
+            vi = Tatara::IntVector.new
             vi.emplace_back(42) 
         }
     end
 
-    puts "Tatra::Veci memory #{ObjectSpace.memsize_of_all(Tatara::Veci)}\n"
+    puts "Tatra::IntVector memory #{ObjectSpace.memsize_of_all(Tatara::IntVector)}\n"
 
     r.report "Ruby::Array(Integer)" do
         NUM.times { 
@@ -93,14 +93,14 @@ Benchmark.bm 10 do |r|
 
     puts "Ruby::Array(Integer) memory #{ObjectSpace.memsize_of_all(Array)}\n"
 
-    r.report "Tatara::Vecf" do
+    r.report "Tatara::FloatVector" do
         NUM.times { 
-            vf = Tatara::Vecf.new 
+            vf = Tatara::FloatVector.new 
             vf.emplace_back(4.2)
         }
     end
 
-    puts "Tatra::Vecf memory #{ObjectSpace.memsize_of_all(Tatara::Vecf)}\n"
+    puts "Tatra::FloatVector memory #{ObjectSpace.memsize_of_all(Tatara::FloatVector)}\n"
 
     r.report "Ruby::Array(Float)" do
         NUM.times { 
