@@ -9,6 +9,7 @@ class Map {
     public:
         constexpr Map();
         ~Map();
+        constexpr V bracket(const K key);
 };
 
 template <class K, class V>
@@ -16,5 +17,10 @@ constexpr Map<K, V>::Map() {}
 
 template <class K, class V>
 Map<K, V>::~Map() {}
+
+template <class K, class V>
+constexpr V Map<K, V>::bracket(const K key) {
+    return this->container[key];
+}
 
 #endif
