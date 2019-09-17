@@ -10,6 +10,7 @@ class Map {
         constexpr Map();
         ~Map();
         constexpr V bracket(const K key);
+        constexpr V bracket_equal(const K key, const V value);
 };
 
 template <class K, class V>
@@ -21,6 +22,11 @@ Map<K, V>::~Map() {}
 template <class K, class V>
 constexpr V Map<K, V>::bracket(const K key) {
     return this->container[key];
+}
+
+template <class K, class V>
+constexpr V Map<K, V>::bracket_equal(const K key, const V value) {
+    return this->container[key] = value;
 }
 
 #endif
