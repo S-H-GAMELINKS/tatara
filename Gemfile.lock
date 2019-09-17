@@ -6,6 +6,7 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
+    benchmark_driver (0.15.5)
     minitest (5.11.3)
     rake (10.5.0)
     rake-compiler (1.0.7)
@@ -16,6 +17,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  benchmark_driver
   bundler (~> 2.0)
   minitest (~> 5.0)
   rake (~> 10.0)

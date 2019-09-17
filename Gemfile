@@ -5,3 +5,6 @@ gemspec
 
 gem "rice"
 gem "rake-compiler"
+
+# Using Benchmark Driver
+gem "benchmark_driver"
