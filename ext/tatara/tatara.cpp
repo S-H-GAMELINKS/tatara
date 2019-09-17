@@ -121,6 +121,7 @@ extern "C" {
 
         Data_Type<Map<std::string, std::string>> rb_cStringStringMap = define_class_under<Map<std::string, std::string>>(rb_mTatara, "StringStringMap")
             .define_constructor(Constructor<Map<std::string, std::string>>())
-            .define_method("[]", &Map<std::string, std::string>>::bracket);
+            .define_method("[]", &Map<std::string, std::string>>::bracket)
+            .define_method("[]=", &Map<std::string, std::string>>::bracket_equal);
     }
 }
