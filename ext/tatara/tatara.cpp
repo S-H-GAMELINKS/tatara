@@ -3,6 +3,7 @@
 #include <rice/Constructor.hpp>
 #include "vector/vector.hpp"
 #include "array/array.hpp"
+#include "map/map.hpp"
 #include "integer/integer.hpp"
 #include "float/float.hpp"
 #include "string/string.hpp"
@@ -107,5 +108,8 @@ extern "C" {
             .define_method("push", &CppArray<std::string>::emplace_back)
             .define_method("size", &CppArray<std::string>::size)
             .define_method("clear", &CppArray<std::string>::clear);
+
+        Data_Type<Map<std::string, int>> rb_cStringIntMap = define_class_under<Map<std::string, int>>(rb_mTatara, "StringIntMap")
+            .define_constructor(Constructor<Map<std::string, int>>());
     }
 }
