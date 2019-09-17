@@ -20,7 +20,15 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+@integer = Tatara::Integer.new # => This type is Integer!
+@integer.value = 42
+puts @integer.value # => 42 and type is Integer!
+@integer.value = "42" #=> Error!
+```
+
+`Tatara` supported `Integer`, `Float`, `String`.  
+And, Container for `Vector`, `Array`, `Map`!
 
 ## Development
 
