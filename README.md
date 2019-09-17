@@ -1,8 +1,6 @@
 # Tatara
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/tatara`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Add Type to Ruby!
 
 ## Installation
 
@@ -22,7 +20,15 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+@integer = Tatara::Integer.new # => This type is Integer!
+@integer.value = 42
+puts @integer.value # => 42 and type is Integer!
+@integer.value = "42" #=> Error!
+```
+
+`Tatara` supported `Integer`, `Float`, `String`.  
+And, Container for `Vector`, `Array`, `Map`!
 
 ## Development
 
