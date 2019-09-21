@@ -17,7 +17,7 @@ class Integer {
         std::string to_string();
         constexpr int plus_equal(int var);
         constexpr int minus_equal(int var);
-        constexpr int bracket_equal(int var);
+        constexpr int divided_equal(int var);
         constexpr int power_equal(int var);
         constexpr int clear();
         constexpr bool equal(const int var);
@@ -55,7 +55,7 @@ constexpr int Integer::minus_equal(int var) {
     return this->value -= var;
 }
 
-constexpr int Integer::bracket_equal(int var) {
+constexpr int Integer::divided_equal(int var) {
     return this->value /= var;
 }
 
