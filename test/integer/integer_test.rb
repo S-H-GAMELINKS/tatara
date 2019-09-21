@@ -63,6 +63,14 @@ class IntegerTest < Minitest::Test
     assert_equal 0, @i.value
   end
 
+  def test_break_equal_tatara_integer
+    @i = Tatara::Integer.new
+    @i.value = 42
+    assert_equal 42, @i.value
+    @i.value /= 42
+    assert_equal 1, @i.value
+  end
+
   def test_clear_tatara_integer
     @i = Tatara::Integer.new
     @i.value = 42
