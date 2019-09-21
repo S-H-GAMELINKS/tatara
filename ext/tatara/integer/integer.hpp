@@ -2,6 +2,7 @@
 #define INTEGER_H_
 
 #include <string>
+#include <cmath>
 
 class Integer {
     int value = 0;
@@ -15,6 +16,7 @@ class Integer {
         constexpr int decrement_value();
         std::string to_string();
         constexpr int plus_equal(int var);
+        constexpr int power_equal(int var);
         constexpr int clear();
         constexpr bool equal(const int var);
 };
@@ -45,6 +47,10 @@ std::string Integer::to_string() {
 
 constexpr int Integer::plus_equal(int var) {
     return this->value += var;
+}
+
+constexpr int Integer::power_equal(int var) {
+    return this->value = std::pow(this->value, var);
 }
 
 constexpr int Integer::clear() {
