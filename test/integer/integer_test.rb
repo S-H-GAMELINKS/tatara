@@ -71,7 +71,7 @@ class IntegerTest < Minitest::Test
     assert_equal 84, @i.value
   end
 
-  def test_break_equal_tatara_integer
+  def test_divided_equal_tatara_integer
     @i = Tatara::Integer.new
     @i.value = 42
     assert_equal 42, @i.value
