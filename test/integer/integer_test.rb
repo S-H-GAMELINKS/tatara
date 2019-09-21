@@ -47,6 +47,14 @@ class IntegerTest < Minitest::Test
     assert_equal @i.value, 52
   end
 
+  def test_power_equal_tatara_integer
+    @i = Tatara::Integer.new
+    @i.value = 42
+    assert_equal @i.value, 42
+    @i.value **= 2
+    assert_equal @i.value, 1764
+  end
+
   def test_clear_tatara_integer
     @i = Tatara::Integer.new
     @i.value = 42
