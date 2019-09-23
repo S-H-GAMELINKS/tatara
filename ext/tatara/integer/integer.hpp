@@ -15,6 +15,7 @@ class Integer {
         constexpr int increment_value();
         constexpr int decrement_value();
         std::string to_string();
+        constexpr int plus(int var);
         constexpr int plus_equal(int var);
         constexpr int minus_equal(int var);
         constexpr int divided_equal(int var);
@@ -46,6 +47,10 @@ constexpr int Integer::decrement_value() {
 
 std::string Integer::to_string() {
     return std::to_string(this->value);
+}
+
+constexpr int Integer::plus(int var) {
+    return this->value + var;
 }
 
 constexpr int Integer::plus_equal(int var) {
