@@ -20,6 +20,7 @@ class Integer {
         constexpr int minus(int var);
         constexpr int minus_equal(int var);
         constexpr int divided_equal(int var);
+        constexpr int multiply(int var);
         constexpr int multiply_equal(int var);
         constexpr int power_equal(int var);
         constexpr int clear();
@@ -68,6 +69,10 @@ constexpr int Integer::minus_equal(int var) {
 
 constexpr int Integer::divided_equal(int var) {
     return this->value /= var;
+}
+
+constexpr int Integer::multiply(int var) {
+    return this->value * var;
 }
 
 constexpr int Integer::multiply_equal(int var) {
