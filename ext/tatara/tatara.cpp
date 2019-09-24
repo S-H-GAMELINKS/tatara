@@ -20,6 +20,7 @@ extern "C" {
             .define_method("value=", &Integer::assignment)
             .define_method("value+", &Integer::plus)
             .define_method("value+=", &Integer::plus_equal)
+            .define_method("value-", &Integer::minus)
             .define_method("value-=", &Integer::minus_equal)
             .define_method("value/=", &Integer::divided_equal)
             .define_method("value*=", &Integer::multiply_equal)
