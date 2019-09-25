@@ -17,6 +17,7 @@ class Float {
         constexpr int to_integer();
         constexpr double plus(const double var);
         constexpr double plus_equal(const double var);
+        constexpr double minus(const double var);
         constexpr double clear();
         constexpr bool equal(const double var);
 };
@@ -60,6 +61,10 @@ constexpr double Float::plus(const double var) {
 
 constexpr double Float::plus_equal(const double var) {
     return this->value += var;
+}
+
+constexpr double Float::minus(const double var) {
+    return this->value - var;
 }
 
 constexpr double Float::clear() {
