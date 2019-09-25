@@ -15,6 +15,7 @@ class Float {
         constexpr double decrement_value();
         std::string to_string();
         constexpr int to_integer();
+        constexpr double plus(const double var);
         constexpr double plus_equal(const double var);
         constexpr double clear();
         constexpr bool equal(const double var);
@@ -51,6 +52,10 @@ std::string Float::to_string() {
 
 constexpr int Float::to_integer() {
     return static_cast<int>(this->value);
+}
+
+constexpr double Float::plus(const double var) {
+    return this->value + var;
 }
 
 constexpr double Float::plus_equal(const double var) {

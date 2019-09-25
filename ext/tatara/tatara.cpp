@@ -40,6 +40,7 @@ extern "C" {
             .define_constructor(Constructor<Float>())
             .define_method("value", &Float::return_value)
             .define_method("value=", &Float::assignment)
+            .define_method("value+", &Float::plus)
             .define_method("value+=", &Float::plus_equal)
             .define_method("inc", &Float::increment_value)
             .define_method("dec", &Float::decrement_value)
