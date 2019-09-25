@@ -25,6 +25,7 @@ class Integer {
         constexpr int multiply_equal(int var);
         constexpr int mod(int var);
         constexpr int mod_equal(int var);
+        constexpr int power(int var);
         constexpr int power_equal(int var);
         constexpr int clear();
         constexpr bool equal(const int var);
@@ -92,6 +93,10 @@ constexpr int Integer::mod(int var) {
 
 constexpr int Integer::mod_equal(int var) {
     return this->value %= var;
+}
+
+constexpr int Integer::power(int var) {
+    return std::pow(this->value, var);
 }
 
 constexpr int Integer::power_equal(int var) {
