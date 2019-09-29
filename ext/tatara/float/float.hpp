@@ -20,6 +20,7 @@ class Float {
         constexpr double minus(const double var);
         constexpr double minus_equal(const double var);
         constexpr double multiply(const double var);
+        constexpr double multiply_equal(const double var);
         constexpr double divided(const double var);
         constexpr double divided_equal(const double var);
         constexpr double clear();
@@ -77,6 +78,10 @@ constexpr double Float::minus_equal(const double var) {
 
 constexpr double Float::multiply(const double var) {
     return this->value * var;
+}
+
+constexpr double Float::multiply_equal(const double var) {
+    return this->value *= var;
 }
 
 constexpr double Float::divided(const double var) {

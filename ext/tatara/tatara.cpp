@@ -46,6 +46,7 @@ extern "C" {
             .define_method("value-", &Float::minus)
             .define_method("value-=", &Float::minus_equal)
             .define_method("value*", &Float::multiply)
+            .define_method("value*=", &Float::multiply_equal)
             .define_method("value/", &Float::divided)
             .define_method("inc", &Float::increment_value)
             .define_method("dec", &Float::decrement_value)
