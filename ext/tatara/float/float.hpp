@@ -21,6 +21,7 @@ class Float {
         constexpr double minus_equal(const double var);
         constexpr double multiply(const double var);
         constexpr double divided(const double var);
+        constexpr double divided_equal(const double var);
         constexpr double clear();
         constexpr bool equal(const double var);
 };
@@ -80,6 +81,10 @@ constexpr double Float::multiply(const double var) {
 
 constexpr double Float::divided(const double var) {
     return this->value / var;
+}
+
+constexpr double Float::divided_equal(const double var) {
+    return this->value /= var;
 }
 
 constexpr double Float::clear() {
