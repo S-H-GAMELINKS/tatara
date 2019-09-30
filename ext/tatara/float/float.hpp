@@ -23,6 +23,7 @@ class Float {
         constexpr double multiply_equal(const double var);
         constexpr double divided(const double var);
         constexpr double divided_equal(const double var);
+        constexpr double power_equal(const double var);
         constexpr double clear();
         constexpr bool equal(const double var);
 };
@@ -90,6 +91,10 @@ constexpr double Float::divided(const double var) {
 
 constexpr double Float::divided_equal(const double var) {
     return this->value /= var;
+}
+
+constexpr double Float::power_equal(const double var) {
+    return this->value = std::pow(this->value, var);
 }
 
 constexpr double Float::clear() {
