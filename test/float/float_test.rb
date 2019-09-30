@@ -107,6 +107,14 @@ class FloatTest < Minitest::Test
     assert_equal 2.1, @f.value
   end
 
+  def test_power_equal_tatara_float
+    @f = Tatara::Float.new
+    @f.value = 4.2
+    assert_equal 4.2, @f.value
+    @f.value **= 2.0
+    assert_equal 17.64, @f.value
+  end
+
   def test_clear_tatara_float
     @f = Tatara::Float.new
     @f.value = 4.2
