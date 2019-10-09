@@ -1,0 +1,12 @@
+name: build
+
+on: 
+  schedule:
+    - cron: "0 1 * * *"
+
+jobs:
+  build:
+    name: build-dev
+    runs-on: ubuntu-latest
+    steps:
+      - run: ruby -v && gem intall bunlder
