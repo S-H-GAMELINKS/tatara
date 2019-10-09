@@ -1,12 +1,12 @@
 name: build
 
-on: 
-  schedule:
-    - cron: "0 1 * * *"
+on: push
 
 jobs:
   build:
-    name: build-dev
     runs-on: ubuntu-latest
     steps:
-      - run: ruby -v && gem intall bunlder
+    - name: install build environment 
+      run: |
+        gem install bundler
+        rake clean && rake compile && rake install && rake test
