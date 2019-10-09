@@ -8,7 +8,9 @@ jobs:
     steps:
     - name: install build environment 
       run: |
-        sudo apt install -y gcc cmake make ruby ruby-dev build-essential
+        sudo apt install -y gcc git cmake make ruby ruby-dev build-essential
         sudo gem install bundler
+        git clone https://github.com/S-H-GAMELINKS/tatara.git
+        cd tatara
         sudo bundle install
         sudo rake clean && sudo rake compile && sudo rake install && sudo rake test
