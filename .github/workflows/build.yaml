@@ -9,5 +9,6 @@ jobs:
     - name: install build environment 
       run: |
         sudo apt install -y gcc cmake make ruby ruby-dev build-essential
-        gem install bundler
-        rake clean && rake compile && rake install && rake test
+        sudo gem install bundler
+        sudo bundle install
+        sudo rake clean && sudo rake compile && sudo rake install && sudo rake test
