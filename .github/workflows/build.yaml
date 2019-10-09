@@ -8,8 +8,6 @@ jobs:
     steps:
     - name: install build environment 
       run: |
-        sudo apt update
-        sudo apt upgrade
         sudo apt install -y gcc cmake make ruby ruby-dev build-essential
         gem install bundler
         rake clean && rake compile && rake install && rake test
