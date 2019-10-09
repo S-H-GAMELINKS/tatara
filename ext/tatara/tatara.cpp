@@ -63,6 +63,7 @@ extern "C" {
         Data_Type<CppString> rbcString = define_class_under<CppString>(rb_mTatara, "String")
             .define_constructor(Constructor<CppString>())
             .define_method("value", &CppString::return_value)
+            .define_method("val", &CppString::return_value)
             .define_method("value=", &CppString::assignment)
             .define_method("value+=", &CppString::plus_equal)
             .define_method("to_i", &CppString::to_integer)
