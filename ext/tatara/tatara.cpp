@@ -42,6 +42,7 @@ extern "C" {
         Data_Type<Float> rbcFloat = define_class_under<Float>(rb_mTatara, "Float")
             .define_constructor(Constructor<Float>())
             .define_method("value", &Float::return_value)
+            .define_method("val", &Float::return_value)
             .define_method("value=", &Float::assignment)
             .define_method("value+", &Float::plus)
             .define_method("value+=", &Float::plus_equal)
