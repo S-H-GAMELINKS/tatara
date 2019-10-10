@@ -44,6 +44,7 @@ extern "C" {
             .define_method("value", &Float::return_value)
             .define_method("val", &Float::return_value)
             .define_method("value=", &Float::assignment)
+            .define_method("val=", &Float::assignment)
             .define_method("value+", &Float::plus)
             .define_method("value+=", &Float::plus_equal)
             .define_method("value-", &Float::minus)
