@@ -1,16 +1,27 @@
 name: build
 
-on: push
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: install build environment 
+    - uses: actions/checkout@master
+    - name: Set up Ruby 2.6
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.6.x
+    - name: Build and test with Rake
       run: |
-        sudo apt install -y gcc git cmake make ruby ruby-dev build-essential
-        sudo gem install bundler
-        git clone https://github.com/S-H-GAMELINKS/tatara.git
-        cd tatara
-        sudo bundle install
-        sudo rake clean && sudo rake compile && sudo rake install && sudo rake test
+        sudo apt install -y gcc git cmake make ruby-dev build-essential
+        gem install bundler
+        bundle install --jobs 4 --retry 3
+        bundle exec rake compile
+        bundle exec rake install 
+        bundle exec rake test
