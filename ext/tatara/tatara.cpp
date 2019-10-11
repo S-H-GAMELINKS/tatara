@@ -21,6 +21,7 @@ extern "C" {
             .define_method("value=", &Integer::assignment)
             .define_method("val=", &Integer::assignment)
             .define_method("value+", &Integer::plus)
+            .define_method("val+", &Integer::plus)
             .define_method("value+=", &Integer::plus_equal)
             .define_method("value-", &Integer::minus)
             .define_method("value-=", &Integer::minus_equal)
