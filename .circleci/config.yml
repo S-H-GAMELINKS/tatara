@@ -1,0 +1,31 @@
+version: 2
+jobs: 
+  build:
+    docker: 
+      - image: circleci/ruby:2.6.5
+    steps: 
+      - checkout
+
+      - run: 
+        name: apt update
+        command: apt update
+
+      - run:
+        name: install cmake
+        command: apt install cmake
+
+      - run:
+        name: install bundler
+        command: gem install bundler
+
+      - run:
+        name: bundle install
+        command: bundle install
+
+      - run:
+        name: rake compile
+        command: rake compile
+
+      - run:
+        name: rake test
+        command: rake test
