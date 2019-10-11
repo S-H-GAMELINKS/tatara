@@ -11,13 +11,13 @@ jobs:
         command: gem install bundler
 
       - run:
-        name: bundle install
+        name: install gems
         command: bundle install
 
       - run:
-        name: rake compile
+        name: compile
         command: rake compile
 
       - run:
-        name: rake test
+        name: test
         command: rake test
