@@ -19,7 +19,7 @@ jobs:
       run: gcc --version
     - uses: actions/setup-ruby@v1
       with: 
-        ruby-version: '2.6.5'
+        ruby-version: '2.6'
     - name: Build & Test
       run: |
         ruby -v
