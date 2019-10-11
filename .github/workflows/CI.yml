@@ -14,17 +14,12 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v1
-    - name: Run a one-line script
-      run: |
-        gcc --version
-        cmake --version
-        make --version
     - uses: actions/setup-ruby@v1
       with: 
         ruby-version: '2.6'
     - name: Build & Test
       run: |
-        ruby -v
-        echo Add other actions to build,
-        echo test, and deploy your project.
+        gem install bundler
+        bundle install
+        rake install
+        rake test
