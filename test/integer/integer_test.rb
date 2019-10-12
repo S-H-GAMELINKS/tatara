@@ -53,6 +53,8 @@ class IntegerTest < Minitest::Test
     assert_equal @i.value, 42
     @i.value += 10
     assert_equal @i.value, 52
+    @i.val += 10
+    assert_equal 62, @i.val
   end
 
   def test_power_equal_tatara_integer
