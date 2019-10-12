@@ -110,6 +110,7 @@ class IntegerTest < Minitest::Test
     @i.value = 42
     assert_equal 42, @i.value
     assert_equal 41, @i.value - 1
+    assert_equal 41, @i.val - 1
   end
 
   def test_multiply_tatara_integer
