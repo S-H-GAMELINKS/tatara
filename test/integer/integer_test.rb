@@ -63,6 +63,9 @@ class IntegerTest < Minitest::Test
     assert_equal @i.value, 42
     @i.value **= 2
     assert_equal @i.value, 1764
+    @i.val = 42
+    @i.val **= 2
+    assert_equal 1764, @i.val  
   end
 
   def test_minus_equal_tatara_integer

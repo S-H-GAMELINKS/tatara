@@ -41,6 +41,7 @@ extern "C" {
             .define_method("value**", &Integer::power)
             .define_method("val**", &Integer::power)
             .define_method("value**=", &Integer::power_equal)
+            .define_method("val**=", &Integer::power_equal)
             .define_method("inc", &Integer::increment_value)
             .define_method("value++", &Integer::increment_value)
             .define_method("dec", &Integer::decrement_value)
