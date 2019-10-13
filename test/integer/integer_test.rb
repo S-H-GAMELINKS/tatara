@@ -123,6 +123,7 @@ class IntegerTest < Minitest::Test
     @i.value = 42
     assert_equal 42, @i.value
     assert_equal 84, @i.value * 2
+    assert_equal 84, @i.val * 2
   end
 
   def test_divide_tatara_integer
