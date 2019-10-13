@@ -89,6 +89,9 @@ class IntegerTest < Minitest::Test
     assert_equal 42, @i.value
     @i.value /= 42
     assert_equal 1, @i.value
+    @i.val = 42
+    @i.val /= 42
+    assert_equal 1, @i.val
   end
 
   def test_mod_equal_tatara_integer
