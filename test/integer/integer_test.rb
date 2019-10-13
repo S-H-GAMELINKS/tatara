@@ -81,6 +81,8 @@ class IntegerTest < Minitest::Test
     assert_equal 42, @i.value
     @i.value *= 2
     assert_equal 84, @i.value
+    @i.val *= 2
+    assert_equal 168, @i.val
   end
 
   def test_divided_equal_tatara_integer
