@@ -31,6 +31,7 @@ extern "C" {
             .define_method("value/", &Integer::divided)
             .define_method("val/", &Integer::divided)
             .define_method("value/=", &Integer::divided_equal)
+            .define_method("val/=", &Integer::divided_equal)
             .define_method("value*", &Integer::multiply)
             .define_method("value*=", &Integer::multiply_equal)
             .define_method("value%", &Integer::mod)
