@@ -63,6 +63,8 @@ class FloatTest < Minitest::Test
     assert_equal @f.value, 4.2
     @f.value += 1.1
     assert_equal @f.value.round(2), 5.3
+    @f.val += 1.1
+    assert_equal 6.4, @f.val
   end
 
   def test_minus_tatara_float
