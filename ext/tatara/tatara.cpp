@@ -60,6 +60,7 @@ extern "C" {
             .define_method("value+=", &Float::plus_equal)
             .define_method("val+=", &Float::plus_equal)
             .define_method("value-", &Float::minus)
+            .define_method("val-", &Float::minus)
             .define_method("value-=", &Float::minus_equal)
             .define_method("value*", &Float::multiply)
             .define_method("value*=", &Float::multiply_equal)
