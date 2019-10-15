@@ -81,6 +81,9 @@ class FloatTest < Minitest::Test
     assert_equal 4.2, @f.value
     @f.value -= 1.1
     assert_equal 3.1, @f.value
+    @f.val = 4.2
+    @f.val -= 1.1
+    assert_equal 3.1, @f.val
   end
 
   def test_multiply_tatara_float
