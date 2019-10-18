@@ -70,6 +70,7 @@ extern "C" {
             .define_method("value/", &Float::divided)
             .define_method("val/", &Float::divided)
             .define_method("value/=", &Float::divided_equal)
+            .define_method("val/=", &Float::divided_equal)
             .define_method("value**", &Float::power)
             .define_method("value**=", &Float::power_equal)
             .define_method("inc", &Float::increment_value)

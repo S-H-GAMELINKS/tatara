@@ -118,6 +118,9 @@ class FloatTest < Minitest::Test
     assert_equal 4.2, @f.value
     @f.value /= 2
     assert_equal 2.1, @f.value
+    @f.val = 4.2
+    @f.val /= 2.0
+    assert_equal @f.val, 2.1
   end
 
   def test_power_tatara_float
