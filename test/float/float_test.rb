@@ -109,6 +109,7 @@ class FloatTest < Minitest::Test
     @f.value = 4.2
     assert_equal 4.2, @f.value
     assert_equal 2.1, @f.value / 2
+    assert_equal @f.value / 2, 2.1
   end
 
   def test_divided_equal_tatara_float
