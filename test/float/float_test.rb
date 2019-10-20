@@ -137,6 +137,9 @@ class FloatTest < Minitest::Test
     assert_equal 4.2, @f.value
     @f.value **= 2.0
     assert_equal 17.64, @f.value
+    @f.val = 4.2
+    @f.val **= 2.0
+    assert_equal 17.64, @f.val
   end
 
   def test_clear_tatara_float

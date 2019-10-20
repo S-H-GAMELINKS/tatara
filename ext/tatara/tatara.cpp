@@ -74,6 +74,7 @@ extern "C" {
             .define_method("value**", &Float::power)
             .define_method("val**", &Float::power)
             .define_method("value**=", &Float::power_equal)
+            .define_method("val**=", &Float::power_equal)
             .define_method("inc", &Float::increment_value)
             .define_method("dec", &Float::decrement_value)
             .define_method("to_s", &Float::to_string)
