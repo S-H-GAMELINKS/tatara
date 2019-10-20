@@ -128,6 +128,7 @@ class FloatTest < Minitest::Test
     @f.value = 4.2
     assert_equal 4.2, @f.value
     assert_equal 17.64, @f.value**2.0
+    assert_equal 17.64, @f.val**2.0
   end
 
   def test_power_equal_tatara_float
