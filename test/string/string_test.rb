@@ -49,5 +49,6 @@ class StringTest < Minitest::Test
     assert_equal @s.value, ""
     @s.value = "42"
     assert @s.value == "42"
+    assert @s.val == "42"
   end
 end

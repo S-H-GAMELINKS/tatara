@@ -92,7 +92,8 @@ extern "C" {
             .define_method("val+=", &CppString::plus_equal)
             .define_method("to_i", &CppString::to_integer)
             .define_method("clear", &CppString::clear)
-            .define_method("value==", &CppString::equal);
+            .define_method("value==", &CppString::equal)
+            .define_method("val==", &CppString::equal);
 
         Data_Type<Vector<int>> rb_cIntVector = define_class_under<Vector<int>>(rb_mTatara, "IntVector")
             .define_constructor(Constructor<Vector<int>>())
