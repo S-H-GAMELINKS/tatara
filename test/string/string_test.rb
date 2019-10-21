@@ -32,6 +32,8 @@ class StringTest < Minitest::Test
     assert_equal @s.value, "42"
     @s.value += "hoge"
     assert_equal @s.value, "42hoge"
+    @s.val += "hello"
+    assert_equal "42hogehello", @s.val
   end
 
   def test_clear_tatara_string
