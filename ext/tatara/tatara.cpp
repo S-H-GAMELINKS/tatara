@@ -89,6 +89,7 @@ extern "C" {
             .define_method("value=", &CppString::assignment)
             .define_method("val=", &CppString::assignment)
             .define_method("value+=", &CppString::plus_equal)
+            .define_method("val+=", &CppString::plus_equal)
             .define_method("to_i", &CppString::to_integer)
             .define_method("clear", &CppString::clear)
             .define_method("value==", &CppString::equal);
