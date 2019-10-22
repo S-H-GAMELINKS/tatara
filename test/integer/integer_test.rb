@@ -167,6 +167,7 @@ class IntegerTest < Minitest::Test
     assert_equal @i.value, 0
     @i.value = 42
     assert @i.value == 42
+    assert @i.val == 42
     assert @i.equal? 42
   end
 end
