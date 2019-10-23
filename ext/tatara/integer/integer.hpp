@@ -15,6 +15,7 @@ class Integer {
         constexpr int increment_value();
         constexpr int decrement_value();
         std::string to_string();
+        constexpr double to_float();
         constexpr int plus(int var);
         constexpr int plus_equal(int var);
         constexpr int minus(int var);
@@ -53,6 +54,10 @@ constexpr int Integer::decrement_value() {
 
 std::string Integer::to_string() {
     return std::to_string(this->value);
+}
+
+constexpr double Integer::to_float() {
+    return static_cast<double>(this->value);
 }
 
 constexpr int Integer::plus(int var) {
