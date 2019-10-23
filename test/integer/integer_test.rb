@@ -47,6 +47,13 @@ class IntegerTest < Minitest::Test
     assert_equal @s, "42"
   end
 
+  def test_tof_tatara_integer
+    @i = Tatara::Integer.new
+    @i.value = 42
+    @f = @i.to_f
+    assert_equal 42.0, @f
+  end
+
   def test_plus_equal_tatara_integer
     @i = Tatara::Integer.new
     @i.value = 42
