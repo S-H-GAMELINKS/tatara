@@ -29,6 +29,8 @@ class IntegerTest < Minitest::Test
     assert_equal @i.value, 42
     @i.inc
     assert_equal @i.value, 43
+    @i.increment
+    assert_equal 44, @i.value
   end
 
   def test_decrement_tatara_integer
