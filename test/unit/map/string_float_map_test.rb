@@ -10,5 +10,5 @@ class StringFloatMapTest < Minitest::Test
     @map = Tatara::StringFloatMap.new
     @map["Map"] = 4.2
     assert_equal 4.2, @map["Map"]
-    end
+  end
 end

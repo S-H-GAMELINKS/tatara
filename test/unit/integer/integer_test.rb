@@ -6,29 +6,29 @@ class IntegerTest < Minitest::Test
   def test_init_tatara_integer
     @i = Tatara::Integer.new
     refute_nil @i
-    assert_equal @i.value, 0
+    assert_equal 0, @i.value
   end
 
   def test_assignment_tatara_integer
     @i = Tatara::Integer.new
     @i.value = 42
-    assert_equal @i.value, 42
+    assert_equal 42, @i.value
   end
 
   def test_return_value_tatara_integer
     @i = Tatara::Integer.new
     @i.value = 42
-    assert_equal 42, @i.value
+    assert_equal @i.value, 42
     @i.val = 21
-    assert_equal 21, @i.val
+    assert_equal @i.val, 21
   end
 
   def test_increment_tatara_integer
     @i = Tatara::Integer.new
     @i.value = 42
-    assert_equal @i.value, 42
+    assert_equal 42, @i.value
     @i.inc
-    assert_equal @i.value, 43
+    assert_equal 43, @i.value
     @i.increment
     assert_equal 44, @i.value
   end
@@ -59,9 +59,9 @@ class IntegerTest < Minitest::Test
   def test_plus_equal_tatara_integer
     @i = Tatara::Integer.new
     @i.value = 42
-    assert_equal @i.value, 42
+    assert_equal 42, @i.value
     @i.value += 10
-    assert_equal @i.value, 52
+    assert_equal 52, @i.value
     @i.val += 10
     assert_equal 62, @i.val
   end
@@ -69,9 +69,9 @@ class IntegerTest < Minitest::Test
   def test_power_equal_tatara_integer
     @i = Tatara::Integer.new
     @i.value = 42
-    assert_equal @i.value, 42
+    assert_equal 42, @i.value
     @i.value **= 2
-    assert_equal @i.value, 1764
+    assert_equal 1764, @i.value
     @i.val = 42
     @i.val **= 2
     assert_equal 1764, @i.val  
@@ -84,7 +84,7 @@ class IntegerTest < Minitest::Test
     @i.value -= 42
     assert_equal 0, @i.value
     @i.val -= 2
-    assert_equal -2, @i.val
+    assert_equal Integer(-2), @i.val
   end
 
   def test_multiply_equal_tatara_integer

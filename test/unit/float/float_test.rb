@@ -6,13 +6,13 @@ class FloatTest < Minitest::Test
   def test_init_tatara_float
     @f = Tatara::Float.new
     refute_nil @f
-    assert_equal @f.value, 0.0
+    assert_equal 0.0, @f.value
   end
 
   def test_assignment_tatara_float
     @f = Tatara::Float.new
     @f.value = 4.2
-    assert_equal @f.value, 4.2
+    assert_equal 4.2, @f.value
     @f.val = 2.1
     assert_equal 2.1, @f.val
   end
@@ -20,33 +20,33 @@ class FloatTest < Minitest::Test
   def test_increment_tatara_float
     @f = Tatara::Float.new
     @f.value = 4.2
-    assert_equal @f.value, 4.2
+    assert_equal 4.2, @f.value
     @f.inc
-    assert_equal @f.value, 5.2
+    assert_equal 5.2, @f.value
   end
 
   def test_decrement_tatara_float
     @f = Tatara::Float.new
     @f.value = 4.2
-    assert_equal @f.value, 4.2
+    assert_equal 4.2, @f.value
     @f.dec
-    assert_equal @f.value, 3.2
+    assert_equal 3.2, @f.value
   end
 
   def test_tos_tatara_float
     @f = Tatara::Float.new
     @f.value = 4.2
-    assert_equal @f.value, 4.2
+    assert_equal 4.2, @f.value
     @s = @f.to_s
-    assert_equal @s, "4.2"
+    assert_equal "4.2", @s
   end
 
   def test_toi_tatar_float
     @f = Tatara::Float.new
     @f.value = 4.2
-    assert_equal @f.value, 4.2
+    assert_equal 4.2, @f.value
     @i = @f.to_i
-    assert_equal @i, 4
+    assert_equal 4, @i
   end
 
   def test_plus_tatara_float
@@ -60,9 +60,9 @@ class FloatTest < Minitest::Test
   def test_plus_equal_tatara_float
     @f = Tatara::Float.new
     @f.value = 4.2
-    assert_equal @f.value, 4.2
-    @f.value += 1.1
-    assert_equal @f.value.round(2), 5.3
+    assert_equal 4.2, @f.value
+    @f.val += 1.1
+    assert_equal 5.3, @f.val.round(2)
     @f.val += 1.1
     assert_equal 6.4, @f.val
   end
@@ -109,7 +109,7 @@ class FloatTest < Minitest::Test
     @f.value = 4.2
     assert_equal 4.2, @f.value
     assert_equal 2.1, @f.value / 2
-    assert_equal @f.value / 2, 2.1
+    assert_equal 2.1, @f.val / 2
   end
 
   def test_divided_equal_tatara_float
@@ -145,9 +145,9 @@ class FloatTest < Minitest::Test
   def test_clear_tatara_float
     @f = Tatara::Float.new
     @f.value = 4.2
-    assert_equal @f.value, 4.2
+    assert_equal 4.2, @f.value
     @f.clear
-    assert_equal @f.value, 0.0
+    assert_equal 0.0, @f.value
   end
 
   def test_equal_tatara_float
