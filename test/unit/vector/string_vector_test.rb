@@ -8,39 +8,39 @@ class StringVectorTest < Minitest::Test
   end
 
   def test_tatara_string_vector_first
-    @f = Tatara::StringVector.new
-    @f.emplace_back("42")
-    assert_equal @f.first, "42"
+    @s = Tatara::StringVector.new
+    @s.emplace_back("42")
+    assert_equal "42", @s.first
   end
 
   def test_tatara_string_vector_last
-    @f = Tatara::StringVector.new
-    @f.emplace_back("42")
-    assert_equal @f.last, "42"
-    @f.emplace_back("5")
-    assert_equal @f.last, "5"
+    @s = Tatara::StringVector.new
+    @s.emplace_back("42")
+    assert_equal "42", @s.last
+    @s.emplace_back("5")
+    assert_equal "5", @s.last
   end
 
   def test_tatara_string_vector_bracket
-    @f = Tatara::StringVector.new
-    @f.emplace_back("42")
-    assert_equal @f[0], "42"
-    @f[0] = "5"
-    assert_equal @f[0], "5"
+    @s = Tatara::StringVector.new
+    @s.emplace_back("42")
+    assert_equal "42", @s[0]
+    @s[0] = "5"
+    assert_equal "5", @s[0]
   end
 
   def test_tatara_string_vector_size
-    @f = Tatara::StringVector.new
-    @f.emplace_back("42")
-    assert_equal @f.size, 1
+    @s = Tatara::StringVector.new
+    @s.emplace_back("42")
+    assert_equal 1, @s.size
   end
 
   def test_tatara_string_vector_clear
-    @f = Tatara::StringVector.new
-    @f.emplace_back("42")
-    assert_equal @f.size, 1
-    @f.clear
-    assert_equal @f.size, 0
+    @s = Tatara::StringVector.new
+    @s.emplace_back("42")
+    assert_equal 1, @s.size
+    @s.clear
+    assert_equal 0, @s.size
   end
 
   def test_tatara_string_vector_sum
