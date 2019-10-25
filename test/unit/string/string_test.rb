@@ -6,13 +6,13 @@ class StringTest < Minitest::Test
   def test_init_tatara_string
     @s = Tatara::String.new
     refute_nil @s
-    assert_equal @s.value, ""
+    assert_equal "", @s.value
   end
 
   def test_assignment_tatara_string
     @s = Tatara::String.new
     @s.value = "42"
-    assert_equal @s.value, "42"
+    assert_equal "42", @s.value
     @s.val = "4.2"
     assert_equal "4.2", @s.val
   end
@@ -20,8 +20,7 @@ class StringTest < Minitest::Test
   def test_toi_tatara_string
     @s = Tatara::String.new
     @s.value = "42"
-    assert_equal @s.value, "42"
-
+    assert_equal "42", @s.value
     @i = @s.to_i
     assert_equal @i, 42
   end
@@ -29,9 +28,9 @@ class StringTest < Minitest::Test
   def test_plus_equal_tatara_string
     @s = Tatara::String.new
     @s.value = "42"
-    assert_equal @s.value, "42"
+    assert_equal "42", @s.value
     @s.value += "hoge"
-    assert_equal @s.value, "42hoge"
+    assert_equal "42hoge", @s.value
     @s.val += "hello"
     assert_equal "42hogehello", @s.val
   end
@@ -39,14 +38,14 @@ class StringTest < Minitest::Test
   def test_clear_tatara_string
     @s = Tatara::String.new
     @s.value = "42"
-    assert_equal @s.value, "42"
+    assert_equal "42", @s.value
     @s.clear
-    assert_equal @s.value, ""
+    assert_equal "", @s.value
   end
 
   def test_equal_tatara_string
     @s = Tatara::String.new
-    assert_equal @s.value, ""
+    assert_equal "", @s.value
     @s.value = "42"
     assert @s.value == "42"
     assert @s.val == "42"
