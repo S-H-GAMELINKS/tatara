@@ -10,5 +10,5 @@ class StringIntMapTest < Minitest::Test
     @map = Tatara::StringIntMap.new
     @map["Map"] = 42
     assert_equal 42, @map["Map"]
-    end
+  end
 end
