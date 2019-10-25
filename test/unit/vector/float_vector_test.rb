@@ -10,37 +10,37 @@ class FloatVectorTest < Minitest::Test
   def test_tatara_float_vector_first
     @f = Tatara::FloatVector.new
     @f.emplace_back(4.2)
-    assert_equal @f.first, 4.2
+    assert_equal 4.2, @f.first
   end
 
   def test_tatara_float_vector_last
     @f = Tatara::FloatVector.new
     @f.emplace_back(4.2)
-    assert_equal @f.last, 4.2
+    assert_equal 4.2, @f.last
     @f.emplace_back(5.5)
-    assert_equal @f.last, 5.5
+    assert_equal 5.5, @f.last
   end
 
   def test_tatara_float_vector_bracket
     @f = Tatara::FloatVector.new
     @f.emplace_back(4.2)
-    assert_equal @f[0], 4.2
+    assert_equal 4.2, @f[0]
     @f[0] = 5.5
-    assert_equal @f[0], 5.5
+    assert_equal 5.5, @f[0]
   end
 
   def test_tatara_float_vector_size
     @f = Tatara::FloatVector.new
     @f.emplace_back(4.2)
-    assert_equal @f.size, 1
+    assert_equal 1, @f.size
   end
 
   def test_tatara_float_vector_clear
     @f = Tatara::FloatVector.new
     @f.emplace_back(4.2)
-    assert_equal @f.size, 1
+    assert_equal 1, @f.size
     @f.clear
-    assert_equal @f.size, 0
+    assert_equal 0, @f.size
   end
 
   def test_tatara_float_vector_sum
@@ -48,6 +48,6 @@ class FloatVectorTest < Minitest::Test
 
     3.times { @f.emplace_back(4.2) }
 
-    assert_equal @f.sum.round(2), 12.6
+    assert_equal 12.6, @f.sum.round(2)
   end
 end
