@@ -45,6 +45,7 @@ extern "C" {
             .define_method("inc", &Integer::increment_value)
             .define_method("increment", &Integer::increment_value)
             .define_method("dec", &Integer::decrement_value)
+            .define_method("decrement", &Integer::decrement_value)
             .define_method("to_s", &Integer::to_string)
             .define_method("to_f", &Integer::to_float)
             .define_method("clear", &Integer::clear)
