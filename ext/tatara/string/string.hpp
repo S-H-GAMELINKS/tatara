@@ -8,6 +8,7 @@ class CppString {
     public:
         CppString();
         ~CppString();
+        CppString& initialize_object(const std::string var);
         std::string assignment(const std::string var);
         std::string return_value();
         int to_integer();
@@ -19,6 +20,11 @@ class CppString {
 CppString::CppString() {}
 
 CppString::~CppString() {}
+
+CppString& CppString::initialize_object(const std::string var) {
+    this->value = var;
+    return *this;
+}
 
 std::string CppString::assignment(const std::string var) {
     return this->value = var;
