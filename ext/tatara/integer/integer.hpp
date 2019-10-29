@@ -10,6 +10,7 @@ class Integer {
     public:
         constexpr Integer();
         ~Integer();
+        constexpr Integer& initialize_object(const int var);
         constexpr int assignment(const int var);
         constexpr int return_value();
         constexpr int increment_value();
@@ -35,6 +36,11 @@ class Integer {
 constexpr Integer::Integer() {}
 
 Integer::~Integer(){}
+
+constexpr Integer& Integer::initialize_object(const int var) {
+    this->value = var;
+    return *this;
+}
 
 constexpr int Integer::assignment(const int var) {
     return this->value = var;
