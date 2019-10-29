@@ -181,4 +181,11 @@ class IntegerTest < Minitest::Test
     assert @i.val == 42
     assert @i.equal? 42
   end
+
+  def test_return_object_init_tatara_integer
+    @i = Tatara::Integer.new
+    @i[42]
+    assert_equal Tatara::Integer, @i.class
+    assert_equal 42, @i.val
+  end
 end
