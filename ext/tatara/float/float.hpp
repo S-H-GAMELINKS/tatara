@@ -9,6 +9,7 @@ class Float {
     public:
         constexpr Float();
         ~Float();
+        constexpr Float& initialize_object(const double var);
         constexpr double assignment(const double var);
         constexpr double return_value();
         constexpr double increment_value();
@@ -32,6 +33,11 @@ class Float {
 constexpr Float::Float() {}
 
 Float::~Float() {}
+
+constexpr Float& Float::initialize_object(const double var) {
+    this->value = var;
+    return *this;
+}
 
 constexpr double Float::assignment(const double var) {
     return this->value = var;
