@@ -52,7 +52,7 @@ extern "C" {
             .define_method("value==", &Integer::equal)
             .define_method("val==", &Integer::equal)
             .define_method("equal?", &Integer::equal)
-            .define_method("[]", &Integer::initialize_object);
+            .define_method("<<", &Integer::initialize_object);
 
         Data_Type<Float> rbcFloat = define_class_under<Float>(rb_mTatara, "Float")
             .define_constructor(Constructor<Float>())
