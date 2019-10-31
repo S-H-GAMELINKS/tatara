@@ -16,6 +16,7 @@ class CppString {
         std::string plus_equal(const std::string var);
         std::string clear();
         bool equal(const std::string var);
+        std::string slice(const int start, const int end);
 };
 
 CppString::CppString() {}
@@ -54,6 +55,10 @@ std::string CppString::clear() {
 
 bool CppString::equal(const std::string var) {
     return this->value == var;
+}
+
+std::string CppString::slice(const int start, const int end) {
+    return this->value.substr(start, end);
 }
 
 #endif
