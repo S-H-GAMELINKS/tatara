@@ -11,6 +11,7 @@ class CppString {
         CppString& initialize_object(const std::string var);
         std::string assignment(const std::string var);
         std::string return_value();
+        std::string index_access(const int index);
         int to_integer();
         std::string plus_equal(const std::string var);
         std::string clear();
@@ -32,6 +33,11 @@ std::string CppString::assignment(const std::string var) {
 
 std::string CppString::return_value() {
     return this->value;
+}
+
+std::string CppString::index_access(const int index) {
+    std::string s{this->value[index]};
+    return s;
 }
 
 int CppString::to_integer() {
