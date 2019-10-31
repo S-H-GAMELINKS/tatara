@@ -102,7 +102,8 @@ extern "C" {
             .define_method("val==", &CppString::equal)
             .define_method("<<", &CppString::initialize_object)
             .define_method("[]", &CppString::index_access)
-            .define_method("slice", &CppString::slice);
+            .define_method("slice", &CppString::slice)
+            .define_method("slice!", &CppString::slice_des);
 
         Data_Type<Vector<int>> rb_cIntVector = define_class_under<Vector<int>>(rb_mTatara, "IntVector")
             .define_constructor(Constructor<Vector<int>>())
