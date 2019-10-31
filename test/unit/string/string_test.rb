@@ -63,4 +63,11 @@ class StringTest < Minitest::Test
     assert_equal "h", @s[0]
     assert_equal "e", @s[1]
   end
+
+  def test_slice_tatara_string
+    @s = Tatara::String.new << "hello"
+    assert_equal "hello", @s.val
+    assert_equal "hel", @s.slice(0, 3)
+    assert_equal "hell", @s.slice(0, 4)
+  end
 end
