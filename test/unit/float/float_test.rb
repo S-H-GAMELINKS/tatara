@@ -158,8 +158,7 @@ class FloatTest < Minitest::Test
   end
 
   def test_return_object_init_tatara_float
-    @i = Tatara::Float.new
-    @i[4.2]
+    @i = Tatara::Float.new << 4.2
     assert_equal Tatara::Float, @i.class
     assert_equal 4.2, @i.val
   end
