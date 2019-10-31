@@ -56,4 +56,11 @@ class StringTest < Minitest::Test
     assert_equal Tatara::String, @i.class
     assert_equal "42", @i.val
   end
+
+  def test_index_access_tatara_string
+    @s = Tatara::String.new << "hello"
+    assert_equal "hello", @s.val
+    assert_equal "h", @s[0]
+    assert_equal "e", @s[1]
+  end
 end
