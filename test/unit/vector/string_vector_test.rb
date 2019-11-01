@@ -50,4 +50,11 @@ class StringVectorTest < Minitest::Test
 
     assert_equal @s.sum, "424242"
   end
+
+  def test_push_operator_tatara_string_vector
+    @s = Tatara::StringVector.new
+    @s << "42"
+    assert_equal "42", @s.first
+    assert_equal 1, @s.size
+  end
 end

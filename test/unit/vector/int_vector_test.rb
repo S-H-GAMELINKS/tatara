@@ -54,4 +54,11 @@ class IntVectorTest < Minitest::Test
 
     assert_equal 126, @i.sum
   end
+
+  def test_push_operator_tatara_int_vector
+    @i = Tatara::IntVector.new
+    @i << 42
+    assert_equal 42, @i.first
+    assert_equal 1, @i.size
+  end
 end

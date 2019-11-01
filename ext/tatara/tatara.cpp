@@ -114,7 +114,8 @@ extern "C" {
             .define_method("emplace_back", &Vector<int>::emplace_back)
             .define_method("size", &Vector<int>::size)
             .define_method("clear", &Vector<int>::clear)
-            .define_method("sum", &Vector<int>::sum);
+            .define_method("sum", &Vector<int>::sum)
+            .define_method("<<", &Vector<int>::push_back_object);
 
         Data_Type<Vector<double>> rb_cFloatVector = define_class_under<Vector<double>>(rb_mTatara, "FloatVector")
             .define_constructor(Constructor<Vector<double>>())
@@ -125,7 +126,8 @@ extern "C" {
             .define_method("emplace_back", &Vector<double>::emplace_back)
             .define_method("size", &Vector<double>::size)
             .define_method("clear", &Vector<double>::clear)
-            .define_method("sum", &Vector<double>::sum);
+            .define_method("sum", &Vector<double>::sum)
+            .define_method("<<", &Vector<double>::push_back_object);
 
         Data_Type<Vector<std::string>> rb_cStringVector = define_class_under<Vector<std::string>>(rb_mTatara, "StringVector")
             .define_constructor(Constructor<Vector<std::string>>())
@@ -136,7 +138,8 @@ extern "C" {
             .define_method("emplace_back", &    Vector<std::string>::emplace_back)
             .define_method("size", &Vector<std::string>::size)
             .define_method("clear", &Vector<std::string>::clear)
-            .define_method("sum", &Vector<std::string>::sum);
+            .define_method("sum", &Vector<std::string>::sum)
+            .define_method("<<", &Vector<std::string>::push_back_object);
 
         Data_Type<CppArray<int>> rb_cIntArray = define_class_under<CppArray<int>>(rb_mTatara, "IntArray")
             .define_constructor(Constructor<CppArray<int>>())
