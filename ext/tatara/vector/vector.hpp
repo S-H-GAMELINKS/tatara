@@ -18,6 +18,7 @@ class Vector {
         constexpr int size();
         constexpr void clear();
         T sum();
+        constexpr Vector<T>& push_back_object(const T var);
 };
 
 template <class T>
@@ -69,6 +70,12 @@ T Vector<T>::sum() {
         sum += c;
 
     return sum;
+}
+
+template <class T>
+constexpr Vector<T>& Vector<T>::push_back_object(const T var) {
+    this->container.emplace_back(std::move(var));
+    return *this;
 }
 
 #endif
