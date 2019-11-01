@@ -50,4 +50,11 @@ class FloatVectorTest < Minitest::Test
 
     assert_equal 12.6, @f.sum.round(2)
   end
+
+  def test_push_operator_tatara_float_vector
+    @f = Tatara::FloatVector.new
+    @f << 4.2
+    assert_equal 4.2, @f.first
+    assert_equal 1, @f.size
+  end
 end
