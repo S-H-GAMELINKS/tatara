@@ -57,4 +57,14 @@ class FloatVectorTest < Minitest::Test
     assert_equal 4.2, @f.first
     assert_equal 1, @f.size
   end
+
+  def test_map_tatara_float_vector
+    @f = Tatara::FloatVector.new
+    (1..10).each{|i| @f << i.to_f}
+    a_index = 0.0
+    @f.map{|i| 
+      assert_equal a_index, i
+      a_index += 1
+    }
+  end
 end
