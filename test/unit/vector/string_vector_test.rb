@@ -61,10 +61,10 @@ class StringVectorTest < Minitest::Test
   def test_map_tatara_float_vector
     @s = Tatara::StringVector.new
     ("A".."K").each{|i| @s << i}
-    s = "A"
-    @s.map{|i| 
-      assert_equal s, @s[i]
-      s.succ!
+    val = "A"
+    @s.map{|s| 
+      assert_equal val, s
+      val.succ!
     }
   end
 end
