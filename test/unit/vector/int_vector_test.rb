@@ -71,4 +71,15 @@ class IntVectorTest < Minitest::Test
       val += 1
     }
   end
+
+  def test_destructive_map_tatara_int_vector
+    @i = Tatara::IntVector.new
+    (1..10).each{|i| @i << i}
+    @i.map!{|i| i * 2}
+    val = 2
+    @i.map{|i|
+      assert_equal val, i
+      val += 2
+    }
+  end
 end

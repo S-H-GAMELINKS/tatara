@@ -67,4 +67,15 @@ class StringVectorTest < Minitest::Test
       val.succ!
     }
   end
+
+  def test_destructive_map_tatara_string_vector
+    @s = Tatara::StringVector.new
+    ("A".."K").each{|s| @s << s}
+    @s.map!{|s| s.succ}
+    val = "B"
+    @s.map{|s|
+      assert_equal val, s
+      val.succ!
+    }
+  end
 end
