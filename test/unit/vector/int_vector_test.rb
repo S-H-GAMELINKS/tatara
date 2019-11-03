@@ -65,10 +65,10 @@ class IntVectorTest < Minitest::Test
   def test_map_tatara_int_vector
     @i = Tatara::IntVector.new
     (1..10).each{|i| @i << i}
-    a_index = 0
+    val = 1 
     @i.map{|i| 
-      assert_equal a_index, i
-      a_index += 1
+      assert_equal val, i
+      val += 1
     }
   end
 end
