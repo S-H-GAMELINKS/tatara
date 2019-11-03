@@ -61,4 +61,14 @@ class IntVectorTest < Minitest::Test
     assert_equal 42, @i.first
     assert_equal 1, @i.size
   end
+
+  def test_map_tatara_int_vector
+    @i = Tatara::IntVector.new
+    (1..10).each{|i| @i << i}
+    a_index = 0
+    @i.map{|i| 
+      assert_equal a_index, i
+      a_index += 1
+    }
+  end
 end
