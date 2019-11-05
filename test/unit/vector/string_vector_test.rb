@@ -78,4 +78,14 @@ class StringVectorTest < Minitest::Test
       val.succ!
     }
   end
+
+  def test_each_tatara_string_vector
+    @s = Tatara::StringVector.new
+    ("A".."K").each{|s| @s << s.to_s}
+    val = "A"
+    @s.each{|s|
+      assert_equal val, s
+      val.succ!
+    }
+  end
 end
