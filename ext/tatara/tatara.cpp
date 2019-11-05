@@ -149,7 +149,8 @@ extern "C" {
             .define_method("[]=", &CppArray<int>::bracket_equal)
             .define_method("push", &CppArray<int>::emplace_back)
             .define_method("size", &CppArray<int>::size)
-            .define_method("clear", &CppArray<int>::clear);
+            .define_method("clear", &CppArray<int>::clear)
+            .define_method("<<", &CppArray<int>::push_back_object);
 
         Data_Type<CppArray<double>> rb_cFloatArray = define_class_under<CppArray<double>>(rb_mTatara, "FloatArray")
             .define_constructor(Constructor<CppArray<double>>())
@@ -159,7 +160,8 @@ extern "C" {
             .define_method("[]=", &CppArray<double>::bracket_equal)
             .define_method("push", &CppArray<double>::emplace_back)
             .define_method("size", &CppArray<double>::size)
-            .define_method("clear", &CppArray<double>::clear);
+            .define_method("clear", &CppArray<double>::clear)
+            .define_method("<<", &CppArray<double>::push_back_object);
 
         Data_Type<CppArray<std::string>> rb_cStringArray = define_class_under<CppArray<std::string>>(rb_mTatara, "StringArray")
             .define_constructor(Constructor<CppArray<std::string>>())
@@ -169,7 +171,8 @@ extern "C" {
             .define_method("[]=", &CppArray<std::string>::bracket_equal)            
             .define_method("push", &CppArray<std::string>::emplace_back)
             .define_method("size", &CppArray<std::string>::size)
-            .define_method("clear", &CppArray<std::string>::clear);
+            .define_method("clear", &CppArray<std::string>::clear)
+            .define_method("<<", &CppArray<std::string>::push_back_object);
 
         Data_Type<Map<std::string, int>> rb_cStringIntMap = define_class_under<Map<std::string, int>>(rb_mTatara, "StringIntMap")
             .define_constructor(Constructor<Map<std::string, int>>())
