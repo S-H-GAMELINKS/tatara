@@ -88,4 +88,17 @@ class StringVectorTest < Minitest::Test
       val.succ!
     }
   end
+
+  def test_each_with_index_tatara_int_vector
+    @s = Tatara::StringVector.new
+    ("A".."K").each{|s| @s << s}
+    val = "A"
+    index = 0
+    @s.each_with_index{|v, i|
+      assert_equal val, v
+      assert_equal index, i
+      val.succ!
+      index += 1
+    }
+  end
 end
