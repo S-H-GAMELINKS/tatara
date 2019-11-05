@@ -41,4 +41,11 @@ class StringArrayTest < Minitest::Test
     @array.clear
     assert_equal 0, @array.size
   end
+
+  def test_push_operator_tatara_string_array
+    @array = Tatara::StringArray.new
+    @array << "42"
+    assert_equal 1, @array.size
+    assert_equal "42", @array.first
+  end
 end

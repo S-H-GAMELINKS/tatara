@@ -41,4 +41,11 @@ class FloatArrayTest < Minitest::Test
     @array.clear
     assert_equal 0, @array.size
   end
+
+  def test_push_operator_tatara_float_array
+    @array = Tatara::FloatArray.new
+    @array << 4.2
+    assert_equal 1, @array.size
+    assert_equal 4.2, @array.first
+  end
 end
