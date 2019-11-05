@@ -82,4 +82,14 @@ class IntVectorTest < Minitest::Test
       val += 2
     }
   end
+
+  def test_each_tatara_int_vector
+    @i = Tatara::IntVector.new
+    (1..10).each{|i| @i << i}
+    val = 1
+    @i.each{|i|
+      assert_equal val, i
+      val += 1
+    }
+  end
 end
