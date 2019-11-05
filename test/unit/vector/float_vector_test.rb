@@ -78,4 +78,14 @@ class FloatVectorTest < Minitest::Test
       val += 2.0
     }
   end
+
+  def test_each_tatara_float_vector
+    @i = Tatara::FloatVector.new
+    (1..10).each{|i| @i << i.to_f}
+    val = 1.0
+    @i.each{|i|
+      assert_equal val, i
+      val += 1.0
+    }
+  end
 end
