@@ -1,5 +1,5 @@
 require "test_helper"
-require "tatara/tatara"
+require "tatara"
 
 class StringStringMapTest < Minitest::Test
   def test_init_tatara_string_string_map

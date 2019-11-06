@@ -1,5 +1,5 @@
 require "test_helper"
-require "tatara/tatara"
+require "tatara"
 
 class IntArrayTest < Minitest::Test
   def test_init_tatara_int_array
