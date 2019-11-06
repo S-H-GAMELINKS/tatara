@@ -1,4 +1,4 @@
-require 'tatara/tatara'
+require "tatara/tatara"
 
 module Tatara
     module Array

@@ -1,5 +1,5 @@
 require "test_helper"
-require "tatara/tatara"
+require "tatara"
 
 class FloatVectorTest < Minitest::Test
 
