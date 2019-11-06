@@ -1,5 +1,5 @@
 require "tatara/version"
-require 'tatara/tatara_ext'
+require "tatara/tatara_ext"
 
 module Tatara
   class Error < StandardError; end
