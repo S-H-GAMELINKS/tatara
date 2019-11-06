@@ -48,4 +48,14 @@ class StringArrayTest < Minitest::Test
     assert_equal 1, @array.size
     assert_equal "42", @array.first
   end
+
+  def test_map_tatara_string_array
+    @s = Tatara::StringArray.new
+    ("A".."K").each{|s| @s << s}
+    val = "A" 
+    @s.map{|s| 
+      assert_equal val, s
+      val.succ!
+    }
+  end
 end
