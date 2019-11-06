@@ -1,4 +1,5 @@
 require "tatara/version"
+require "tatara/tatara"
 require "tatara/tatara_ext"
 
 module Tatara
