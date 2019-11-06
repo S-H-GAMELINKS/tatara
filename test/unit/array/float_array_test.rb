@@ -58,4 +58,15 @@ class FloatArrayTest < Minitest::Test
       val += 1
     }
   end
+
+  def test_decrement_map_tatara_float_array
+    @f = Tatara::FloatArray.new
+    (1..10).each{|f| @f << f.to_f}
+    @f.map!{|f| f * 2.0}
+    val = 2.0 
+    @f.map{|f| 
+      assert_equal val, f
+      val += 2.0
+    }
+  end
 end
