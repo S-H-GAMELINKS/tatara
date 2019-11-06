@@ -48,4 +48,14 @@ class FloatArrayTest < Minitest::Test
     assert_equal 1, @array.size
     assert_equal 4.2, @array.first
   end
+
+  def test_map_tatara_float_array
+    @f = Tatara::FloatArray.new
+    (1..10).each{|f| @f << f}
+    val = 1 
+    @f.map{|f| 
+      assert_equal val, f
+      val += 1
+    }
+  end
 end
