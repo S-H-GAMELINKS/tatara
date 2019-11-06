@@ -48,4 +48,14 @@ class IntArrayTest < Minitest::Test
     assert_equal 1, @array.size
     assert_equal 42, @array.first
   end
+
+  def test_map_tatara_int_array
+    @i = Tatara::IntArray.new
+    (1..10).each{|i| @i << i}
+    val = 1 
+    @i.map{|i| 
+      assert_equal val, i
+      val += 1
+    }
+  end
 end
