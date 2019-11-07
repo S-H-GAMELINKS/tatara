@@ -1,6 +1,8 @@
 #ifndef VEC_TEMPLATE_H_
 #define VEC_TEMPLATE_H_
 
+#include <algorithm>
+#include <iterator>
 #include <vector>
 
 template <class T>
@@ -19,6 +21,7 @@ class Vector {
         constexpr void clear();
         T sum();
         constexpr Vector<T>& push_back_object(const T var);
+        constexpr Vector<T> duplicate(const Vector<T> vec);
 };
 
 template <class T>
@@ -76,6 +79,24 @@ template <class T>
 constexpr Vector<T>& Vector<T>::push_back_object(const T var) {
     this->container.emplace_back(std::move(var));
     return *this;
+}
+
+template <class T>
+constexpr Vector<T> Vector<T>::duplicate(const Vector<T> vec) {
+
+    std::vector<T> result;
+
+    std::set_intersection(
+        this->container.begin(), this->container.end(),
+        vec.container.begin(), vec.container.end(),
+        std::inserter(result, result.end())
+    );
+
+    Vector<T> object;
+
+    object.container = std::move(result);
+
+    return object;
 }
 
 #endif
