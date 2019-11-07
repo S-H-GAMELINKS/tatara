@@ -105,4 +105,18 @@ class IntVectorTest < Minitest::Test
       index += 1
     }
   end
+
+  def test_duplicate_method_int_vector
+    @i1 = Tatara::IntVector.new
+
+    (1..10).each{|i| @i1 << i}
+
+    @i2 = Tatara::IntVector.new
+
+    (10..20).each{|i| @i2 << i}
+
+    @i = @i1.duplicate @i2
+
+    @i.map{|i| assert_equal 10, i }
+  end
 end
