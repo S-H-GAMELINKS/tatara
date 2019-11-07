@@ -115,4 +115,18 @@ class StringVectorTest < Minitest::Test
 
     @s.map{|i| assert_equal "10", i }
   end
+
+  def test_duplicate_operator_string_vector
+    @s1 = Tatara::StringVector.new
+
+    (1..10).each{|i| @s1 << i.to_s}
+
+    @s2 = Tatara::StringVector.new
+
+    (10..20).each{|i| @s2 << i.to_s}
+
+    @s = @s1 & @s2
+
+    @s.map{|i| assert_equal "10", i }
+  end
 end
