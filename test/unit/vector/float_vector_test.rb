@@ -101,4 +101,18 @@ class FloatVectorTest < Minitest::Test
       index += 1
     }
   end
+
+  def test_duplicate_method_float_vector
+    @f1 = Tatara::FloatVector.new
+
+    (1..10).each{|i| @f1 << i.to_f}
+
+    @f2 = Tatara::FloatVector.new
+
+    (10..20).each{|i| @f2 << i.to_f}
+
+    @f = @f1.duplicate @f2
+
+    @f.map{|f| assert_equal 10.0, f }
+  end
 end
