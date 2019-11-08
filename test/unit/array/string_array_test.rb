@@ -69,4 +69,14 @@ class StringArrayTest < Minitest::Test
       val.succ!
     }
   end
+
+  def test_each_tatara_string_array
+    @s = Tatara::StringArray.new
+    ("A".."K").each{|s| @s << s}
+    val = "A" 
+    @s.map{|s| 
+      assert_equal val, s
+      val.succ!
+    }
+  end
 end
