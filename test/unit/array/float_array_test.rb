@@ -69,4 +69,14 @@ class FloatArrayTest < Minitest::Test
       val += 2.0
     }
   end
+
+  def test_each_tatara_float_array
+    @f = Tatara::FloatArray.new
+    (1..10).each{|f| @f << f.to_f}
+    val = 1.0 
+    @f.each{|f| 
+      assert_equal val, f
+      val += 1.0
+    }
+  end
 end
