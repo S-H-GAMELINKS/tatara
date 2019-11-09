@@ -66,3 +66,16 @@ Increment for instance value.
 puts @i.val
 # => 2
 ```
+
+### dec
+
+Decrement for instance value.
+
+```ruby
+@i = Tatara::Integer.new
+@i.val = 1
+@i.dec
+# => Increment instance value
+puts @i.val
+# => 0
+```
