@@ -25,7 +25,7 @@ But, can not set `String` value.
 
 ### new
 
-Create new `Tatara::Integer` instance.
+Create new `Tatara::Integer` instance.  And init `value` is `0`
 
 ```ruby
 @i = Tatara::Integer.new
