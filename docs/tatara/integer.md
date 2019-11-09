@@ -35,27 +35,27 @@ But, can not set `String` value.
 [Tatara::Integer#val+](#Tatara::Integer#value+)  
 [Tatara::Integer#value-](#Tatara::Integer#value-)  
 [Tatara::Integer#val-](#Tatara::Integer#val-)  
-[Tatara::Integer#value*](#Tatara::Integer#value*)  
+[Tatara::Integer#value\*](#Tatara::Integer#value\*)  
 [Tatara::Integer#val*](#Tatara::Integer#val*)  
 [Tatara::Integer#value/](#Tatara::Integer#value/)  
 [Tatara::Integer#val/](#Tatara::Integer#val/)  
 [Tatara::Integer#value%](#Tatara::Integer#value%)  
 [Tatara::Integer#val%](#Tatara::Integer#val%)  
-[Tatara::Integer#value**](#Tatara::Integer#value**)  
-[Tatara::Integer#val**](#Tatara::Integer#val**)
+[Tatara::Integer#value\*\*](#Tatara::Integer#value\*\*)  
+[Tatara::Integer#val\*\*](#Tatara::Integer#val\*\*)
 
 [Tatara::Integer#value+=](#Tatara::Integer#value+=)  
 [Tatara::Integer#val+=](#Tatara::Integer#value+=)  
 [Tatara::Integer#value-=](#Tatara::Integer#value-=)  
 [Tatara::Integer#val-=](#Tatara::Integer#val-=)  
-[Tatara::Integer#value*=](#Tatara::Integer#value*=)  
-[Tatara::Integer#val*=](#Tatara::Integer#val*=)  
+[Tatara::Integer#value\*=](#Tatara::Integer#value\*=)  
+[Tatara::Integer#val\*=](#Tatara::Integer#val\*=)  
 [Tatara::Integer#value/=](#Tatara::Integer#value/=)  
 [Tatara::Integer#val/=](#Tatara::Integer#val/=)  
 [Tatara::Integer#value%=](#Tatara::Integer#value%=)  
 [Tatara::Integer#val%=](#Tatara::Integer#val%=)  
-[Tatara::Integer#value**=](#Tatara::Integer#value**=)  
-[Tatara::Integer#val**=](#Tatara::Integer#val**=)
+[Tatara::Integer#value\*\*=](#Tatara::Integer#value\*\*=)  
+[Tatara::Integer#val\*\*=](#Tatara::Integer#val\*\*=)
 
 
 [Tatara::Integer#value==](#Tatara::Integer#value==)  
@@ -166,7 +166,7 @@ puts @i.val - 21
 # => Value is 0
 ```
 
-### Tatara::Integer#value*
+### Tatara::Integer#value\*
 
 Multiply instance value for `Tatara::Integer`.
 
@@ -177,7 +177,7 @@ puts @i.value * 21
 # => Value is 42
 ```
 
-### Tatara::Integer#val*
+### Tatara::Integer#val\*
 
 Multiply instance value for `Tatara::Integer`.
 
@@ -236,7 +236,7 @@ puts @i.val % 42
 # => Value is 0
 ```
 
-### Tatara::Integer#value**
+### Tatara::Integer#value\*\*
 
 Power instance value for `Tatara::Integer`.
 
@@ -249,7 +249,7 @@ puts @i.value ** 2
 # => Value is 8
 ```
 
-### Tatara::Integer#val**
+### Tatara::Integer#val\*\*
 
 Power instance value for `Tatara::Integer`.
 
@@ -314,7 +314,7 @@ Subtract and Set instance value for `Tatara::Integer`.
 # => Value is 5
 ```
 
-### Tatara::Integer#value*= 
+### Tatara::Integer#value\*= 
 
 Multiply and Set instance value for `Tatara::Integer`.
 
@@ -327,7 +327,7 @@ Multiply and Set instance value for `Tatara::Integer`.
 # => Value is 1000
 ```
 
-### Tatara::Integer#val*=
+### Tatara::Integer#val\*=
 
 Multiply and Set instance value for `Tatara::Integer`.
 
@@ -395,7 +395,7 @@ Mod and Set instance value for `Tatara::Integer`.
 # => Value is 2
 ```
 
-### Tatara::Integer#value**= 
+### Tatara::Integer#value\*\*= 
 
 Power and Set instance value value for `Tatara::Integer`.
 
@@ -408,7 +408,7 @@ Power and Set instance value value for `Tatara::Integer`.
 # => Value is 16
 ```
 
-### Tatara::Integer#val**=
+### Tatara::Integer#val\*\*=
 
 Power and Set instance value value for `Tatara::Integer`.
 
