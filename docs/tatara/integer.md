@@ -211,6 +211,19 @@ Power and Set instance value value for `Tatara::Integer`.
 # => Value is 16
 ```
 
+### val==/value==
+
+Check instance value, and return `Boolean`.
+
+```ruby 
+@i = Tatara::Integer.new
+@i.val = 42
+puts @i.val == 42
+# => true
+puts @i.value == 62
+# => false
+```
+
 ### inc
 
 Increment for instance value.
