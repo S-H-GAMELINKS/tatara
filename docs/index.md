@@ -60,3 +60,7 @@ require 'tatara'
     # 1..10 value is shown
 }
 ```
+
+## Class List
+
+### [Tatara::Integer](./tatara/integer.md)
