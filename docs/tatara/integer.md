@@ -23,6 +23,57 @@ But, can not set `String` value.
 
 ## Methods
 
+[Tatara::Integer#new](#Tatara::Integer#new)
+
+[Tatara::Integer#value](#Tatara::Integer#value)  
+[Tatara::Integer#val](#Tatara::Integer#val)
+
+[Tatara::Integer#value=](#Tatara::Integer#value=)  
+[Tatara::Integer#val=](#Tatara::Integer#val=)
+
+[Tatara::Integer#value+](#Tatara::Integer#value+)  
+[Tatara::Integer#val+](#Tatara::Integer#value+)  
+[Tatara::Integer#value-](#Tatara::Integer#value-)  
+[Tatara::Integer#val-](#Tatara::Integer#val-)  
+[Tatara::Integer#value*](#Tatara::Integer#value*)  
+[Tatara::Integer#val*](#Tatara::Integer#val*)  
+[Tatara::Integer#value/](#Tatara::Integer#value/)  
+[Tatara::Integer#val/](#Tatara::Integer#val/)  
+[Tatara::Integer#value%](#Tatara::Integer#value%)  
+[Tatara::Integer#val%](#Tatara::Integer#val%)  
+[Tatara::Integer#value**](#Tatara::Integer#value**)  
+[Tatara::Integer#val**](#Tatara::Integer#val**)
+
+[Tatara::Integer#value+=](#Tatara::Integer#value+=)  
+[Tatara::Integer#val+=](#Tatara::Integer#value+=)  
+[Tatara::Integer#value-=](#Tatara::Integer#value-=)  
+[Tatara::Integer#val-=](#Tatara::Integer#val-=)  
+[Tatara::Integer#value*=](#Tatara::Integer#value*=)  
+[Tatara::Integer#val*=](#Tatara::Integer#val*=)  
+[Tatara::Integer#value/=](#Tatara::Integer#value/=)  
+[Tatara::Integer#val/=](#Tatara::Integer#val/=)  
+[Tatara::Integer#value%=](#Tatara::Integer#value%=)  
+[Tatara::Integer#val%=](#Tatara::Integer#val%=)  
+[Tatara::Integer#value**=](#Tatara::Integer#value**=)  
+[Tatara::Integer#val**=](#Tatara::Integer#val**=)
+
+
+[Tatara::Integer#value==](#Tatara::Integer#value==)  
+[Tatara::Integer#val==](#Tatara::Integer#val==)  
+
+[Tatara::Integer#inc](#Tatara::Integer#inc)  
+[Tatara::Integer#dec](#Tatara::Integer#dec)
+
+
+[Tatara::Integer#to_s](#Tatara::Integer#to_s)  
+[Tatara::Integer#to_f](#Tatara::Integer#to_f)
+
+[Tatara::Integer#clear](#Tatara::Integer#clear)
+
+[Tatara::Integer#equal?](#Tatara::Integer#equal?)
+
+[Tatara::Integer#operator<<](#Tatara::Integer#operator<<)
+
 ### Tatara::Integer#new
 
 Create new `Tatara::Integer` instance.  And init `value` is `0`
@@ -467,7 +518,7 @@ puts @i.equal? 42
 # => true
 ```
 
-### Tatara::Integer#<<
+### Tatara::Integer#operator<<
 
 Set instance value for `Tatara::Integer`.
 
