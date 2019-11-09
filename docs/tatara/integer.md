@@ -93,6 +93,20 @@ Divided and Set instance value for `Tatara::Integer`.
 # => Value is 2
 ```
 
+### val%=/value%= 
+
+Mod and Set instance value for `Tatara::Integer`.
+
+```ruby
+@i = Tatara::Integer.new
+@i.val = 20
+@i.val %= 20
+# => Value is 0
+@i.value = 20
+@i.value %= 20
+# => Value is 0
+```
+
 ### val**=/value**= 
 
 Power and Set instance value value for `Tatara::Integer`.
