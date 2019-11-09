@@ -79,3 +79,14 @@ Decrement for instance value.
 puts @i.val
 # => 0
 ```
+
+### to_s
+
+Convert to `String` for instance value.
+
+```ruby
+@i = Tatara::Integer.new
+@i.val = 42
+@i.to_s
+# => Conver to String.
+```
