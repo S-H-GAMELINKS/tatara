@@ -41,3 +41,15 @@ puts @i.val
 puts @i.value
 # => Show `0`
 ```
+
+### val=/value=
+
+Set instance value for `Tatara::Integer`.
+
+```ruby
+@i = Tatara::Integer.new
+@i.val = 42
+# => Set 42.
+@i.value = 21
+# => Set 21.
+```
