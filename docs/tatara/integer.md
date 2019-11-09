@@ -30,3 +30,14 @@ Create new `Tatara::Integer` instance.
 ```ruby
 @i = Tatara::Integer.new
 ```
+
+### val/value
+
+return `Tatara::Integer` instance value.
+
+```ruby
+@i = Tatara::Integer.new
+puts @i.val
+puts @i.value
+# => Show `0`
+```
