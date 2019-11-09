@@ -90,3 +90,14 @@ Convert to `String` for instance value.
 @i.to_s
 # => Conver to String.
 ```
+
+### to_f
+
+Convert to `Float` for instance value.
+
+```ruby
+@i = Tatara::Integer.new
+@i.val = 42
+@i.to_f
+# => Conver to Float.
+```
