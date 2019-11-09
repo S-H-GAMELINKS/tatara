@@ -54,6 +54,19 @@ Set instance value for `Tatara::Integer`.
 # => Set 21.
 ```
 
+### val+=/value+= 
+
+Add instance value for `Tatara::Integer`.
+
+```ruby
+@i = Tatara::Integer.new
+@i.value = 21
+@i.val += 21
+# => Value is 42
+@i.value += 21
+# => Value is 63
+```
+
 ### inc
 
 Increment for instance value.
