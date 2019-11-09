@@ -69,7 +69,7 @@ Add instance value for `Tatara::Integer`.
 
 ### val**=/value**= 
 
-Add instance value for `Tatara::Integer`.
+Power instance value and set value for `Tatara::Integer`.
 
 ```ruby
 @i = Tatara::Integer.new
