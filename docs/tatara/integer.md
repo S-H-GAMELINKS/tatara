@@ -281,3 +281,16 @@ Check instance value, and return `Boolean`
 puts @i.equal? 42
 # => true
 ```
+
+### <<
+
+Set instance value for `Tatara::Integer`.
+
+```ruby
+@i = Tatara::Integer.new << 42
+puts @i.val
+# => 42
+@i = @i << 50
+puts @i.val
+# => 50
+```
