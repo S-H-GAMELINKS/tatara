@@ -20,3 +20,13 @@ But, can not set `String` value.
 @ival = "42"
 # => Error!
 ```
+
+## Methods
+
+### new
+
+Create new `Tatara::Integer` instance.
+
+```ruby
+@i = Tatara::Integer.new
+```
