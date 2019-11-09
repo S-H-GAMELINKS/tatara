@@ -80,6 +80,19 @@ puts @i.value - 5
 # => Value is 16
 ```
 
+### val*/value*
+
+Multiply instance value for `Tatara::Integer`.
+
+```ruby
+@i = Tatara::Integer.new
+@i.value = 2
+puts @i.val * 21
+# => Value is 42
+puts @i.value * 10
+# => Value is 20
+```
+
 ### val+=/value+= 
 
 Add and Set instance value for `Tatara::Integer`.
