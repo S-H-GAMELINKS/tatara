@@ -119,6 +119,19 @@ puts @i.value % 42
 # => Value is 0
 ```
 
+### val**/value**
+
+Power instance value for `Tatara::Integer`.
+
+```ruby
+@i = Tatara::Integer.new
+@i.value = 2
+puts @i.val ** 2
+# => Value is 4
+puts @i.value ** 2
+# => Value is 8
+```
+
 ### val+=/value+= 
 
 Add and Set instance value for `Tatara::Integer`.
