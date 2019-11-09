@@ -23,7 +23,58 @@ But, can not set `String` value.
 
 ## Methods
 
-### new
+[Tatara::Integer#new](#Tatara::Integer#new)
+
+[Tatara::Integer#value](#Tatara::Integer#value)  
+[Tatara::Integer#val](#Tatara::Integer#val)
+
+[Tatara::Integer#value=](#Tatara::Integer#value=)  
+[Tatara::Integer#val=](#Tatara::Integer#val=)
+
+[Tatara::Integer#value+](#Tatara::Integer#value+)  
+[Tatara::Integer#val+](#Tatara::Integer#value+)  
+[Tatara::Integer#value-](#Tatara::Integer#value-)  
+[Tatara::Integer#val-](#Tatara::Integer#val-)  
+[Tatara::Integer#value*](#Tatara::Integer#value*)  
+[Tatara::Integer#val*](#Tatara::Integer#val*)  
+[Tatara::Integer#value/](#Tatara::Integer#value/)  
+[Tatara::Integer#val/](#Tatara::Integer#val/)  
+[Tatara::Integer#value%](#Tatara::Integer#value%)  
+[Tatara::Integer#val%](#Tatara::Integer#val%)  
+[Tatara::Integer#value**](#Tatara::Integer#value**)  
+[Tatara::Integer#val**](#Tatara::Integer#val**)
+
+[Tatara::Integer#value+=](#Tatara::Integer#value+=)  
+[Tatara::Integer#val+=](#Tatara::Integer#value+=)  
+[Tatara::Integer#value-=](#Tatara::Integer#value-=)  
+[Tatara::Integer#val-=](#Tatara::Integer#val-=)  
+[Tatara::Integer#value*=](#Tatara::Integer#value*=)  
+[Tatara::Integer#val*=](#Tatara::Integer#val*=)  
+[Tatara::Integer#value/=](#Tatara::Integer#value/=)  
+[Tatara::Integer#val/=](#Tatara::Integer#val/=)  
+[Tatara::Integer#value%=](#Tatara::Integer#value%=)  
+[Tatara::Integer#val%=](#Tatara::Integer#val%=)  
+[Tatara::Integer#value**=](#Tatara::Integer#value**=)  
+[Tatara::Integer#val**=](#Tatara::Integer#val**=)
+
+
+[Tatara::Integer#value==](#Tatara::Integer#value==)  
+[Tatara::Integer#val==](#Tatara::Integer#val==)  
+
+[Tatara::Integer#inc](#Tatara::Integer#inc)  
+[Tatara::Integer#dec](#Tatara::Integer#dec)
+
+
+[Tatara::Integer#to_s](#Tatara::Integer#to_s)  
+[Tatara::Integer#to_f](#Tatara::Integer#to_f)
+
+[Tatara::Integer#clear](#Tatara::Integer#clear)
+
+[Tatara::Integer#equal?](#Tatara::Integer#equal?)
+
+[Tatara::Integer#operator<<](#Tatara::Integer#operator<<)
+
+### Tatara::Integer#new
 
 Create new `Tatara::Integer` instance.  And init `value` is `0`
 
@@ -31,18 +82,37 @@ Create new `Tatara::Integer` instance.  And init `value` is `0`
 @i = Tatara::Integer.new
 ```
 
-### val/value
+### Tatara::Integer#value
+
+return `Tatara::Integer` instance value.
+
+```ruby
+@i = Tatara::Integer.new
+puts @i.value
+# => Show `0`
+```
+
+### Tatara::Integer#val
 
 return `Tatara::Integer` instance value.
 
 ```ruby
 @i = Tatara::Integer.new
 puts @i.val
-puts @i.value
 # => Show `0`
 ```
 
-### val=/value=
+### Tatara::Integer#value=
+
+Set instance value for `Tatara::Integer`.
+
+```ruby
+@i = Tatara::Integer.new
+@i.value = 42
+# => Set 42.
+```
+
+### Tatara::Integer#val=
 
 Set instance value for `Tatara::Integer`.
 
@@ -50,11 +120,20 @@ Set instance value for `Tatara::Integer`.
 @i = Tatara::Integer.new
 @i.val = 42
 # => Set 42.
-@i.value = 21
-# => Set 21.
 ```
 
-### val+/value+
+### Tatara::Integer#value+
+
+Add instance value for `Tatara::Integer`.
+
+```ruby
+@i = Tatara::Integer.new
+@i.value = 21
+puts @i.value + 21
+# => Value is 42
+```
+
+### Tatara::Integer#val+
 
 Add instance value for `Tatara::Integer`.
 
@@ -63,11 +142,20 @@ Add instance value for `Tatara::Integer`.
 @i.value = 21
 puts @i.val + 21
 # => Value is 42
-puts @i.value + 21
-# => Value is 42
 ```
 
-### val-/value-
+### Tatara::Integer#value-
+
+Subtract instance value for `Tatara::Integer`.
+
+```ruby
+@i = Tatara::Integer.new
+@i.value = 21
+puts @i.value - 21
+# => Value is 0
+```
+
+### Tatara::Integer#val-
 
 Subtract instance value for `Tatara::Integer`.
 
@@ -76,11 +164,20 @@ Subtract instance value for `Tatara::Integer`.
 @i.value = 21
 puts @i.val - 21
 # => Value is 0
-puts @i.value - 5
-# => Value is 16
 ```
 
-### val*/value*
+### Tatara::Integer#value*
+
+Multiply instance value for `Tatara::Integer`.
+
+```ruby
+@i = Tatara::Integer.new
+@i.value = 2
+puts @i.value * 21
+# => Value is 42
+```
+
+### Tatara::Integer#val*
 
 Multiply instance value for `Tatara::Integer`.
 
@@ -89,11 +186,20 @@ Multiply instance value for `Tatara::Integer`.
 @i.value = 2
 puts @i.val * 21
 # => Value is 42
-puts @i.value * 10
-# => Value is 20
 ```
 
-### val//value/
+### Tatara::Integer#value/
+
+Divided instance value for `Tatara::Integer`.
+
+```ruby
+@i = Tatara::Integer.new
+@i.value = 42
+puts @i.value / 21
+# => Value is 2
+```
+
+### Tatara::Integer#val/
 
 Divided instance value for `Tatara::Integer`.
 
@@ -102,11 +208,22 @@ Divided instance value for `Tatara::Integer`.
 @i.value = 42
 puts @i.val / 21
 # => Value is 2
-puts @i.value * 2
-# => Value is 21
 ```
 
-### val%/value%
+### Tatara::Integer#value%
+
+Mod instance value for `Tatara::Integer`.
+
+```ruby
+@i = Tatara::Integer.new
+@i.value = 42
+puts @i.value % 20
+# => Value is 2
+puts @i.value % 42
+# => Value is 0
+```
+
+### Tatara::Integer#val%
 
 Mod instance value for `Tatara::Integer`.
 
@@ -115,11 +232,24 @@ Mod instance value for `Tatara::Integer`.
 @i.value = 42
 puts @i.val % 20
 # => Value is 2
-puts @i.value % 42
+puts @i.val % 42
 # => Value is 0
 ```
 
-### val**/value**
+### Tatara::Integer#value**
+
+Power instance value for `Tatara::Integer`.
+
+```ruby
+@i = Tatara::Integer.new
+@i.value = 2
+puts @i.value ** 2
+# => Value is 4
+puts @i.value ** 2
+# => Value is 8
+```
+
+### Tatara::Integer#val**
 
 Power instance value for `Tatara::Integer`.
 
@@ -128,11 +258,24 @@ Power instance value for `Tatara::Integer`.
 @i.value = 2
 puts @i.val ** 2
 # => Value is 4
-puts @i.value ** 2
+puts @i.val ** 2
 # => Value is 8
 ```
 
-### val+=/value+= 
+### Tatara::Integer#value+= 
+
+Add and Set instance value for `Tatara::Integer`.
+
+```ruby
+@i = Tatara::Integer.new
+@i.value = 21
+@i.value += 21
+# => Value is 42
+@i.value += 21
+# => Value is 63
+```
+
+### Tatara::Integer#val+=
 
 Add and Set instance value for `Tatara::Integer`.
 
@@ -141,11 +284,24 @@ Add and Set instance value for `Tatara::Integer`.
 @i.value = 21
 @i.val += 21
 # => Value is 42
-@i.value += 21
+@i.val += 21
 # => Value is 63
 ```
 
-### val-=/value-= 
+### Tatara::Integer#value-= 
+
+Subtract and Set instance value for `Tatara::Integer`.
+
+```ruby
+@i = Tatara::Integer.new
+@i.value = 20
+@i.value -= 10
+# => Value is 10
+@i.value -= 5
+# => Value is 5
+```
+
+### Tatara::Integer#val-=
 
 Subtract and Set instance value for `Tatara::Integer`.
 
@@ -154,11 +310,24 @@ Subtract and Set instance value for `Tatara::Integer`.
 @i.value = 20
 @i.val -= 10
 # => Value is 10
-@i.value -= 5
+@i.val -= 5
 # => Value is 5
 ```
 
-### val*=/value*= 
+### Tatara::Integer#value*= 
+
+Multiply and Set instance value for `Tatara::Integer`.
+
+```ruby
+@i = Tatara::Integer.new
+@i.value = 20
+@i.value *= 10
+# => Value is 200
+@i.value *= 5
+# => Value is 1000
+```
+
+### Tatara::Integer#val*=
 
 Multiply and Set instance value for `Tatara::Integer`.
 
@@ -167,11 +336,24 @@ Multiply and Set instance value for `Tatara::Integer`.
 @i.value = 20
 @i.val *= 10
 # => Value is 200
-@i.value *= 5
+@i.val *= 5
 # => Value is 1000
 ```
 
-### val/=/value/= 
+### Tatara::Integer#value/= 
+
+Divided and Set instance value for `Tatara::Integer`.
+
+```ruby
+@i = Tatara::Integer.new
+@i.value = 20
+@i.value /= 5
+# => Value is 4
+@i.value /= 2
+# => Value is 2
+```
+
+### Tatara::Integer#val/=
 
 Divided and Set instance value for `Tatara::Integer`.
 
@@ -180,11 +362,26 @@ Divided and Set instance value for `Tatara::Integer`.
 @i.value = 20
 @i.val /= 5
 # => Value is 4
-@i.value /= 2
+@i.val /= 2
 # => Value is 2
 ```
 
-### val%=/value%= 
+### Tatara::Integer#value%= 
+
+Mod and Set instance value for `Tatara::Integer`.
+
+```ruby
+@i = Tatara::Integer.new
+@i.value = 20
+@i.value %= 20
+# => Value is 0
+@i.value = 20
+@i.value %= 6
+# => Value is 2
+```
+
+
+### Tatara::Integer#val%=
 
 Mod and Set instance value for `Tatara::Integer`.
 
@@ -194,11 +391,24 @@ Mod and Set instance value for `Tatara::Integer`.
 @i.val %= 20
 # => Value is 0
 @i.value = 20
-@i.value %= 20
-# => Value is 0
+@i.value %= 6
+# => Value is 2
 ```
 
-### val**=/value**= 
+### Tatara::Integer#value**= 
+
+Power and Set instance value value for `Tatara::Integer`.
+
+```ruby
+@i = Tatara::Integer.new
+@i.value = 2
+@i.value **= 2
+# => Value is 4
+@i.value **= 2
+# => Value is 16
+```
+
+### Tatara::Integer#val**=
 
 Power and Set instance value value for `Tatara::Integer`.
 
@@ -207,11 +417,24 @@ Power and Set instance value value for `Tatara::Integer`.
 @i.value = 2
 @i.val **= 2
 # => Value is 4
-@i.value **= 2
+@i.val **= 2
 # => Value is 16
 ```
 
-### val==/value==
+### Tatara::Integer#value==
+
+Check instance value, and return `Boolean`.
+
+```ruby 
+@i = Tatara::Integer.new
+@i.value = 42
+puts @i.value == 42
+# => true
+puts @i.value == 62
+# => false
+```
+
+### Tatara::Integer#val==
 
 Check instance value, and return `Boolean`.
 
@@ -220,11 +443,11 @@ Check instance value, and return `Boolean`.
 @i.val = 42
 puts @i.val == 42
 # => true
-puts @i.value == 62
+puts @i.val == 62
 # => false
 ```
 
-### inc
+### Tatara::Integer#inc
 
 Increment for instance value.
 
@@ -237,7 +460,7 @@ puts @i.val
 # => 2
 ```
 
-### dec
+### Tatara::Integer#dec
 
 Decrement for instance value.
 
@@ -250,7 +473,7 @@ puts @i.val
 # => 0
 ```
 
-### to_s
+### Tatara::Integer#to_s
 
 Convert to `String` for instance value.
 
@@ -261,7 +484,7 @@ Convert to `String` for instance value.
 # => Conver to String.
 ```
 
-### to_f
+### Tatara::Integer#to_f
 
 Convert to `Float` for instance value.
 
@@ -272,7 +495,7 @@ Convert to `Float` for instance value.
 # => Conver to Float.
 ```
 
-### clear
+### Tatara::Integer#clear
 
 Clear instance value.
 
@@ -284,7 +507,7 @@ Clear instance value.
 # => Clear instance value. Value is 0
 ```
 
-### equal?
+### Tatara::Integer#equal?
 
 Check instance value, and return `Boolean`
 
@@ -295,7 +518,7 @@ puts @i.equal? 42
 # => true
 ```
 
-### <<
+### Tatara::Integer#operator<<
 
 Set instance value for `Tatara::Integer`.
 
