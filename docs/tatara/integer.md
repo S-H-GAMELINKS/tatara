@@ -270,3 +270,14 @@ Clear instance value.
 @i.clear
 # => Clear instance value. Value is 0
 ```
+
+### equal?
+
+Check instance value, and return `Boolean`
+
+```ruby
+@i = Tatara::Integer.new
+@i.val = 42
+puts @i.equal? 42
+# => true
+```
