@@ -9,7 +9,7 @@ Provide a simply type & container for your Ruby Code!
 
 ## Getting Started
 ### Rails and other Project 
-Using Your Progect, add `tatara` in your Gemfile.
+Using Your Project, add `tatara` in your Gemfile.
 
 ```ruby:Gemfile
 gem 'tatara'
