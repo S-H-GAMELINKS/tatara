@@ -92,4 +92,18 @@ class IntArrayTest < Minitest::Test
       index += 1
     }
   end
+
+  def test_duplicate_method_int_array
+    @i1 = Tatara::IntArray.new
+
+    (1..10).each{|i| @i1 << i}
+
+    @i2 = Tatara::IntArray.new
+
+    (10..20).each{|i| @i2 << i}
+
+    @i = @i1.duplicate @i2
+
+    @i.map{|i| assert_equal 10, i }
+  end
 end
