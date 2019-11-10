@@ -1,6 +1,8 @@
 #ifndef ARRAY__TEMPLATE_H_
 #define ARRAY__TEMPLATE_H_
 
+#include <algorithm>
+#include <iterator>
 #include <vector>
 
 template <class T>
@@ -17,6 +19,7 @@ class CppArray {
         constexpr int size();
         constexpr void clear();
         constexpr CppArray<T>& push_back_object(const T var);
+        constexpr CppArray<T> duplicate(const CppArray<T> array);
 };
 
 template <class T>
@@ -64,6 +67,24 @@ template <class T>
 constexpr CppArray<T>& CppArray<T>::push_back_object(const T var) {
     this->container.emplace_back(std::move(var));
     return *this;
+}
+
+template <class T>
+constexpr CppArray<T> CppArray<T>::duplicate(const CppArray<T> array) {
+
+    std::vector<T> result;
+
+    std::set_intersection(
+        this->container.begin(), this->container.end(),
+        array.container.begin(), array.container.end(),
+        std::inserter(result, result.end())
+    );
+
+    CppArray<T> object;
+
+    object.container = std::move(result);
+
+    return object;
 }
 
 #endif
