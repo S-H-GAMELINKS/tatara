@@ -92,4 +92,18 @@ class StringArrayTest < Minitest::Test
       index += 1
     }
   end
+
+  def test_duplicate_method_string_array
+    @s1 = Tatara::StringArray.new
+
+    (1..10).each{|i| @s1 << i.to_s}
+
+    @s2 = Tatara::StringArray.new
+
+    (10..20).each{|i| @s2 << i.to_s}
+
+    @s = @s1.duplicate @s2
+
+    @s.map{|i| assert_equal "10", i }
+  end
 end

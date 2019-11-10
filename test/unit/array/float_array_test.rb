@@ -92,4 +92,18 @@ class FloatArrayTest < Minitest::Test
       index += 1
     }
   end
+
+  def test_duplicate_method_float_array
+    @f1 = Tatara::FloatArray.new
+
+    (1..10).each{|i| @f1 << i.to_f}
+
+    @f2 = Tatara::FloatArray.new
+
+    (10..20).each{|i| @f2 << i.to_f}
+
+    @f = @f1.duplicate @f2
+
+    @f.map{|i| assert_equal 10.0, i }
+  end
 end
