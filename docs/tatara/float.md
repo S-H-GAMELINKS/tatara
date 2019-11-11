@@ -119,9 +119,9 @@ puts @i.val - 2.1
 Multiply instance value for `Tatara::Float`.
 
 ```ruby
-@i = Tatara::Float.new
-@i.value = 2.0
-puts @i.value * 2.0
+@f = Tatara::Float.new
+@f.value = 2.0
+puts @f.value * 2.0
 # => Value is 4.0
 ```
 
@@ -130,8 +130,8 @@ puts @i.value * 2.0
 Multiply instance value for `Tatara::Float`.
 
 ```ruby
-@i = Tatara::Float.new
-@i.value = 2.0
+@f = Tatara::Float.new
+@f.value = 2.0
 puts @i.val * 2.0
 # => Value is 4.0
 ```
