@@ -363,3 +363,14 @@ Convert to `String` for instance value.
 @i.to_s
 # => Conver to String.
 ```
+
+### Tatara::Float#to_i
+
+Convert to `Integer` for instance value.
+
+```ruby
+@f = Tatara::Float.new
+@f.val = 4.2
+@f.to_i
+# => Conver to Integer.
+```
