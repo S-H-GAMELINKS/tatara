@@ -326,5 +326,17 @@ puts @f.value == 4.2
 puts @f.value == 6.2
 # => false
 ```
+### Tatara::Float#inc
+
+Increment for instance value.
+
+```ruby
+@f = Tatara::Float.new
+@f.val = 1.0
+@f.inc
+# => Increment instance value
+puts @i.val
+# => 2.0
+```
 
 
