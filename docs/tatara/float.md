@@ -20,3 +20,12 @@ But, can not set `String` value.
 @i.val = "42"
 # => Error!
 ```
+
+## Methods
+### Tatara::Float#new
+
+Create new `Tatara::Float` instance.  And init `value` is `0.0`
+
+```ruby
+@i = Tatara::Float.new
+```
