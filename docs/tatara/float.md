@@ -49,3 +49,13 @@ return `Tatara::Float` instance value.
 puts @f.val
 # => Show 0.0
 ```
+
+### Tatara::Float#value=
+
+Set instance value for `Tatara::Float`.
+
+```ruby
+@f = Tatara::Float.new
+@f.value = 4.2
+# => Set 4.2
+```
