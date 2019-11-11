@@ -170,3 +170,16 @@ puts @i.value ** 2.0
 puts @i.value ** 2.0
 # => Value is 8.0
 ```
+
+### Tatara::Float#val\*\*
+
+Power instance value for `Tatara::Float`.
+
+```ruby
+@f = Tatara::Float.new
+@f.value = 2.0
+puts @f.val ** 2.0
+# => Value is 4.0
+puts @f.val ** 2.0
+# => Value is 8.0
+```
