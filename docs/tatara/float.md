@@ -80,3 +80,14 @@ Add instance value for `Tatara::Float`.
 puts @f.value + 2.1
 # => Value is 4.2
 ```
+
+### Tatara::Float#val+
+
+Add instance value for `Tatara::Float`.
+
+```ruby
+@f = Tatara::Float.new
+@f.value = 2.1
+puts @i.val + 2.1
+# => Value is 4.2
+```
