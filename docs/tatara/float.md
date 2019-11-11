@@ -136,3 +136,15 @@ puts @i.val * 2.0
 # => Value is 4.0
 ```
 
+### Tatara::Float#value/
+
+Divided instance value for `Tatara::Float`.
+
+```ruby
+@f = Tatara::Float.new
+@f.value = 4.0
+puts @f.value / 2.0
+# => Value is 2.0
+```
+
+
