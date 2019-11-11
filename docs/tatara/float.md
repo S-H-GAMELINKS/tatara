@@ -353,3 +353,13 @@ puts @i.val
 ```
 
 
+### Tatara::Float#to_s
+
+Convert to `String` for instance value.
+
+```ruby
+@i = Tatara::Float.new
+@i.val = 4.2
+@i.to_s
+# => Conver to String.
+```
