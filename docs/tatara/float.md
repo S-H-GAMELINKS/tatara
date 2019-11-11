@@ -373,3 +373,15 @@ Convert to `Integer` for instance value.
 @f.to_i
 # => Conver to Integer.
 ```
+
+### Tatara::Float#clear
+
+Clear instance value.
+
+```ruby
+@f = Tatara::Float.new
+@f.val = 4.2
+# => Set 4.2
+@f.clear
+# => Clear instance value. Value is 0.0
+```
