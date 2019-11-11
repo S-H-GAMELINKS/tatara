@@ -301,3 +301,16 @@ Power and Set instance value value for `Tatara::Float`.
 # => Value is 16.0
 ```
 
+### Tatara::Float#val\*\*=
+
+Power and Set instance value value for `Tatara::Float`.
+
+```ruby
+@i = Tatara::Float.new
+@i.val = 2.0
+@i.val **= 2.0
+# => Value is 4.0
+@i.val **= 2.0
+# => Value is 16.0
+```
+
