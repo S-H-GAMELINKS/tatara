@@ -222,3 +222,16 @@ Subtract and Set instance value for `Tatara::Float`.
 @f.value -= 0.5
 # => Value is 0.5
 ```
+
+### Tatara::Float#val-=
+
+Subtract and Set instance value for `Tatara::Float`.
+
+```ruby
+@f = Tatara::Float.new
+@f.val = 2.0
+@f.val -= 1.0
+# => Value is 1.0
+@f.val -= 0.5
+# => Value is 0.5
+```
