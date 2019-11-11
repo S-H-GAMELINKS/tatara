@@ -59,3 +59,13 @@ Set instance value for `Tatara::Float`.
 @f.value = 4.2
 # => Set 4.2
 ```
+
+### Tatara::Float#val=
+
+Set instance value for `Tatara::Float`.
+
+```ruby
+@f = Tatara::Float.new
+@f.val = 4.2
+# => Set 4.2
+```
