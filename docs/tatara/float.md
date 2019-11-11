@@ -385,3 +385,16 @@ Clear instance value.
 @f.clear
 # => Clear instance value. Value is 0.0
 ```
+
+### Tatara::Float#operator<<
+
+Set instance value for `Tatara::Float`.
+
+```ruby
+@f = Tatara::Float.new << 4.2
+puts @f.val
+# => 4.2
+@f = @f << 5.0
+puts @f.val
+# => 5.0
+```
