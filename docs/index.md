@@ -64,3 +64,5 @@ require 'tatara'
 ## Class List
 
 ### [Tatara::Integer](./tatara/integer.md)
+
+### [Tatara::Float](./tatara/float.md)
