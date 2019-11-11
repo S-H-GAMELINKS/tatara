@@ -306,11 +306,11 @@ Power and Set instance value value for `Tatara::Float`.
 Power and Set instance value value for `Tatara::Float`.
 
 ```ruby
-@i = Tatara::Float.new
-@i.val = 2.0
-@i.val **= 2.0
+@f = Tatara::Float.new
+@f.val = 2.0
+@f.val **= 2.0
 # => Value is 4.0
-@i.val **= 2.0
+@f.val **= 2.0
 # => Value is 16.0
 ```
 
