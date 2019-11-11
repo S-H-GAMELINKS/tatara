@@ -248,3 +248,16 @@ Multiply and Set instance value for `Tatara::Float`.
 @i.value *= 5.0
 # => Value is 100.0
 ```
+
+### Tatara::Float#val\*=
+
+Multiply and Set instance value for `Tatara::Float`.
+
+```ruby
+@f = Tatara::Float.new
+@f.val = 2.0
+@f.val *= 10.0
+# => Value is 20.0
+@f.val *= 5.0
+# => Value is 100.0
+```
