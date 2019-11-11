@@ -157,3 +157,16 @@ Divided instance value for `Tatara::Float`.
 puts @f.val / 2.0
 # => Value is 2.0
 ```
+
+### Tatara::Float#value\*\*
+
+Power instance value for `Tatara::Float`.
+
+```ruby
+@f = Tatara::Float.new
+@f.value = 2.0
+puts @i.value ** 2.0
+# => Value is 4.0
+puts @i.value ** 2.0
+# => Value is 8.0
+```
