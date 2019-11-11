@@ -339,4 +339,17 @@ puts @i.val
 # => 2.0
 ```
 
+### Tatara::Float#dec
+
+Decrement for instance value.
+
+```ruby
+@i = Tatara::Float.new
+@i.val = 1.0
+@i.dec
+# => Increment instance value
+puts @i.val
+# => 0.0
+```
+
 
