@@ -27,7 +27,7 @@ But, can not set `String` value.
 Create new `Tatara::Float` instance.  And init `value` is `0.0`
 
 ```ruby
-@i = Tatara::Float.new
+@f = Tatara::Float.new
 ```
 
 ### Tatara::Float#value
