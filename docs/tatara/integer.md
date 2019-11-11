@@ -356,7 +356,7 @@ Power and Set instance value value for `Tatara::Integer`.
 # => Value is 16
 ```
 
-### Tatara::Integer#\*\*=
+### Tatara::Integer#val\*\*=
 
 Power and Set instance value value for `Tatara::Integer`.
 
