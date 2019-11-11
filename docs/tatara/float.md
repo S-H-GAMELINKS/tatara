@@ -287,3 +287,17 @@ Divided and Set instance value for `Tatara::Float`.
 @f.val /= 2.0
 # => Value is 0.2
 ```
+
+### Tatara::Float#value\*\*= 
+
+Power and Set instance value value for `Tatara::Float`.
+
+```ruby
+@f = Tatara::Float.new
+@f.value = 2.0
+@f.value **= 2.0
+# => Value is 4.0
+@f.value **= 2.0
+# => Value is 16.0
+```
+
