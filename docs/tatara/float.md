@@ -344,23 +344,22 @@ puts @i.val
 Decrement for instance value.
 
 ```ruby
-@i = Tatara::Float.new
-@i.val = 1.0
-@i.dec
+@f = Tatara::Float.new
+@f.val = 1.0
+@f.dec
 # => Increment instance value
-puts @i.val
+puts @f.val
 # => 0.0
 ```
-
 
 ### Tatara::Float#to_s
 
 Convert to `String` for instance value.
 
 ```ruby
-@i = Tatara::Float.new
-@i.val = 4.2
-@i.to_s
+@f = Tatara::Float.new
+@f.val = 4.2
+@f.to_s
 # => Conver to String.
 ```
 
