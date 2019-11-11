@@ -183,3 +183,16 @@ puts @f.val ** 2.0
 puts @f.val ** 2.0
 # => Value is 8.0
 ```
+
+### Tatara::Float#value+= 
+
+Add and Set instance value for `Tatara::Float`.
+
+```ruby
+@f = Tatara::Float.new
+@f.value = 2.1
+@f.value += 2.1
+# => Value is 4.2
+@f.value += 2.1
+# => Value is 6.3
+```
