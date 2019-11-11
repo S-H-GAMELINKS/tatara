@@ -314,3 +314,17 @@ Power and Set instance value value for `Tatara::Float`.
 # => Value is 16.0
 ```
 
+### Tatara::Float#value==
+
+Check instance value, and return `Boolean`.
+
+```ruby 
+@f = Tatara::Float.new
+@f.value = 4.2
+puts @f.value == 4.2
+# => true
+puts @f.value == 6.2
+# => false
+```
+
+
