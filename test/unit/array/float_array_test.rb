@@ -106,4 +106,18 @@ class FloatArrayTest < Minitest::Test
 
     @f.map{|i| assert_equal 10.0, i }
   end
+
+  def test_duplicate_operator_float_array
+    @f1 = Tatara::FloatArray.new
+
+    (1..10).each{|i| @f1 << i.to_f}
+
+    @f2 = Tatara::FloatArray.new
+
+    (10..20).each{|i| @f2 << i.to_f}
+
+    @f = @f1 & @f2
+
+    @f.map{|f| assert_equal 10.0, f }
+  end
 end
