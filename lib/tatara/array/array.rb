@@ -17,6 +17,10 @@ module Tatara
         def each_with_index(&block)
             (0...(self.size)).each{|i| block.call(self[i], i)}
         end
+
+        def &(other)
+            self.duplicate other
+        end
     end
 
     class IntArray
