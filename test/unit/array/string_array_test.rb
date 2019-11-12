@@ -106,4 +106,18 @@ class StringArrayTest < Minitest::Test
 
     @s.map{|i| assert_equal "10", i }
   end
+
+  def test_duplicate_operator_string_array
+    @s1 = Tatara::StringArray.new
+
+    (1..10).each{|i| @s1 << i.to_s}
+
+    @s2 = Tatara::StringArray.new
+
+    (10..20).each{|i| @s2 << i.to_s}
+
+    @s = @s1 & @s2
+
+    @s.map{|s| assert_equal "10", s }
+  end
 end
