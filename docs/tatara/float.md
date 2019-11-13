@@ -386,6 +386,17 @@ Clear instance value.
 # => Clear instance value. Value is 0.0
 ```
 
+### Tatara::Float#equal?
+
+Check instance value, and return `Boolean`
+
+```ruby
+@f = Tatara::Float.new
+@f.val = 4.2
+puts @f.equal? 4.2
+# => true
+```
+
 ### Tatara::Float#operator<<
 
 Set instance value for `Tatara::Float`.
