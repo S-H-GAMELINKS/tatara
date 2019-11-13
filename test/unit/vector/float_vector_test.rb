@@ -60,7 +60,7 @@ class FloatVectorTest < Minitest::Test
 
   def test_map_tatara_float_vector
     @f = Tatara::FloatVector.new
-    (1..10).each{|i| @f << i.to_f}
+    (1..10).each(&@f.method(:<<))
     val = 1.0
     @f.map{|i| 
       assert_equal val, i
@@ -70,7 +70,7 @@ class FloatVectorTest < Minitest::Test
 
   def test_destructive_map_tatara_float_vector
     @i = Tatara::FloatVector.new
-    (1..10).each{|i| @i << i.to_f}
+    (1..10).each(&@i.method(:<<))
     @i.map!{|i| i * 2.0}
     val = 2.0
     @i.map{|i|
@@ -81,7 +81,7 @@ class FloatVectorTest < Minitest::Test
 
   def test_each_tatara_float_vector
     @i = Tatara::FloatVector.new
-    (1..10).each{|i| @i << i.to_f}
+    (1..10).each(&@i.method(:<<))
     val = 1.0
     @i.each{|i|
       assert_equal val, i
@@ -91,7 +91,7 @@ class FloatVectorTest < Minitest::Test
 
   def test_each_with_index_tatara_float_vector
     @f = Tatara::FloatVector.new
-    (1..10).each{|f| @f << f.to_f}
+    (1..10).each(&@f.method(:<<))
     val = 1.0
     index = 0
     @f.each_with_index{|v, i|
@@ -105,11 +105,11 @@ class FloatVectorTest < Minitest::Test
   def test_duplicate_method_float_vector
     @f1 = Tatara::FloatVector.new
 
-    (1..10).each{|i| @f1 << i.to_f}
+    (1..10).each(&@f1.method(:<<))
 
     @f2 = Tatara::FloatVector.new
 
-    (10..20).each{|i| @f2 << i.to_f}
+    (10..20).each(&@f2.method(:<<))
 
     @f = @f1.duplicate @f2
 
@@ -119,11 +119,11 @@ class FloatVectorTest < Minitest::Test
   def test_duplicate_operator_float_vector
     @f1 = Tatara::FloatVector.new
 
-    (1..10).each{|i| @f1 << i.to_f}
+    (1..10).each(&@f1.method(:<<))
 
     @f2 = Tatara::FloatVector.new
 
-    (10..20).each{|i| @f2 << i.to_f}
+    (10..20).each(&@f2.method(:<<))
 
     @f = @f1 & @f2
 
