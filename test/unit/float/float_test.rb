@@ -155,6 +155,7 @@ class FloatTest < Minitest::Test
     assert_equal @f.value, 0.0
     @f.value = 4.2
     assert @f.value == 4.2
+    assert @f.equal? 4.2
   end
 
   def test_return_object_init_tatara_float
