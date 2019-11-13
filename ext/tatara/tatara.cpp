@@ -86,6 +86,7 @@ extern "C" {
             .define_method("to_i", &Float::to_integer)
             .define_method("clear", &Float::clear)
             .define_method("value==", &Float::equal)
+            .define_method("equal?", &Float::equal)
             .define_method("<<", &Float::initialize_object);
 
         Data_Type<CppString> rbcString = define_class_under<CppString>(rb_mTatara, "String")
