@@ -22,6 +22,7 @@ class Vector {
         T sum();
         constexpr Vector<T>& push_back_object(const T var);
         constexpr Vector<T> duplicate(const Vector<T> vec);
+        constexpr Vector<T>& sort();
 };
 
 template <class T>
@@ -97,6 +98,12 @@ constexpr Vector<T> Vector<T>::duplicate(const Vector<T> vec) {
     object.container = std::move(result);
 
     return object;
+}
+
+template <class T>
+constexpr Vector<T>& Vector<T>::sort() {
+    std::sort(this->container.begin(), this->container.end());
+    return *this;
 }
 
 #endif
