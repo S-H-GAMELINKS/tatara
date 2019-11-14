@@ -51,7 +51,7 @@ class IntArrayTest < Minitest::Test
 
   def test_map_tatara_int_array
     @i = Tatara::IntArray.new
-    (1..10).each{|i| @i << i}
+    (1..10).each(&@i.method(:<<))
     val = 1 
     @i.map{|i| 
       assert_equal val, i
@@ -61,7 +61,7 @@ class IntArrayTest < Minitest::Test
 
   def test_destructive_map_tatara_int_array
     @i = Tatara::IntArray.new
-    (1..10).each{|i| @i << i}
+    (1..10).each(&@i.method(:<<))
     @i.map!{|i| i * 2}
     val = 2 
     @i.map{|i| 
@@ -72,7 +72,7 @@ class IntArrayTest < Minitest::Test
 
   def test_each_tatara_int_array
     @i = Tatara::IntArray.new
-    (1..10).each{|i| @i << i}
+    (1..10).each(&@i.method(:<<))
     val = 1
     @i.map{|i| 
       assert_equal val, i
@@ -82,7 +82,7 @@ class IntArrayTest < Minitest::Test
 
   def test_each_with_index_tatara_int_array
     @i = Tatara::IntArray.new
-    (1..10).each{|i| @i << i}
+    (1..10).each(&@i.method(:<<))
     val = 1
     index = 0
     @i.each_with_index{|v, i|
@@ -96,11 +96,11 @@ class IntArrayTest < Minitest::Test
   def test_duplicate_method_int_array
     @i1 = Tatara::IntArray.new
 
-    (1..10).each{|i| @i1 << i}
+    (1..10).each(&@i1.method(:<<))
 
     @i2 = Tatara::IntArray.new
 
-    (10..20).each{|i| @i2 << i}
+    (10..20).each(&@i2.method(:<<))
 
     @i = @i1.duplicate @i2
 
@@ -110,11 +110,11 @@ class IntArrayTest < Minitest::Test
   def test_duplicate_operator_int_array
     @i1 = Tatara::IntArray.new
 
-    (1..10).each{|i| @i1 << i}
+    (1..10).each(&@i1.method(:<<))
 
     @i2 = Tatara::IntArray.new
 
-    (10..20).each{|i| @i2 << i}
+    (10..20).each(&@i2.method(:<<))
 
     @i = @i1 & @i2
 

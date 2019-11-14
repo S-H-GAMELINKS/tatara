@@ -51,7 +51,7 @@ class FloatArrayTest < Minitest::Test
 
   def test_map_tatara_float_array
     @f = Tatara::FloatArray.new
-    (1..10).each{|f| @f << f}
+    (1..10).each(&@f.method(:<<))
     val = 1 
     @f.map{|f| 
       assert_equal val, f
@@ -61,7 +61,7 @@ class FloatArrayTest < Minitest::Test
 
   def test_decrement_map_tatara_float_array
     @f = Tatara::FloatArray.new
-    (1..10).each{|f| @f << f.to_f}
+    (1..10).each(&@f.method(:<<))
     @f.map!{|f| f * 2.0}
     val = 2.0 
     @f.map{|f| 
@@ -72,7 +72,7 @@ class FloatArrayTest < Minitest::Test
 
   def test_each_tatara_float_array
     @f = Tatara::FloatArray.new
-    (1..10).each{|f| @f << f.to_f}
+    (1..10).each(&@f.method(:<<))
     val = 1.0 
     @f.each{|f| 
       assert_equal val, f
@@ -82,7 +82,7 @@ class FloatArrayTest < Minitest::Test
 
   def test_each_with_index_tatara_float_array
     @f = Tatara::FloatArray.new
-    (1..10).each{|i| @f << i.to_f}
+    (1..10).each(&@f.method(:<<))
     val = 1.0
     index = 0
     @f.each_with_index{|v, i|
@@ -96,11 +96,11 @@ class FloatArrayTest < Minitest::Test
   def test_duplicate_method_float_array
     @f1 = Tatara::FloatArray.new
 
-    (1..10).each{|i| @f1 << i.to_f}
+    (1..10).each(&@f1.method(:<<))
 
     @f2 = Tatara::FloatArray.new
 
-    (10..20).each{|i| @f2 << i.to_f}
+    (10..20).each(&@f2.method(:<<))
 
     @f = @f1.duplicate @f2
 
@@ -110,11 +110,11 @@ class FloatArrayTest < Minitest::Test
   def test_duplicate_operator_float_array
     @f1 = Tatara::FloatArray.new
 
-    (1..10).each{|i| @f1 << i.to_f}
+    (1..10).each(&@f1.method(:<<))
 
     @f2 = Tatara::FloatArray.new
 
-    (10..20).each{|i| @f2 << i.to_f}
+    (10..20).each(&@f2.method(:<<))
 
     @f = @f1 & @f2
 
