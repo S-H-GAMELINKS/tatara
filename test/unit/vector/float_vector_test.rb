@@ -129,4 +129,15 @@ class FloatVectorTest < Minitest::Test
 
     @f.map{|f| assert_equal 10.0, f }
   end
+
+  def test_sort_method_float_vector
+    data = [4.2, 9.3, 1.2]
+    @f = Tatara::FloatVector.new
+    data.each(&@f.method(:<<))
+    @f = @f.sort
+    data.sort!
+    data.each_with_index{|v, i|
+      assert_equal v, @f[i]
+    }
+  end
 end
