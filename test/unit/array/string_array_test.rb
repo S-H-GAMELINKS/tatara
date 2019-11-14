@@ -51,7 +51,7 @@ class StringArrayTest < Minitest::Test
 
   def test_map_tatara_string_array
     @s = Tatara::StringArray.new
-    ("A".."K").each{|s| @s << s}
+    ("A".."K").each(&@s.method(:<<))
     val = "A" 
     @s.map{|s| 
       assert_equal val, s
@@ -61,7 +61,7 @@ class StringArrayTest < Minitest::Test
 
   def test_destructive_map_tatara_string_array
     @s = Tatara::StringArray.new
-    ("A".."K").each{|s| @s << s}
+    ("A".."K").each(&@s.method(:<<))
     @s.map!{|s| s.succ!}
     val = "B" 
     @s.map{|s| 
@@ -72,7 +72,7 @@ class StringArrayTest < Minitest::Test
 
   def test_each_tatara_string_array
     @s = Tatara::StringArray.new
-    ("A".."K").each{|s| @s << s}
+    ("A".."K").each(&@s.method(:<<))
     val = "A" 
     @s.map{|s| 
       assert_equal val, s
@@ -82,7 +82,7 @@ class StringArrayTest < Minitest::Test
 
   def test_each_with_index_tatara_string_array
     @s = Tatara::StringVector.new
-    ("A".."K").each{|i| @s << i}
+    ("A".."K").each(&@s.method(:<<))
     val = "A"
     index = 0
     @s.each_with_index{|v, i|
@@ -96,28 +96,28 @@ class StringArrayTest < Minitest::Test
   def test_duplicate_method_string_array
     @s1 = Tatara::StringArray.new
 
-    (1..10).each{|i| @s1 << i.to_s}
+    ("A".."K").each(&@s1.method(:<<))
 
     @s2 = Tatara::StringArray.new
 
-    (10..20).each{|i| @s2 << i.to_s}
+    ("K".."T").each(&@s2.method(:<<))
 
     @s = @s1.duplicate @s2
 
-    @s.map{|i| assert_equal "10", i }
+    @s.map{|s| assert_equal "K", s }
   end
 
   def test_duplicate_operator_string_array
     @s1 = Tatara::StringArray.new
 
-    (1..10).each{|i| @s1 << i.to_s}
+    ("A".."K").each(&@s1.method(:<<))
 
     @s2 = Tatara::StringArray.new
 
-    (10..20).each{|i| @s2 << i.to_s}
+    ("K".."T").each(&@s2.method(:<<))
 
     @s = @s1 & @s2
 
-    @s.map{|s| assert_equal "10", s }
+    @s.map{|s| assert_equal "K", s }
   end
 end
