@@ -133,4 +133,15 @@ class IntVectorTest < Minitest::Test
 
     @i.map{|i| assert_equal 10, i }
   end
+
+  def test_sort_method_int_vector
+    data = [4, 9, 1]
+    @i = Tatara::IntVector.new
+    data.each(&@i.method(:<<))
+    @i = @i.sort
+    data.sort!
+    data.each_with_index{|v, i|
+      assert_equal v, @i[i]
+    }
+  end
 end
