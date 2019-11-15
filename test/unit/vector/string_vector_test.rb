@@ -140,4 +140,15 @@ class StringVectorTest < Minitest::Test
       assert_equal v, @s[i]
     }
   end
+
+  def test_destructive_sort_method_string_vector
+    data = ["4", "9", "1"]
+    @s = Tatara::StringVector.new
+    data.each(&@s.method(:<<))
+    @s.sort!
+    data.sort!
+    data.each_with_index{|v, i|
+      assert_equal v, @s[i]
+    }
+  end
 end

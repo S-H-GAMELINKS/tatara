@@ -140,4 +140,15 @@ class FloatVectorTest < Minitest::Test
       assert_equal v, @f[i]
     }
   end
+
+  def test_destructive_sort_method_float_vector
+    data = [4.2, 9.3, 1.2]
+    @f = Tatara::FloatVector.new
+    data.each(&@f.method(:<<))
+    @f.sort!
+    data.sort!
+    data.each_with_index{|v, i|
+      assert_equal v, @f[i]
+    }
+  end
 end

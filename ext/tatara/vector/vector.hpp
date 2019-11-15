@@ -23,6 +23,7 @@ class Vector {
         constexpr Vector<T>& push_back_object(const T var);
         constexpr Vector<T> duplicate(const Vector<T> vec);
         constexpr Vector<T>& sort();
+        constexpr Vector<T>& destructive_sort();
 };
 
 template <class T>
@@ -102,6 +103,12 @@ constexpr Vector<T> Vector<T>::duplicate(const Vector<T> vec) {
 
 template <class T>
 constexpr Vector<T>& Vector<T>::sort() {
+    std::sort(this->container.begin(), this->container.end());
+    return *this;
+}
+
+template <class T>
+constexpr Vector<T>& Vector<T>::destructive_sort() {
     std::sort(this->container.begin(), this->container.end());
     return *this;
 }
