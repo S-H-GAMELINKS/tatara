@@ -134,3 +134,15 @@ Convert to `Integer` for instance value.
 @s.to_s
 # => Conver to Integer.
 ```
+
+### Tatara::String#clear
+
+Clear instance value.
+
+```ruby
+@s = Tatara::String.new
+@s.val = "42"
+# => Set "42"
+@s.clear
+# => Clear instance value. Value is ""
+```
