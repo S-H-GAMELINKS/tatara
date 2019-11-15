@@ -40,3 +40,13 @@ Access by key.
 puts @i[0]
 # => 42
 ```
+
+### Tatara::IntIntMap#\[\]=
+
+Set value by key.
+
+```ruby
+@i = Tatara::IntIntMap.new
+@i[0] = 42
+# => Set value is 42.
+```
