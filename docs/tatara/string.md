@@ -22,3 +22,12 @@ But, can not set `Integer` & `Float` value.
 @s.val = 4.2
 # => Error!
 ```
+
+## Methods
+### Tatara::String.new
+
+Create new `Tatara::String` instance.  And init `value` is `""`
+
+```ruby
+@s = Tatara::String.new
+```
