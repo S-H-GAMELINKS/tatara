@@ -41,3 +41,13 @@ return `Tatara::String` instance value.
 puts @s.value
 # => Show ""
 ```
+
+### Tatara::String#val
+
+return `Tatara::String` instance value.
+
+```ruby
+@s = Tatara::String.new
+puts @s.val
+# => Show ""
+```
