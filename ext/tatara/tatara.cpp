@@ -119,7 +119,8 @@ extern "C" {
             .define_method("<<", &Vector<int>::push_back_object)
             .define_method("duplicate", &Vector<int>::duplicate)
             .define_method("sort", &Vector<int>::sort)
-            .define_method("sort!", &Vector<int>::destructive_sort);
+            .define_method("sort!", &Vector<int>::destructive_sort)
+            .define_method("reverse", &Vector<int>::reverse);
 
         Data_Type<Vector<double>> rb_cFloatVector = define_class_under<Vector<double>>(rb_mTatara, "FloatVector")
             .define_constructor(Constructor<Vector<double>>())
@@ -134,7 +135,8 @@ extern "C" {
             .define_method("<<", &Vector<double>::push_back_object)
             .define_method("duplicate", &Vector<double>::duplicate)
             .define_method("sort", &Vector<double>::sort)
-            .define_method("sort!", &Vector<double>::destructive_sort);
+            .define_method("sort!", &Vector<double>::destructive_sort)
+            .define_method("reverse", &Vector<double>::reverse);
 
         Data_Type<Vector<std::string>> rb_cStringVector = define_class_under<Vector<std::string>>(rb_mTatara, "StringVector")
             .define_constructor(Constructor<Vector<std::string>>())
@@ -149,7 +151,8 @@ extern "C" {
             .define_method("<<", &Vector<std::string>::push_back_object)
             .define_method("duplicate", &Vector<std::string>::duplicate)
             .define_method("sort", &Vector<std::string>::sort)
-            .define_method("sort!", &Vector<std::string>::destructive_sort);
+            .define_method("sort!", &Vector<std::string>::destructive_sort)
+            .define_method("reverse", &Vector<std::string>::reverse);
 
         Data_Type<CppArray<int>> rb_cIntArray = define_class_under<CppArray<int>>(rb_mTatara, "IntArray")
             .define_constructor(Constructor<CppArray<int>>())
