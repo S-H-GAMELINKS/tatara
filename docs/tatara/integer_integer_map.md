@@ -29,3 +29,14 @@ Create new `Tatara::IntIntMap` instance.
 ```ruby
 @i = Tatara::IntIntMap.new
 ```
+
+### Tatara::IntIntMap#\[\]
+
+Access by key.
+
+```ruby
+@i = Tatara::IntIntMap.new
+@i[0] = 42
+puts @i[0]
+# => 42
+```
