@@ -110,3 +110,16 @@ puts @s.value == "42"
 puts @s.value == "62"
 # => false
 ```
+
+### Tatara::String#val==
+
+Check instance value, and return `Boolean`.
+
+```ruby 
+@s = Tatara::String.new
+@s.val = "42"
+puts @s.val == "42"
+# => true
+puts @s.val == "62"
+# => false
+```
