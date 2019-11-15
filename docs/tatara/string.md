@@ -185,3 +185,15 @@ puts @s.slice(0, 3)
 puts @s.slice(0, 4)
 # => "hell"
 ```
+
+### Tatara::String#slice!
+
+Slice `Tatara::String` value, and Reset sliced value.
+
+```ruby
+@s = Tatara::String.new
+@s <<= "hello"
+@s.slice!(0, 3)
+puts @s.val
+# => "hel"
+```
