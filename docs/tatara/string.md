@@ -97,3 +97,16 @@ Add and Set instance value for `Tatara::String`.
 @i.val += "21"
 # => Value is "212121"
 ```
+
+### Tatara::String#value==
+
+Check instance value, and return `Boolean`.
+
+```ruby 
+@s = Tatara::String.new
+@s.value = "42"
+puts @s.value == "42"
+# => true
+puts @s.value == "62"
+# => false
+```
