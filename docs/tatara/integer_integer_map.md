@@ -17,7 +17,7 @@ But, you can use `Float` for key & value.
 But, can not set `String`.
 
 ```ruby
-@i = Tatara::Integer.new
+@i = Tatara::IntIntMap.new
 @ival = "42"
 # => Error!
 ```
