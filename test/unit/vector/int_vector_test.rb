@@ -138,10 +138,11 @@ class IntVectorTest < Minitest::Test
     data = [4, 9, 1]
     @i = Tatara::IntVector.new
     data.each(&@i.method(:<<))
-    @i = @i.sort
+    @sorted = @i.sort
     data.sort!
     data.each_with_index{|v, i|
-      assert_equal v, @i[i]
+      assert_equal v, @sorted[i]
+      assert_equal false, v == @i[i]
     }
   end
 
