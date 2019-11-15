@@ -134,10 +134,11 @@ class FloatVectorTest < Minitest::Test
     data = [4.2, 9.3, 1.2]
     @f = Tatara::FloatVector.new
     data.each(&@f.method(:<<))
-    @f = @f.sort
+    @sorted = @f.sort
     data.sort!
     data.each_with_index{|v, i|
-      assert_equal v, @f[i]
+      assert_equal v, @sorted[i]
+      assert_equal false, v == @f[i]
     }
   end
 
