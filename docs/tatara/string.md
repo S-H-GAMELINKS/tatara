@@ -71,3 +71,16 @@ Set instance value for `Tatara::String`.
 @s.val = "42"
 # => Set "42"
 ```
+
+### Tatara::String#value+= 
+
+Add and Set instance value for `Tatara::String`.
+
+```ruby
+@i = Tatara::String.new
+@i.value = "21"
+@i.value += "21"
+# => Value is "2121"
+@i.value += "21"
+# => Value is "212121"
+```
