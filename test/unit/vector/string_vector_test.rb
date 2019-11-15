@@ -134,10 +134,11 @@ class StringVectorTest < Minitest::Test
     data = ["4", "9", "1"]
     @s = Tatara::StringVector.new
     data.each(&@s.method(:<<))
-    @s = @s.sort
+    @sorted = @s.sort
     data.sort!
     data.each_with_index{|v, i|
-      assert_equal v, @s[i]
+      assert_equal v, @sorted[i]
+      assert_equal false, v == @s[i]
     }
   end
 
