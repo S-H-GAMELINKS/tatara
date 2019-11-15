@@ -159,3 +159,16 @@ puts @s.val
 puts @s.val
 # => "50"
 ```
+
+### Tatara::String#\[\]
+
+Access by Index.
+
+```ruby
+@s = Tatara::String.new
+@s <<= "hello"
+puts @s[0]
+# => "h"
+puts @s[1]
+# => "e"
+```
