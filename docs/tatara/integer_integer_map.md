@@ -18,7 +18,7 @@ But, can not set `String`.
 
 ```ruby
 @i = Tatara::IntIntMap.new
-@ival = "42"
+@i[0] = "42"
 # => Error!
 ```
 
