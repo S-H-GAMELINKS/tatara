@@ -1,0 +1,24 @@
+# Tatara::String
+## About
+
+`Tatara::String` is `String` class like `static type programming lang`.
+
+`Tatara::String` can set `val` for `String`.
+
+```ruby
+@s = Tatara::String.new
+@s.val = "hoge"
+# => Set "hoge"
+@s.val = "fuga"
+# => Set "fuga"
+```
+
+But, can not set `Integer` & `Float` value.
+
+```ruby
+@s = Tatara::String.new
+@s.val = 42
+# => Error!
+@s.val = 4.2
+# => Error!
+```
