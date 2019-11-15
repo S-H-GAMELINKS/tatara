@@ -31,3 +31,13 @@ Create new `Tatara::String` instance.  And init `value` is `""`
 ```ruby
 @s = Tatara::String.new
 ```
+
+### Tatara::String#value
+
+return `Tatara::String` instance value.
+
+```ruby
+@s = Tatara::String.new
+puts @s.value
+# => Show ""
+```
