@@ -24,7 +24,7 @@ But, can not set `Integer` & `Float` value.
 ```
 
 ## Methods
-### Tatara::String.new
+### Tatara::String#new
 
 Create new `Tatara::String` instance.  And init `value` is `""`
 
