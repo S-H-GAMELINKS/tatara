@@ -172,3 +172,16 @@ puts @s[0]
 puts @s[1]
 # => "e"
 ```
+
+### Tatara::String#slice
+
+Slice `Tatara::String` value.
+
+```ruby
+@s = Tatara::String.new
+@s <<= "hello"
+puts @s.slice(0, 3)
+# => "hel"
+puts @s.slice(0, 4)
+# => "hell"
+```
