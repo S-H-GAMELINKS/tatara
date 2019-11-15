@@ -146,3 +146,16 @@ Clear instance value.
 @s.clear
 # => Clear instance value. Value is ""
 ```
+
+### Tatara::String#operator<<
+
+Set instance value for `Tatara::String`.
+
+```ruby
+@s = Tatara::String.new << "42"
+puts @s.val
+# => "42"
+@s = @s << "50"
+puts @s.val
+# => "50"
+```
