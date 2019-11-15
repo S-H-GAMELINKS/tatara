@@ -152,4 +152,15 @@ class FloatVectorTest < Minitest::Test
       assert_equal v, @f[i]
     }
   end
+
+  def test_reverse_method_float_vector
+    data = [4.2, 1.2, 9.3]
+    @f = Tatara::FloatVector.new
+    data.each(&@f.method(:<<))
+    @reversed = @f.reverse
+    data.reverse!
+    data.each_with_index{|v, i|
+      assert_equal v, @reversed[i]
+    }
+  end
 end
