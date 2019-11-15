@@ -21,3 +21,11 @@ But, can not set `String`.
 @ival = "42"
 # => Error!
 ```
+
+## Methods
+### Tatara::IntIntMap#new
+
+Create new `Tatara::IntIntMap` instance.
+```ruby
+@i = Tatara::IntIntMap.new
+```
