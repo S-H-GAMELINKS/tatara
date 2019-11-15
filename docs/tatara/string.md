@@ -123,3 +123,14 @@ puts @s.val == "42"
 puts @s.val == "62"
 # => false
 ```
+
+### Tatara::String#to_i
+
+Convert to `Integer` for instance value.
+
+```ruby
+@s = Tatara::String.new
+@s.val = "42"
+@s.to_s
+# => Conver to Integer.
+```
