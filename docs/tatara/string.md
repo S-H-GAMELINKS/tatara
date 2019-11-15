@@ -77,11 +77,11 @@ Set instance value for `Tatara::String`.
 Add and Set instance value for `Tatara::String`.
 
 ```ruby
-@i = Tatara::String.new
-@i.value = "21"
-@i.value += "21"
+@s = Tatara::String.new
+@s.value = "21"
+@s.value += "21"
 # => Value is "2121"
-@i.value += "21"
+@s.value += "21"
 # => Value is "212121"
 ```
 
@@ -90,11 +90,11 @@ Add and Set instance value for `Tatara::String`.
 Add and Set instance value for `Tatara::String`.
 
 ```ruby
-@i = Tatara::String.new
-@i.val = "21"
-@i.val += "21"
+@s = Tatara::String.new
+@s.val = "21"
+@s.val += "21"
 # => Value is "2121"
-@i.val += "21"
+@s.val += "21"
 # => Value is "212121"
 ```
 
