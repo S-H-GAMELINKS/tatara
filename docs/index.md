@@ -68,3 +68,5 @@ require 'tatara'
 ### [Tatara::Float](./tatara/float.md)
 
 ### [Tatara::String](./tatara/string.md)
+
+### [Tatara::IntIntMap](./tatara/integer_integer_map.md)
