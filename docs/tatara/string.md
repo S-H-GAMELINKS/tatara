@@ -52,7 +52,6 @@ puts @s.val
 # => Show ""
 ```
 
-
 ### Tatara::String#value=
 
 Set instance value for `Tatara::String`.
