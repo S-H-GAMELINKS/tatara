@@ -55,7 +55,7 @@ Set value by index.
 
 ### Tatara::FloatVector#emplace_back
 
-Create new value on end of `Tatara::intVector`.
+Create new value on end of `Tatara::FloatVector`.
 
 ```ruby
 @f = Tatara::FloatVector.new
@@ -65,7 +65,7 @@ Create new value on end of `Tatara::intVector`.
 
 ### Tatara::FloatVector#size
 
-Size of `Tatara::intVector`.
+Size of `Tatara::FloatVector`.
 
 ```ruby
 @f = Tatara::FloatVector.new
