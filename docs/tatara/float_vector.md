@@ -158,3 +158,18 @@ It's likes `Array#each`
 }
 # => 1.0 2.0 3.0
 ```
+
+### Tatara::FloatVector#each_with_index
+
+`each_with_index` method for `Tatara::FloatVector`.  
+It's likes `Array#each_with_index`
+
+```ruby
+@f = Tatara::FloatVector.new
+(1..3).each{|i| @f << i }
+# => Set new value's
+@i.each_with_index{|v, i|
+    puts "#{i}:#{v}"
+}
+# => 1:1.0 2:2.0 3:3.0
+```
