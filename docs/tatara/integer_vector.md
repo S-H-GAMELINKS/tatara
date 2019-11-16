@@ -198,3 +198,14 @@ Intersection value's
 @i = @i1 & @i2
 # => [10]
 ```
+
+### Tatara::IntVector#sort
+
+Sort value's.
+
+```ruby
+@i = Tatara::IntVector.new
+[9, 1, 4].each{|i| @i << i }
+@i = @i.sort
+# => [1, 4, 9]
+```
