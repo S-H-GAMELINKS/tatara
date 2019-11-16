@@ -102,3 +102,13 @@ Sum value's for `Tatara::FloatVector`.
 puts @f.sum
 # => 6.0
 ```
+
+### Tatara::FloatVector#operator<<
+
+Create new value on end of `Tatara::FloatVector`.
+
+```ruby
+@f = Tatara::FloatVector.new
+@f << 4.2
+# => Set value 4.2 on end of `Tatara::FloatVector`
+```
