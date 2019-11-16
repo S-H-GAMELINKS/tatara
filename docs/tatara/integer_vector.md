@@ -51,3 +51,13 @@ Set value by index.
 @i[0] = 42
 # => Set value 42 for index of 0.
 ```
+
+### Tatara::IntVector#emplace_back
+
+Create new value on end of `Tatara::intVector`.
+
+```ruby
+@i = Tatara::IntVector.new
+@i.emplace_back(42)
+# => Set value 42 on end of `Tatara::intVector`
+```
