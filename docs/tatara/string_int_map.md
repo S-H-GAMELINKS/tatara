@@ -23,3 +23,12 @@ But, can not use `Integer` & `Float` for key.
 @i[4.2] = 4.2
 # => Error!
 ```
+
+## Methods
+### Tatara::StringIntMap#new
+
+Create new `Tatara::StringIntMap` instance.
+
+```ruby
+@i = Tatara::StringIntMap.new
+```
