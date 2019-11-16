@@ -30,3 +30,15 @@ Create new `Tatara::FloatVector` instance.
 ```ruby
 @f = Tatara::FloatVector.new
 ```
+
+
+### Tatara::FloatVector#\[\]
+
+Access by index.
+
+```ruby
+@f = Tatara::FloatVector.new
+@f[0] = 4.2
+puts @i[0]
+# => 4.2
+```
