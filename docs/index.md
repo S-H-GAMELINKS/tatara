@@ -69,6 +69,8 @@ require 'tatara'
 
 ### [Tatara::String](./tatara/string.md)
 
+### [Tatara::StringIntMap](./tatara/string_int_map.md)
+
 ### [Tatara::StringFloatMap](./tatara/string_float_map.md)
 
 ### [Tatara::StringStringMap](./tatara/string_string_map.md)
