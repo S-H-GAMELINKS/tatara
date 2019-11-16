@@ -61,3 +61,16 @@ Create new value on end of `Tatara::intVector`.
 @i.emplace_back(42)
 # => Set value 42 on end of `Tatara::intVector`
 ```
+
+### Tatara::IntVector#size
+
+Size of `Tatara::intVector`.
+
+```ruby
+@i = Tatara::IntVector.new
+puts @i.size
+# => 0
+@i.emplace_back(42)
+puts @i.size
+# => 1
+```
