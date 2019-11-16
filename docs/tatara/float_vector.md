@@ -62,3 +62,16 @@ Create new value on end of `Tatara::intVector`.
 @f.emplace_back(4.2)
 # => Set value 4.2 on end of `Tatara::intVector`
 ```
+
+### Tatara::FloatVector#size
+
+Size of `Tatara::intVector`.
+
+```ruby
+@f = Tatara::FloatVector.new
+puts @f.size
+# => 0
+@f.emplace_back(4.2)
+puts @f.size
+# => 1
+```
