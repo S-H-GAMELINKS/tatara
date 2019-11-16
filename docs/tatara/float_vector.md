@@ -89,3 +89,16 @@ puts @f.size
 puts @f.size
 # => 0
 ```
+
+### Tatara::FloatVector#sum
+
+Sum value's for `Tatara::FloatVector`.
+
+```ruby
+@f = Tatara::FloatVector.new
+(1..3).each{|i|
+    @f.emplace_back(i)
+}
+puts @f.sum
+# => 6.0
+```
