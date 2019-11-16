@@ -43,3 +43,14 @@ Access by key.
 puts @i["A"]
 # => 4.2
 ```
+
+
+### Tatara::StringFloatMap#\[\]=
+
+Set value by key.
+
+```ruby
+@f = Tatara::StringFloatMap.new
+@f["A"] = 4.2
+# => Set value is 4.2
+```
