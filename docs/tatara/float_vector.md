@@ -127,3 +127,19 @@ It's likes `Array#map`
 }
 # => 1.0 2.0 3.0
 ```
+
+### Tatara::FloatVector#map!
+
+`map!` method for `Tatara::FloatVector`.  
+It's likes `Array#map!`
+
+```ruby
+@f = Tatara::FloatVector.new
+(1..3).each{|i| @f << i }
+# => Set new value's
+@f.map!{|f| f * 2.0 }
+@f.map{|f|
+    puts i
+}
+# => 2.0 4.0 6.0
+```
