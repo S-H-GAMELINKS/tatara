@@ -111,3 +111,18 @@ Create new value on end of `Tatara::intVector`.
 @i << 42
 # => Set value 42 on end of `Tatara::intVector`
 ```
+
+### Tatara::IntVector#map
+
+`map` method for `Tatara::IntVector`.  
+It's likes `Array#map`
+
+```ruby
+@i = Tatara::IntVector.new
+(1..3).each{|i| @i << i }
+# => Set new value's
+@i.map{|i|
+    puts i
+}
+# => 1 2 3
+```
