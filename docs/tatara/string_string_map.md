@@ -23,3 +23,12 @@ But, can not set `Integer` & `Float`.
 @s["B"] = 4.2
 # => Error!
 ```
+
+## Methods
+### Tatara::StringStringMap#new
+
+Create new `Tatara::StringStringMap` instance.
+
+```ruby
+@s = Tatara::StringStringMap.new
+```
