@@ -221,3 +221,14 @@ Sort value's.
 @f.sort!
 # => [1.0, 4.0, 9.0]
 ```
+
+### Tatara::FloatVector#reverse
+
+Reverse value's.
+
+```ruby
+@f = Tatara::FloatVector.new
+[9, 1, 4].each{|i| @f << i }
+@f = @f.reverse
+# => [4.0, 1.0, 9.0]
+```
