@@ -199,3 +199,14 @@ Intersection value's
 @f = @f1 & @f2
 # => [10.0]
 ```
+
+### Tatara::FloatVector#sort
+
+Sort value's.
+
+```ruby
+@f = Tatara::FloatVector.new
+[9, 1, 4].each{|i| @f << i }
+@f = @f.sort
+# => [1.0, 4.0, 9.0]
+```
