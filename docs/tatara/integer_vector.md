@@ -101,3 +101,13 @@ Sum value's for `Tatara::IntVector`.
 puts @i.sum
 # => 6
 ```
+
+### Tatara::IntVector#operator<<
+
+Create new value on end of `Tatara::intVector`.
+
+```ruby
+@i = Tatara::IntVector.new
+@i << 42
+# => Set value 42 on end of `Tatara::intVector`
+```
