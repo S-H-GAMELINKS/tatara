@@ -209,3 +209,14 @@ Sort value's.
 @i = @i.sort
 # => [1, 4, 9]
 ```
+
+### Tatara::IntVector#sort!
+
+Sort value's.
+
+```ruby
+@i = Tatara::IntVector.new
+[9, 1, 4].each{|i| @i << i }
+@i.sort!
+# => [1, 4, 9]
+```
