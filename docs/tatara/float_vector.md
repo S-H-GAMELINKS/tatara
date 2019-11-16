@@ -53,3 +53,12 @@ Set value by index.
 # => Set value 4.2 for index of 0.
 ```
 
+### Tatara::FloatVector#emplace_back
+
+Create new value on end of `Tatara::intVector`.
+
+```ruby
+@f = Tatara::FloatVector.new
+@f.emplace_back(4.2)
+# => Set value 4.2 on end of `Tatara::intVector`
+```
