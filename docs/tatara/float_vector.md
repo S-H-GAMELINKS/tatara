@@ -112,3 +112,18 @@ Create new value on end of `Tatara::FloatVector`.
 @f << 4.2
 # => Set value 4.2 on end of `Tatara::FloatVector`
 ```
+
+### Tatara::FloatVector#map
+
+`map` method for `Tatara::FloatVector`.  
+It's likes `Array#map`
+
+```ruby
+@f = Tatara::FloatVector.new
+(1..3).each{|i| @f << i }
+# => Set new value's
+@i.map{|f|
+    puts f
+}
+# => 1.0 2.0 3.0
+```
