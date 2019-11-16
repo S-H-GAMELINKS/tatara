@@ -33,3 +33,13 @@ Create new `Tatara::StringFloatMap` instance.
 @f = Tatara::StringFloatMap.new
 ```
 
+### Tatara::StringFloatMap#\[\]
+
+Access by key.
+
+```ruby
+@s = Tatara::StringFloatMap.new
+@s["A"] = 4.2
+puts @i["A"]
+# => 4.2
+```
