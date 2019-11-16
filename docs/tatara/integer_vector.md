@@ -30,3 +30,14 @@ Create new `Tatara::IntVector` instance.
 ```ruby
 @i = Tatara::IntVector.new
 ```
+
+### Tatara::IntVector#\[\]
+
+Access by index.
+
+```ruby
+@i = Tatara::IntVector.new
+@i[0] = 42
+puts @i[0]
+# => 42
+```
