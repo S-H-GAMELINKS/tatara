@@ -220,3 +220,14 @@ Sort value's.
 @i.sort!
 # => [1, 4, 9]
 ```
+
+### Tatara::IntVector#reverse
+
+Reverse value's.
+
+```ruby
+@i = Tatara::IntVector.new
+[9, 1, 4].each{|i| @i << i }
+@i = @i.reverse
+# => [4, 1, 9]
+```
