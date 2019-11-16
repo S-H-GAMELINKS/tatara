@@ -32,3 +32,14 @@ Create new `Tatara::StringIntMap` instance.
 ```ruby
 @i = Tatara::StringIntMap.new
 ```
+
+### Tatara::StringIntMap#\[\]
+
+Access by key.
+
+```ruby
+@i = Tatara::StringIntMap.new
+@i["A"] = 42
+puts @i["A"]
+# => 42
+```
