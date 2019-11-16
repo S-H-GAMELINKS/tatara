@@ -88,3 +88,16 @@ puts @i.size
 puts @i.size
 # => 0
 ```
+
+### Tatara::IntVector#sum
+
+Sum value's for `Tatara::IntVector`.
+
+```ruby
+@i = Tatara::IntVector.new
+(1..3).each{|i|
+    @i.emplace_back(i)
+}
+puts @i.sum
+# => 6
+```
