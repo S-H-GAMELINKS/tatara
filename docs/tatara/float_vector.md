@@ -75,3 +75,17 @@ puts @f.size
 puts @f.size
 # => 1
 ```
+
+### Tatara::FloatVector#clear
+
+Clear `Tatara::FloatVector`.
+
+```ruby
+@f = Tatara::FloatVector.new
+@f.emplace_back(4.2)
+puts @f.size
+# => 1
+@f.clear
+puts @f.size
+# => 0
+```
