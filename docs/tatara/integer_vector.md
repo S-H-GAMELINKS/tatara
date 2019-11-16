@@ -126,3 +126,19 @@ It's likes `Array#map`
 }
 # => 1 2 3
 ```
+
+### Tatara::IntVector#map!
+
+`map!` method for `Tatara::IntVector`.  
+It's likes `Array#map!`
+
+```ruby
+@i = Tatara::IntVector.new
+(1..3).each{|i| @i << i }
+# => Set new value's
+@i.map!{|i| i * 2 }
+@i.map{|i|
+    puts i
+}
+# => 2 4 6
+```
