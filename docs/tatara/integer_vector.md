@@ -157,3 +157,18 @@ It's likes `Array#each`
 }
 # => 1 2 3
 ```
+
+### Tatara::IntVector#each_with_index
+
+`each_with_index` method for `Tatara::IntVector`.  
+It's likes `Array#each_with_index`
+
+```ruby
+@i = Tatara::IntVector.new
+(1..3).each{|i| @i << i }
+# => Set new value's
+@i.each_with_index{|v, i|
+    puts "#{i}:#{v}"
+}
+# => 1:1 2:2 3:3
+```
