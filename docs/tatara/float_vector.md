@@ -122,7 +122,7 @@ It's likes `Array#map`
 @f = Tatara::FloatVector.new
 (1..3).each{|i| @f << i }
 # => Set new value's
-@i.map{|f|
+@f.map{|f|
     puts f
 }
 # => 1.0 2.0 3.0
