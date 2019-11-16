@@ -74,3 +74,17 @@ puts @i.size
 puts @i.size
 # => 1
 ```
+
+### Tatara::IntVector#clear
+
+Clear `Tatara::intVector`.
+
+```ruby
+@i = Tatara::IntVector.new
+@i.emplace_back(42)
+puts @i.size
+# => 1
+@i.clear
+puts @i.size
+# => 0
+```
