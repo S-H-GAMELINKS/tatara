@@ -98,3 +98,18 @@ Create new value on end of `Tatara::FloatArray`.
 @f << 4.2
 # => Set value 4.2 on end of `Tatara::FloatArray`
 ```
+
+### Tatara::FloatArray#map
+
+`map` method for `Tatara::FloatArray`.  
+It's likes `Array#map`
+
+```ruby
+@f = Tatara::FloatArray.new
+(1..3).each{|i| @f << i }
+# => Set new value's
+@f.map{|f|
+    puts f
+}
+# => 1.0 2.0 3.0
+```
