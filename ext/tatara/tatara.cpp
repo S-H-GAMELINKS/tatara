@@ -165,7 +165,7 @@ extern "C" {
             .define_method("size", &CppArray<int>::size)
             .define_method("clear", &CppArray<int>::clear)
             .define_method("<<", &CppArray<int>::push_back_object)
-            .define_method("duplicate", &CppArray<int>::duplicate)
+            .define_method("intersection", &CppArray<int>::intersection)
             .define_method("sort", &CppArray<int>::sort)
             .define_method("sort!", &CppArray<int>::destructive_sort);
 
@@ -179,7 +179,7 @@ extern "C" {
             .define_method("size", &CppArray<double>::size)
             .define_method("clear", &CppArray<double>::clear)
             .define_method("<<", &CppArray<double>::push_back_object)
-            .define_method("duplicate", &CppArray<double>::duplicate)
+            .define_method("intersection", &CppArray<double>::intersection)
             .define_method("sort", &CppArray<double>::sort)
             .define_method("sort!", &CppArray<double>::destructive_sort);
 
@@ -193,7 +193,7 @@ extern "C" {
             .define_method("size", &CppArray<std::string>::size)
             .define_method("clear", &CppArray<std::string>::clear)
             .define_method("<<", &CppArray<std::string>::push_back_object)
-            .define_method("duplicate", &CppArray<std::string>::duplicate)
+            .define_method("intersection", &CppArray<std::string>::intersection)
             .define_method("sort", &CppArray<std::string>::sort)
             .define_method("sort!", &CppArray<std::string>::destructive_sort);
 

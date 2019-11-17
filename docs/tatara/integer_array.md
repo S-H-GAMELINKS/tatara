@@ -161,7 +161,7 @@ It's likes `Array#each_with_index`
 # => 1:1 2:2 3:3
 ```
 
-### Tatara::IntArray#duplicate
+### Tatara::IntArray#intersection
 
 Intersection value's
 
@@ -170,7 +170,7 @@ Intersection value's
 (1..10).each{|i| @i1 << i}
 @i2 = Tatara::IntArray.new
 (10..20).each{|i| @i2 << i}
-@i = @i1.duplicate @i2
+@i = @i1.intersection @i2
 # => [10]
 ```
 

@@ -93,7 +93,7 @@ class FloatArrayTest < Minitest::Test
     }
   end
 
-  def test_duplicate_method_float_array
+  def test_intersection_method_float_array
     @f1 = Tatara::FloatArray.new
 
     (1..10).each(&@f1.method(:<<))
@@ -102,12 +102,12 @@ class FloatArrayTest < Minitest::Test
 
     (10..20).each(&@f2.method(:<<))
 
-    @f = @f1.duplicate @f2
+    @f = @f1.intersection @f2
 
     @f.map{|i| assert_equal 10.0, i }
   end
 
-  def test_duplicate_operator_float_array
+  def test_intersection_operator_float_array
     @f1 = Tatara::FloatArray.new
 
     (1..10).each(&@f1.method(:<<))
