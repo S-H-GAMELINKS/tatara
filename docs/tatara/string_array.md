@@ -74,3 +74,17 @@ puts @s.size
 puts @s.size
 # => 1
 ```
+
+### Tatara::StringArray#clear
+
+Clear `Tatara::StringArray`.
+
+```ruby
+@s = Tatara::StringArray.new
+@s.push("42")
+puts @s.size
+# => 1
+@s.clear
+puts @s.size
+# => 0
+```
