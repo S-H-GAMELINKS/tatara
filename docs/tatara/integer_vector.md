@@ -231,3 +231,15 @@ Reverse value's.
 @i = @i.reverse
 # => [4, 1, 9]
 ```
+
+### Tatara::IntVector#first
+
+Get first value of `Tatara::IntVector`.
+
+```ruby
+@i = Tatara::IntVector.new
+(1..3).each{|i| @i << i }
+# => Set new value's
+puts @i.first
+# => 1
+```

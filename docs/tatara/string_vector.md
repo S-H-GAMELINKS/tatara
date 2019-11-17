@@ -233,3 +233,15 @@ Reverse value's.
 @s = @s.reverse
 # => ["4", "1", "9"]
 ```
+
+### Tatara::StringVector#first
+
+Get first value of `Tatara::StringVector`.
+
+```ruby
+@s = Tatara::StringVector.new
+("A".."C").each{|s| @s << s }
+# => Set new value's
+puts @s.first
+# => A
+```
