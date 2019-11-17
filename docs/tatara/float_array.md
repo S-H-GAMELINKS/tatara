@@ -159,3 +159,16 @@ It's likes `Array#each_with_index`
 }
 # => 1:1.0 2:2.0 3:3.0
 ```
+
+### Tatara::FloatArray#duplicate
+
+Intersection value's
+
+```ruby
+@f1 = Tatara::FloatArray.new
+(1..10).each{|i| @f1 << i}
+@f2 = Tatara::FloatArray.new
+(10..20).each{|i| @f2 << i}
+@f = @f1.duplicate @f2
+# => [10.0]
+```
