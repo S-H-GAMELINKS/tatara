@@ -89,3 +89,16 @@ puts @s.size
 puts @s.size
 # => 0
 ```
+
+### Tatara::StringVector#sum
+
+Sum value's for `Tatara::StringVector`.
+
+```ruby
+@s = Tatara::StringVector.new
+("A".."C").each{|s|
+    @s.emplace_back(s)
+}
+puts @s.sum
+# => "ABC"
+```
