@@ -73,6 +73,8 @@ require 'tatara'
 
 ### [Tatara::FloatVector](./tatara/float_vector.md)
 
+### [Tatara::StringArray](./tatara/string_array.md)]
+
 ### [Tatara::StringVector](./tatara/string_vector.md)
 
 ### [Tatara::IntArray](./tatara/integer_array.md)
