@@ -75,6 +75,8 @@ require 'tatara'
 
 ### [Tatara::StringVector](./tatara/string_vector.md)
 
+### [Tatara::IntArray](./tatara/integer_array.md)
+
 ### [Tatara::StringIntMap](./tatara/string_int_map.md)
 
 ### [Tatara::StringFloatMap](./tatara/string_float_map.md)
