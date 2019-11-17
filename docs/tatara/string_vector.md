@@ -21,3 +21,13 @@ But, can not use `Integer` & `Float` for value.
 @s[0] = 42
 # => Error!
 ```
+
+
+## Methods
+### Tatara::StringVector#new
+
+Create new `Tatara::StringVector` instance.
+
+```ruby
+@s = Tatara::StringVector.new
+```
