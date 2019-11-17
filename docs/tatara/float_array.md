@@ -51,3 +51,13 @@ Set value by index.
 @f[0] = 4.2
 # => Set value 4.2 for index of 0.
 ```
+
+### Tatara::FloatArray#push
+
+Create new value on end of `Tatara::FloatArray`.
+
+```ruby
+@f = Tatara::FloatArray.new
+@f.push(4.2)
+# => Set value 4.2 on end of `Tatara::FloatArray`
+```
