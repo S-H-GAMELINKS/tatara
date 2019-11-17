@@ -19,7 +19,7 @@ class CppArray {
         constexpr int size();
         constexpr void clear();
         constexpr CppArray<T>& push_back_object(const T var);
-        constexpr CppArray<T> duplicate(const CppArray<T> array);
+        constexpr CppArray<T> intersection(const CppArray<T> array);
         constexpr CppArray<T> sort();
         constexpr CppArray<T>& destructive_sort();
 };
@@ -72,7 +72,7 @@ constexpr CppArray<T>& CppArray<T>::push_back_object(const T var) {
 }
 
 template <class T>
-constexpr CppArray<T> CppArray<T>::duplicate(const CppArray<T> array) {
+constexpr CppArray<T> CppArray<T>::intersection(const CppArray<T> array) {
 
     std::vector<T> result;
 

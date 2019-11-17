@@ -159,7 +159,7 @@ It's likes `Array#each_with_index`
 # => 1:A 2:B 3:C
 ```
 
-### Tatara::StringArrayr#duplicate
+### Tatara::StringArrayr#intersection
 
 Intersection value's
 
@@ -168,7 +168,7 @@ Intersection value's
 ("A".."C").each{|s| @s1 << s}
 @s2 = Tatara::StringArray.new
 ("C".."F").each{|s| @s2 << s}
-@s = @s1.duplicate @s2
+@s = @s1.intersection @s2
 # => ["C"]
 ```
 

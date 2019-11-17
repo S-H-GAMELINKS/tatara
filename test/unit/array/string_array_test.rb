@@ -93,7 +93,7 @@ class StringArrayTest < Minitest::Test
     }
   end
 
-  def test_duplicate_method_string_array
+  def test_intersection_method_string_array
     @s1 = Tatara::StringArray.new
 
     ("A".."K").each(&@s1.method(:<<))
@@ -102,12 +102,12 @@ class StringArrayTest < Minitest::Test
 
     ("K".."T").each(&@s2.method(:<<))
 
-    @s = @s1.duplicate @s2
+    @s = @s1.intersection @s2
 
     @s.map{|s| assert_equal "K", s }
   end
 
-  def test_duplicate_operator_string_array
+  def test_intersection_operator_string_array
     @s1 = Tatara::StringArray.new
 
     ("A".."K").each(&@s1.method(:<<))
