@@ -23,6 +23,7 @@ class CppArray {
         constexpr CppArray<T> sort();
         constexpr CppArray<T>& destructive_sort();
         constexpr CppArray<T> reverse();
+        constexpr CppArray<T>& destructive_reverse();
 };
 
 template <class T>
@@ -110,6 +111,12 @@ constexpr CppArray<T> CppArray<T>::reverse() {
     object.container = this->container;
     std::reverse(object.container.begin(), object.container.end());
     return object;
+}
+
+template <class T>
+constexpr CppArray<T>& CppArray<T>::destructive_reverse() {
+    std::reverse(this->container.begin(), this->container.end());
+    return *this;
 }
 
 #endif

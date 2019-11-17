@@ -170,7 +170,8 @@ extern "C" {
             .define_method("intersection", &CppArray<int>::intersection)
             .define_method("sort", &CppArray<int>::sort)
             .define_method("sort!", &CppArray<int>::destructive_sort)
-            .define_method("reverse", &CppArray<int>::reverse);
+            .define_method("reverse", &CppArray<int>::reverse)
+            .define_method("reverse!", &CppArray<int>::destructive_reverse);
 
         Data_Type<CppArray<double>> rb_cFloatArray = define_class_under<CppArray<double>>(rb_mTatara, "FloatArray")
             .define_constructor(Constructor<CppArray<double>>())
@@ -185,7 +186,8 @@ extern "C" {
             .define_method("intersection", &CppArray<double>::intersection)
             .define_method("sort", &CppArray<double>::sort)
             .define_method("sort!", &CppArray<double>::destructive_sort)
-            .define_method("reverse", &CppArray<double>::reverse);
+            .define_method("reverse", &CppArray<double>::reverse)
+            .define_method("reverse!", &CppArray<double>::destructive_reverse);
 
         Data_Type<CppArray<std::string>> rb_cStringArray = define_class_under<CppArray<std::string>>(rb_mTatara, "StringArray")
             .define_constructor(Constructor<CppArray<std::string>>())
@@ -200,7 +202,8 @@ extern "C" {
             .define_method("intersection", &CppArray<std::string>::intersection)
             .define_method("sort", &CppArray<std::string>::sort)
             .define_method("sort!", &CppArray<std::string>::destructive_sort)
-            .define_method("reverse", &CppArray<std::string>::reverse);
+            .define_method("reverse", &CppArray<std::string>::reverse)
+            .define_method("reverse!", &CppArray<std::string>::destructive_reverse);
 
         Data_Type<Map<std::string, int>> rb_cStringIntMap = define_class_under<Map<std::string, int>>(rb_mTatara, "StringIntMap")
             .define_constructor(Constructor<Map<std::string, int>>())

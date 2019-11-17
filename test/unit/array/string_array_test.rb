@@ -147,10 +147,10 @@ class StringArrayTest < Minitest::Test
     data = ["4", "1", "9"]
     @s = Tatara::StringArray.new
     data.each(&@s.method(:<<))
-    @reversed = @s.reverse
+    @s.reverse!
     data.reverse!
     data.each_with_index{|v, i|
-      assert_equal v, @reversed[i]
+      assert_equal v, @s[i]
     }
   end
 end

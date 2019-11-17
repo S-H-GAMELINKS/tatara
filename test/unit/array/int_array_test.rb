@@ -153,4 +153,15 @@ class IntArrayTest < Minitest::Test
       assert_equal v, @reversed[i]
     }
   end
+
+  def test_reverse_method_int_array
+    data = [4, 1, 9]
+    @i = Tatara::IntArray.new
+    data.each(&@i.method(:<<))
+    @i.reverse!
+    data.reverse!
+    data.each_with_index{|v, i|
+      assert_equal v, @i[i]
+    }
+  end
 end
