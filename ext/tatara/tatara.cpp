@@ -220,7 +220,7 @@ extern "C" {
             .define_method("[]=", &Map<int, int>::bracket_equal);
 
         Data_Type<Map<int, double>> rb_cIntFloatMap = define_class_under<Map<int, double>>(rb_mTatara, "IntFloatMap")
-            .define_constructor(Constructor<Map<int, std::double>>())
+            .define_constructor(Constructor<Map<int, double>>())
             .define_method("[]", &Map<int, double>::bracket)
             .define_method("[]=", &Map<int, double>::bracket_equal);
 
