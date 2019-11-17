@@ -131,4 +131,15 @@ class FloatArrayTest < Minitest::Test
       assert_equal v, @f[i]
     }
   end
+
+  def test_destructive_sort_method_float_array
+    @f = Tatara::FloatArray.new
+    data = [4, 9, 1]
+    data.each(&@f.method(:<<))
+    @f.sort!
+    data.sort!
+    data.each_with_index{|v, i|
+      assert_equal v, @f[i]
+    }
+  end
 end
