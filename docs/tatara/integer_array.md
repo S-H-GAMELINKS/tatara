@@ -75,3 +75,17 @@ puts @i.size
 puts @i.size
 # => 1
 ```
+
+### Tatara::IntArray#clear
+
+Clear `Tatara::IntArray`.
+
+```ruby
+@i = Tatara::IntArray.new
+@i.push(42)
+puts @i.size
+# => 1
+@i.clear
+puts @i.size
+# => 0
+```
