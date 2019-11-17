@@ -88,3 +88,5 @@ require 'tatara'
 ### [Tatara::StringStringMap](./tatara/string_string_map.md)
 
 ### [Tatara::IntIntMap](./tatara/integer_integer_map.md)
+
+### [Tatara::FloatIntMap](./tatara/float_integer_map.md)
