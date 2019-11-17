@@ -42,3 +42,13 @@ Access by index.
 puts @i[0]
 # => "42"
 ```
+
+### Tatara::StringVector#\[\]=
+
+Set value by index.
+
+```ruby
+@s = Tatara::StringVector.new
+@s[0] = "42"
+# => Set value "42" for index of 0.
+```
