@@ -120,4 +120,15 @@ class StringArrayTest < Minitest::Test
 
     @s.map{|s| assert_equal "K", s }
   end
+
+  def test_sort_method_string_array
+    @s = Tatara::StringArray.new
+    data = ["4", "9", "1"]
+    data.each(&@s.method(:<<))
+    @s = @s.sort
+    data.sort!
+    data.each_with_index{|v, i|
+      assert_equal v, @s[i]
+    }
+  end
 end

@@ -120,4 +120,15 @@ class IntArrayTest < Minitest::Test
 
     @i.map{|i| assert_equal 10, i }
   end
+
+  def test_sort_method_int_array
+    @i = Tatara::IntArray.new
+    data = [4, 9, 1]
+    data.each(&@i.method(:<<))
+    @i = @i.sort
+    data.sort!
+    data.each_with_index{|v, i|
+      assert_equal v, @i[i]
+    }
+  end
 end
