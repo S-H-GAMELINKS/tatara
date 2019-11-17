@@ -52,3 +52,13 @@ Set value by index.
 @i[0] = 42
 # => Set value 42 for index of 0.
 ```
+
+### Tatara::IntArray#push
+
+Create new value on end of `Tatara::IntArray`.
+
+```ruby
+@i = Tatara::IntArray.new
+@i.push(42)
+# => Set value 42 on end of `Tatara::IntArray`
+```
