@@ -196,6 +196,17 @@ Sort value's.
 # => ["1", "4", "9"]
 ```
 
+### Tatara::StringArray#sort!
+
+Sort value's.
+
+```ruby
+@s = Tatara::StringArray.new
+["9", "1", "4"].each{|s| @s << s }
+@s.sort!
+# => ["1", "4", "9"]
+```
+
 ### Tatara::StringArray#first
 
 Get first value of `Tatara::StringArray`.
