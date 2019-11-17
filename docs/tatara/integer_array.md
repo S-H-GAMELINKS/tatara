@@ -99,3 +99,18 @@ Create new value on end of `Tatara::IntArray`.
 @i << 42
 # => Set value 42 on end of `Tatara::IntArray`
 ```
+
+### Tatara::IntArray#map
+
+`map` method for `Tatara::IntArray`.  
+It's likes `Array#map`
+
+```ruby
+@i = Tatara::IntArray.new
+(1..3).each{|i| @i << i }
+# => Set new value's
+@i.map{|i|
+    puts i
+}
+# => 1 2 3
+```
