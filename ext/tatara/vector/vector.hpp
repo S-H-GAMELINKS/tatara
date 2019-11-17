@@ -21,7 +21,7 @@ class Vector {
         constexpr void clear();
         T sum();
         constexpr Vector<T>& push_back_object(const T var);
-        constexpr Vector<T> duplicate(const Vector<T> vec);
+        constexpr Vector<T> intersection(const Vector<T> vec);
         constexpr Vector<T> sort();
         constexpr Vector<T>& destructive_sort();
         constexpr Vector<T> reverse();
@@ -85,7 +85,7 @@ constexpr Vector<T>& Vector<T>::push_back_object(const T var) {
 }
 
 template <class T>
-constexpr Vector<T> Vector<T>::duplicate(const Vector<T> vec) {
+constexpr Vector<T> Vector<T>::intersection(const Vector<T> vec) {
 
     std::vector<T> result;
 

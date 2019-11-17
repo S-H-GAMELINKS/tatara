@@ -118,7 +118,7 @@ extern "C" {
             .define_method("clear", &Vector<int>::clear)
             .define_method("sum", &Vector<int>::sum)
             .define_method("<<", &Vector<int>::push_back_object)
-            .define_method("duplicate", &Vector<int>::duplicate)
+            .define_method("intersection", &Vector<int>::intersection)
             .define_method("sort", &Vector<int>::sort)
             .define_method("sort!", &Vector<int>::destructive_sort)
             .define_method("reverse", &Vector<int>::reverse);
@@ -134,7 +134,7 @@ extern "C" {
             .define_method("clear", &Vector<double>::clear)
             .define_method("sum", &Vector<double>::sum)
             .define_method("<<", &Vector<double>::push_back_object)
-            .define_method("duplicate", &Vector<double>::duplicate)
+            .define_method("intersection", &Vector<double>::intersection)
             .define_method("sort", &Vector<double>::sort)
             .define_method("sort!", &Vector<double>::destructive_sort)
             .define_method("reverse", &Vector<double>::reverse);
@@ -150,7 +150,7 @@ extern "C" {
             .define_method("clear", &Vector<std::string>::clear)
             .define_method("sum", &Vector<std::string>::sum)
             .define_method("<<", &Vector<std::string>::push_back_object)
-            .define_method("duplicate", &Vector<std::string>::duplicate)
+            .define_method("intersection", &Vector<std::string>::intersection)
             .define_method("sort", &Vector<std::string>::sort)
             .define_method("sort!", &Vector<std::string>::destructive_sort)
             .define_method("reverse", &Vector<std::string>::reverse);

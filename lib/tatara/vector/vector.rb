@@ -19,7 +19,7 @@ module Tatara
         end
 
         def &(other)
-            self.duplicate other
+            self.intersection other
         end
     end
 
