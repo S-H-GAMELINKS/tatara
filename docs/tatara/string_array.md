@@ -112,3 +112,19 @@ It's likes `Array#map`
 }
 # => A B C
 ```
+
+### Tatara::StringArray#map!
+
+`map!` method for `Tatara::StringArray`.  
+It's likes `Array#map!`
+
+```ruby
+@s = Tatara::StringArray.new
+("A".."C").each{|s| @s << s }
+# => Set new value's
+@s.map!{|s| s.succ }
+@s.map{|s|
+    puts s
+}
+# => B C D
+```
