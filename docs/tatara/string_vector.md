@@ -75,3 +75,17 @@ puts @s.size
 puts @s.size
 # => 1
 ```
+
+### Tatara::StringVector#clear
+
+Clear `Tatara::StringVector`.
+
+```ruby
+@s = Tatara::StringVector.new
+@s.emplace_back("42")
+puts @s.size
+# => 1
+@s.clear
+puts @s.size
+# => 0
+```
