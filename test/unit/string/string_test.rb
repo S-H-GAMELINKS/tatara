@@ -25,6 +25,14 @@ class StringTest < Minitest::Test
     assert_equal @i, 42
   end
 
+  def test_tof_tatara_string
+    @s = Tatara::String.new
+    @s.value = "4.2"
+    assert_equal "4.2", @s.value
+    @s = @s.to_f.round(2)
+    assert_equal 4.2, @s
+  end
+
   def test_plus_equal_tatara_string
     @s = Tatara::String.new
     @s.value = "42"
