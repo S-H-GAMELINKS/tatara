@@ -106,7 +106,7 @@ class IntVectorTest < Minitest::Test
     }
   end
 
-  def test_duplicate_method_int_vector
+  def test_intersection_method_int_vector
     @i1 = Tatara::IntVector.new
 
     (1..10).each(&@i1.method(:<<))
@@ -115,12 +115,12 @@ class IntVectorTest < Minitest::Test
 
     (10..20).each(&@i2.method(:<<))
 
-    @i = @i1.duplicate @i2
+    @i = @i1.intersection @i2
 
     @i.map{|i| assert_equal 10, i }
   end
 
-  def test_duplicate_operator_int_vector
+  def test_intersection_operator_int_vector
     @i1 = Tatara::IntVector.new
 
     (1..10).each(&@i1.method(:<<))

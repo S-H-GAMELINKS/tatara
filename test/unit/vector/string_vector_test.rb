@@ -102,7 +102,7 @@ class StringVectorTest < Minitest::Test
     }
   end
 
-  def test_duplicate_method_string_vector
+  def test_intersection_method_string_vector
     @s1 = Tatara::StringVector.new
 
     ("A".."K").each(&@s1.method(:<<))
@@ -111,12 +111,12 @@ class StringVectorTest < Minitest::Test
 
     ("K".."T").each(&@s2.method(:<<))
 
-    @s = @s1.duplicate @s2
+    @s = @s1.intersection @s2
 
     @s.map{|i| assert_equal "K", i }
   end
 
-  def test_duplicate_operator_string_vector
+  def test_intersection_operator_string_vector
     @s1 = Tatara::StringVector.new
 
     ("A".."K").each(&@s1.method(:<<))

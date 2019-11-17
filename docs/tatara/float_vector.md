@@ -174,7 +174,7 @@ It's likes `Array#each_with_index`
 # => 1:1.0 2:2.0 3:3.0
 ```
 
-### Tatara::FloatVector#duplicate
+### Tatara::FloatVector#intersection
 
 Intersection value's
 
@@ -183,7 +183,7 @@ Intersection value's
 (1..10).each{|i| @f1 << i}
 @f2 = Tatara::FloatVector.new
 (10..20).each{|i| @f2 << i}
-@f = @f1.duplicate @f2
+@f = @f1.intersection @f2
 # => [10.0]
 ```
 
