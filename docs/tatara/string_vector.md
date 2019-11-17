@@ -143,3 +143,18 @@ It's likes `Array#map!`
 }
 # => B C D
 ```
+
+### Tatara::StringVector#each
+
+`each` method for `Tatara::StringVector`.  
+It's likes `Array#each`
+
+```ruby
+@s = Tatara::StringVector.new
+("A".."C").each{|s| @s << s }
+# => Set new value's
+@s.each{|s|
+    puts s
+}
+# => A B C
+```
