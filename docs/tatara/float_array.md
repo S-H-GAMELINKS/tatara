@@ -74,3 +74,17 @@ puts @f.size
 puts @f.size
 # => 1
 ```
+
+### Tatara::FloatArray#clear
+
+Clear `Tatara::FloatArray`.
+
+```ruby
+@f = Tatara::FloatArray.new
+@f.push(4.2)
+puts @f.size
+# => 1
+@f.clear
+puts @f.size
+# => 0
+```
