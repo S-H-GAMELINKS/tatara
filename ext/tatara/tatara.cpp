@@ -228,5 +228,10 @@ extern "C" {
             .define_constructor(Constructor<Map<int, std::string>>())
             .define_method("[]", &Map<int, std::string>::bracket)
             .define_method("[]=", &Map<int, std::string>::bracket_equal);
+        
+        Data_Type<Map<double, int>> rb_cFloatIntMap = define_class_under<Map<double, int>>(rb_mTatara, "FloatIntMap")
+            .define_constructor(Constructor<Map<double, int>>())
+            .define_method("[]", &Map<double, int>::bracket)
+            .define_method("[]=", &Map<double, int>::bracket_equal);
     }
 }
