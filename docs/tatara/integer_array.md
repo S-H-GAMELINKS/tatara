@@ -41,3 +41,14 @@ Access by index.
 puts @i[0]
 # => 42
 ```
+
+
+### Tatara::IntArray#\[\]=
+
+Set value by index.
+
+```ruby
+@i = Tatara::IntArray.new
+@i[0] = 42
+# => Set value 42 for index of 0.
+```
