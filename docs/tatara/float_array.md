@@ -129,3 +129,18 @@ It's likes `Array#map!`
 }
 # => 2.0 4.0 6.0
 ```
+
+### Tatara::FloatArray#each
+
+`each` method for `Tatara::FloatArray`.  
+It's likes `Array#each`
+
+```ruby
+@f = Tatara::FloatArray.new
+(1..3).each{|i| @f << i }
+# => Set new value's
+@f.each{|f|
+    puts f
+}
+# => 1.0 2.0 3.0
+```
