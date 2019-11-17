@@ -120,4 +120,15 @@ class FloatArrayTest < Minitest::Test
 
     @f.map{|f| assert_equal 10.0, f }
   end
+
+  def test_sort_method_float_array
+    @f = Tatara::FloatArray.new
+    data = [4, 9, 1]
+    data.each(&@f.method(:<<))
+    @f = @f.sort
+    data.sort!
+    data.each_with_index{|v, i|
+      assert_equal v, @f[i]
+    }
+  end
 end
