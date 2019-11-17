@@ -61,3 +61,16 @@ Create new value on end of `Tatara::FloatArray`.
 @f.push(4.2)
 # => Set value 4.2 on end of `Tatara::FloatArray`
 ```
+
+### Tatara::FloatArray#size
+
+Size of `Tatara::FloatArray`.
+
+```ruby
+@f = Tatara::FloatArray.new
+puts @f.size
+# => 0
+@f.push(4.2)
+puts @f.size
+# => 1
+```
