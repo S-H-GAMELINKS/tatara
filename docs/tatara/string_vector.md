@@ -62,3 +62,16 @@ Create new value on end of `Tatara::StringVector`.
 @s.emplace_back("42")
 # => Set value "42" on end of `Tatara::StringVector`
 ```
+
+### Tatara::StringVector#size
+
+Size of `Tatara::StringVector`.
+
+```ruby
+@s = Tatara::StringVector.new
+puts @s.size
+# => 0
+@s.emplace_back("42")
+puts @s.size
+# => 1
+```
