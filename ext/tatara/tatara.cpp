@@ -123,7 +123,8 @@ extern "C" {
             .define_method("intersection", &Vector<int>::intersection)
             .define_method("sort", &Vector<int>::sort)
             .define_method("sort!", &Vector<int>::destructive_sort)
-            .define_method("reverse", &Vector<int>::reverse);
+            .define_method("reverse", &Vector<int>::reverse)
+            .define_method("reverse!", &Vector<int>::destructive_reverse);
 
         Data_Type<Vector<double>> rb_cFloatVector = define_class_under<Vector<double>>(rb_mTatara, "FloatVector")
             .define_constructor(Constructor<Vector<double>>())
@@ -139,7 +140,8 @@ extern "C" {
             .define_method("intersection", &Vector<double>::intersection)
             .define_method("sort", &Vector<double>::sort)
             .define_method("sort!", &Vector<double>::destructive_sort)
-            .define_method("reverse", &Vector<double>::reverse);
+            .define_method("reverse", &Vector<double>::reverse)
+            .define_method("reverse!", &Vector<double>::destructive_reverse);
 
         Data_Type<Vector<std::string>> rb_cStringVector = define_class_under<Vector<std::string>>(rb_mTatara, "StringVector")
             .define_constructor(Constructor<Vector<std::string>>())
@@ -155,7 +157,8 @@ extern "C" {
             .define_method("intersection", &Vector<std::string>::intersection)
             .define_method("sort", &Vector<std::string>::sort)
             .define_method("sort!", &Vector<std::string>::destructive_sort)
-            .define_method("reverse", &Vector<std::string>::reverse);
+            .define_method("reverse", &Vector<std::string>::reverse)
+            .define_method("reverse!", &Vector<std::string>::destructive_reverse);
 
         Data_Type<CppArray<int>> rb_cIntArray = define_class_under<CppArray<int>>(rb_mTatara, "IntArray")
             .define_constructor(Constructor<CppArray<int>>())
