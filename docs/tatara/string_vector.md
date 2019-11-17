@@ -102,3 +102,13 @@ Sum value's for `Tatara::StringVector`.
 puts @s.sum
 # => "ABC"
 ```
+
+### Tatara::StringVector#operator<<
+
+Create new value on end of `Tatara::StringVector`.
+
+```ruby
+@s = Tatara::StringVector.new
+@s << "42"
+# => Set value "42" on end of `Tatara::StringVector`
+```
