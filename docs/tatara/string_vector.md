@@ -52,3 +52,13 @@ Set value by index.
 @s[0] = "42"
 # => Set value "42" for index of 0.
 ```
+
+### Tatara::StringVector#emplace_back
+
+Create new value on end of `Tatara::StringVector`.
+
+```ruby
+@s = Tatara::StringVector.new
+@s.emplace_back("42")
+# => Set value "42" on end of `Tatara::StringVector`
+```
