@@ -186,3 +186,15 @@ Intersection value's
 @i = @i1 & @i2
 # => [10]
 ```
+
+### Tatara::IntArray#first
+
+Get first value of `Tatara::IntArray`.
+
+```ruby
+@i = Tatara::IntArray.new
+(1..3).each{|i| @i << i }
+# => Set new value's
+puts @i.first
+# => 1
+```
