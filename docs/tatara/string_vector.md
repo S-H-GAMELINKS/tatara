@@ -200,3 +200,14 @@ Intersection value's
 @s = @s1 & @s2
 # => ["C"]
 ```
+
+### Tatara::StringVector#sort
+
+Sort value's.
+
+```ruby
+@s = Tatara::StringVector.new
+["9", "1", "4"].each{|s| @s << s }
+@s = @i.sort
+# => ["1", "4", "9"]
+```
