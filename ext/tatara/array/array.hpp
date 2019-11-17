@@ -20,6 +20,7 @@ class CppArray {
         constexpr void clear();
         constexpr CppArray<T>& push_back_object(const T var);
         constexpr CppArray<T> duplicate(const CppArray<T> array);
+        constexpr CppArray<T> sort();
 };
 
 template <class T>
@@ -84,6 +85,14 @@ constexpr CppArray<T> CppArray<T>::duplicate(const CppArray<T> array) {
 
     object.container = std::move(result);
 
+    return object;
+}
+
+template <class T>
+constexpr CppArray<T> CppArray<T>::sort() {
+    CppArray<T> object;
+    object.container = this->container;
+    std::sort(object.container.begin(), object.container.end());
     return object;
 }
 
