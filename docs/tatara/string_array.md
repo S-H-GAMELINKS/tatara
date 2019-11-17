@@ -184,3 +184,15 @@ Intersection value's
 @s = @s1 & @s2
 # => ["C"]
 ```
+
+### Tatara::StringArray#first
+
+Get first value of `Tatara::StringArray`.
+
+```ruby
+@s = Tatara::StringArray.new
+("A".."C").each{|s| @s << s }
+# => Set new value's
+puts @s.first
+# => "A"
+```
