@@ -172,3 +172,16 @@ Intersection value's
 @f = @f1.duplicate @f2
 # => [10.0]
 ```
+
+### Tatara::FloatArray#operator&
+
+Intersection value's
+
+```ruby
+@f1 = Tatara::FloatArray.new
+(1..10).each{|i| @f1 << i}
+@f2 = Tatara::FloatArray.new
+(10..20).each{|i| @f2 << i}
+@f = @f1 & @f2
+# => [10.0]
+```
