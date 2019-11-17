@@ -326,6 +326,20 @@ puts @f.value == 4.2
 puts @f.value == 6.2
 # => false
 ```
+
+### Tatara::Float#val==
+
+Check instance value, and return `Boolean`.
+
+```ruby 
+@f = Tatara::Float.new
+@f.val = 4.2
+puts @f.val == 4.2
+# => true
+puts @f.val == 6.2
+# => false
+```
+
 ### Tatara::Float#inc
 
 Increment for instance value.
