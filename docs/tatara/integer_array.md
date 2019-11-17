@@ -21,3 +21,12 @@ But, can not use `String` for value.
 @i[0] = "42"
 # => Error!
 ```
+
+## Methods
+### Tatara::IntArray#new
+
+Create new `Tatara::IntArray` instance.
+
+```ruby
+@i = Tatara::IntArray.new
+```
