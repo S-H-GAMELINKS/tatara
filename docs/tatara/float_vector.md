@@ -244,3 +244,15 @@ Get first value of `Tatara::FloatVector`.
 puts @f.first
 # => 1.0
 ```
+
+### Tatara::FloatVector#last
+
+Get last value of `Tatara::FloatVector`.
+
+```ruby
+@f = Tatara::FloatVector.new
+(1..3).each{|i| @f << i }
+# => Set new value's
+puts @f.last
+# => 3.0
+```
