@@ -233,6 +233,17 @@ Reverse value's.
 # => [4.0, 1.0, 9.0]
 ```
 
+### Tatara::FloatVector#reverse!
+
+Reverse value's.
+
+```ruby
+@f = Tatara::FloatVector.new
+[9, 1, 4].each{|i| @f << i }
+@f.reverse!
+# => [4.0, 1.0, 9.0]
+```
+
 ### Tatara::FloatVector#first
 
 Get first value of `Tatara::FloatVector`.
