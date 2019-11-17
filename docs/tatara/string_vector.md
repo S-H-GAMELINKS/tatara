@@ -187,3 +187,16 @@ Intersection value's
 @s = @s1.duplicate @s2
 # => ["C"]
 ```
+
+### Tatara::StringVector#operator&
+
+Intersection value's
+
+```ruby
+@s1 = Tatara::StringVector.new
+("A".."C").each{|s| @s1 << s}
+@s2 = Tatara::StringVector.new
+("C".."F").each{|s| @s2 << s}
+@s = @s1 & @s2
+# => ["C"]
+```
