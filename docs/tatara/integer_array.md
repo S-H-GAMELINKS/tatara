@@ -173,3 +173,16 @@ Intersection value's
 @i = @i1.duplicate @i2
 # => [10]
 ```
+
+### Tatara::IntArray#operator&
+
+Intersection value's
+
+```ruby
+@i1 = Tatara::IntArray.new
+(1..10).each{|i| @i1 << i}
+@i2 = Tatara::IntArray.new
+(10..20).each{|i| @i2 << i}
+@i = @i1 & @i2
+# => [10]
+```
