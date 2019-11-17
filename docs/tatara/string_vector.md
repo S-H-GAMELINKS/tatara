@@ -211,3 +211,14 @@ Sort value's.
 @s = @i.sort
 # => ["1", "4", "9"]
 ```
+
+### Tatara::StringVector#sort!
+
+Sort value's.
+
+```ruby
+@s = Tatara::StringVector.new
+["9", "1", "4"].each{|s| @s << s }
+@s.sort!
+# => ["1", "4", "9"]
+```
