@@ -158,3 +158,19 @@ It's likes `Array#each`
 }
 # => A B C
 ```
+
+
+### Tatara::StringVector#each_with_index
+
+`each_with_index` method for `Tatara::StringVector`.  
+It's likes `Array#each_with_index`
+
+```ruby
+@s = Tatara::StringVector.new
+("A".."C").each{|s| @s << s }
+# => Set new value's
+@s.each_with_index{|v, i|
+    puts "#{i}:#{v}"
+}
+# => 1:A 2:B 3:C
+```
