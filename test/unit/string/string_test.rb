@@ -57,6 +57,7 @@ class StringTest < Minitest::Test
     @s.value = "42"
     assert @s.value == "42"
     assert @s.val == "42"
+    assert @s.equal? "42"
   end
 
   def test_return_object_init_tatara_string
