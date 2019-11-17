@@ -130,3 +130,18 @@ It's likes `Array#map!`
 }
 # => 2 4 6
 ```
+
+### Tatara::IntArray#each
+
+`each` method for `Tatara::IntArray`.  
+It's likes `Array#each`
+
+```ruby
+@i = Tatara::IntArray.new
+(1..3).each{|i| @i << i }
+# => Set new value's
+@i.each{|i|
+    puts i
+}
+# => 1 2 3
+```
