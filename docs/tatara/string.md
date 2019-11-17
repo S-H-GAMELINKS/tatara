@@ -135,6 +135,17 @@ Convert to `Integer` for instance value.
 # => Conver to Integer.
 ```
 
+### Tatara::String#to_f
+
+Convert to `Float` for instance value.
+
+```ruby
+@s = Tatara::String.new
+@s.val = "4.2"
+@s.to_f
+# => Convert to Float.
+```
+
 ### Tatara::String#clear
 
 Clear instance value.
