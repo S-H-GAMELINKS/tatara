@@ -198,3 +198,15 @@ Get first value of `Tatara::IntArray`.
 puts @i.first
 # => 1
 ```
+
+### Tatara::IntArray#last
+
+Get last value of `Tatara::IntArray`.
+
+```ruby
+@i = Tatara::IntArray.new
+(1..3).each{|i| @i << i }
+# => Set new value's
+puts @i.last
+# => 3
+```

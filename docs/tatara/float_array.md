@@ -197,3 +197,15 @@ Get first value of `Tatara::FloatArray`.
 puts @f.first
 # => 1.0
 ```
+
+### Tatara::FloatArray#last
+
+Get last value of `Tatara::FloatArray`.
+
+```ruby
+@f = Tatara::FloatArray.new
+(1..3).each{|i| @f << i }
+# => Set new value's
+puts @f.last
+# => 3.0
+```
