@@ -102,6 +102,7 @@ extern "C" {
             .define_method("clear", &CppString::clear)
             .define_method("value==", &CppString::equal)
             .define_method("val==", &CppString::equal)
+            .define_method("equal?", &CppString::equal)
             .define_method("<<", &CppString::initialize_object)
             .define_method("[]", &CppString::index_access)
             .define_method("slice", &CppString::slice)

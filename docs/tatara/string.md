@@ -124,6 +124,19 @@ puts @s.val == "62"
 # => false
 ```
 
+### Tatara::String#equal?
+
+Check instance value, and return `Boolean`.
+
+```ruby 
+@s = Tatara::String.new
+@s.val = "42"
+puts @s.equal? "42"
+# => true
+puts @s.equal? "62"
+# => false
+```
+
 ### Tatara::String#to_i
 
 Convert to `Integer` for instance value.
