@@ -196,3 +196,15 @@ Get first value of `Tatara::StringArray`.
 puts @s.first
 # => "A"
 ```
+
+### Tatara::StringArray#last
+
+Get last value of `Tatara::StringArray`.
+
+```ruby
+@s = Tatara::StringArray.new
+("A".."C").each{|s| @s << s }
+# => Set new value's
+puts @s.last
+# => "C"
+```
