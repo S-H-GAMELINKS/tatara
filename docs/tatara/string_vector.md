@@ -174,3 +174,16 @@ It's likes `Array#each_with_index`
 }
 # => 1:A 2:B 3:C
 ```
+
+### Tatara::Intvector#duplicate
+
+Intersection value's
+
+```ruby
+@s1 = Tatara::StringVector.new
+("A".."C").each{|s| @s1 << s}
+@s2 = Tatara::StringVector.new
+("C".."F").each{|s| @s2 << s}
+@s = @s1.duplicate @s2
+# => ["C"]
+```
