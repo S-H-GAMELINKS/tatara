@@ -31,3 +31,14 @@ Create new `Tatara::StringVector` instance.
 ```ruby
 @s = Tatara::StringVector.new
 ```
+
+### Tatara::StringVector#\[\]
+
+Access by index.
+
+```ruby
+@s = Tatara::StringVector.new
+@s[0] = "42"
+puts @i[0]
+# => "42"
+```
