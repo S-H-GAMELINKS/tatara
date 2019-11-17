@@ -89,3 +89,13 @@ puts @i.size
 puts @i.size
 # => 0
 ```
+
+### Tatara::IntArray#operator<<
+
+Create new value on end of `Tatara::IntArray`.
+
+```ruby
+@i = Tatara::IntArray.new
+@i << 42
+# => Set value 42 on end of `Tatara::IntArray`
+```
