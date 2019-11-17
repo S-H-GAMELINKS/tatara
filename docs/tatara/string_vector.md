@@ -245,3 +245,15 @@ Get first value of `Tatara::StringVector`.
 puts @s.first
 # => A
 ```
+
+### Tatara::StringVector#last
+
+Get last value of `Tatara::StringVector`.
+
+```ruby
+@s = Tatara::StringVector.new
+("A".."C").each{|s| @s << s }
+# => Set new value's
+puts @s.last
+# => "C"
+```

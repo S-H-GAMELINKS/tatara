@@ -243,3 +243,15 @@ Get first value of `Tatara::IntVector`.
 puts @i.first
 # => 1
 ```
+
+### Tatara::IntVector#last
+
+Get last value of `Tatara::IntVector`.
+
+```ruby
+@i = Tatara::IntVector.new
+(1..3).each{|i| @i << i }
+# => Set new value's
+puts @i.last
+# => 3
+```
