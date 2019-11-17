@@ -163,4 +163,15 @@ class StringVectorTest < Minitest::Test
       assert_equal v, @reversed[i]
     }
   end
+
+  def test_destructive_reverse_method_string_vector
+    data = ["4", "1", "9"]
+    @s = Tatara::StringVector.new
+    data.each(&@s.method(:<<))
+    @s.reverse!
+    data.reverse!
+    data.each_with_index{|v, i|
+      assert_equal v, @s[i]
+    }
+  end
 end
