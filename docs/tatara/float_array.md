@@ -30,3 +30,14 @@ Create new `Tatara::FloatArray` instance.
 ```ruby
 @f = Tatara::FloatArray.new
 ```
+
+### Tatara::FloatArray#\[\]
+
+Access by index.
+
+```ruby
+@f = Tatara::FloatArray.new
+@f[0] = 4.2
+puts @i[0]
+# => 4.2
+```
