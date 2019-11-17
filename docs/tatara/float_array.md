@@ -88,3 +88,13 @@ puts @f.size
 puts @f.size
 # => 0
 ```
+
+### Tatara::FloatArray#operator<<
+
+Create new value on end of `Tatara::FloatArray`.
+
+```ruby
+@f = Tatara::FloatArray.new
+@f << 4.2
+# => Set value 4.2 on end of `Tatara::FloatArray`
+```
