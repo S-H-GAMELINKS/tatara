@@ -25,6 +25,7 @@ class Vector {
         constexpr Vector<T> sort();
         constexpr Vector<T>& destructive_sort();
         constexpr Vector<T> reverse();
+        constexpr Vector<T>& destructive_reverse();
 };
 
 template <class T>
@@ -122,6 +123,12 @@ constexpr Vector<T> Vector<T>::reverse() {
     object.container = this->container;
     std::reverse(object.container.begin(), object.container.end());
     return object;
+}
+
+template <class T>
+constexpr Vector<T>& Vector<T>::destructive_reverse() {
+    std::reverse(this->container.begin(), this->container.end());
+    return *this;
 }
 
 #endif

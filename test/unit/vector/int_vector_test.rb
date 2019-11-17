@@ -167,4 +167,15 @@ class IntVectorTest < Minitest::Test
       assert_equal v, @reversed[i]
     }
   end
+
+  def test_destructitve_reverse_method_int_vector
+    data = [4, 1, 9]
+    @i = Tatara::IntVector.new
+    data.each(&@i.method(:<<))
+    @i.reverse!
+    data.reverse!
+    data.each_with_index{|v, i|
+      assert_equal v, @i[i]
+    }
+  end
 end
