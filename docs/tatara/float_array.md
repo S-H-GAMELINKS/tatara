@@ -186,6 +186,17 @@ Intersection value's
 # => [10.0]
 ```
 
+### Tatara::FloatArray#sort
+
+Sort value's.
+
+```ruby
+@f = Tatara::FloatArray.new
+[9, 1, 4].each{|i| @f << i }
+@f = @f.sort
+# => [1.0, 4.0, 9.0]
+```
+
 ### Tatara::FloatArray#first
 
 Get first value of `Tatara::FloatArray`.
