@@ -22,6 +22,7 @@ class CppArray {
         constexpr CppArray<T> intersection(const CppArray<T> array);
         constexpr CppArray<T> sort();
         constexpr CppArray<T>& destructive_sort();
+        constexpr CppArray<T> reverse();
 };
 
 template <class T>
@@ -101,6 +102,14 @@ template <class T>
 constexpr CppArray<T>& CppArray<T>::destructive_sort() {
     std::sort(this->container.begin(), this->container.end());
     return *this;
+}
+
+template <class T>
+constexpr CppArray<T> CppArray<T>::reverse() {
+    CppArray<T> object;
+    object.container = this->container;
+    std::reverse(object.container.begin(), object.container.end());
+    return object;
 }
 
 #endif

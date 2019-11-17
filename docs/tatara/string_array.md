@@ -207,6 +207,17 @@ Sort value's.
 # => ["1", "4", "9"]
 ```
 
+### Tatara::StringArray#reverse
+
+Reverse value's.
+
+```ruby
+@s = Tatara::StringArray.new
+["9", "1", "4"].each{|s| @s << s }
+@s = @s.reverse
+# => ["4", "1", "9"]
+```
+
 ### Tatara::StringArray#first
 
 Get first value of `Tatara::StringArray`.

@@ -142,4 +142,15 @@ class StringArrayTest < Minitest::Test
       assert_equal v, @s[i]
     }
   end
+
+  def test_reverse_method_string_array
+    data = ["4", "1", "9"]
+    @s = Tatara::StringArray.new
+    data.each(&@s.method(:<<))
+    @reversed = @s.reverse
+    data.reverse!
+    data.each_with_index{|v, i|
+      assert_equal v, @reversed[i]
+    }
+  end
 end

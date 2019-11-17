@@ -142,4 +142,15 @@ class FloatArrayTest < Minitest::Test
       assert_equal v, @f[i]
     }
   end
+
+  def test_reverse_method_float_array
+    data = [4, 1, 9]
+    @f = Tatara::FloatArray.new
+    data.each(&@f.method(:<<))
+    @reversed = @f.reverse
+    data.reverse!
+    data.each_with_index{|v, i|
+      assert_equal v, @reversed[i]
+    }
+  end
 end
