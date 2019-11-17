@@ -90,3 +90,5 @@ require 'tatara'
 ### [Tatara::IntIntMap](./tatara/integer_integer_map.md)
 
 ### [Tatara::FloatIntMap](./tatara/float_integer_map.md)
+
+### [Tatara::FloatFloatMap](./tatara/float_float_map.md)
