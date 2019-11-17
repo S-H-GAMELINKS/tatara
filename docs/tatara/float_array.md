@@ -41,3 +41,13 @@ Access by index.
 puts @i[0]
 # => 4.2
 ```
+
+### Tatara::FloatArray#\[\]=
+
+Set value by index.
+
+```ruby
+@f = Tatara::FloatArray.new
+@f[0] = 4.2
+# => Set value 4.2 for index of 0.
+```
