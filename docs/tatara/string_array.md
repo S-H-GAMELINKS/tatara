@@ -30,3 +30,14 @@ Create new `Tatara::StringArray` instance.
 ```ruby
 @s = Tatara::StringArray.new
 ```
+
+### Tatara::StringArray#\[\]
+
+Access by index.
+
+```ruby
+@s = Tatara::StringArray.new
+@s[0] = "42"
+puts @i[0]
+# => "42"
+```
