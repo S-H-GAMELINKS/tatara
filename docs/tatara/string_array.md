@@ -61,3 +61,16 @@ Create new value on end of `Tatara::StringArray`.
 @s.push("42")
 # => Set value "42" on end of `Tatara::StringArray`
 ```
+
+### Tatara::StringArray#size
+
+Size of `Tatara::StringArray`.
+
+```ruby
+@s = Tatara::StringArray.new
+puts @s.size
+# => 0
+@s.push("42")
+puts @s.size
+# => 1
+```
