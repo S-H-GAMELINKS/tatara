@@ -21,6 +21,7 @@ class CppArray {
         constexpr CppArray<T>& push_back_object(const T var);
         constexpr CppArray<T> duplicate(const CppArray<T> array);
         constexpr CppArray<T> sort();
+        constexpr CppArray<T>& destructive_sort();
 };
 
 template <class T>
@@ -94,6 +95,12 @@ constexpr CppArray<T> CppArray<T>::sort() {
     object.container = this->container;
     std::sort(object.container.begin(), object.container.end());
     return object;
+}
+
+template <class T>
+constexpr CppArray<T>& CppArray<T>::destructive_sort() {
+    std::sort(this->container.begin(), this->container.end());
+    return *this;
 }
 
 #endif
