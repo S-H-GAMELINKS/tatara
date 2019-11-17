@@ -21,3 +21,12 @@ But, can not use `Integer` & `Float` for value.
 @s[0] = 42
 # => Error!
 ```
+
+## Methods
+### Tatara::StringArray#new
+
+Create new `Tatara::StringArray` instance.
+
+```ruby
+@s = Tatara::StringArray.new
+```
