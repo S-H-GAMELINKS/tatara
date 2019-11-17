@@ -97,3 +97,18 @@ Create new value on end of `Tatara::StringArray`.
 @s << "42"
 # => Set value "42" on end of `Tatara::StringArray`
 ```
+
+### Tatara::StringArray#map
+
+`map` method for `Tatara::StringArray`.  
+It's likes `Array#map`
+
+```ruby
+@s = Tatara::StringArray.new
+("A".."C").each{|s| @s << s }
+# => Set new value's
+@s.map{|s|
+    puts s
+}
+# => A B C
+```
