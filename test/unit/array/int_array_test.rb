@@ -131,4 +131,15 @@ class IntArrayTest < Minitest::Test
       assert_equal v, @i[i]
     }
   end
+
+  def test_destructive_sort_method_int_array
+    @i = Tatara::IntArray.new
+    data = [4, 9, 1]
+    data.each(&@i.method(:<<))
+    @i.sort!
+    data.sort!
+    data.each_with_index{|v, i|
+      assert_equal v, @i[i]
+    }
+  end
 end
