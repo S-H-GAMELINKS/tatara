@@ -21,3 +21,12 @@ But, can not use `String` for value.
 @f[0] = "42"
 # => Error!
 ```
+
+## Methods
+### Tatara::FloatArray#new
+
+Create new `Tatara::FloatArray` instance.
+
+```ruby
+@f = Tatara::FloatArray.new
+```
