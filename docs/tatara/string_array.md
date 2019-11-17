@@ -51,3 +51,13 @@ Set value by index.
 @s[0] = "42"
 # => Set value "42" for index of 0.
 ```
+
+### Tatara::StringArray#push
+
+Create new value on end of `Tatara::StringArray`.
+
+```ruby
+@s = Tatara::StringArray.new
+@s.push("42")
+# => Set value "42" on end of `Tatara::StringArray`
+```
