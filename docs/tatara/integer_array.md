@@ -62,3 +62,16 @@ Create new value on end of `Tatara::IntArray`.
 @i.push(42)
 # => Set value 42 on end of `Tatara::IntArray`
 ```
+
+### Tatara::IntArray#size
+
+Size of `Tatara::IntArray`.
+
+```ruby
+@i = Tatara::IntArray.new
+puts @i.size
+# => 0
+@i.push(42)
+puts @i.size
+# => 1
+```
