@@ -13,6 +13,7 @@ class CppString {
         std::string return_value();
         std::string index_access(const int index);
         int to_integer();
+        double to_float();
         std::string plus_equal(const std::string var);
         std::string clear();
         bool equal(const std::string var);
@@ -44,6 +45,10 @@ std::string CppString::index_access(const int index) {
 
 int CppString::to_integer() {
     return std::stoi(this->value);
+}
+
+double CppString::to_float() {
+    return std::stof(this->value);
 }
 
 std::string CppString::plus_equal(const std::string var) {
