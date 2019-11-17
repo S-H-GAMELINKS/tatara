@@ -88,3 +88,12 @@ puts @s.size
 puts @s.size
 # => 0
 ```
+### Tatara::StringArray#operator<<
+
+Create new value on end of `Tatara::StringArray`.
+
+```ruby
+@s = Tatara::StringArray.new
+@s << "42"
+# => Set value "42" on end of `Tatara::StringArray`
+```
