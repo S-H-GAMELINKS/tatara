@@ -1,7 +1,7 @@
 # Tatara::IntArray
 ## About
 
-`Tatara::IntArray` is `Vector` class like `static type programming lang`.
+`Tatara::IntArray` is `Array` class like `static type programming lang`.
 
 `Tatara::IntArray` use `Integer` value.
 But, you can use `Float` for value.

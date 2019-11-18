@@ -73,13 +73,13 @@ require 'tatara'
 
 ### [Tatara::FloatVector](./tatara/float_vector.md)
 
-### [Tatara::StringArray](./tatara/string_array.md)]
-
 ### [Tatara::StringVector](./tatara/string_vector.md)
 
 ### [Tatara::IntArray](./tatara/integer_array.md)
 
 ### [Tatara::FloatArray](./tatara/float_array.md)
+
+### [Tatara::StringArray](./tatara/string_array.md)
 
 ### [Tatara::StringIntMap](./tatara/string_int_map.md)
 
@@ -88,6 +88,10 @@ require 'tatara'
 ### [Tatara::StringStringMap](./tatara/string_string_map.md)
 
 ### [Tatara::IntIntMap](./tatara/integer_integer_map.md)
+
+### [Tatara::IntFloatMap](./tatara/integer_float_map.md)
+
+### [Tatara::IntStringMap](./tatara/integer_string_map.md)
 
 ### [Tatara::FloatIntMap](./tatara/float_integer_map.md)
 

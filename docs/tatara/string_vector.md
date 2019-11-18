@@ -39,7 +39,7 @@ Access by index.
 ```ruby
 @s = Tatara::StringVector.new
 @s[0] = "42"
-puts @i[0]
+puts @s[0]
 # => "42"
 ```
 
@@ -175,7 +175,7 @@ It's likes `Array#each_with_index`
 # => 1:A 2:B 3:C
 ```
 
-### Tatara::Intvector#intersection
+### Tatara::Stringvector#intersection
 
 Intersection value's
 
@@ -208,7 +208,7 @@ Sort value's.
 ```ruby
 @s = Tatara::StringVector.new
 ["9", "1", "4"].each{|s| @s << s }
-@s = @i.sort
+@s = @s.sort
 # => ["1", "4", "9"]
 ```
 

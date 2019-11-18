@@ -1,7 +1,7 @@
 # Tatara::StringArray
 ## About
 
-`Tatara::StringArray` is `Vector` class like `static type programming lang`.
+`Tatara::StringArray` is `Array` class like `static type programming lang`.
 
 `Tatara::StringArray` use `String` value.
 But, you can not use `Integer` & `Float` for value.
@@ -38,7 +38,7 @@ Access by index.
 ```ruby
 @s = Tatara::StringArray.new
 @s[0] = "42"
-puts @i[0]
+puts @s[0]
 # => "42"
 ```
 

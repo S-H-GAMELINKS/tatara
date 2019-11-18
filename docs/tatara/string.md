@@ -144,7 +144,7 @@ Convert to `Integer` for instance value.
 ```ruby
 @s = Tatara::String.new
 @s.val = "42"
-@s.to_s
+@s.to_i
 # => Conver to Integer.
 ```
 
