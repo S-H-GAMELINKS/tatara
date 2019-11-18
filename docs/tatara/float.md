@@ -6,18 +6,18 @@
 `Tatara::Float` can set `val` for `Float` & `Integer`.
 
 ```ruby
-@i = Tatara::Float.new
-@i.val = 1.1
+@f = Tatara::Float.new
+@f.val = 1.1
 # => Set 1.1.
-@i.val = 15
+@f.val = 15
 # => Set 15.0.
 ```
 
 But, can not set `String` value.
 
 ```ruby
-@i = Tatara::Float.new
-@i.val = "42"
+@f = Tatara::Float.new
+@f.val = "42"
 # => Error!
 ```
 
@@ -88,7 +88,7 @@ Add instance value for `Tatara::Float`.
 ```ruby
 @f = Tatara::Float.new
 @f.value = 2.1
-puts @i.val + 2.1
+puts @f.val + 2.1
 # => Value is 4.2
 ```
 
@@ -110,7 +110,7 @@ Subtract instance value for `Tatara::Float`.
 ```ruby
 @f = Tatara::Float.new
 @f.value = 2.1
-puts @i.val - 2.1
+puts @f.val - 2.1
 # => Value is 0.0
 ```
 
@@ -132,7 +132,7 @@ Multiply instance value for `Tatara::Float`.
 ```ruby
 @f = Tatara::Float.new
 @f.value = 2.0
-puts @i.val * 2.0
+puts @f.val * 2.0
 # => Value is 4.0
 ```
 
@@ -165,9 +165,9 @@ Power instance value for `Tatara::Float`.
 ```ruby
 @f = Tatara::Float.new
 @f.value = 2.0
-puts @i.value ** 2.0
+puts @f.value ** 2.0
 # => Value is 4.0
-puts @i.value ** 2.0
+puts @f.value ** 2.0
 # => Value is 8.0
 ```
 
@@ -349,7 +349,7 @@ Increment for instance value.
 @f.val = 1.0
 @f.inc
 # => Increment instance value
-puts @i.val
+puts @f.val
 # => 2.0
 ```
 

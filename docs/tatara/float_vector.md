@@ -39,7 +39,7 @@ Access by index.
 ```ruby
 @f = Tatara::FloatVector.new
 @f[0] = 4.2
-puts @i[0]
+puts @f[0]
 # => 4.2
 ```
 
@@ -60,7 +60,7 @@ Create new value on end of `Tatara::FloatVector`.
 ```ruby
 @f = Tatara::FloatVector.new
 @f.emplace_back(4.2)
-# => Set value 4.2 on end of `Tatara::intVector`
+# => Set value 4.2 on end of `Tatara::FloatVector`
 ```
 
 ### Tatara::FloatVector#size
@@ -168,7 +168,7 @@ It's likes `Array#each_with_index`
 @f = Tatara::FloatVector.new
 (1..3).each{|i| @f << i }
 # => Set new value's
-@i.each_with_index{|v, i|
+@f.each_with_index{|v, i|
     puts "#{i}:#{v}"
 }
 # => 1:1.0 2:2.0 3:3.0

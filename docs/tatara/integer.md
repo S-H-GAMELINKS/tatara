@@ -17,7 +17,7 @@ But, can not set `String` value.
 
 ```ruby
 @i = Tatara::Integer.new
-@ival = "42"
+@i.val = "42"
 # => Error!
 ```
 

@@ -1,7 +1,7 @@
 # Tatara::FloatArray
 ## About
 
-`Tatara::FloatArray` is `Vector` class like `static type programming lang`.
+`Tatara::FloatArray` is `Array` class like `static type programming lang`.
 
 `Tatara::FloatArray` use `Float` value.
 But, you can use `Integer` for value.
@@ -38,7 +38,7 @@ Access by index.
 ```ruby
 @f = Tatara::FloatArray.new
 @f[0] = 4.2
-puts @i[0]
+puts @f[0]
 # => 4.2
 ```
 
@@ -154,7 +154,7 @@ It's likes `Array#each_with_index`
 @f = Tatara::FloatArray.new
 (1..3).each{|i| @f << i }
 # => Set new value's
-@i.each_with_index{|v, i|
+@f.each_with_index{|v, i|
     puts "#{i}:#{v}"
 }
 # => 1:1.0 2:2.0 3:3.0
