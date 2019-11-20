@@ -1,4 +1,5 @@
 
+require "mkmf"
 require "mkmf-rice"
 
 $CXXFLAGS = '-Ofast -mtune=native -march=native -mfpmath=both -std=c++17'

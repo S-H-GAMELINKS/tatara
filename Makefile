@@ -12,13 +12,13 @@ NULLCMD = :
 #### Start of system configuration section. ####
 
 srcdir = ext/tatara
-topdir = /home/sh/.rbenv/versions/2.6.3/include/ruby-2.6.0
+topdir = /home/sh/.rbenv/versions/2.6.5/include/ruby-2.6.0
 hdrdir = $(topdir)
-arch_hdrdir = /home/sh/.rbenv/versions/2.6.3/include/ruby-2.6.0/x86_64-linux
+arch_hdrdir = /home/sh/.rbenv/versions/2.6.5/include/ruby-2.6.0/x86_64-linux
 PATH_SEPARATOR = :
 VPATH = $(srcdir):$(arch_hdrdir)/ruby:$(hdrdir)/ruby
 
-prefix = $(DESTDIR)/home/sh/.rbenv/versions/2.6.3
+prefix = $(DESTDIR)/home/sh/.rbenv/versions/2.6.5
 
 rubysitearchprefix = $(rubylibprefix)/$(sitearch)
 
@@ -88,6 +88,8 @@ oldincludedir = $(DESTDIR)/usr/include
 
 includedir = $(prefix)/include
 
+runstatedir = $(localstatedir)/run
+
 localstatedir = $(prefix)/var
 
 sharedstatedir = $(prefix)/com
@@ -114,7 +116,7 @@ CXX = g++
 LIBRUBY = $(LIBRUBY_SO)
 LIBRUBY_A = lib$(RUBY_SO_NAME)-static.a
 LIBRUBYARG_SHARED = -Wl,-rpath,$(libdir) -L$(libdir) -l$(RUBY_SO_NAME)
-LIBRUBYARG_STATIC = -Wl,-rpath,/home/sh/.rbenv/versions/2.6.3/lib -L/home/sh/.rbenv/versions/2.6.3/lib -lruby-static -lz -lpthread -lrt -lrt -ldl -lcrypt -lm 
+LIBRUBYARG_STATIC = -Wl,-rpath,/home/sh/.rbenv/versions/2.6.5/lib -L/home/sh/.rbenv/versions/2.6.5/lib -lruby-static -lz -lpthread -lrt -lrt -lgmp -ldl -lcrypt -lm 
 empty =
 OUTFLAG = -o $(empty)
 COUTFLAG = -o $(empty)
@@ -131,10 +133,10 @@ CCDLFLAGS = -fPIC
 CFLAGS   = $(CCDLFLAGS) $(cflags)  -fPIC $(ARCH_FLAG)
 INCFLAGS = -I. -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward -I$(hdrdir) -I$(srcdir)
 DEFS     = 
-CPPFLAGS =  -I/home/sh/.rbenv/versions/2.6.3/include  $(DEFS) $(cppflags)  -I/home/sh/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/rice-2.1.3/ruby/lib/include
-CXXFLAGS = $(CFLAGS)  -Wall -g
-ldflags  = -L. -L/home/sh/.rbenv/versions/2.6.3/lib  -fstack-protector-strong -rdynamic -Wl,-export-dynamic  -L/home/sh/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/rice-2.1.3/ruby/lib/lib -lrice
-dldflags = -L/home/sh/.rbenv/versions/2.6.3/lib  -Wl,--compress-debug-sections=zlib 
+CPPFLAGS =  -I/home/sh/.rbenv/versions/2.6.5/include  $(DEFS) $(cppflags)  -I/home/sh/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rice-2.1.3/ruby/lib/include
+CXXFLAGS = $(CFLAGS) -Ofast -mtune=native -march=native -mfpmath=both -std=c++17
+ldflags  = -L. -L/home/sh/.rbenv/versions/2.6.5/lib  -fstack-protector-strong -rdynamic -Wl,-export-dynamic  -L/home/sh/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rice-2.1.3/ruby/lib/lib -lrice
+dldflags = -L/home/sh/.rbenv/versions/2.6.5/lib  -Wl,--compress-debug-sections=zlib 
 ARCH_FLAG = 
 DLDFLAGS = $(ldflags) $(dldflags) $(ARCH_FLAG)
 LDSHARED = g++ -shared
@@ -191,7 +193,7 @@ extout =
 extout_prefix = 
 target_prefix = /tatara
 LOCAL_LIBS = 
-LIBS = -Wl,-rpath,/home/sh/.rbenv/versions/2.6.3/lib -L/home/sh/.rbenv/versions/2.6.3/lib -lruby -lm   -lc
+LIBS = -Wl,-rpath,/home/sh/.rbenv/versions/2.6.5/lib -L/home/sh/.rbenv/versions/2.6.5/lib -lruby -lm   -lc
 ORIG_SRCS = tatara.cpp
 SRCS = $(ORIG_SRCS) 
 OBJS = tatara.o
