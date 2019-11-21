@@ -40,7 +40,7 @@ static void wrap_float_int_map_free(FloatIntMap *ptr) {
 static VALUE wrap_float_int_map_alloc(VALUE klass) {
     void *p = ruby_xmalloc(sizeof(FloatIntMap));
     p = new FloatIntMap;
-    return Data_Wrap_Struct(klass, NULL, wrap_float_float_map_free, p);
+    return Data_Wrap_Struct(klass, NULL, wrap_float_int_map_free, p);
 }
 
 static VALUE wrap_float_int_map_init(VALUE self) {
