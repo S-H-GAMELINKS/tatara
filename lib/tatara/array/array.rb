@@ -33,5 +33,52 @@ module Tatara
 
     class StringArray
         include Array
+
+        def intersection(other)
+            result = Tatara::StringArray.new    
+            self.each{|s|
+                other.each{|o|
+                    if o == s
+                        result << s
+                    end
+                }
+            }
+            result
+        end
+
+        def sort
+            result = []
+            self.each{|s| result << s}
+            result.sort!
+            return_value = Tatara::StringArray.new
+            result.each{|r| return_value << r}
+            return_value
+        end
+
+        def sort!
+            result = []
+            self.each{|s| result << s}
+            result.sort!
+            result.each_with_index{|r, i| self[i] = r}
+            self
+        end
+
+        def reverse
+            result = []
+            self.each{|s| result << s}
+            result.reverse!
+            return_value = Tatara::StringArray.new
+            result.each{|r| return_value << r}
+            return_value
+        end
+
+        def reverse!
+            result = []
+            self.each{|s| result << s}
+            result.reverse!
+            return_value = Tatara::StringArray.new
+            result.each_with_index{|r, i| self[i] = r}
+            self
+        end
     end
 end
