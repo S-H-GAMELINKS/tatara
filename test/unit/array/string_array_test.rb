@@ -147,6 +147,17 @@ class StringArrayTest < Minitest::Test
     data = ["4", "1", "9"]
     @s = Tatara::StringArray.new
     data.each(&@s.method(:<<))
+    @s = @s.reverse
+    data.reverse!
+    data.each_with_index{|v, i|
+      assert_equal v, @s[i]
+    }
+  end
+
+  def test_destructive_reverse_method_string_array
+    data = ["4", "1", "9"]
+    @s = Tatara::StringArray.new
+    data.each(&@s.method(:<<))
     @s.reverse!
     data.reverse!
     data.each_with_index{|v, i|
