@@ -1,6 +1,8 @@
 #ifndef ARRAY__TEMPLATE_H_
 #define ARRAY__TEMPLATE_H_
 
+#include "string/string_array.hpp"
+
 #include <algorithm>
 #include <iterator>
 #include <vector>

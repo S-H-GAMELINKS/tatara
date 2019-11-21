@@ -192,23 +192,20 @@ extern "C" {
             .define_method("reverse", &CppArray<double>::reverse)
             .define_method("reverse!", &CppArray<double>::destructive_reverse);
 
-        Data_Type<CppArray<std::string>> rb_cStringArray = define_class_under<CppArray<std::string>>(rb_mTatara, "StringArray")
-            .define_constructor(Constructor<CppArray<std::string>>())
-            .define_method("first", &CppArray<std::string>::first)
-            .define_method("last", &CppArray<std::string>::last)
-            .define_method("[]", &CppArray<std::string>::bracket)
-            .define_method("[]=", &CppArray<std::string>::bracket_equal)            
-            .define_method("push", &CppArray<std::string>::emplace_back)
-            .define_method("size", &CppArray<std::string>::size)
-            .define_method("clear", &CppArray<std::string>::clear)
-            .define_method("<<", &CppArray<std::string>::push_back_object)
-            .define_method("intersection", &CppArray<std::string>::intersection)
-            .define_method("sort", &CppArray<std::string>::sort)
-            .define_method("sort!", &CppArray<std::string>::destructive_sort)
-            .define_method("reverse", &CppArray<std::string>::reverse)
-            .define_method("reverse!", &CppArray<std::string>::destructive_reverse);
-        
         VALUE mTatara = rb_define_module("Tatara");
+
+        VALUE rb_cStringArray = rb_define_class_under(mTatara, "StringArray", rb_cObject);
+
+        rb_define_alloc_func(rb_cStringArray, wrap_string_array_alloc);
+        rb_define_private_method(rb_cStringArray, "initialize", RUBY_METHOD_FUNC(wrap_string_array_init), 0);
+        rb_define_method(rb_cStringArray, "first", RUBY_METHOD_FUNC(wrap_string_array_first), 0);
+        rb_define_method(rb_cStringArray, "last", RUBY_METHOD_FUNC(wrap_string_array_last), 0);
+        rb_define_method(rb_cStringArray, "[]", RUBY_METHOD_FUNC(wrap_string_array_bracket), 1);
+        rb_define_method(rb_cStringArray, "[]=", RUBY_METHOD_FUNC(wrap_string_array_bracket_equal), 2);
+        rb_define_method(rb_cStringArray, "push", RUBY_METHOD_FUNC(wrap_string_array_emplace_back), 1);
+        rb_define_method(rb_cStringArray, "size", RUBY_METHOD_FUNC(wrap_string_array_size), 0);
+        rb_define_method(rb_cStringArray, "clear", RUBY_METHOD_FUNC(wrap_string_array_clear), 0);
+        rb_define_method(rb_cStringArray, "<<", RUBY_METHOD_FUNC(wrap_string_array_push_back_object), 1);
 
         VALUE rb_cStringIntMap = rb_define_class_under(mTatara, "StringIntMap", rb_cObject);
 
