@@ -6,6 +6,7 @@
 #include "map/map.hpp"
 #include "map/string_string_map.hpp"
 #include "map/string_float_map.hpp"
+#include "map/string_int_map.hpp"
 #include "map/int_string_map.hpp"
 #include "map/int_float_map.hpp"
 #include "map/int_int_map.hpp"
@@ -215,13 +216,15 @@ extern "C" {
             .define_method("sort!", &CppArray<std::string>::destructive_sort)
             .define_method("reverse", &CppArray<std::string>::reverse)
             .define_method("reverse!", &CppArray<std::string>::destructive_reverse);
-
-        Data_Type<Map<std::string, int>> rb_cStringIntMap = define_class_under<Map<std::string, int>>(rb_mTatara, "StringIntMap")
-            .define_constructor(Constructor<Map<std::string, int>>())
-            .define_method("[]", &Map<std::string, int>::bracket)
-            .define_method("[]=", &Map<std::string, int>::bracket_equal);
         
         VALUE mTatara = rb_define_module("Tatara");
+
+        VALUE rb_cStringIntMap = rb_define_class_under(mTatara, "StringIntMap", rb_cObject);
+
+        rb_define_alloc_func(rb_cStringIntMap, wrap_string_int_map_alloc);
+        rb_define_private_method(rb_cStringIntMap, "initialize", RUBY_METHOD_FUNC(wrap_string_int_map_init), 0);
+        rb_define_method(rb_cStringIntMap, "[]", RUBY_METHOD_FUNC(wrap_string_int_map_bracket), 1);
+        rb_define_method(rb_cStringIntMap, "[]=", RUBY_METHOD_FUNC(wrap_string_int_map_bracket_equal), 2);
 
         VALUE rb_cStringFloatMap = rb_define_class_under(mTatara, "StringFloatMap", rb_cObject);
 
