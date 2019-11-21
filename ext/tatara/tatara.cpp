@@ -6,6 +6,7 @@
 #include "map/map.hpp"
 #include "map/int_string_map.hpp"
 #include "map/int_float_map.hpp"
+#include "map/int_int_map.hpp"
 #include "map/float_string_map.hpp"
 #include "map/float_float_map.hpp"
 #include "map/float_int_map.hpp"
@@ -227,13 +228,15 @@ extern "C" {
             .define_constructor(Constructor<Map<std::string, std::string>>())
             .define_method("[]", &Map<std::string, std::string>::bracket)
             .define_method("[]=", &Map<std::string, std::string>::bracket_equal);
-
-        Data_Type<Map<int, int>> rb_cIntIntMap = define_class_under<Map<int, int>>(rb_mTatara, "IntIntMap")
-            .define_constructor(Constructor<Map<int, int>>())
-            .define_method("[]", &Map<int, int>::bracket)
-            .define_method("[]=", &Map<int, int>::bracket_equal);
         
         VALUE mTatara = rb_define_module("Tatara");
+
+        VALUE rb_cIntIntMap = rb_define_class_under(mTatara, "IntIntMap", rb_cObject);
+
+        rb_define_alloc_func(rb_cIntIntMap, wrap_int_int_map_alloc);
+        rb_define_private_method(rb_cIntIntMap, "initialize", RUBY_METHOD_FUNC(wrap_int_int_map_init), 0);
+        rb_define_method(rb_cIntIntMap, "[]", RUBY_METHOD_FUNC(wrap_int_int_map_bracket), 1);
+        rb_define_method(rb_cIntIntMap, "[]=", RUBY_METHOD_FUNC(wrap_int_int_map_bracket_equal), 2);
 
         VALUE rb_cIntFloatMap = rb_define_class_under(mTatara, "IntFloatMap", rb_cObject);
 
