@@ -74,9 +74,8 @@ module Tatara
 
         def reverse!
             result = []
-            self.each{|s| result << s}
+            self.each{|s| result << s }
             result.reverse!
-            return_value = Tatara::StringArray.new
             result.each_with_index{|r, i| self[i] = r}
             self
         end
