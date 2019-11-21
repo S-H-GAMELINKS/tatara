@@ -3,6 +3,7 @@
 
 #include <ruby.h>
 #include <unordered_map>
+#include <string>
 
 class StringFloatMap {
     std::unordered_map<std::string, double> container;
