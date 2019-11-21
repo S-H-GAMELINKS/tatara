@@ -11,8 +11,8 @@ class FloatStringMap {
     public:
         FloatStringMap();
         ~FloatStringMap();
-        constexpr std::string bracket(const double key);
-        constexpr std::string bracket_equal(const double key, const std::string value);
+        std::string bracket(const double key);
+        std::string bracket_equal(const double key, const std::string value);
 };
 
 FloatStringMap::FloatStringMap() {}
