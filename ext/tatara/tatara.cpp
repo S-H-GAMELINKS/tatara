@@ -160,23 +160,20 @@ extern "C" {
             .define_method("reverse", &Vector<std::string>::reverse)
             .define_method("reverse!", &Vector<std::string>::destructive_reverse);
 
-        Data_Type<CppArray<int>> rb_cIntArray = define_class_under<CppArray<int>>(rb_mTatara, "IntArray")
-            .define_constructor(Constructor<CppArray<int>>())
-            .define_method("first", &CppArray<int>::first)
-            .define_method("last", &CppArray<int>::last)
-            .define_method("[]", &CppArray<int>::bracket)
-            .define_method("[]=", &CppArray<int>::bracket_equal)
-            .define_method("push", &CppArray<int>::emplace_back)
-            .define_method("size", &CppArray<int>::size)
-            .define_method("clear", &CppArray<int>::clear)
-            .define_method("<<", &CppArray<int>::push_back_object)
-            .define_method("intersection", &CppArray<int>::intersection)
-            .define_method("sort", &CppArray<int>::sort)
-            .define_method("sort!", &CppArray<int>::destructive_sort)
-            .define_method("reverse", &CppArray<int>::reverse)
-            .define_method("reverse!", &CppArray<int>::destructive_reverse);
-
         VALUE mTatara = rb_define_module("Tatara");
+
+        VALUE rb_cIntArray = rb_define_class_under(mTatara, "IntArray", rb_cObject);
+
+        rb_define_alloc_func(rb_cIntArray, wrap_int_array_alloc);
+        rb_define_private_method(rb_cIntArray, "initialize", RUBY_METHOD_FUNC(wrap_int_array_init), 0);
+        rb_define_method(rb_cIntArray, "first", RUBY_METHOD_FUNC(wrap_int_array_first), 0);
+        rb_define_method(rb_cIntArray, "last", RUBY_METHOD_FUNC(wrap_int_array_last), 0);
+        rb_define_method(rb_cIntArray, "[]", RUBY_METHOD_FUNC(wrap_int_array_bracket), 1);
+        rb_define_method(rb_cIntArray, "[]=", RUBY_METHOD_FUNC(wrap_int_array_bracket_equal), 2);
+        rb_define_method(rb_cIntArray, "push", RUBY_METHOD_FUNC(wrap_int_array_emplace_back), 1);
+        rb_define_method(rb_cIntArray, "size", RUBY_METHOD_FUNC(wrap_int_array_size), 0);
+        rb_define_method(rb_cIntArray, "clear", RUBY_METHOD_FUNC(wrap_int_array_clear), 0);
+        rb_define_method(rb_cIntArray, "<<", RUBY_METHOD_FUNC(wrap_int_array_push_back_object), 1);
 
         VALUE rb_cFloatArray = rb_define_class_under(mTatara, "FloatArray", rb_cObject);
 

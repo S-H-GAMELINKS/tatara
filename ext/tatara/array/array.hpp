@@ -3,6 +3,7 @@
 
 #include "string/string_array.hpp"
 #include "float/float_array.hpp"
+#include "integer/int_array.hpp"
 
 #include <algorithm>
 #include <iterator>
