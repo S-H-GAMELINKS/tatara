@@ -33,5 +33,57 @@ module Tatara
 
     class StringVector
         include Vector
+
+        def sum
+            result = ""
+            self.map{|v| result += v}
+            result
+        end
+
+        def intersection(other)
+            result = Tatara::StringVector.new    
+            self.each{|s|
+                other.each{|o|
+                    if o == s
+                        result << s
+                    end
+                }
+            }
+            result
+        end
+
+        def sort
+            result = []
+            self.each{|s| result << s}
+            result.sort!
+            return_value = Tatara::StringVector.new
+            result.each{|r| return_value << r}
+            return_value
+        end
+
+        def sort!
+            result = []
+            self.each{|s| result << s}
+            result.sort!
+            result.each_with_index{|r, i| self[i] = r}
+            self
+        end
+
+        def reverse
+            result = []
+            self.each{|s| result << s}
+            result.reverse!
+            return_value = Tatara::StringVector.new
+            result.each{|r| return_value << r}
+            return_value
+        end
+
+        def reverse!
+            result = []
+            self.each{|s| result << s }
+            result.reverse!
+            result.each_with_index{|r, i| self[i] = r}
+            self
+        end
     end
 end

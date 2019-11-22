@@ -1,6 +1,8 @@
 #ifndef VEC_TEMPLATE_H_
 #define VEC_TEMPLATE_H_
 
+#include "string/string_vector.hpp"
+
 #include <algorithm>
 #include <iterator>
 #include <vector>

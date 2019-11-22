@@ -143,24 +143,20 @@ extern "C" {
             .define_method("reverse", &Vector<double>::reverse)
             .define_method("reverse!", &Vector<double>::destructive_reverse);
 
-        Data_Type<Vector<std::string>> rb_cStringVector = define_class_under<Vector<std::string>>(rb_mTatara, "StringVector")
-            .define_constructor(Constructor<Vector<std::string>>())
-            .define_method("first", &Vector<std::string>::first)
-            .define_method("last", &Vector<std::string>::last)
-            .define_method("[]", &Vector<std::string>::bracket)
-            .define_method("[]=", &Vector<std::string>::bracket_equal)
-            .define_method("emplace_back", &    Vector<std::string>::emplace_back)
-            .define_method("size", &Vector<std::string>::size)
-            .define_method("clear", &Vector<std::string>::clear)
-            .define_method("sum", &Vector<std::string>::sum)
-            .define_method("<<", &Vector<std::string>::push_back_object)
-            .define_method("intersection", &Vector<std::string>::intersection)
-            .define_method("sort", &Vector<std::string>::sort)
-            .define_method("sort!", &Vector<std::string>::destructive_sort)
-            .define_method("reverse", &Vector<std::string>::reverse)
-            .define_method("reverse!", &Vector<std::string>::destructive_reverse);
-
         VALUE mTatara = rb_define_module("Tatara");
+
+        VALUE rb_cStringVector = rb_define_class_under(mTatara, "StringVector", rb_cObject);
+
+        rb_define_alloc_func(rb_cStringVector, wrap_string_vector_alloc);
+        rb_define_private_method(rb_cStringVector, "initialize", RUBY_METHOD_FUNC(wrap_string_vector_init), 0);
+        rb_define_method(rb_cStringVector, "first", RUBY_METHOD_FUNC(wrap_string_vector_first), 0);
+        rb_define_method(rb_cStringVector, "last", RUBY_METHOD_FUNC(wrap_string_vector_last), 0);
+        rb_define_method(rb_cStringVector, "[]", RUBY_METHOD_FUNC(wrap_string_vector_bracket), 1);
+        rb_define_method(rb_cStringVector, "[]=", RUBY_METHOD_FUNC(wrap_string_vector_bracket_equal), 2);
+        rb_define_method(rb_cStringVector, "emplace_back", RUBY_METHOD_FUNC(wrap_string_vector_emplace_back), 1);
+        rb_define_method(rb_cStringVector, "size", RUBY_METHOD_FUNC(wrap_string_vector_size), 0);
+        rb_define_method(rb_cStringVector, "clear", RUBY_METHOD_FUNC(wrap_string_vector_clear), 0);
+        rb_define_method(rb_cStringVector, "<<", RUBY_METHOD_FUNC(wrap_string_vector_push_back_object), 1);
 
         VALUE rb_cIntArray = rb_define_class_under(mTatara, "IntArray", rb_cObject);
 
