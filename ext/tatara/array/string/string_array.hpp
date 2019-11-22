@@ -2,8 +2,6 @@
 #define STRING_ARRAY_HPP_
 
 #include <ruby.h>
-#include <algorithm>
-#include <iterator>
 #include <string>
 #include <vector>
 
@@ -21,11 +19,6 @@ class StringArray {
         int size();
         void clear();
         StringArray& push_back_object(const std::string var);
-        StringArray intersection(const StringArray array);
-        StringArray sort();
-        StringArray& destructive_sort();
-        StringArray reverse();
-        StringArray& destructive_reverse();
 };
 
 StringArray::StringArray() {}
@@ -62,46 +55,6 @@ void StringArray::clear() {
 
 StringArray &StringArray::push_back_object(const std::string var) {
     this->container.emplace_back(std::move(var));
-    return *this;
-}
-
-StringArray StringArray::intersection(const StringArray array) {
-
-    std::vector<std::string> result;
-
-    std::set_intersection(
-        this->container.begin(), this->container.end(),
-        array.container.begin(), array.container.end(),
-        std::inserter(result, result.end()));
-
-    StringArray object;
-
-    object.container = std::move(result);
-
-    return object;
-}
-
-StringArray StringArray::sort() {
-    StringArray object;
-    object.container = this->container;
-    std::sort(object.container.begin(), object.container.end());
-    return object;
-}
-
-StringArray& StringArray::destructive_sort() {
-    std::sort(this->container.begin(), this->container.end());
-    return *this;
-}
-
-StringArray StringArray::reverse() {
-    StringArray object;
-    object.container = this->container;
-    std::reverse(object.container.begin(), object.container.end());
-    return object;
-}
-
-StringArray& StringArray::destructive_reverse() {
-    std::reverse(this->container.begin(), this->container.end());
     return *this;
 }
 

@@ -2,8 +2,6 @@
 #define FLOAT_ARRAY_HPP_
 
 #include <ruby.h>
-#include <algorithm>
-#include <iterator>
 #include <vector>
 
 class FloatArray {
@@ -20,11 +18,6 @@ class FloatArray {
         int size();
         void clear();
         FloatArray& push_back_object(const double var);
-        FloatArray intersection(const FloatArray array);
-        FloatArray sort();
-        FloatArray& destructive_sort();
-        FloatArray reverse();
-        FloatArray& destructive_reverse();
 };
 
 FloatArray::FloatArray() {}
@@ -61,46 +54,6 @@ void FloatArray::clear() {
 
 FloatArray &FloatArray::push_back_object(const double var) {
     this->container.emplace_back(std::move(var));
-    return *this;
-}
-
-FloatArray FloatArray::intersection(const FloatArray array) {
-
-    std::vector<double> result;
-
-    std::set_intersection(
-        this->container.begin(), this->container.end(),
-        array.container.begin(), array.container.end(),
-        std::inserter(result, result.end()));
-
-    FloatArray object;
-
-    object.container = std::move(result);
-
-    return object;
-}
-
-FloatArray FloatArray::sort() {
-    FloatArray object;
-    object.container = this->container;
-    std::sort(object.container.begin(), object.container.end());
-    return object;
-}
-
-FloatArray& FloatArray::destructive_sort() {
-    std::sort(this->container.begin(), this->container.end());
-    return *this;
-}
-
-FloatArray FloatArray::reverse() {
-    FloatArray object;
-    object.container = this->container;
-    std::reverse(object.container.begin(), object.container.end());
-    return object;
-}
-
-FloatArray& FloatArray::destructive_reverse() {
-    std::reverse(this->container.begin(), this->container.end());
     return *this;
 }
 

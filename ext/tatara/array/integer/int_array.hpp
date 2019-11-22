@@ -2,8 +2,6 @@
 #define INT_ARRAY_HPP_
 
 #include <ruby.h>
-#include <algorithm>
-#include <iterator>
 #include <vector>
 
 class IntArray {
@@ -20,12 +18,7 @@ class IntArray {
         int size();
         void clear();
         IntArray& push_back_object(const int var);
-        IntArray intersection(const IntArray array);
-        IntArray sort();
-        IntArray& destructive_sort();
-        IntArray reverse();
-        IntArray& destructive_reverse();
-};
+ };
 
 IntArray::IntArray() {}
 
@@ -61,46 +54,6 @@ void IntArray::clear() {
 
 IntArray &IntArray::push_back_object(const int var) {
     this->container.emplace_back(std::move(var));
-    return *this;
-}
-
-IntArray IntArray::intersection(const IntArray array) {
-
-    std::vector<int> result;
-
-    std::set_intersection(
-        this->container.begin(), this->container.end(),
-        array.container.begin(), array.container.end(),
-        std::inserter(result, result.end()));
-
-    IntArray object;
-
-    object.container = std::move(result);
-
-    return object;
-}
-
-IntArray IntArray::sort() {
-    IntArray object;
-    object.container = this->container;
-    std::sort(object.container.begin(), object.container.end());
-    return object;
-}
-
-IntArray& IntArray::destructive_sort() {
-    std::sort(this->container.begin(), this->container.end());
-    return *this;
-}
-
-IntArray IntArray::reverse() {
-    IntArray object;
-    object.container = this->container;
-    std::reverse(object.container.begin(), object.container.end());
-    return object;
-}
-
-IntArray& IntArray::destructive_reverse() {
-    std::reverse(this->container.begin(), this->container.end());
     return *this;
 }
 
