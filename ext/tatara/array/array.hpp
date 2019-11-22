@@ -2,6 +2,7 @@
 #define ARRAY__TEMPLATE_H_
 
 #include "string/string_array.hpp"
+#include "float/float_array.hpp"
 
 #include <algorithm>
 #include <iterator>
