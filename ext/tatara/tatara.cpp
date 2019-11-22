@@ -109,24 +109,20 @@ extern "C" {
             .define_method("slice", &CppString::slice)
             .define_method("slice!", &CppString::slice_des);
 
-        Data_Type<Vector<int>> rb_cIntVector = define_class_under<Vector<int>>(rb_mTatara, "IntVector")
-            .define_constructor(Constructor<Vector<int>>())
-            .define_method("first", &Vector<int>::first)
-            .define_method("last", &Vector<int>::last)
-            .define_method("[]", &Vector<int>::bracket)
-            .define_method("[]=", &Vector<int>::bracket_equal)
-            .define_method("emplace_back", &Vector<int>::emplace_back)
-            .define_method("size", &Vector<int>::size)
-            .define_method("clear", &Vector<int>::clear)
-            .define_method("sum", &Vector<int>::sum)
-            .define_method("<<", &Vector<int>::push_back_object)
-            .define_method("intersection", &Vector<int>::intersection)
-            .define_method("sort", &Vector<int>::sort)
-            .define_method("sort!", &Vector<int>::destructive_sort)
-            .define_method("reverse", &Vector<int>::reverse)
-            .define_method("reverse!", &Vector<int>::destructive_reverse);
-
         VALUE mTatara = rb_define_module("Tatara");
+
+        VALUE rb_cIntVector = rb_define_class_under(mTatara, "IntVector", rb_cObject);
+
+        rb_define_alloc_func(rb_cIntVector, wrap_int_vector_alloc);
+        rb_define_private_method(rb_cIntVector, "initialize", RUBY_METHOD_FUNC(wrap_int_vector_init), 0);
+        rb_define_method(rb_cIntVector, "first", RUBY_METHOD_FUNC(wrap_int_vector_first), 0);
+        rb_define_method(rb_cIntVector, "last", RUBY_METHOD_FUNC(wrap_int_vector_last), 0);
+        rb_define_method(rb_cIntVector, "[]", RUBY_METHOD_FUNC(wrap_int_vector_bracket), 1);
+        rb_define_method(rb_cIntVector, "[]=", RUBY_METHOD_FUNC(wrap_int_vector_bracket_equal), 2);
+        rb_define_method(rb_cIntVector, "emplace_back", RUBY_METHOD_FUNC(wrap_int_vector_emplace_back), 1);
+        rb_define_method(rb_cIntVector, "size", RUBY_METHOD_FUNC(wrap_int_vector_size), 0);
+        rb_define_method(rb_cIntVector, "clear", RUBY_METHOD_FUNC(wrap_int_vector_clear), 0);
+        rb_define_method(rb_cIntVector, "<<", RUBY_METHOD_FUNC(wrap_int_vector_push_back_object), 1);
 
         VALUE rb_cFloatVector = rb_define_class_under(mTatara, "FloatVector", rb_cObject);
 
