@@ -126,24 +126,20 @@ extern "C" {
             .define_method("reverse", &Vector<int>::reverse)
             .define_method("reverse!", &Vector<int>::destructive_reverse);
 
-        Data_Type<Vector<double>> rb_cFloatVector = define_class_under<Vector<double>>(rb_mTatara, "FloatVector")
-            .define_constructor(Constructor<Vector<double>>())
-            .define_method("first", &Vector<double>::first)
-            .define_method("last", &Vector<double>::last)
-            .define_method("[]", &Vector<double>::bracket)
-            .define_method("[]=", &Vector<double>::bracket_equal)
-            .define_method("emplace_back", &Vector<double>::emplace_back)
-            .define_method("size", &Vector<double>::size)
-            .define_method("clear", &Vector<double>::clear)
-            .define_method("sum", &Vector<double>::sum)
-            .define_method("<<", &Vector<double>::push_back_object)
-            .define_method("intersection", &Vector<double>::intersection)
-            .define_method("sort", &Vector<double>::sort)
-            .define_method("sort!", &Vector<double>::destructive_sort)
-            .define_method("reverse", &Vector<double>::reverse)
-            .define_method("reverse!", &Vector<double>::destructive_reverse);
-
         VALUE mTatara = rb_define_module("Tatara");
+
+        VALUE rb_cFloatVector = rb_define_class_under(mTatara, "FloatVector", rb_cObject);
+
+        rb_define_alloc_func(rb_cFloatVector, wrap_float_vector_alloc);
+        rb_define_private_method(rb_cFloatVector, "initialize", RUBY_METHOD_FUNC(wrap_float_vector_init), 0);
+        rb_define_method(rb_cFloatVector, "first", RUBY_METHOD_FUNC(wrap_float_vector_first), 0);
+        rb_define_method(rb_cFloatVector, "last", RUBY_METHOD_FUNC(wrap_float_vector_last), 0);
+        rb_define_method(rb_cFloatVector, "[]", RUBY_METHOD_FUNC(wrap_float_vector_bracket), 1);
+        rb_define_method(rb_cFloatVector, "[]=", RUBY_METHOD_FUNC(wrap_float_vector_bracket_equal), 2);
+        rb_define_method(rb_cFloatVector, "emplace_back", RUBY_METHOD_FUNC(wrap_float_vector_emplace_back), 1);
+        rb_define_method(rb_cFloatVector, "size", RUBY_METHOD_FUNC(wrap_float_vector_size), 0);
+        rb_define_method(rb_cFloatVector, "clear", RUBY_METHOD_FUNC(wrap_float_vector_clear), 0);
+        rb_define_method(rb_cFloatVector, "<<", RUBY_METHOD_FUNC(wrap_float_vector_push_back_object), 1);
 
         VALUE rb_cStringVector = rb_define_class_under(mTatara, "StringVector", rb_cObject);
 
