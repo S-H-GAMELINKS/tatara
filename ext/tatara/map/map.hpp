@@ -1,5 +1,5 @@
-#ifndef MAP_H_
-#define MAP_H_
+#ifndef TATARA_MAP_HPP_
+#define TATARA_MAP_HPP_
 
 // include String Key Map
 #include "string/string_int_map.hpp"
