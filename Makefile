@@ -17,97 +17,51 @@ hdrdir = $(topdir)
 arch_hdrdir = /home/sh/.rbenv/versions/2.6.5/include/ruby-2.6.0/x86_64-linux
 PATH_SEPARATOR = :
 VPATH = $(srcdir):$(arch_hdrdir)/ruby:$(hdrdir)/ruby
-
 prefix = $(DESTDIR)/home/sh/.rbenv/versions/2.6.5
-
 rubysitearchprefix = $(rubylibprefix)/$(sitearch)
-
 rubyarchprefix = $(rubylibprefix)/$(arch)
-
 rubylibprefix = $(libdir)/$(RUBY_BASE_NAME)
-
 exec_prefix = $(prefix)
-
 vendorarchhdrdir = $(vendorhdrdir)/$(sitearch)
-
 sitearchhdrdir = $(sitehdrdir)/$(sitearch)
-
 rubyarchhdrdir = $(rubyhdrdir)/$(arch)
-
 vendorhdrdir = $(rubyhdrdir)/vendor_ruby
-
 sitehdrdir = $(rubyhdrdir)/site_ruby
-
 rubyhdrdir = $(includedir)/$(RUBY_VERSION_NAME)
-
 vendorarchdir = $(vendorlibdir)/$(sitearch)
-
 vendorlibdir = $(vendordir)/$(ruby_version)
-
 vendordir = $(rubylibprefix)/vendor_ruby
-
 sitearchdir = $(sitelibdir)/$(sitearch)
-
 sitelibdir = $(sitedir)/$(ruby_version)
-
 sitedir = $(rubylibprefix)/site_ruby
-
 rubyarchdir = $(rubylibdir)/$(arch)
-
 rubylibdir = $(rubylibprefix)/$(ruby_version)
-
 sitearchincludedir = $(includedir)/$(sitearch)
-
 archincludedir = $(includedir)/$(arch)
-
 sitearchlibdir = $(libdir)/$(sitearch)
-
 archlibdir = $(libdir)/$(arch)
-
 ridir = $(datarootdir)/$(RI_BASE_NAME)
-
 mandir = $(datarootdir)/man
-
 localedir = $(datarootdir)/locale
-
 libdir = $(exec_prefix)/lib
-
 psdir = $(docdir)
-
 pdfdir = $(docdir)
-
 dvidir = $(docdir)
-
 htmldir = $(docdir)
-
 infodir = $(datarootdir)/info
-
 docdir = $(datarootdir)/doc/$(PACKAGE)
-
 oldincludedir = $(DESTDIR)/usr/include
-
 includedir = $(prefix)/include
-
 runstatedir = $(localstatedir)/run
-
 localstatedir = $(prefix)/var
-
 sharedstatedir = $(prefix)/com
-
 sysconfdir = $(prefix)/etc
-
 datadir = $(datarootdir)
-
 datarootdir = $(prefix)/share
-
 libexecdir = $(exec_prefix)/libexec
-
 sbindir = $(exec_prefix)/sbin
-
 bindir = $(exec_prefix)/bin
-
 archdir = $(rubyarchdir)
-
 
 
 CC_WRAPPER = 
@@ -116,7 +70,7 @@ CXX = g++
 LIBRUBY = $(LIBRUBY_SO)
 LIBRUBY_A = lib$(RUBY_SO_NAME)-static.a
 LIBRUBYARG_SHARED = -Wl,-rpath,$(libdir) -L$(libdir) -l$(RUBY_SO_NAME)
-LIBRUBYARG_STATIC = -Wl,-rpath,/home/sh/.rbenv/versions/2.6.5/lib -L/home/sh/.rbenv/versions/2.6.5/lib -lruby-static -lz -lpthread -lrt -lrt -lgmp -ldl -lcrypt -lm 
+LIBRUBYARG_STATIC = -Wl,-rpath,$(libdir) -L$(libdir) -l$(RUBY_SO_NAME)-static $(MAINLIBS)
 empty =
 OUTFLAG = -o $(empty)
 COUTFLAG = -o $(empty)
@@ -133,30 +87,23 @@ CCDLFLAGS = -fPIC
 CFLAGS   = $(CCDLFLAGS) $(cflags)  -fPIC $(ARCH_FLAG)
 INCFLAGS = -I. -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward -I$(hdrdir) -I$(srcdir)
 DEFS     = 
-CPPFLAGS =  -I/home/sh/.rbenv/versions/2.6.5/include  $(DEFS) $(cppflags)  -I/home/sh/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rice-2.1.3/ruby/lib/include
-CXXFLAGS = $(CFLAGS) -Ofast -mtune=native -march=native -mfpmath=both -std=c++17
-ldflags  = -L. -L/home/sh/.rbenv/versions/2.6.5/lib  -fstack-protector-strong -rdynamic -Wl,-export-dynamic  -L/home/sh/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rice-2.1.3/ruby/lib/lib -lrice
+CPPFLAGS =  -I/home/sh/.rbenv/versions/2.6.5/include  $(DEFS) $(cppflags)
+CXXFLAGS = $(CCDLFLAGS) -Ofast -mtune=native -march=native -mfpmath=both -std=c++17 $(ARCH_FLAG)
+ldflags  = -L. -L/home/sh/.rbenv/versions/2.6.5/lib  -fstack-protector-strong -rdynamic -Wl,-export-dynamic
 dldflags = -L/home/sh/.rbenv/versions/2.6.5/lib  -Wl,--compress-debug-sections=zlib 
 ARCH_FLAG = 
 DLDFLAGS = $(ldflags) $(dldflags) $(ARCH_FLAG)
-LDSHARED = g++ -shared
+LDSHARED = $(CC) -shared
 LDSHAREDXX = $(CXX) -shared
 AR = ar
 EXEEXT = 
 
-
 RUBY_INSTALL_NAME = $(RUBY_BASE_NAME)
-
 RUBY_SO_NAME = ruby
-
 RUBYW_INSTALL_NAME = 
-
 RUBY_VERSION_NAME = $(RUBY_BASE_NAME)-$(ruby_version)
-
 RUBYW_BASE_NAME = rubyw
-
 RUBY_BASE_NAME = ruby
-
 
 arch = x86_64-linux
 sitearch = $(arch)
@@ -178,9 +125,6 @@ TOUCH = exit >
 #### End of system configuration section. ####
 
 preload = 
-
-
-CXX = g++
 libpath = . $(libdir)
 LIBPATH =  -L. -L$(libdir) -Wl,-rpath,$(libdir)
 DEFFILE = 
@@ -193,7 +137,7 @@ extout =
 extout_prefix = 
 target_prefix = /tatara
 LOCAL_LIBS = 
-LIBS = -Wl,-rpath,/home/sh/.rbenv/versions/2.6.5/lib -L/home/sh/.rbenv/versions/2.6.5/lib -lruby -lm   -lc
+LIBS = $(LIBRUBYARG_SHARED)  -lm   -lc
 ORIG_SRCS = tatara.cpp
 SRCS = $(ORIG_SRCS) 
 OBJS = tatara.o
@@ -207,24 +151,16 @@ EXTSTATIC =
 STATIC_LIB = 
 
 TIMESTAMP_DIR = .
-
 BINDIR        = $(bindir)
-
 RUBYCOMMONDIR = $(sitedir)$(target_prefix)
-
 RUBYLIBDIR    = $(sitelibdir)$(target_prefix)
-
 RUBYARCHDIR   = $(sitearchdir)$(target_prefix)
-
 HDRDIR        = $(rubyhdrdir)/ruby$(target_prefix)
-
 ARCHHDRDIR    = $(rubyhdrdir)/$(arch)/ruby$(target_prefix)
-
 TARGET_SO_DIR =
 TARGET_SO     = $(TARGET_SO_DIR)$(DLLIB)
 CLEANLIBS     = $(TARGET_SO) 
 CLEANOBJS     = *.o  *.bak
-
 
 all:    $(DLLIB)
 static: $(STATIC_LIB)
