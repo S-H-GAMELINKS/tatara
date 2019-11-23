@@ -164,4 +164,15 @@ class FloatArrayTest < Minitest::Test
       assert_equal v, @f[i]
     }    
   end
+
+  def test_destructive_uniq_method_float_array
+    data = [1.1, 2.2, 3.3, 3.3]
+    @f = Tatara::FloatArray.new
+    data.each(&@f.method(:<<))
+    @f.uniq!
+    data.uniq!
+    data.each_with_index{|v, i|
+      assert_equal v, @f[i]
+    }    
+  end
 end
