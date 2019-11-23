@@ -189,4 +189,15 @@ class IntVectorTest < Minitest::Test
       assert_equal v, @i[i]
     }    
   end
+
+  def test_destructive_uniq_method_int_vector
+    data = [1, 2, 3, 3]
+    @i = Tatara::IntVector.new
+    data.each(&@i.method(:<<))
+    @i.uniq!
+    data.uniq!
+    data.each_with_index{|v, i|
+      assert_equal v, @i[i]
+    }    
+  end
 end

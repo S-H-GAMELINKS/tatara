@@ -185,4 +185,15 @@ class StringVectorTest < Minitest::Test
       assert_equal v, @s[i]
     }    
   end
+
+  def test_destructive_uniq_method_int_vector
+    data = ["1", "2", "3", "3"]
+    @s = Tatara::StringVector.new
+    data.each(&@s.method(:<<))
+    @s.uniq!
+    data.uniq!
+    data.each_with_index{|v, i|
+      assert_equal v, @s[i]
+    }    
+  end
 end

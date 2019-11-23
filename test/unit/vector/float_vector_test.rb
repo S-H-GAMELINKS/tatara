@@ -185,4 +185,15 @@ class FloatVectorTest < Minitest::Test
       assert_equal v, @f[i]
     }    
   end
+
+  def test_destructive_uniq_method_float_vector
+    data = [1.1, 2.2, 3.3, 3.3]
+    @f = Tatara::FloatVector.new
+    data.each(&@f.method(:<<))
+    @f.uniq!
+    data.uniq!
+    data.each_with_index{|v, i|
+      assert_equal v, @f[i]
+    }    
+  end
 end

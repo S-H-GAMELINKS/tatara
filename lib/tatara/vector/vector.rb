@@ -85,6 +85,14 @@ module Tatara
             result.uniq.each{|v| uniq << v}
             uniq
         end
+
+        def uniq!
+            result = []
+            self.map{|v| result << v}
+            self.clear
+            result.uniq.each{|v| self << v}
+            self
+        end
     end
 
     class FloatVector
@@ -149,6 +157,14 @@ module Tatara
             result.uniq.each{|v| uniq << v}
             uniq
         end
+
+        def uniq!
+            result = []
+            self.map{|v| result << v}
+            self.clear
+            result.uniq.each{|v| self << v}
+            self
+        end
     end
 
     class StringVector
@@ -212,6 +228,14 @@ module Tatara
             uniq = Tatara::StringVector.new
             result.uniq.each{|v| uniq << v}
             uniq
+        end
+
+        def uniq!
+            result = []
+            self.map{|v| result << v}
+            self.clear
+            result.uniq.each{|v| self << v}
+            self
         end
     end
 end
