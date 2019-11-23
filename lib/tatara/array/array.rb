@@ -71,6 +71,14 @@ module Tatara
             result.each_with_index{|r, i| self[i] = r}
             self
         end
+
+        def uniq
+            result = []
+            self.map{|v| result << v}
+            uniq = Tatara::IntArray.new
+            result.uniq.each{|v| uniq << v}
+            uniq
+        end
     end
 
     class FloatArray
@@ -121,6 +129,14 @@ module Tatara
             result.each_with_index{|r, i| self[i] = r}
             self
         end
+
+        def uniq
+            result = []
+            self.map{|v| result << v}
+            uniq = Tatara::FloatArray.new
+            result.uniq.each{|v| uniq << v}
+            uniq
+        end
     end
 
     class StringArray
@@ -170,6 +186,14 @@ module Tatara
             result.reverse!
             result.each_with_index{|r, i| self[i] = r}
             self
+        end
+
+        def uniq
+            result = []
+            self.map{|v| result << v}
+            uniq = Tatara::StringArray.new
+            result.uniq.each{|v| uniq << v}
+            uniq
         end
     end
 end
