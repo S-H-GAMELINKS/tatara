@@ -1,6 +1,7 @@
 #ifndef INTEGER_H_
 #define INTEGER_H_
 
+#include <ruby.h>
 #include <string>
 #include <cmath>
 
@@ -120,6 +121,169 @@ constexpr int Integer::clear() {
 
 constexpr bool Integer::equal(const int var) {
     return this->value == var;
+}
+
+static Integer *getInteger(VALUE self) {
+    Integer *ptr;
+    Data_Get_Struct(self, Integer, ptr);
+    return ptr;
+}
+
+static void wrap_int_free(Integer *ptr) {
+    ptr->~Integer();
+    ruby_xfree(ptr);
+}
+
+static VALUE wrap_int_alloc(VALUE klass) {
+    void *p = ruby_xmalloc(sizeof(Integer));
+    p = new Integer;
+    return Data_Wrap_Struct(klass, NULL, wrap_int_free, p);
+}
+
+static VALUE wrap_int_init(VALUE self) {
+    Integer *p = getInteger(self);
+    p = new Integer;
+    return Qnil;
+}
+
+
+static VALUE wrap_int_return_value(VALUE self) {
+    const int value = getInteger(self)->return_value();
+    VALUE result = INT2NUM(value);
+    return result;
+}
+
+static VALUE wrap_int_assignment(VALUE self, VALUE value) {
+    const int v = NUM2INT(value);
+    const int r = getInteger(self)->assignment(v);
+    VALUE result = INT2NUM(r);
+    return result;
+}
+
+static VALUE wrap_int_plus(VALUE self, VALUE value) {
+    const int v = NUM2INT(value);
+    const int r = getInteger(self)->plus(v);
+    VALUE result = INT2NUM(r);
+    return result;
+}
+
+static VALUE wrap_int_plus_equal(VALUE self, VALUE value) {
+    const int v = NUM2INT(value);
+    const int r = getInteger(self)->plus_equal(v);
+    VALUE result = INT2NUM(r);
+    return result;
+}
+
+static VALUE wrap_int_minus(VALUE self, VALUE value) {
+    const int v = NUM2INT(value);
+    const int r = getInteger(self)->minus(v);
+    VALUE result = INT2NUM(r);
+    return result;
+}
+
+static VALUE wrap_int_minus_equal(VALUE self, VALUE value) {
+    const int v = NUM2INT(value);
+    const int r = getInteger(self)->minus_equal(v);
+    VALUE result = INT2NUM(r);
+    return result;
+}
+
+static VALUE wrap_int_divided(VALUE self, VALUE value) {
+    const int v = NUM2INT(value);
+    const int r = getInteger(self)->divided(v);
+    VALUE result = INT2NUM(r);
+    return result;
+}
+
+static VALUE wrap_int_divided_equal(VALUE self, VALUE value) {
+    const int v = NUM2INT(value);
+    const int r = getInteger(self)->divided_equal(v);
+    VALUE result = INT2NUM(r);
+    return result;
+}
+
+static VALUE wrap_int_multiply(VALUE self, VALUE value) {
+    const int v = NUM2INT(value);
+    const int r = getInteger(self)->multiply(v);
+    VALUE result = INT2NUM(r);
+    return result;
+}
+
+static VALUE wrap_int_multiply_equal(VALUE self, VALUE value) {
+    const int v = NUM2INT(value);
+    const int r = getInteger(self)->multiply_equal(v);
+    VALUE result = INT2NUM(r);
+    return result;
+}
+
+static VALUE wrap_int_mod(VALUE self, VALUE value) {
+    const int v = NUM2INT(value);
+    const int r = getInteger(self)->mod(v);
+    VALUE result = INT2NUM(r);
+    return result;
+}
+
+static VALUE wrap_int_mod_equal(VALUE self, VALUE value) {
+    const int v = NUM2INT(value);
+    const int r = getInteger(self)->mod_equal(v);
+    VALUE result = INT2NUM(r);
+    return result;
+}
+
+static VALUE wrap_int_power(VALUE self, VALUE value) {
+    const int v = NUM2INT(value);
+    const int r = getInteger(self)->power(v);
+    VALUE result = INT2NUM(r);
+    return result;
+}
+
+static VALUE wrap_int_power_equal(VALUE self, VALUE value) {
+    const int v = NUM2INT(value);
+    const int r = getInteger(self)->power_equal(v);
+    VALUE result = INT2NUM(r);
+    return result;
+}
+
+static VALUE wrap_int_increment_value(VALUE self) {
+    const int value = getInteger(self)->increment_value();
+    VALUE result = INT2NUM(value);
+    return result;
+}
+
+static VALUE wrap_int_decrement_value(VALUE self) {
+    const int value = getInteger(self)->decrement_value();
+    VALUE result = INT2NUM(value);
+    return result;
+}
+
+static VALUE wrap_int_to_string(VALUE self) {
+    const std::string value = getInteger(self)->to_string();
+    VALUE result = rb_str_new(value.c_str(), value.size());
+    return result;
+}
+
+static VALUE wrap_int_to_float(VALUE self) {
+    const double value = getInteger(self)->to_float();
+    VALUE result = DBL2NUM(value);
+    return result;
+}
+
+static VALUE wrap_int_clear(VALUE self) {
+    const int value = getInteger(self)->clear();
+    VALUE result = INT2NUM(value);
+    return result;
+}
+
+static VALUE wrap_int_equal(VALUE self, VALUE value) {
+    const int v = NUM2INT(value);
+    bool eval = getInteger(self)->equal(v);
+    return eval ? Qtrue : Qfalse;
+}
+
+static VALUE wrap_int_initialize_object(VALUE self, VALUE value) {
+    const int v = NUM2INT(value);
+    getInteger(self)->initialize_object(v);
+    return self;
 }
 
 #endif
