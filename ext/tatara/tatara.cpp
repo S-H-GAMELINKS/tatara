@@ -54,43 +54,45 @@ extern "C" {
             .define_method("equal?", &Integer::equal)
             .define_method("<<", &Integer::initialize_object);
 
-        Data_Type<Float> rbcFloat = define_class_under<Float>(rb_mTatara, "Float")
-            .define_constructor(Constructor<Float>())
-            .define_method("value", &Float::return_value)
-            .define_method("val", &Float::return_value)
-            .define_method("value=", &Float::assignment)
-            .define_method("val=", &Float::assignment)
-            .define_method("value+", &Float::plus)
-            .define_method("val+", &Float::plus)
-            .define_method("value+=", &Float::plus_equal)
-            .define_method("val+=", &Float::plus_equal)
-            .define_method("value-", &Float::minus)
-            .define_method("val-", &Float::minus)
-            .define_method("value-=", &Float::minus_equal)
-            .define_method("val-=", &Float::minus_equal)
-            .define_method("value*", &Float::multiply)
-            .define_method("val*", &Float::multiply)
-            .define_method("value*=", &Float::multiply_equal)
-            .define_method("val*=", &Float::multiply_equal)
-            .define_method("value/", &Float::divided)
-            .define_method("val/", &Float::divided)
-            .define_method("value/=", &Float::divided_equal)
-            .define_method("val/=", &Float::divided_equal)
-            .define_method("value**", &Float::power)
-            .define_method("val**", &Float::power)
-            .define_method("value**=", &Float::power_equal)
-            .define_method("val**=", &Float::power_equal)
-            .define_method("inc", &Float::increment_value)
-            .define_method("dec", &Float::decrement_value)
-            .define_method("to_s", &Float::to_string)
-            .define_method("to_i", &Float::to_integer)
-            .define_method("clear", &Float::clear)
-            .define_method("value==", &Float::equal)
-            .define_method("val==", &Float::equal)
-            .define_method("equal?", &Float::equal)
-            .define_method("<<", &Float::initialize_object);
-
         VALUE mTatara = rb_define_module("Tatara");
+
+        VALUE rb_cFloat = rb_define_class_under(mTatara, "Float", rb_cObject);
+
+        rb_define_alloc_func(rb_cFloat, wrap_float_alloc);
+        rb_define_private_method(rb_cFloat, "initialize", RUBY_METHOD_FUNC(wrap_float_init), 0);
+        rb_define_method(rb_cFloat, "value", RUBY_METHOD_FUNC(wrap_float_return_value), 0);
+        rb_define_method(rb_cFloat, "val", RUBY_METHOD_FUNC(wrap_float_return_value), 0);
+        rb_define_method(rb_cFloat, "value=", RUBY_METHOD_FUNC(wrap_float_assignment), 1);
+        rb_define_method(rb_cFloat, "val=", RUBY_METHOD_FUNC(wrap_float_assignment), 1);
+        rb_define_method(rb_cFloat, "value+", RUBY_METHOD_FUNC(wrap_float_plus), 1);
+        rb_define_method(rb_cFloat, "val+", RUBY_METHOD_FUNC(wrap_float_plus), 1);
+        rb_define_method(rb_cFloat, "value+=", RUBY_METHOD_FUNC(wrap_float_plus_equal), 1);
+        rb_define_method(rb_cFloat, "val+=", RUBY_METHOD_FUNC(wrap_float_plus_equal), 1);
+        rb_define_method(rb_cFloat, "value-", RUBY_METHOD_FUNC(wrap_float_minus), 1);
+        rb_define_method(rb_cFloat, "val-", RUBY_METHOD_FUNC(wrap_float_minus), 1);
+        rb_define_method(rb_cFloat, "value-=", RUBY_METHOD_FUNC(wrap_float_minus_equal), 1);
+        rb_define_method(rb_cFloat, "val-=", RUBY_METHOD_FUNC(wrap_float_minus_equal), 1);
+        rb_define_method(rb_cFloat, "value*", RUBY_METHOD_FUNC(wrap_float_multiply), 1);
+        rb_define_method(rb_cFloat, "val*", RUBY_METHOD_FUNC(wrap_float_multiply), 1);
+        rb_define_method(rb_cFloat, "value*=", RUBY_METHOD_FUNC(wrap_float_multiply_equal), 1);
+        rb_define_method(rb_cFloat, "val*=", RUBY_METHOD_FUNC(wrap_float_multiply_equal), 1);
+        rb_define_method(rb_cFloat, "value/", RUBY_METHOD_FUNC(wrap_float_divided), 1);
+        rb_define_method(rb_cFloat, "val/", RUBY_METHOD_FUNC(wrap_float_divided), 1);
+        rb_define_method(rb_cFloat, "value/=", RUBY_METHOD_FUNC(wrap_float_divided_equal), 1);
+        rb_define_method(rb_cFloat, "val/=", RUBY_METHOD_FUNC(wrap_float_divided_equal), 1);
+        rb_define_method(rb_cFloat, "value**", RUBY_METHOD_FUNC(wrap_float_power), 1);
+        rb_define_method(rb_cFloat, "val**", RUBY_METHOD_FUNC(wrap_float_power), 1);
+        rb_define_method(rb_cFloat, "value**=", RUBY_METHOD_FUNC(wrap_float_power_equal), 1);
+        rb_define_method(rb_cFloat, "val**=", RUBY_METHOD_FUNC(wrap_float_power_equal), 1);
+        rb_define_method(rb_cFloat, "inc", RUBY_METHOD_FUNC(wrap_float_increment_value), 0);
+        rb_define_method(rb_cFloat, "dec", RUBY_METHOD_FUNC(wrap_float_decrement_value), 0);
+        rb_define_method(rb_cFloat, "to_s", RUBY_METHOD_FUNC(wrap_float_to_string), 0);
+        rb_define_method(rb_cFloat, "to_i", RUBY_METHOD_FUNC(wrap_float_to_integer), 0);
+        rb_define_method(rb_cFloat, "clear", RUBY_METHOD_FUNC(wrap_float_clear), 0);
+        rb_define_method(rb_cFloat, "value==", RUBY_METHOD_FUNC(wrap_float_equal), 1);
+        rb_define_method(rb_cFloat, "val==", RUBY_METHOD_FUNC(wrap_float_equal), 1);
+        rb_define_method(rb_cFloat, "equal?", RUBY_METHOD_FUNC(wrap_float_equal), 1);
+        rb_define_method(rb_cFloat, "<<", RUBY_METHOD_FUNC(wrap_float_initialize_object), 1);
 
         VALUE rb_cString = rb_define_class_under(mTatara, "String", rb_cObject);
 
