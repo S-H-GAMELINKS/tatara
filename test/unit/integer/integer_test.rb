@@ -155,6 +155,7 @@ class IntegerTest < Minitest::Test
     @i.value = 42
     assert_equal 42, @i.value
     assert_equal 0, @i.value % 42
+    assert_equal 0, @i.val % 42
   end
 
   def test_power_tatara_integer
