@@ -116,6 +116,9 @@ class IntegerTest < Minitest::Test
     assert_equal 42, @i.value
     @i.value %= 42
     assert_equal 0, @i.value
+    @i.val = 42
+    @i.val %= 42
+    assert_equal 0, @i.val
   end
 
   def test_plus_tatara_integer

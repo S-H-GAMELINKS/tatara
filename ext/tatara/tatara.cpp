@@ -37,6 +37,7 @@ extern "C" {
         rb_define_method(rb_cInteger, "value%", RUBY_METHOD_FUNC(wrap_int_mod), 1);
         rb_define_method(rb_cInteger, "val%", RUBY_METHOD_FUNC(wrap_int_mod), 1);
         rb_define_method(rb_cInteger, "value%=", RUBY_METHOD_FUNC(wrap_int_mod_equal), 1);
+        rb_define_method(rb_cInteger, "val%=", RUBY_METHOD_FUNC(wrap_int_mod_equal), 1);
         rb_define_method(rb_cInteger, "value**", RUBY_METHOD_FUNC(wrap_int_power), 1);
         rb_define_method(rb_cInteger, "val**", RUBY_METHOD_FUNC(wrap_int_power), 1);
         rb_define_method(rb_cInteger, "value**=", RUBY_METHOD_FUNC(wrap_int_power_equal), 1);
