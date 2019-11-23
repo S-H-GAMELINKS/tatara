@@ -164,4 +164,15 @@ class StringArrayTest < Minitest::Test
       assert_equal v, @s[i]
     }
   end
+
+  def test_uniq_method_string_array
+    data = ["1", "2", "3", "3"]
+    @s = Tatara::StringArray.new
+    data.each(&@s.method(:<<))
+    @s = @s.uniq
+    data.uniq!
+    data.each_with_index{|v, i|
+      assert_equal v, @s[i]
+    }    
+  end
 end
