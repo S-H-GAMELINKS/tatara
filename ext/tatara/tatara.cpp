@@ -90,26 +90,28 @@ extern "C" {
             .define_method("equal?", &Float::equal)
             .define_method("<<", &Float::initialize_object);
 
-        Data_Type<CppString> rbcString = define_class_under<CppString>(rb_mTatara, "String")
-            .define_constructor(Constructor<CppString>())
-            .define_method("value", &CppString::return_value)
-            .define_method("val", &CppString::return_value)
-            .define_method("value=", &CppString::assignment)
-            .define_method("val=", &CppString::assignment)
-            .define_method("value+=", &CppString::plus_equal)
-            .define_method("val+=", &CppString::plus_equal)
-            .define_method("to_i", &CppString::to_integer)
-            .define_method("to_f", &CppString::to_float)
-            .define_method("clear", &CppString::clear)
-            .define_method("value==", &CppString::equal)
-            .define_method("val==", &CppString::equal)
-            .define_method("equal?", &CppString::equal)
-            .define_method("<<", &CppString::initialize_object)
-            .define_method("[]", &CppString::index_access)
-            .define_method("slice", &CppString::slice)
-            .define_method("slice!", &CppString::slice_des);
-
         VALUE mTatara = rb_define_module("Tatara");
+
+        VALUE rb_cString = rb_define_class_under(mTatara, "String", rb_cObject);
+
+        rb_define_alloc_func(rb_cString, wrap_string_alloc);
+        rb_define_private_method(rb_cString, "initialize", RUBY_METHOD_FUNC(wrap_string_init), 0);
+        rb_define_method(rb_cString, "value", RUBY_METHOD_FUNC(wrap_string_return_value), 0);
+        rb_define_method(rb_cString, "val", RUBY_METHOD_FUNC(wrap_string_return_value), 0);
+        rb_define_method(rb_cString, "value=", RUBY_METHOD_FUNC(wrap_string_assignment), 1);
+        rb_define_method(rb_cString, "val=", RUBY_METHOD_FUNC(wrap_string_assignment), 1);
+        rb_define_method(rb_cString, "value+=", RUBY_METHOD_FUNC(wrap_string_plus_equal), 1);
+        rb_define_method(rb_cString, "val+=", RUBY_METHOD_FUNC(wrap_string_plus_equal), 1);
+        rb_define_method(rb_cString, "to_i", RUBY_METHOD_FUNC(wrap_string_to_integer), 0);
+        rb_define_method(rb_cString, "to_f", RUBY_METHOD_FUNC(wrap_string_to_float), 0);
+        rb_define_method(rb_cString, "clear", RUBY_METHOD_FUNC(wrap_string_clear), 0);
+        rb_define_method(rb_cString, "value==", RUBY_METHOD_FUNC(wrap_string_equal), 1);
+        rb_define_method(rb_cString, "val==", RUBY_METHOD_FUNC(wrap_string_equal), 1);
+        rb_define_method(rb_cString, "equal?", RUBY_METHOD_FUNC(wrap_string_equal), 1);
+        rb_define_method(rb_cString, "<<", RUBY_METHOD_FUNC(wrap_string_initialize_object), 1);
+        rb_define_method(rb_cString, "[]", RUBY_METHOD_FUNC(wrap_string_index_access), 1);
+        rb_define_method(rb_cString, "slice", RUBY_METHOD_FUNC(wrap_string_slice), 2);
+        rb_define_method(rb_cString, "slice!", RUBY_METHOD_FUNC(wrap_string_destructive_slice), 2);
 
         VALUE rb_cIntVector = rb_define_class_under(mTatara, "IntVector", rb_cObject);
 
