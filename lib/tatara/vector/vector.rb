@@ -64,6 +64,13 @@ module Tatara
             return self
         end
 
+        def reverse
+            copy = self.dup
+            result = self.to_array.reverse
+            result.each{|v| copy << v }
+            return copy
+        end
+
         def to_array
             result = []
             self.map{|v| result << v}
@@ -73,15 +80,6 @@ module Tatara
 
     class IntVector
         include Vector
-
-        def reverse
-            result = []
-            self.each{|s| result << s}
-            result.reverse!
-            return_value = Tatara::IntVector.new
-            result.each{|r| return_value << r}
-            return_value
-        end
 
         def reverse!
             result = []
@@ -95,15 +93,6 @@ module Tatara
     class FloatVector
         include Vector
 
-        def reverse
-            result = []
-            self.each{|s| result << s}
-            result.reverse!
-            return_value = Tatara::FloatVector.new
-            result.each{|r| return_value << r}
-            return_value
-        end
-
         def reverse!
             result = []
             self.each{|s| result << s }
@@ -115,15 +104,6 @@ module Tatara
 
     class StringVector
         include Vector
-
-        def reverse
-            result = []
-            self.each{|s| result << s}
-            result.reverse!
-            return_value = Tatara::StringVector.new
-            result.each{|r| return_value << r}
-            return_value
-        end
 
         def reverse!
             result = []
