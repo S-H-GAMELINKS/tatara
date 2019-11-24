@@ -58,7 +58,7 @@ module Tatara
         end
 
         def uniq!
-            result = self.to_array
+            result = self.to_array.uniq
             self.clear
             result.each{|v| self << v}
             return self
