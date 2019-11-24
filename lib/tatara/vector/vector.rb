@@ -26,6 +26,10 @@ module Tatara
             self.to_array.inject(:+)
         end
 
+        def uniq
+            @result = self.to_array.uniq
+        end
+
         def to_array
             result = []
             self.map{|v| result << v}
@@ -83,11 +87,10 @@ module Tatara
         end
 
         def uniq
-            result = []
-            self.map{|v| result << v}
+            super
             uniq = Tatara::IntVector.new
-            result.uniq.each{|v| uniq << v}
-            uniq
+            @result.each{|v| uniq << v}
+            return uniq
         end
 
         def uniq!
@@ -149,11 +152,10 @@ module Tatara
         end
 
         def uniq
-            result = []
-            self.map{|v| result << v}
+            super
             uniq = Tatara::FloatVector.new
-            result.uniq.each{|v| uniq << v}
-            uniq
+            @result.each{|v| uniq << v}
+            return uniq
         end
 
         def uniq!
@@ -215,11 +217,10 @@ module Tatara
         end
 
         def uniq
-            result = []
-            self.map{|v| result << v}
+            super
             uniq = Tatara::StringVector.new
-            result.uniq.each{|v| uniq << v}
-            uniq
+            @result.each{|v| uniq << v}
+            return uniq
         end
 
         def uniq!
