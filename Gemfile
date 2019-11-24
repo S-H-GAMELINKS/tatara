@@ -7,6 +7,3 @@ gem "rake-compiler"
 
 # Using Benchmark Driver
 gem "benchmark_driver"
-
-# Using Coveralls
-gem 'coveralls', require: false
