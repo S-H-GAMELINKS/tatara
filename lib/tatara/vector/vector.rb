@@ -35,7 +35,11 @@ module Tatara
         end
 
         def uniq
+            copy = self
             @result = self.to_array.uniq
+            copy.clear
+            @result.map(&copy.method(:<<))
+            return copy
         end
 
         def uniq!
@@ -88,14 +92,7 @@ module Tatara
             result.each_with_index{|r, i| self[i] = r}
             self
         end
-
-        def uniq
-            super
-            uniq = Tatara::IntVector.new
-            @result.each{|v| uniq << v}
-            return uniq
-        end
-    end
+  end
 
     class FloatVector
         include Vector
@@ -132,13 +129,6 @@ module Tatara
             result.reverse!
             result.each_with_index{|r, i| self[i] = r}
             self
-        end
-
-        def uniq
-            super
-            uniq = Tatara::FloatVector.new
-            @result.each{|v| uniq << v}
-            return uniq
         end
     end
 
@@ -177,13 +167,6 @@ module Tatara
             result.reverse!
             result.each_with_index{|r, i| self[i] = r}
             self
-        end
-
-        def uniq
-            super
-            uniq = Tatara::StringVector.new
-            @result.each{|v| uniq << v}
-            return uniq
         end
     end
 end
