@@ -22,6 +22,10 @@ module Tatara
             self.intersection other
         end
 
+        def sum
+            self.to_array.inject(:+)
+        end
+
         def to_array
             result = []
             self.map{|v| result << v}
@@ -31,12 +35,6 @@ module Tatara
 
     class IntVector
         include Vector
-
-        def sum
-            result = 0
-            self.map{|v| result += v}
-            result
-        end
 
         def intersection(other)
             result = Tatara::IntVector.new    
@@ -104,12 +102,6 @@ module Tatara
     class FloatVector
         include Vector
 
-        def sum
-            result = 0.0
-            self.map{|v| result += v}
-            result
-        end
-
         def intersection(other)
             result = Tatara::FloatVector.new    
             self.each{|s|
@@ -175,12 +167,6 @@ module Tatara
 
     class StringVector
         include Vector
-
-        def sum
-            result = ""
-            self.map{|v| result += v}
-            result
-        end
 
         def intersection(other)
             result = Tatara::StringVector.new    
