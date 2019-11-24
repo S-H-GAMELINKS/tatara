@@ -38,6 +38,13 @@ module Tatara
             return copy
         end
 
+        def sort!
+            result = self.to_array.sort
+            self.clear
+            result.each{|v| self << v}
+            return self
+        end
+
         def sum
             self.to_array.inject(:+)
         end
@@ -67,14 +74,6 @@ module Tatara
     class IntVector
         include Vector
 
-        def sort!
-            result = []
-            self.each{|s| result << s}
-            result.sort!
-            result.each_with_index{|r, i| self[i] = r}
-            self
-        end
-
         def reverse
             result = []
             self.each{|s| result << s}
@@ -96,14 +95,6 @@ module Tatara
     class FloatVector
         include Vector
 
-        def sort!
-            result = []
-            self.each{|s| result << s}
-            result.sort!
-            result.each_with_index{|r, i| self[i] = r}
-            self
-        end
-
         def reverse
             result = []
             self.each{|s| result << s}
@@ -124,14 +115,6 @@ module Tatara
 
     class StringVector
         include Vector
-
-        def sort!
-            result = []
-            self.each{|s| result << s}
-            result.sort!
-            result.each_with_index{|r, i| self[i] = r}
-            self
-        end
 
         def reverse
             result = []
