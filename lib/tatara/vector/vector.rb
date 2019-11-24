@@ -50,10 +50,10 @@ module Tatara
         end
 
         def uniq
-            copy = self
-            @result = self.to_array.uniq
+            copy = self.dup
+            result = self.to_array.uniq
             copy.clear
-            @result.map(&copy.method(:<<))
+            result.map(&copy.method(:<<))
             return copy
         end
 
