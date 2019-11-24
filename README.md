@@ -1,5 +1,5 @@
 # Tatara
-[![Gem Version](https://badge.fury.io/rb/tatara.svg)](https://badge.fury.io/rb/tatara) [![CircleCI](https://circleci.com/gh/S-H-GAMELINKS/tatara/tree/master.svg?style=svg)](https://circleci.com/gh/S-H-GAMELINKS/tatara/tree/master) [![Coverage Status](https://coveralls.io/repos/github/S-H-GAMELINKS/tatara/badge.svg?branch=master)](https://coveralls.io/github/S-H-GAMELINKS/tatara?branch=master)
+[![Gem Version](https://badge.fury.io/rb/tatara.svg)](https://badge.fury.io/rb/tatara) [![CircleCI](https://circleci.com/gh/S-H-GAMELINKS/tatara/tree/master.svg?style=svg)](https://circleci.com/gh/S-H-GAMELINKS/tatara/tree/master) [![Coverage Status](https://coveralls.io/repos/github/S-H-GAMELINKS/tatara/badge.svg?branch=master)](https://coveralls.io/github/S-H-GAMELINKS/tatara?branch=master) ![star](https://img.shields.io/github/stars/S-H-GAMELINKS/tatara)
 
 Add Type to Ruby!
 
