@@ -21,6 +21,12 @@ module Tatara
         def &(other)
             self.intersection other
         end
+
+        def to_array
+            result = []
+            self.map{|v| result << v}
+            result
+        end
     end
 
     class IntVector
