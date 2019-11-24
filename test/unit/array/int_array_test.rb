@@ -186,4 +186,16 @@ class IntArrayTest < Minitest::Test
       assert_equal v, @i[i]
     }    
   end
+
+  def test_to_array_method_int_array
+    data = [1, 2, 3]
+    @i = Tatara::IntArray.new
+    data.each(&@i.method(:<<))
+    result = @i.to_array
+    assert_equal Array, result.class
+    data.each_with_index{|v, i|
+      assert_equal v, @i[i]
+      assert_equal v, result[i]
+    }
+  end
 end

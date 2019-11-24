@@ -175,4 +175,16 @@ class FloatArrayTest < Minitest::Test
       assert_equal v, @f[i]
     }    
   end
+
+  def test_to_array_method_float_array
+    data = [1.0, 2.0, 3.0]
+    @i = Tatara::FloatArray.new
+    data.each(&@i.method(:<<))
+    result = @i.to_array
+    assert_equal Array, result.class
+    data.each_with_index{|v, i|
+      assert_equal v, @i[i]
+      assert_equal v, result[i]
+    }
+  end
 end
