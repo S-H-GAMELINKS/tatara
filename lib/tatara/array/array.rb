@@ -45,6 +45,14 @@ module Tatara
             return self
         end
 
+        def uniq
+            copy = self.dup
+            result = self.to_array.uniq
+            copy.clear
+            result.map(&copy.method(:<<))
+            return copy
+        end
+
         def to_array
             result = []
             self.map{|v| result << v}
@@ -70,14 +78,6 @@ module Tatara
             result.reverse!
             result.each_with_index{|r, i| self[i] = r}
             self
-        end
-
-        def uniq
-            result = []
-            self.map{|v| result << v}
-            uniq = Tatara::IntArray.new
-            result.uniq.each{|v| uniq << v}
-            uniq
         end
 
         def uniq!
@@ -109,14 +109,6 @@ module Tatara
             self
         end
 
-        def uniq
-            result = []
-            self.map{|v| result << v}
-            uniq = Tatara::FloatArray.new
-            result.uniq.each{|v| uniq << v}
-            uniq
-        end
-
         def uniq!
             result = []
             self.map{|v| result << v}
@@ -144,14 +136,6 @@ module Tatara
             result.reverse!
             result.each_with_index{|r, i| self[i] = r}
             self
-        end
-
-        def uniq
-            result = []
-            self.map{|v| result << v}
-            uniq = Tatara::StringArray.new
-            result.uniq.each{|v| uniq << v}
-            uniq
         end
 
         def uniq!
