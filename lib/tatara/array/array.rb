@@ -67,6 +67,13 @@ module Tatara
             return copy
         end
 
+        def reverse!
+            result = self.to_array.reverse
+            self.clear
+            result.each{|v| self << v }
+            return self
+        end
+
         def to_array
             result = []
             self.map{|v| result << v}
@@ -76,37 +83,13 @@ module Tatara
 
     class IntArray
         include Array
-
-        def reverse!
-            result = []
-            self.each{|s| result << s }
-            result.reverse!
-            result.each_with_index{|r, i| self[i] = r}
-            self
-        end
     end
 
     class FloatArray
         include Array
-
-        def reverse!
-            result = []
-            self.each{|s| result << s }
-            result.reverse!
-            result.each_with_index{|r, i| self[i] = r}
-            self
-        end
     end
 
     class StringArray
         include Array
-
-        def reverse!
-            result = []
-            self.each{|s| result << s }
-            result.reverse!
-            result.each_with_index{|r, i| self[i] = r}
-            self
-        end
     end
 end
