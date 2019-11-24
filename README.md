@@ -1,4 +1,5 @@
 # Tatara
+[![CircleCI](https://circleci.com/gh/S-H-GAMELINKS/tatara/tree/master.svg?style=svg)](https://circleci.com/gh/S-H-GAMELINKS/tatara/tree/master)
 
 Add Type to Ruby!
 
