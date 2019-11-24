@@ -196,4 +196,16 @@ class StringVectorTest < Minitest::Test
       assert_equal v, @s[i]
     }    
   end
+
+  def test_to_array_method_string_vector
+    data = ["1", "2", "3"]
+    @s = Tatara::StringVector.new
+    data.each(&@s.method(:<<))
+    result = @s.to_array
+    assert_equal Array, result.class
+    data.each_with_index{|v, i|
+      assert_equal v, @s[i]
+      assert_equal v, result[i]
+    }
+  end
 end
