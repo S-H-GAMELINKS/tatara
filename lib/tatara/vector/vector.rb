@@ -18,6 +18,12 @@ module Tatara
             (0...(self.size)).each{|i| block.call(self[i], i)}
         end
 
+        def intersection(other, var)
+            @result = self.to_array & other.to_array
+            @result.map(&var.method(:<<))
+            return var
+        end
+
         def &(other)
             self.intersection other
         end
@@ -48,15 +54,7 @@ module Tatara
         include Vector
 
         def intersection(other)
-            result = Tatara::IntVector.new    
-            self.each{|s|
-                other.each{|o|
-                    if o == s
-                        result << s
-                    end
-                }
-            }
-            result
+            super(other, Tatara::IntVector.new)
         end
 
         def sort
@@ -105,15 +103,7 @@ module Tatara
         include Vector
 
         def intersection(other)
-            result = Tatara::FloatVector.new    
-            self.each{|s|
-                other.each{|o|
-                    if o == s
-                        result << s
-                    end
-                }
-            }
-            result
+            super(other, Tatara::FloatVector.new)
         end
 
         def sort
@@ -162,15 +152,7 @@ module Tatara
         include Vector
 
         def intersection(other)
-            result = Tatara::StringVector.new    
-            self.each{|s|
-                other.each{|o|
-                    if o == s
-                        result << s
-                    end
-                }
-            }
-            result
+            super(other, Tatara::StringVector.new)
         end
 
         def sort
