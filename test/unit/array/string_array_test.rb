@@ -187,14 +187,14 @@ class StringArrayTest < Minitest::Test
     }    
   end
 
-  def test_to_array_method_int_array
+  def test_to_array_method_string_array
     data = ["1", "2", "3"]
-    @i = Tatara::StringArray.new
-    data.each(&@i.method(:<<))
-    result = @i.to_array
+    @s = Tatara::StringArray.new
+    data.each(&@s.method(:<<))
+    result = @s.to_array
     assert_equal Array, result.class
     data.each_with_index{|v, i|
-      assert_equal v, @i[i]
+      assert_equal v, @s[i]
       assert_equal v, result[i]
     }
   end
