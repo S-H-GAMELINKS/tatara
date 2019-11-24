@@ -30,6 +30,14 @@ module Tatara
             self.intersection other
         end
 
+        def sort
+            copy = self.dup
+            result = self.to_array.sort
+            copy.clear
+            result.each{|v| copy << v}
+            return copy
+        end
+
         def to_array
             result = []
             self.map{|v| result << v}
@@ -39,15 +47,6 @@ module Tatara
 
     class IntArray
         include Array
-
-        def sort
-            result = []
-            self.each{|s| result << s}
-            result.sort!
-            return_value = Tatara::IntArray.new
-            result.each{|r| return_value << r}
-            return_value
-        end
 
         def sort!
             result = []
@@ -94,15 +93,6 @@ module Tatara
     class FloatArray
         include Array
 
-        def sort
-            result = []
-            self.each{|s| result << s}
-            result.sort!
-            return_value = Tatara::FloatArray.new
-            result.each{|r| return_value << r}
-            return_value
-        end
-
         def sort!
             result = []
             self.each{|s| result << s}
@@ -147,15 +137,6 @@ module Tatara
 
     class StringArray
         include Array
-
-        def sort
-            result = []
-            self.each{|s| result << s}
-            result.sort!
-            return_value = Tatara::StringArray.new
-            result.each{|r| return_value << r}
-            return_value
-        end
 
         def sort!
             result = []
