@@ -20,4 +20,4 @@ jobs:
 
       - run:
           name: test
-          command: rake test
+          command: CODECLIMATE_REPO_TOKEN=1bc997946c470551ec0f384e37c5646f12d924d9ab98251809a7d6baf5154445 rake test
