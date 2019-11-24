@@ -19,10 +19,10 @@ module Tatara
         end
 
         def intersection(other)
-            copy = self
-            @result = self.to_array & other.to_array
+            copy = self.dup
+            result = self.to_array & other.to_array
             copy.clear
-            @result.map(&copy.method(:<<))
+            result.map(&copy.method(:<<))
             return copy
         end
 
