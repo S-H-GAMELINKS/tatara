@@ -231,6 +231,20 @@ Reverse value's.
 # => [4.0, 1.0, 9.0]
 ```
 
+### Tatara::FloatArray#uniq
+
+Remove duplicate in `Tatara::FloatArray`.
+
+```ruby
+@f = Tatara::FloatArray.new
+[1, 3, 4, 1].each{|f| @f << f.to_f}
+@f = @f.uniq
+# => Remove duplicate!
+@f.each{|f| puts f }
+# => 1.0, 3.0, 4.0
+```
+
+
 ### Tatara::FloatArray#first
 
 Get first value of `Tatara::FloatArray`.
