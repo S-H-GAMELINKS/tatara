@@ -258,6 +258,19 @@ Remove duplicate in `Tatara::StringVector`.
 # => 1, 3, 4
 ```
 
+### Tatara::StringVector#uniq!
+
+Remove destructive duplicate in `Tatara::StringVector`.
+
+```ruby
+@s = Tatara::StringVector.new
+["1", "3", "4", "1"].each{|s| @s << s }
+@s.uniq!
+# => Remove duplicate!
+@s.each{|s| puts s }
+# => 1, 3, 4
+```
+
 ### Tatara::StringVector#first
 
 Get first value of `Tatara::StringVector`.
