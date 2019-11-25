@@ -252,3 +252,15 @@ Get last value of `Tatara::StringArray`.
 puts @s.last
 # => "C"
 ```
+
+### Tatara::StringArray#to_array
+
+Convert to `Array` from `Tatara::StringArray`.
+
+```ruby
+@s = Tatara::StringArray.new
+("A".."C").each{|s| @s << s }
+# => Set new value's
+puts @i.to_array
+# => A, B, C
+```
