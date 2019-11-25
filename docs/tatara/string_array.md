@@ -229,6 +229,19 @@ Reverse value's.
 # => ["4", "1", "9"]
 ```
 
+### Tatara::StringArray#uniq
+
+Remove duplicate in `Tatara::StringArray`.
+
+```ruby
+@s = Tatara::StringArray.new
+["1", "3", "4", "1"].each{|s| @s << s }
+@s = @s.uniq
+# => Remove duplicate!
+@s.each{|s| puts s }
+# => 1, 3, 4
+```
+
 ### Tatara::StringArray#first
 
 Get first value of `Tatara::StringArray`.
