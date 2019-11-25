@@ -266,3 +266,15 @@ Get last value of `Tatara::IntVector`.
 puts @i.last
 # => 3
 ```
+
+### Tatara::IntVector#to_array
+
+Convert to `Array` from `Tatara::IntVector`.
+
+```ruby
+@i = Tatara::IntVector.new
+(1..3).each{|i| @i << i }
+# => Set new value's
+puts @i.to_array
+# => 1, 2, 3
+```

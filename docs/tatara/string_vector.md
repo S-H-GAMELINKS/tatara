@@ -268,3 +268,15 @@ Get last value of `Tatara::StringVector`.
 puts @s.last
 # => "C"
 ```
+
+### Tatara::StringVector#to_array
+
+Convert to `Array` from `Tatara::StringVector`.
+
+```ruby
+@s = Tatara::StringVector.new
+("A".."C").each{|s| @s << s }
+# => Set new value's
+puts @s.to_array
+# => A, B, C
+```
