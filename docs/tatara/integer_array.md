@@ -244,6 +244,19 @@ Remove duplicate in `Tatara::IntArray`.
 # => 1, 3, 4
 ```
 
+### Tatara::IntArray#uniq!
+
+Remove destructive duplicate in `Tatara::IntArray`.
+
+```ruby
+@i = Tatara::IntArray.new
+[1, 3, 4, 1].each{|i| @i << i}
+@i.uniq!
+# => Remove duplicate!
+@i.each{|i| puts i }
+# => 1, 3, 4
+```
+
 ### Tatara::IntArray#first
 
 Get first value of `Tatara::IntArray`.
