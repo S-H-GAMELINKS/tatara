@@ -257,6 +257,19 @@ Remove duplicate in `Tatara::FloatVector`.
 # => 1.0, 3.0, 4.0
 ```
 
+### Tatara::FloatVector#uniq!
+
+Remove destructive duplicate in `Tatara::FloatVector`.
+
+```ruby
+@f = Tatara::FloatVector.new
+[1, 3, 4, 1].each{|f| @f << f.to_f}
+@f.uniq!
+# => Remove duplicate!
+@f.each{|f| puts f }
+# => 1.0, 3.0, 4.0
+```
+
 ### Tatara::FloatVector#first
 
 Get first value of `Tatara::FloatVector`.
