@@ -243,6 +243,19 @@ Reverse value's.
 # => [4, 1, 9]
 ```
 
+### Tatara::IntVector#uniq
+
+Remove duplicate in `Tatara::IntVector`.
+
+```ruby
+@i = Tatara::IntVector.new
+[1, 3, 4, 1].each{|i| @i << i}
+@i = @i.uniq
+# => Remove duplicate!
+@i.each{|i| puts i }
+# => 1, 3, 4
+```
+
 ### Tatara::IntVector#first
 
 Get first value of `Tatara::IntVector`.
