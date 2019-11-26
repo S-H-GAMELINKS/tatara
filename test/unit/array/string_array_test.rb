@@ -209,4 +209,15 @@ class StringArrayTest < Minitest::Test
       assert_equal v, @s[i]
     }
   end
+
+  def test_destructive_slice_string_array
+    data = ["1", "2", "3", "4", "5"]
+    @s = Tatara::StringArray.new
+    data.each(&@s.method(:<<))
+    @s.slice!(1, 3)
+    data = data.slice(1, 3)
+    data.each_with_index{|v, i|
+      assert_equal v, @s[i]
+    }
+  end
 end
