@@ -219,4 +219,15 @@ class FloatVectorTest < Minitest::Test
       assert_equal v, @f[i]
     }
   end
+
+  def test_destructive_slice_float_vector
+    data = [1, 2, 3, 4, 5]
+    @f = Tatara::FloatVector.new
+    data.each(&@f.method(:<<))
+    @f.slice!(1, 3)
+    data = data.slice(1, 3)
+    data.each_with_index{|v, i|
+      assert_equal v, @f[i]
+    }
+  end
 end
