@@ -255,14 +255,14 @@ Remove destructive duplicate in `Tatara::StringArray`.
 # => 1, 3, 4
 ```
 
-### Tatara::StringArray#slice
+### Tatara::StringArray#slice!
 
-Slice value's' in `Tatara::StringArray`.
+Destructive Slice value's' in `Tatara::StringArray`.
 
 ```ruby
 @s = Tatara::StringArray.new
 ["1", "2", "3", "4", "5"].each{|s| @s << s}
-@s = @s.slice(1, 3)
+@s.slice!(1, 3)
 # => Slice value
 @s.each{|s| puts s }
 # => 2, 3, 4
