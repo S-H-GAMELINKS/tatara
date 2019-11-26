@@ -187,4 +187,15 @@ class FloatArrayTest < Minitest::Test
       assert_equal v, result[i]
     }
   end
+
+  def test_slice_float_array
+    data = [1, 2, 3, 4, 5]
+    @f = Tatara::FloatArray.new
+    data.each(&@f.method(:<<))
+    @f = @f.slice(1, 3)
+    data = data.slice(1, 3)
+    data.each_with_index{|v, i|
+      assert_equal v, @f[i]
+    }
+  end
 end
