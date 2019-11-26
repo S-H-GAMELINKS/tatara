@@ -284,6 +284,18 @@ Slice value's' in `Tatara::StringVector`.
 # => 2, 3, 4
 ```
 
+### Tatara::StringVector#slice!
+
+Destructive Slice value's' in `Tatara::StringVector`.
+
+```ruby
+@s = Tatara::StringVector.new
+["1", "2", "3", "4", "5"].each{|s| @s << s}
+@s.slice!(1, 3)
+# => Slice value
+@s.each{|s| puts s }
+# => 2, 3, 4
+```
 
 ### Tatara::StringVector#first
 
