@@ -82,6 +82,13 @@ module Tatara
             return copy
         end
 
+        def slice!(start, length)
+            result = self.to_array.slice(start, length)
+            self.clear
+            result.each{|v| self << v }
+            return self
+        end
+
         def to_array
             result = []
             self.map{|v| result << v}
