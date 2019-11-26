@@ -208,4 +208,15 @@ class StringVectorTest < Minitest::Test
       assert_equal v, result[i]
     }
   end
+
+  def test_slice_string_vector
+    data = ["1", "2", "3", "4", "5"]
+    @s = Tatara::StringVector.new
+    data.each(&@s.method(:<<))
+    @s = @s.slice(1, 3)
+    data = data.slice(1, 3)
+    data.each_with_index{|v, i|
+      assert_equal v, @s[i]
+    }
+  end
 end
