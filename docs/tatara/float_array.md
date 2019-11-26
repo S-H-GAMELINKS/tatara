@@ -258,6 +258,19 @@ Remove destructive duplicate in `Tatara::FloatArray`.
 # => 1.0, 3.0, 4.0
 ```
 
+### Tatara::FloatArray#slice
+
+Slice value's' in `Tatara::FloatArray`.
+
+```ruby
+@f = Tatara::FloatArray.new
+[1, 2, 3, 4, 5].each{|f| @f << f.to_f}
+@f = @f.slice(1, 3)
+# => Slice value
+@f.each{|f| puts f }
+# => 2.0, 3.0, 4.0
+```
+
 ### Tatara::FloatArray#first
 
 Get first value of `Tatara::FloatArray`.
