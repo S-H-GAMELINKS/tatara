@@ -212,4 +212,15 @@ class IntVectorTest < Minitest::Test
       assert_equal v, result[i]
     }
   end
+
+  def test_slice_int_vector
+    data = [1, 2, 3, 4, 5]
+    @i = Tatara::IntVector.new
+    data.each(&@i.method(:<<))
+    @i = @i.slice(1, 3)
+    data = data.slice(1, 3)
+    data.each_with_index{|v, i|
+      assert_equal v, @i[i]
+    }
+  end
 end
