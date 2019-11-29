@@ -229,4 +229,14 @@ class IntArrayTest < Minitest::Test
     data = JSON.parse(json)
     assert_equal Array, data.class
   end
+
+  def test_import_array_int_array
+    @i = Tatara::IntArray.new
+    data = [1, 2, 3]
+    @i.import_array data
+    assert_equal 3, @i.size
+    data.each_with_index{|v, i|
+      assert_equal v, @i[i]
+    }
+  end
 end
