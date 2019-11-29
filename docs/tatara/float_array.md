@@ -319,3 +319,15 @@ Convert to `Array` from `Tatara::FloatArray`.
 puts @f.to_array
 # => 1.0, 2.0, 3.0
 ```
+
+### Tatara::FloatArray#to_json
+
+Convert to `JSON` from `Tatara::FloatArray`.
+
+```ruby
+@f = Tatara::FloatArray.new
+(1..3).each{|f| @f << f.to_f }
+# => Set new value's
+puts @f.to_json
+# => Convert to JSON
+```
