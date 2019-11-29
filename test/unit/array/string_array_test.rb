@@ -220,4 +220,13 @@ class StringArrayTest < Minitest::Test
       assert_equal v, @s[i]
     }
   end
+
+  def test_to_json_string_array
+    @s = Tatara::StringArray.new
+    ("A".."K").each(&@s.method(:<<))
+    json = @s.to_json
+    assert_equal String, json.class
+    data = JSON.parse(json)
+    assert_equal Array, data.class
+  end
 end

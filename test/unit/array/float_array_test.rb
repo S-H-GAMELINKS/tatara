@@ -209,4 +209,13 @@ class FloatArrayTest < Minitest::Test
       assert_equal v, @f[i]
     }
   end
+
+  def test_to_json_float_array
+    @f = Tatara::FloatArray.new
+    (1..10).each(&@f.method(:<<))
+    json = @f.to_json
+    assert_equal String, json.class
+    data = JSON.parse(json)
+    assert_equal Array, data.class
+  end
 end

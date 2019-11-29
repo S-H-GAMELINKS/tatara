@@ -316,3 +316,15 @@ Convert to `Array` from `Tatara::StringArray`.
 puts @i.to_array
 # => A, B, C
 ```
+
+### Tatara::StringArray#to_json
+
+Convert to `JSON` from `Tatara::StringArray`.
+
+```ruby
+@s = Tatara::StringArray.new
+("A".."C").each{|s| @s << s }
+# => Set new value's
+puts @i.to_json
+# => Convert to JSON
+```
