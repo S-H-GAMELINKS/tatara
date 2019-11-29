@@ -229,4 +229,14 @@ class StringArrayTest < Minitest::Test
     data = JSON.parse(json)
     assert_equal Array, data.class
   end
+
+  def test_import_array_float_array
+    @s = Tatara::StringArray.new
+    data = ["1", "2", "3"]
+    @s.import_array data
+    assert_equal 3, @s.size
+    data.each_with_index{|v, i|
+      assert_equal v, @s[i]
+    }
+  end
 end
