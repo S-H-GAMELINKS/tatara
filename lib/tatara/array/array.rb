@@ -98,6 +98,10 @@ module Tatara
         def to_json
             self.to_array.to_json
         end
+
+        def import_array(data)
+            data.each(&self.method(:<<))
+        end
     end
 
     class IntArray
