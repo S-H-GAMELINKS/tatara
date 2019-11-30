@@ -239,4 +239,15 @@ class StringArrayTest < Minitest::Test
       assert_equal v, @s[i]
     }
   end
+
+  def test_import_json_string_array
+    @s = Tatara::StringArray.new
+    json = "[\"A\", \"B\", \"C\"]"
+    @s.import_json json
+    data = JSON.parse json
+    assert_equal 3, @s.size
+    data.each_with_index{|v, i|
+      assert_equal v, @s[i]
+    }
+  end
 end

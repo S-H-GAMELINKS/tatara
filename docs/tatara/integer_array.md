@@ -340,3 +340,13 @@ Import to `Array` from `Tatara::IntArray`.
 @i.import_array [1, 2, 3]
 # => Set new value's [1, 2, 3]
 ```
+
+### Tatara::IntArray#import_json
+
+Import to `JSON` from `Tatara::IntArray`.
+
+```ruby
+@i = Tatara::IntArray.new
+@i.import_array "[1, 2, 3]"
+# => Set new value's [1, 2, 3]
+```
