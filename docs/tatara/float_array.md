@@ -341,3 +341,13 @@ Import to `Array` from `Tatara::FloatArray`.
 @f.import_array [1.0, 2.0, 3.0]
 # => Set new value's [1.0, 2.0, 3.0]
 ```
+
+### Tatara::FloatArray#import_json
+
+Import to `JSON` from `Tatara::FloatArray`.
+
+```ruby
+@f = Tatara::FloatArray.new
+@f.import_array "[1.0, 2.0, 3.0]"
+# => Set new value's [1.0, 2.0, 3.0]
+```
