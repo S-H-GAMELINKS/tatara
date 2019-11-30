@@ -228,4 +228,15 @@ class FloatArrayTest < Minitest::Test
       assert_equal v, @f[i]
     }
   end
+
+  def test_import_json_float_array
+    @f = Tatara::FloatArray.new
+    json = "[1.0, 2.0, 3.0]"
+    @f.import_json json
+    data = JSON.parse json
+    assert_equal 3, @f.size
+    data.each_with_index{|v, i|
+      assert_equal v, @f[i]
+    }
+  end
 end
