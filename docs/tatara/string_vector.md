@@ -344,3 +344,13 @@ Convert to `JSON` from `Tatara::StringVector`.
 puts @s.to_json
 # => Convert to JSON
 ```
+
+### Tatara::StringVector#import_array
+
+Import to `Array` from `Tatara::StringVector`.
+
+```ruby
+@s = Tatara::StringArray.new
+@s.import_array ["A", "B", "C"]
+# => Set new value's
+```

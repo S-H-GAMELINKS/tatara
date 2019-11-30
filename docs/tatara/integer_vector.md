@@ -342,3 +342,13 @@ Convert to `JSON` from `Tatara::IntVector`.
 puts @i.to_json
 # => Convert to JSON
 ```
+
+### Tatara::IntVector#import_array
+
+Import to `Array` from `Tatara::IntVector`.
+
+```ruby
+@i = Tatara::IntArray.new
+@i.import_array [1, 2, 3]
+# => Set new value's
+```
