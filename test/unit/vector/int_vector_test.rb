@@ -234,4 +234,13 @@ class IntVectorTest < Minitest::Test
       assert_equal v, @i[i]
     }
   end
+
+  def test_to_json_int_vector
+    @i = Tatara::IntVector.new
+    (1..10).each(&@i.method(:<<))
+    json = @i.to_json
+    assert_equal String, json.class
+    data = JSON.parse(json)
+    assert_equal Array, data.class
+  end
 end

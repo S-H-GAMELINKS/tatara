@@ -330,3 +330,15 @@ Convert to `Array` from `Tatara::IntVector`.
 puts @i.to_array
 # => 1, 2, 3
 ```
+
+### Tatara::IntVector#to_json
+
+Convert to `JSON` from `Tatara::IntVector`.
+
+```ruby
+@i = Tatara::IntArray.new
+(1..3).each{|i| @i << i}
+# => Set new value's
+puts @i.to_json
+# => Convert to JSON
+```

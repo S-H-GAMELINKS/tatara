@@ -230,4 +230,13 @@ class StringVectorTest < Minitest::Test
       assert_equal v, @s[i]
     }
   end
+
+  def test_to_json_string_vector
+    @s = Tatara::StringVector.new
+    ("A".."K").each(&@s.method(:<<))
+    json = @s.to_json
+    assert_equal String, json.class
+    data = JSON.parse(json)
+    assert_equal Array, data.class
+  end
 end

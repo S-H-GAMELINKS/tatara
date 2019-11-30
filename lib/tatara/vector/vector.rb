@@ -1,4 +1,5 @@
 require "tatara/tatara"
+require "json"
 
 module Tatara
     module Vector
@@ -97,6 +98,10 @@ module Tatara
             result = []
             self.map{|v| result << v}
             result
+        end
+
+        def to_json
+            self.to_array.to_json
         end
     end
 
