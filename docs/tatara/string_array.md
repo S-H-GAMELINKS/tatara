@@ -331,7 +331,7 @@ puts @i.to_json
 
 ### Tatara::StringArray#import_array
 
-Import to `Array` from `Tatara::IntArray`.
+Import to `Array` from `Tatara::StringArray`.
 
 ```ruby
 @s = Tatara::StringArray.new
