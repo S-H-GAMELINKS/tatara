@@ -343,3 +343,13 @@ Convert to `JSON` from `Tatara::FloatVector`.
 puts @f.to_json
 # => Convert to JSON
 ```
+
+### Tatara::FloatVector#import_array
+
+Import to `Array` from `Tatara::FloatVector`.
+
+```ruby
+@f = Tatara::FloatArray.new
+@f.import_array [1.0, 2.0, 3.0]
+# => Set new value's
+```
