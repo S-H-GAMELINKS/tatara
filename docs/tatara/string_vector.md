@@ -354,3 +354,13 @@ Import to `Array` from `Tatara::StringVector`.
 @s.import_array ["A", "B", "C"]
 # => Set new value's
 ```
+
+### Tatara::StringVector#import_json
+
+Import to `JSON` from `Tatara::StringVector`.
+
+```ruby
+@s = Tatara::StringVector.new
+@s.import_json "[\"A\", \"B\", \"C\"]"
+# => Set new value's ["A", "B", "C"]
+```
