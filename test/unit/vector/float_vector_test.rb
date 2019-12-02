@@ -249,4 +249,15 @@ class FloatVectorTest < Minitest::Test
       assert_equal v, @f[i]
     }
   end
+
+  def test_import_json_float_vector
+    @i = Tatara::FloatVector.new
+    json = "[1.0, 2.0, 3.0]"
+    @i.import_json json
+    data = JSON.parse json
+    assert_equal 3, @i.size
+    data.each_with_index{|v, i|
+      assert_equal v, @i[i]
+    }
+  end
 end
