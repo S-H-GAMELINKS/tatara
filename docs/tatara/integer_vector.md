@@ -352,3 +352,13 @@ Import to `Array` from `Tatara::IntVector`.
 @i.import_array [1, 2, 3]
 # => Set new value's
 ```
+
+### Tatara::IntVector#import_json
+
+Import to `JSON` from `Tatara::IntVector`.
+
+```ruby
+@i = Tatara::IntVector.new
+@i.import_json "[1, 2, 3]"
+# => Set new value's [1, 2, 3]
+```

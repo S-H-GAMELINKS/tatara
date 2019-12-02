@@ -107,6 +107,10 @@ module Tatara
         def import_array(data)
             data.each(&self.method(:<<))
         end
+
+        def import_json(json)
+            self.import_array(JSON.parse(json))
+        end
     end
 
     class IntVector
