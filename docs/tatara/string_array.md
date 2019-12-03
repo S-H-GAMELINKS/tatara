@@ -341,10 +341,10 @@ Import to `Array` from `Tatara::StringArray`.
 
 ### Tatara::StringArray#import_json
 
-Import to `JSON` from `Tatara::StringArray`.
+Import to `JSON` for `Tatara::StringArray`.
 
 ```ruby
 @s = Tatara::StringArray.new
-@s.import_array "[\"A\", \"B\", \"C\"]"
+@s.import_json "[\"A\", \"B\", \"C\"]"
 # => Set new value's ["A", "B", "C"]
 ```
