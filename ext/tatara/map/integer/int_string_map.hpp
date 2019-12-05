@@ -13,6 +13,7 @@ class IntStringMap {
         ~IntStringMap();
         std::string bracket(const int key);
         std::string bracket_equal(const int key, const std::string value);
+        IntStringMap& insert_object(const int key, const std::string value);
 };
 
 IntStringMap::IntStringMap() {}
@@ -25,6 +26,11 @@ std::string IntStringMap::bracket(const int key) {
 
 std::string IntStringMap::bracket_equal(const int key, const std::string value) {
     return this->container[key] = value;
+}
+
+IntStringMap& IntStringMap::insert_object(const int key, const std::string value) {
+    this->container[key] = value;
+    return *this;
 }
 
 static IntStringMap *getIntStringMap(VALUE self) {
@@ -61,6 +67,13 @@ static VALUE wrap_int_string_map_bracket_equal(VALUE self, VALUE key, VALUE valu
     const int k = NUM2INT(key);
     const std::string v = {StringValueCStr(value)};
     getIntStringMap(self)->bracket_equal(k, v);
+    return value;
+}
+
+static VALUE wrap_int_string_map_insert_object(VALUE self, VALUE key, VALUE value) {
+    const int k = NUM2INT(key);
+    const std::string v = {StringValueCStr(value)};
+    getIntStringMap(self)->insert_object(k, v);
     return value;
 }
 
