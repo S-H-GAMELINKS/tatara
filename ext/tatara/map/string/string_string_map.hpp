@@ -13,6 +13,7 @@ class StringStringMap {
         ~StringStringMap();
         std::string bracket(const std::string key);
         std::string bracket_equal(const std::string key, const std::string value);
+        StringStringMap& insert_object(const std::string key, const std::string value);
 };
 
 StringStringMap::StringStringMap() {}
@@ -25,6 +26,11 @@ std::string StringStringMap::bracket(const std::string key) {
 
 std::string StringStringMap::bracket_equal(const std::string key, const std::string value) {
     return this->container[key] = value;
+}
+
+StringStringMap& StringStringMap::insert_object(const std::string key, const std::string value) {
+    this->container[key] = value;
+    return *this;
 }
 
 static StringStringMap *getStringStringMap(VALUE self) {
@@ -61,6 +67,13 @@ static VALUE wrap_string_string_map_bracket_equal(VALUE self, VALUE key, VALUE v
     const std::string k = {StringValueCStr(key)};
     const std::string v = {StringValueCStr(value)};
     getStringStringMap(self)->bracket_equal(k, v);
+    return value;
+}
+
+static VALUE wrap_string_string_map_insert_object(VALUE self, VALUE key, VALUE value) {
+    const std::string k = {StringValueCStr(key)};
+    const std::string v = {StringValueCStr(value)};
+    getStringStringMap(self)->insert_object(k, v);
     return value;
 }
 

@@ -13,6 +13,7 @@ class StringFloatMap {
         ~StringFloatMap();
         double bracket(const std::string key);
         double bracket_equal(const std::string key, const double value);
+        StringFloatMap& insert_object(const std::string key, const double value);
 };
 
 StringFloatMap::StringFloatMap() {}
@@ -25,6 +26,11 @@ double StringFloatMap::bracket(const std::string key) {
 
 double StringFloatMap::bracket_equal(const std::string key, const double value) {
     return this->container[key] = value;
+}
+
+StringFloatMap& StringFloatMap::insert_object(const std::string key, const double value) {
+    this->container[key] = value;
+    return *this;
 }
 
 static StringFloatMap *getStringFloatMap(VALUE self) {
@@ -61,6 +67,13 @@ static VALUE wrap_string_float_map_bracket_equal(VALUE self, VALUE key, VALUE va
     const std::string k = {StringValueCStr(key)};
     const double v = NUM2DBL(value);
     getStringFloatMap(self)->bracket_equal(k, v);
+    return value;
+}
+
+static VALUE wrap_string_float_map_insert_object(VALUE self, VALUE key, VALUE value) {
+    const std::string k = {StringValueCStr(key)};
+    const double v = NUM2DBL(value);
+    getStringFloatMap(self)->insert_object(k, v);
     return value;
 }
 

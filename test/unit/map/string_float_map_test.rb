@@ -11,4 +11,10 @@ class StringFloatMapTest < Minitest::Test
     @map["Map"] = 4.2
     assert_equal 4.2, @map["Map"]
   end
+
+  def test_insert_string_float_map
+    @map = Tatara::StringFloatMap.new
+    @map.insert("Map", 4.2)
+    assert_equal 4.2, @map["Map"]
+  end
 end

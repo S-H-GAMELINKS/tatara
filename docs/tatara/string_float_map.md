@@ -54,3 +54,13 @@ Set value by key.
 @f["A"] = 4.2
 # => Set value is 4.2
 ```
+
+### Tatara::StringFloatMap#insert
+
+Set key & value.
+
+```ruby
+@f = Tatara::StringFloatMap.new
+@f.insert("A", 4.2)
+# => Set value is 42.
+```

@@ -50,3 +50,13 @@ Set value by key.
 @i[0] = "42"
 # => Set value is "42".
 ```
+
+### Tatara::IntStringMap#insert
+
+Set key & value.
+
+```ruby
+@s = Tatara::IntStringMap.new
+@s.insert(0, "42")
+# => Set value is "42".
+```

@@ -12,6 +12,7 @@ class FloatFloatMap {
         ~FloatFloatMap();
         double bracket(const double key);
         double bracket_equal(const double key, const double value);
+        FloatFloatMap& insert_object(const double key, const double value);
 };
 
 FloatFloatMap::FloatFloatMap() {}
@@ -24,6 +25,11 @@ double FloatFloatMap::bracket(const double key) {
 
 double FloatFloatMap::bracket_equal(const double key, const double value) {
     return this->container[key] = value;
+}
+
+FloatFloatMap& FloatFloatMap::insert_object(const double key, const double value) {
+    this->container[key] = value;
+    return *this;
 }
 
 static FloatFloatMap *getFloatFloatMap(VALUE self) {
@@ -60,6 +66,13 @@ static VALUE wrap_float_float_map_bracket_equal(VALUE self, VALUE key, VALUE val
     const double k = NUM2DBL(key);
     const double v = NUM2DBL(value);
     getFloatFloatMap(self)->bracket_equal(k, v);
+    return value;
+}
+
+static VALUE wrap_float_float_map_insert_object(VALUE self, VALUE key, VALUE value) {
+    const double k = NUM2DBL(key);
+    const double v = NUM2DBL(value);
+    getFloatFloatMap(self)->insert_object(k, v);
     return value;
 }
 
