@@ -12,6 +12,7 @@ class IntIntMap {
         ~IntIntMap();
         int bracket(const int key);
         int bracket_equal(const int key, const int value);
+        IntIntMap& insert_object(const int key, const int value);
 };
 
 IntIntMap::IntIntMap() {}
@@ -24,6 +25,11 @@ int IntIntMap::bracket(const int key) {
 
 int IntIntMap::bracket_equal(const int key, const int value) {
     return this->container[key] = value;
+}
+
+IntIntMap& IntIntMap::insert_object(const int key, const int value) {
+    this->container[key] = value;
+    return *this;
 }
 
 static IntIntMap *getIntIntMap(VALUE self) {
@@ -60,6 +66,13 @@ static VALUE wrap_int_int_map_bracket_equal(VALUE self, VALUE key, VALUE value) 
     const int k = NUM2INT(key);
     const int v = NUM2INT(value);
     getIntIntMap(self)->bracket_equal(k, v);
+    return value;
+}
+
+static VALUE wrap_int_int_map_insert_object(VALUE self, VALUE key, VALUE value) {
+    const int k = NUM2INT(key);
+    const int v = NUM2INT(value);
+    getIntIntMap(self)->insert_object(k, v);
     return value;
 }
 
