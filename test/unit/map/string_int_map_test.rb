@@ -11,4 +11,10 @@ class StringIntMapTest < Minitest::Test
     @map["Map"] = 42
     assert_equal 42, @map["Map"]
   end
+
+  def test_insert_string_int_map
+    @map = Tatara::StringIntMap.new
+    @map.insert("Map", 42)
+    assert_equal 42, @map["Map"]
+  end
 end
