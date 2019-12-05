@@ -11,4 +11,10 @@ class FloatIntMapTest < Minitest::Test
     @map[0.5] = 42
     assert_equal 42, @map[0.5]
   end
+
+  def test_insert_float_int_map
+    @map = Tatara::FloatIntMap.new
+    @map.insert(4.2, 42)
+    assert_equal 42, @map[4.2]
+  end
 end
