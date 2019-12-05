@@ -197,6 +197,7 @@ extern "C" {
         rb_define_private_method(rb_cStringIntMap, "initialize", RUBY_METHOD_FUNC(wrap_string_int_map_init), 0);
         rb_define_method(rb_cStringIntMap, "[]", RUBY_METHOD_FUNC(wrap_string_int_map_bracket), 1);
         rb_define_method(rb_cStringIntMap, "[]=", RUBY_METHOD_FUNC(wrap_string_int_map_bracket_equal), 2);
+        rb_define_method(rb_cStringIntMap, "insert", RUBY_METHOD_FUNC(wrap_string_int_map_insert_object), 2);
 
         VALUE rb_cStringFloatMap = rb_define_class_under(mTatara, "StringFloatMap", rb_cObject);
 
@@ -204,6 +205,7 @@ extern "C" {
         rb_define_private_method(rb_cStringFloatMap, "initialize", RUBY_METHOD_FUNC(wrap_string_float_map_init), 0);
         rb_define_method(rb_cStringFloatMap, "[]", RUBY_METHOD_FUNC(wrap_string_float_map_bracket), 1);
         rb_define_method(rb_cStringFloatMap, "[]=", RUBY_METHOD_FUNC(wrap_string_float_map_bracket_equal), 2);
+        rb_define_method(rb_cStringFloatMap, "insert", RUBY_METHOD_FUNC(wrap_string_float_map_insert_object), 2);
 
         VALUE rb_cStringStringMap = rb_define_class_under(mTatara, "StringStringMap", rb_cObject);
 
@@ -211,6 +213,7 @@ extern "C" {
         rb_define_private_method(rb_cStringStringMap, "initialize", RUBY_METHOD_FUNC(wrap_string_string_map_init), 0);
         rb_define_method(rb_cStringStringMap, "[]", RUBY_METHOD_FUNC(wrap_string_string_map_bracket), 1);
         rb_define_method(rb_cStringStringMap, "[]=", RUBY_METHOD_FUNC(wrap_string_string_map_bracket_equal), 2);
+        rb_define_method(rb_cStringStringMap, "insert", RUBY_METHOD_FUNC(wrap_string_string_map_insert_object), 2);
 
         VALUE rb_cIntIntMap = rb_define_class_under(mTatara, "IntIntMap", rb_cObject);
 
@@ -218,6 +221,7 @@ extern "C" {
         rb_define_private_method(rb_cIntIntMap, "initialize", RUBY_METHOD_FUNC(wrap_int_int_map_init), 0);
         rb_define_method(rb_cIntIntMap, "[]", RUBY_METHOD_FUNC(wrap_int_int_map_bracket), 1);
         rb_define_method(rb_cIntIntMap, "[]=", RUBY_METHOD_FUNC(wrap_int_int_map_bracket_equal), 2);
+        rb_define_method(rb_cIntIntMap, "insert", RUBY_METHOD_FUNC(wrap_int_int_map_insert_object), 2);
 
         VALUE rb_cIntFloatMap = rb_define_class_under(mTatara, "IntFloatMap", rb_cObject);
 
@@ -225,6 +229,7 @@ extern "C" {
         rb_define_private_method(rb_cIntFloatMap, "initialize", RUBY_METHOD_FUNC(wrap_int_float_map_init), 0);
         rb_define_method(rb_cIntFloatMap, "[]", RUBY_METHOD_FUNC(wrap_int_float_map_bracket), 1);
         rb_define_method(rb_cIntFloatMap, "[]=", RUBY_METHOD_FUNC(wrap_int_float_map_bracket_equal), 2);
+        rb_define_method(rb_cIntFloatMap, "insert", RUBY_METHOD_FUNC(wrap_int_float_map_insert_object), 2);
 
         VALUE rb_cIntStringMap = rb_define_class_under(mTatara, "IntStringMap", rb_cObject);
 
@@ -232,6 +237,7 @@ extern "C" {
         rb_define_private_method(rb_cIntStringMap, "initialize", RUBY_METHOD_FUNC(wrap_int_string_map_init), 0);
         rb_define_method(rb_cIntStringMap, "[]", RUBY_METHOD_FUNC(wrap_int_string_map_bracket), 1);
         rb_define_method(rb_cIntStringMap, "[]=", RUBY_METHOD_FUNC(wrap_int_string_map_bracket_equal), 2);
+        rb_define_method(rb_cIntStringMap, "insert", RUBY_METHOD_FUNC(wrap_int_string_map_insert_object), 2);
 
         VALUE rb_cFloatIntMap = rb_define_class_under(mTatara, "FloatIntMap", rb_cObject);
 
@@ -239,6 +245,7 @@ extern "C" {
         rb_define_private_method(rb_cFloatIntMap, "initialize", RUBY_METHOD_FUNC(wrap_float_int_map_init), 0);
         rb_define_method(rb_cFloatIntMap, "[]", RUBY_METHOD_FUNC(wrap_float_int_map_bracket), 1);
         rb_define_method(rb_cFloatIntMap, "[]=", RUBY_METHOD_FUNC(wrap_float_int_map_bracket_equal), 2);
+        rb_define_method(rb_cFloatIntMap, "insert", RUBY_METHOD_FUNC(wrap_float_int_map_insert_object), 2);
 
         VALUE rb_cFloatFloatMap = rb_define_class_under(mTatara, "FloatFloatMap", rb_cObject);
 
@@ -246,6 +253,7 @@ extern "C" {
         rb_define_private_method(rb_cFloatFloatMap, "initialize", RUBY_METHOD_FUNC(wrap_float_float_map_init), 0);
         rb_define_method(rb_cFloatFloatMap, "[]", RUBY_METHOD_FUNC(wrap_float_float_map_bracket), 1);
         rb_define_method(rb_cFloatFloatMap, "[]=", RUBY_METHOD_FUNC(wrap_float_float_map_bracket_equal), 2);
+        rb_define_method(rb_cFloatFloatMap, "insert", RUBY_METHOD_FUNC(wrap_float_float_map_insert_object), 2);
 
         VALUE rb_cFloatStringMap = rb_define_class_under(mTatara, "FloatStringMap", rb_cObject);
 
@@ -253,5 +261,6 @@ extern "C" {
         rb_define_private_method(rb_cFloatStringMap, "initialize", RUBY_METHOD_FUNC(wrap_float_string_map_init), 0);
         rb_define_method(rb_cFloatStringMap, "[]", RUBY_METHOD_FUNC(wrap_float_string_map_bracket), 1);
         rb_define_method(rb_cFloatStringMap, "[]=", RUBY_METHOD_FUNC(wrap_float_string_map_bracket_equal), 2);
+        rb_define_method(rb_cFloatStringMap, "insert", RUBY_METHOD_FUNC(wrap_float_string_map_insert_object), 2);
     }
 }
