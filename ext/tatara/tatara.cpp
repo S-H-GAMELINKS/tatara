@@ -50,7 +50,7 @@ extern "C" {
         rb_define_method(rb_cInteger, "to_f", RUBY_METHOD_FUNC(wrap_int_to_float), 0);
         rb_define_method(rb_cInteger, "clear", RUBY_METHOD_FUNC(wrap_int_clear), 0);
         rb_define_method(rb_cInteger, "value==", RUBY_METHOD_FUNC(wrap_int_equal), 1);
-        rb_define_method(rb_cInteger, "val==", RUBY_METHOD_FUNC(wrap_int_equal), 1);
+        rb_define_alias(rb_cInteger, "val==", "value==");
         rb_define_method(rb_cInteger, "equal?", RUBY_METHOD_FUNC(wrap_int_equal), 1);
         rb_define_method(rb_cInteger, "<<", RUBY_METHOD_FUNC(wrap_int_initialize_object), 1);
 
