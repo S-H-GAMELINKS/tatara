@@ -44,8 +44,8 @@ extern "C" {
         rb_define_alias(rb_cInteger, "val**=", "value**=");
         rb_define_method(rb_cInteger, "increment", RUBY_METHOD_FUNC(wrap_int_increment_value), 0);
         rb_define_alloc_func(rb_cInteger, "inc", "increment");
-        rb_define_method(rb_cInteger, "dec", RUBY_METHOD_FUNC(wrap_int_decrement_value), 0);
         rb_define_method(rb_cInteger, "decrement", RUBY_METHOD_FUNC(wrap_int_decrement_value), 0);
+        rb_define_alias(rb_cInteger, "dec", "decrement");
         rb_define_method(rb_cInteger, "to_s", RUBY_METHOD_FUNC(wrap_int_to_string), 0);
         rb_define_method(rb_cInteger, "to_f", RUBY_METHOD_FUNC(wrap_int_to_float), 0);
         rb_define_method(rb_cInteger, "clear", RUBY_METHOD_FUNC(wrap_int_clear), 0);
