@@ -31,7 +31,7 @@ extern "C" {
         rb_define_method(rb_cInteger, "value/=", RUBY_METHOD_FUNC(wrap_int_divided_equal), 1);
         rb_define_alias(rb_cInteger, "val/=", "value/="):
         rb_define_method(rb_cInteger, "value*", RUBY_METHOD_FUNC(wrap_int_multiply), 1);
-        rb_define_method(rb_cInteger, "val*", RUBY_METHOD_FUNC(wrap_int_multiply), 1);
+        rb_define_alias(rb_cInteger, "val*", "value*");
         rb_define_method(rb_cInteger, "value*=", RUBY_METHOD_FUNC(wrap_int_multiply_equal), 1);
         rb_define_method(rb_cInteger, "val*=", RUBY_METHOD_FUNC(wrap_int_multiply_equal), 1);
         rb_define_method(rb_cInteger, "value%", RUBY_METHOD_FUNC(wrap_int_mod), 1);
