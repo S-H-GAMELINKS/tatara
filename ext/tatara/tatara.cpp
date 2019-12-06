@@ -41,7 +41,7 @@ extern "C" {
         rb_define_method(rb_cInteger, "value**", RUBY_METHOD_FUNC(wrap_int_power), 1);
         rb_define_alias(rb_cInteger, "val**", "value**");
         rb_define_method(rb_cInteger, "value**=", RUBY_METHOD_FUNC(wrap_int_power_equal), 1);
-        rb_define_method(rb_cInteger, "val**=", RUBY_METHOD_FUNC(wrap_int_power_equal), 1);
+        rb_define_alias(rb_cInteger, "val**=", "value**=");
         rb_define_method(rb_cInteger, "inc", RUBY_METHOD_FUNC(wrap_int_increment_value), 0);
         rb_define_method(rb_cInteger, "increment", RUBY_METHOD_FUNC(wrap_int_increment_value), 0);
         rb_define_method(rb_cInteger, "dec", RUBY_METHOD_FUNC(wrap_int_decrement_value), 0);
