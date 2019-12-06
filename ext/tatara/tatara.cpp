@@ -29,7 +29,7 @@ extern "C" {
         rb_define_method(rb_cInteger, "value/", RUBY_METHOD_FUNC(wrap_int_divided), 1);
         rb_define_alias(rb_cInteger, "val/", "value/");
         rb_define_method(rb_cInteger, "value/=", RUBY_METHOD_FUNC(wrap_int_divided_equal), 1);
-        rb_define_alias(rb_cInteger, "val/=", "value/="):
+        rb_define_alias(rb_cInteger, "val/=", "value/=");
         rb_define_method(rb_cInteger, "value*", RUBY_METHOD_FUNC(wrap_int_multiply), 1);
         rb_define_alias(rb_cInteger, "val*", "value*");
         rb_define_method(rb_cInteger, "value*=", RUBY_METHOD_FUNC(wrap_int_multiply_equal), 1);
@@ -43,7 +43,7 @@ extern "C" {
         rb_define_method(rb_cInteger, "value**=", RUBY_METHOD_FUNC(wrap_int_power_equal), 1);
         rb_define_alias(rb_cInteger, "val**=", "value**=");
         rb_define_method(rb_cInteger, "increment", RUBY_METHOD_FUNC(wrap_int_increment_value), 0);
-        rb_define_alloc_func(rb_cInteger, "inc", "increment");
+        rb_define_alias(rb_cInteger, "inc", "increment");
         rb_define_method(rb_cInteger, "decrement", RUBY_METHOD_FUNC(wrap_int_decrement_value), 0);
         rb_define_alias(rb_cInteger, "dec", "decrement");
         rb_define_method(rb_cInteger, "to_s", RUBY_METHOD_FUNC(wrap_int_to_string), 0);
