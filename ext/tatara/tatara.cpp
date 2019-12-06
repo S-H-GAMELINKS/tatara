@@ -19,7 +19,7 @@ extern "C" {
         rb_define_method(rb_cInteger, "value=", RUBY_METHOD_FUNC(wrap_int_assignment), 1);
         rb_define_alias(rb_cInteger, "val=", "value=");
         rb_define_method(rb_cInteger, "value+", RUBY_METHOD_FUNC(wrap_int_plus), 1);
-        rb_define_method(rb_cInteger, "val+", RUBY_METHOD_FUNC(wrap_int_plus), 1);
+        rb_define_alias(rb_cInteger, "val+", "value+");
         rb_define_method(rb_cInteger, "value+=", RUBY_METHOD_FUNC(wrap_int_plus_equal), 1);
         rb_define_method(rb_cInteger, "val+=", RUBY_METHOD_FUNC(wrap_int_plus_equal), 1);
         rb_define_method(rb_cInteger, "value-", RUBY_METHOD_FUNC(wrap_int_minus), 1);
