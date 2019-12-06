@@ -51,7 +51,7 @@ extern "C" {
         rb_define_method(rb_cInteger, "clear", RUBY_METHOD_FUNC(wrap_int_clear), 0);
         rb_define_method(rb_cInteger, "value==", RUBY_METHOD_FUNC(wrap_int_equal), 1);
         rb_define_alias(rb_cInteger, "val==", "value==");
-        rb_define_method(rb_cInteger, "equal?", RUBY_METHOD_FUNC(wrap_int_equal), 1);
+        rb_define_alias(rb_cInteger, "equal?", "value==");
         rb_define_method(rb_cInteger, "<<", RUBY_METHOD_FUNC(wrap_int_initialize_object), 1);
 
         VALUE rb_cFloat = rb_define_class_under(mTatara, "Float", rb_cObject);
