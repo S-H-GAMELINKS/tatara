@@ -4,6 +4,7 @@
 #include <ruby.h>
 #include <string>
 #include <cmath>
+#include <iostream>
 
 class Integer {
     int value = 0;
@@ -36,7 +37,9 @@ class Integer {
 
 constexpr Integer::Integer() {}
 
-Integer::~Integer(){}
+Integer::~Integer(){
+    std::cout << "Delete Tatara::Integer!" << std::endl;
+}
 
 constexpr Integer& Integer::initialize_object(const int var) {
     this->value = var;
@@ -127,21 +130,34 @@ struct WrapInteger {
     Integer* integer;
 };
 
-static Integer *getInteger(VALUE self) {
-    WrapInteger *ptr;
-    Data_Get_Struct(self, WrapInteger, ptr);
-    return ptr->integer;
+static void wrap_int_free(void *ptr) {
+    WrapInteger* p = static_cast<WrapInteger*>(ptr);
+    delete p->integer;
+    ruby_xfree(ptr);
 }
 
-static void wrap_int_free(WrapInteger *ptr) {
-    delete ptr->integer;
-    ruby_xfree(ptr);
+/* Rubyにどのような構造体をラップしているかを伝えるための情報。 */
+static const rb_data_type_t rb_int_type = {
+    "Integer",
+    {
+        NULL,
+        wrap_int_free, /* ラップしている構造体を開放する関数。↑で定義。 */
+        NULL,
+    },
+    NULL,
+    NULL
+};
+
+static Integer *getInteger(VALUE self) {
+    WrapInteger *ptr;
+    TypedData_Get_Struct(self, WrapInteger, &rb_int_type, ptr);
+    return ptr->integer;
 }
 
 static VALUE wrap_int_alloc(VALUE klass) {
     auto wrap_integer = RB_ALLOC(WrapInteger);
     wrap_integer->integer = new Integer;
-    return Data_Wrap_Struct(klass, NULL, wrap_int_free, wrap_integer);
+    return TypedData_Wrap_Struct(klass, &rb_int_type, wrap_integer);
 }
 
 static VALUE wrap_int_init(VALUE self) {
