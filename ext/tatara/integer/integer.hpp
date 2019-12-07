@@ -123,21 +123,25 @@ constexpr bool Integer::equal(const int var) {
     return this->value == var;
 }
 
+struct WrapInteger {
+    Integer* integer;
+};
+
 static Integer *getInteger(VALUE self) {
-    Integer *ptr;
-    Data_Get_Struct(self, Integer, ptr);
-    return ptr;
+    WrapInteger *ptr;
+    Data_Get_Struct(self, WrapInteger, ptr);
+    return ptr->integer;
 }
 
-static void wrap_int_free(Integer *ptr) {
-    ptr->~Integer();
+static void wrap_int_free(WrapInteger *ptr) {
+    delete ptr->integer;
     ruby_xfree(ptr);
 }
 
 static VALUE wrap_int_alloc(VALUE klass) {
-    void *p = ruby_xmalloc(sizeof(Integer));
-    p = new Integer;
-    return Data_Wrap_Struct(klass, NULL, wrap_int_free, p);
+    auto wrap_integer = RB_ALLOC(WrapInteger);
+    wrap_integer->integer = new Integer;
+    return Data_Wrap_Struct(klass, NULL, wrap_int_free, wrap_integer);
 }
 
 static VALUE wrap_int_init(VALUE self) {
