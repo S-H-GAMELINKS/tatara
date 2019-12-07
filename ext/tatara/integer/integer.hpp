@@ -136,12 +136,11 @@ static void wrap_int_free(void *ptr) {
     ruby_xfree(ptr);
 }
 
-/* Rubyにどのような構造体をラップしているかを伝えるための情報。 */
 static const rb_data_type_t rb_int_type = {
     "Integer",
     {
         NULL,
-        wrap_int_free, /* ラップしている構造体を開放する関数。↑で定義。 */
+        wrap_int_free,
         NULL,
     },
     NULL,
