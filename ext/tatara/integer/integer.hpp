@@ -37,9 +37,7 @@ class Integer {
 
 constexpr Integer::Integer() {}
 
-Integer::~Integer(){
-    std::cout << "Delete Tatara::Integer!" << std::endl;
-}
+Integer::~Integer() {}
 
 constexpr Integer& Integer::initialize_object(const int var) {
     this->value = var;
@@ -160,8 +158,6 @@ static VALUE wrap_int_alloc(VALUE klass) {
 }
 
 static VALUE wrap_int_init(VALUE self) {
-    Integer *p = getInteger(self);
-    p = new Integer;
     return Qnil;
 }
 
