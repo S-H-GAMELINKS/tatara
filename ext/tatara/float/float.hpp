@@ -139,8 +139,6 @@ static VALUE wrap_float_alloc(VALUE klass) {
 }
 
 static VALUE wrap_float_init(VALUE self) {
-    Float *p = getFloat(self);
-    p = new Float;
     return Qnil;
 }
 
