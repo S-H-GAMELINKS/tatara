@@ -51,8 +51,6 @@ static VALUE wrap_string_float_map_alloc(VALUE klass) {
 }
 
 static VALUE wrap_string_float_map_init(VALUE self) {
-    StringFloatMap *p = getStringFloatMap(self);
-    p = new StringFloatMap;
     return Qnil;
 }
 
