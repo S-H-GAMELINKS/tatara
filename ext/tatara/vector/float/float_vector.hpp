@@ -57,21 +57,25 @@ FloatVector &FloatVector::push_back_object(const double var) {
     return *this;
 }
 
+struct WrapFloatVector {
+    FloatVector* instance;
+};
+
 static FloatVector *getFloatVector(VALUE self) {
-    FloatVector *ptr;
-    Data_Get_Struct(self, FloatVector, ptr);
-    return ptr;
+    WrapFloatVector *ptr;
+    Data_Get_Struct(self, WrapFloatVector, ptr);
+    return ptr->instance;
 }
 
-static void wrap_float_vector_free(FloatVector *ptr) {
-    ptr->~FloatVector();
+static void wrap_float_vector_free(WrapFloatVector *ptr) {
+    delete ptr->instance;
     ruby_xfree(ptr);
 }
 
 static VALUE wrap_float_vector_alloc(VALUE klass) {
-    void *p = ruby_xmalloc(sizeof(FloatVector));
-    p = new FloatVector;
-    return Data_Wrap_Struct(klass, NULL, wrap_float_vector_free, p);
+    auto ptr = RB_ALLOC(WrapFloatVector);
+    ptr->instance = new FloatVector;
+    return Data_Wrap_Struct(klass, NULL, wrap_float_vector_free, ptr);
 }
 
 static VALUE wrap_float_vector_init(VALUE self) {
