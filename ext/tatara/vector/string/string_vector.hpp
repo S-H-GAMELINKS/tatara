@@ -76,8 +76,6 @@ static VALUE wrap_string_vector_alloc(VALUE klass) {
 }
 
 static VALUE wrap_string_vector_init(VALUE self) {
-    StringVector *p = getStringVector(self);
-    p = new StringVector;
     return Qnil;
 }
 
