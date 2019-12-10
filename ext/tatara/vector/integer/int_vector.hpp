@@ -75,8 +75,6 @@ static VALUE wrap_int_vector_alloc(VALUE klass) {
 }
 
 static VALUE wrap_int_vector_init(VALUE self) {
-    IntVector *p = getIntVector(self);
-    p = new IntVector;
     return Qnil;
 }
 
