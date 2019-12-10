@@ -76,8 +76,6 @@ static VALUE wrap_string_array_alloc(VALUE klass) {
 }
 
 static VALUE wrap_string_array_init(VALUE self) {
-    StringArray *p = getStringArray(self);
-    p = new StringArray;
     return Qnil;
 }
 
