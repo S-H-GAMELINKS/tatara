@@ -75,8 +75,6 @@ static VALUE wrap_int_array_alloc(VALUE klass) {
 }
 
 static VALUE wrap_int_array_init(VALUE self) {
-    IntArray *p = getIntArray(self);
-    p = new IntArray;
     return Qnil;
 }
 
