@@ -96,8 +96,6 @@ static VALUE wrap_string_alloc(VALUE klass) {
 }
 
 static VALUE wrap_string_init(VALUE self) {
-    CppString *p = getCppString(self);
-    p = new CppString;
     return Qnil;
 }
 
