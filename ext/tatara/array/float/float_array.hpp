@@ -75,8 +75,6 @@ static VALUE wrap_float_array_alloc(VALUE klass) {
 }
 
 static VALUE wrap_float_array_init(VALUE self) {
-    FloatArray *p = getFloatArray(self);
-    p = new FloatArray;
     return Qnil;
 }
 
