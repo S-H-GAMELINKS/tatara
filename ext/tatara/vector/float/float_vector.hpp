@@ -75,8 +75,6 @@ static VALUE wrap_float_vector_alloc(VALUE klass) {
 }
 
 static VALUE wrap_float_vector_init(VALUE self) {
-    FloatVector *p = getFloatVector(self);
-    p = new FloatVector;
     return Qnil;
 }
 
