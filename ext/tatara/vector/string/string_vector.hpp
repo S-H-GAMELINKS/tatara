@@ -58,21 +58,25 @@ StringVector &StringVector::push_back_object(const std::string var) {
     return *this;
 }
 
-static StringVector *getStringVector(VALUE self) {
-    StringVector *ptr;
-    Data_Get_Struct(self, StringVector, ptr);
-    return ptr;
-}
+struct WrapStringVector {
+    StringVector* instance;
+};
 
-static void wrap_string_vector_free(StringVector *ptr) {
-    ptr->~StringVector();
+static StringVector *getStringVector(VALUE self) {
+    WrapStringVector *ptr;
+    Data_Get_Struct(self, WrapStringVector, ptr);
+    return ptr->instance;
+};
+
+static void wrap_string_vector_free(WrapStringVector *ptr) {
+    delete ptr->instance;
     ruby_xfree(ptr);
 }
 
 static VALUE wrap_string_vector_alloc(VALUE klass) {
-    void *p = ruby_xmalloc(sizeof(StringVector));
-    p = new StringVector;
-    return Data_Wrap_Struct(klass, NULL, wrap_string_vector_free, p);
+    auto ptr = RB_ALLOC(WrapStringVector);
+    ptr->instance = new StringVector;
+    return Data_Wrap_Struct(klass, NULL, wrap_string_vector_free, ptr);
 }
 
 static VALUE wrap_string_vector_init(VALUE self) {
