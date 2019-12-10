@@ -57,21 +57,25 @@ IntVector &IntVector::push_back_object(const int var) {
     return *this;
 }
 
+struct WrapIntVector {
+    IntVector *instance;
+};
+
 static IntVector *getIntVector(VALUE self) {
-    IntVector *ptr;
-    Data_Get_Struct(self, IntVector, ptr);
-    return ptr;
+    WrapIntVector *ptr;
+    Data_Get_Struct(self, WrapIntVector, ptr);
+    return ptr->instance;
 }
 
-static void wrap_int_vector_free(IntVector *ptr) {
-    ptr->~IntVector();
+static void wrap_int_vector_free(WrapIntVector *ptr) {
+    delete ptr->instance;
     ruby_xfree(ptr);
 }
 
 static VALUE wrap_int_vector_alloc(VALUE klass) {
-    void *p = ruby_xmalloc(sizeof(IntVector));
-    p = new IntVector;
-    return Data_Wrap_Struct(klass, NULL, wrap_int_vector_free, p);
+    auto ptr = RB_ALLOC(WrapIntVector);
+    ptr->instance = new IntVector;
+    return Data_Wrap_Struct(klass, NULL, wrap_int_vector_free, ptr);
 }
 
 static VALUE wrap_int_vector_init(VALUE self) {
