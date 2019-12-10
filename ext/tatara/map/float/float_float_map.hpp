@@ -50,8 +50,6 @@ static VALUE wrap_float_float_map_alloc(VALUE klass) {
 }
 
 static VALUE wrap_float_float_map_init(VALUE self) {
-    FloatFloatMap *p = getFloatFloatMap(self);
-    p = new FloatFloatMap;
     return Qnil;
 }
 
