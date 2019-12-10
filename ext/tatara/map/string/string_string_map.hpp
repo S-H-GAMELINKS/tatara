@@ -51,8 +51,6 @@ static VALUE wrap_string_string_map_alloc(VALUE klass) {
 }
 
 static VALUE wrap_string_string_map_init(VALUE self) {
-    StringStringMap *p = getStringStringMap(self);
-    p = new StringStringMap;
     return Qnil;
 }
 
