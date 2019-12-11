@@ -58,21 +58,25 @@ StringArray &StringArray::push_back_object(const std::string var) {
     return *this;
 }
 
+struct WrapStringArray {
+    StringArray *instance;
+};
+
 static StringArray *getStringArray(VALUE self) {
-    StringArray *ptr;
-    Data_Get_Struct(self, StringArray, ptr);
-    return ptr;
+    WrapStringArray *ptr;
+    Data_Get_Struct(self, WrapStringArray, ptr);
+    return ptr->instance;
 }
 
-static void wrap_string_array_free(StringArray *ptr) {
-    ptr->~StringArray();
+static void wrap_string_array_free(WrapStringArray *ptr) {
+    delete ptr->instance;
     ruby_xfree(ptr);
 }
 
 static VALUE wrap_string_array_alloc(VALUE klass) {
-    void *p = ruby_xmalloc(sizeof(StringArray));
-    p = new StringArray;
-    return Data_Wrap_Struct(klass, NULL, wrap_string_array_free, p);
+    auto ptr = RB_ALLOC(WrapStringArray);
+    ptr->instance = new StringArray;
+    return Data_Wrap_Struct(klass, NULL, wrap_string_array_free, ptr);
 }
 
 static VALUE wrap_string_array_init(VALUE self) {

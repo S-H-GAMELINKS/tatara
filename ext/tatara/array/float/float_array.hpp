@@ -57,21 +57,25 @@ FloatArray &FloatArray::push_back_object(const double var) {
     return *this;
 }
 
+struct WrapFloatArray {
+    FloatArray *instance;
+};
+
 static FloatArray *getFloatArray(VALUE self) {
-    FloatArray *ptr;
-    Data_Get_Struct(self, FloatArray, ptr);
-    return ptr;
+    WrapFloatArray *ptr;
+    Data_Get_Struct(self, WrapFloatArray, ptr);
+    return ptr->instance;
 }
 
-static void wrap_float_array_free(FloatArray *ptr) {
-    ptr->~FloatArray();
+static void wrap_float_array_free(WrapFloatArray *ptr) {
+    delete ptr->instance;
     ruby_xfree(ptr);
 }
 
 static VALUE wrap_float_array_alloc(VALUE klass) {
-    void *p = ruby_xmalloc(sizeof(FloatArray));
-    p = new FloatArray;
-    return Data_Wrap_Struct(klass, NULL, wrap_float_array_free, p);
+    auto ptr= RB_ALLOC(WrapFloatArray);
+    ptr->instance = new FloatArray;
+    return Data_Wrap_Struct(klass, NULL, wrap_float_array_free, ptr);
 }
 
 static VALUE wrap_float_array_init(VALUE self) {
