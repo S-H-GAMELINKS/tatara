@@ -57,21 +57,25 @@ IntArray &IntArray::push_back_object(const int var) {
     return *this;
 }
 
+struct WrapIntArray {
+    IntArray *instance;
+};
+
 static IntArray *getIntArray(VALUE self) {
-    IntArray *ptr;
-    Data_Get_Struct(self, IntArray, ptr);
-    return ptr;
+    WrapIntArray *ptr;
+    Data_Get_Struct(self, WrapIntArray, ptr);
+    return ptr->instance;
 }
 
-static void wrap_int_array_free(IntArray *ptr) {
-    ptr->~IntArray();
+static void wrap_int_array_free(WrapIntArray *ptr) {
+    delete ptr->instance;
     ruby_xfree(ptr);
 }
 
 static VALUE wrap_int_array_alloc(VALUE klass) {
-    void *p = ruby_xmalloc(sizeof(IntArray));
-    p = new IntArray;
-    return Data_Wrap_Struct(klass, NULL, wrap_int_array_free, p);
+    auto ptr = RB_ALLOC(WrapIntArray);
+    ptr->instance = new IntArray;
+    return Data_Wrap_Struct(klass, NULL, wrap_int_array_free, ptr);
 }
 
 static VALUE wrap_int_array_init(VALUE self) {
