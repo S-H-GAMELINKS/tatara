@@ -32,21 +32,25 @@ IntIntMap& IntIntMap::insert_object(const int key, const int value) {
     return *this;
 }
 
+struct WrapIntIntMap {
+    IntIntMap *instance;
+};
+
 static IntIntMap *getIntIntMap(VALUE self) {
-    IntIntMap *ptr;
-    Data_Get_Struct(self, IntIntMap, ptr);
-    return ptr;
+    WrapIntIntMap *ptr;
+    Data_Get_Struct(self, WrapIntIntMap, ptr);
+    return ptr->instance;
 }
 
-static void wrap_int_int_map_free(IntIntMap *ptr) {
-    ptr->~IntIntMap();
+static void wrap_int_int_map_free(WrapIntIntMap *ptr) {
+    delete ptr->instance;
     ruby_xfree(ptr);
 }
 
 static VALUE wrap_int_int_map_alloc(VALUE klass) {
-    void *p = ruby_xmalloc(sizeof(IntIntMap));
-    p = new IntIntMap;
-    return Data_Wrap_Struct(klass, NULL, wrap_int_int_map_free, p);
+    auto ptr = RB_ALLOC(WrapIntIntMap);
+    ptr->instance = new IntIntMap;
+    return Data_Wrap_Struct(klass, NULL, wrap_int_int_map_free, ptr);
 }
 
 static VALUE wrap_int_int_map_init(VALUE self) {

@@ -33,21 +33,25 @@ IntStringMap& IntStringMap::insert_object(const int key, const std::string value
     return *this;
 }
 
+struct WrapIntStringMap {
+    IntStringMap *instance;
+};
+
 static IntStringMap *getIntStringMap(VALUE self) {
-    IntStringMap *ptr;
-    Data_Get_Struct(self, IntStringMap, ptr);
-    return ptr;
+    WrapIntStringMap *ptr;
+    Data_Get_Struct(self, WrapIntStringMap, ptr);
+    return ptr->instance;
 }
 
-static void wrap_int_string_map_free(IntStringMap *ptr) {
-    ptr->~IntStringMap();
+static void wrap_int_string_map_free(WrapIntStringMap *ptr) {
+    delete ptr->instance;
     ruby_xfree(ptr);
 }
 
 static VALUE wrap_int_string_map_alloc(VALUE klass) {
-    void *p = ruby_xmalloc(sizeof(IntStringMap));
-    p = new IntStringMap;
-    return Data_Wrap_Struct(klass, NULL, wrap_int_string_map_free, p);
+    auto ptr = RB_ALLOC(WrapIntStringMap);
+    ptr->instance = new IntStringMap;
+    return Data_Wrap_Struct(klass, NULL, wrap_int_string_map_free, ptr);
 }
 
 static VALUE wrap_int_string_map_init(VALUE self) {

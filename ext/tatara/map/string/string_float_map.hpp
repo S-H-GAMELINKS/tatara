@@ -33,21 +33,25 @@ StringFloatMap& StringFloatMap::insert_object(const std::string key, const doubl
     return *this;
 }
 
+struct WrapStringFloatMap {
+    StringFloatMap *instance;
+};
+
 static StringFloatMap *getStringFloatMap(VALUE self) {
-    StringFloatMap *ptr;
-    Data_Get_Struct(self, StringFloatMap, ptr);
-    return ptr;
+    WrapStringFloatMap *ptr;
+    Data_Get_Struct(self, WrapStringFloatMap, ptr);
+    return ptr->instance;
 }
 
-static void wrap_string_float_map_free(StringFloatMap *ptr) {
-    ptr->~StringFloatMap();
+static void wrap_string_float_map_free(WrapStringFloatMap *ptr) {
+    delete ptr->instance;
     ruby_xfree(ptr);
 }
 
 static VALUE wrap_string_float_map_alloc(VALUE klass) {
-    void *p = ruby_xmalloc(sizeof(StringFloatMap));
-    p = new StringFloatMap;
-    return Data_Wrap_Struct(klass, NULL, wrap_string_float_map_free, p);
+    auto ptr = RB_ALLOC(WrapStringFloatMap);
+    ptr->instance = new StringFloatMap;
+    return Data_Wrap_Struct(klass, NULL, wrap_string_float_map_free, ptr);
 }
 
 static VALUE wrap_string_float_map_init(VALUE self) {
