@@ -32,21 +32,25 @@ FloatIntMap& FloatIntMap::insert_object(const double key, const int value) {
     return *this;
 }
 
+struct WrapFloatIntMap {
+    FloatIntMap *instance;
+};
+
 static FloatIntMap *getFloatIntMap(VALUE self) {
-    FloatIntMap *ptr;
-    Data_Get_Struct(self, FloatIntMap, ptr);
-    return ptr;
+    WrapFloatIntMap *ptr;
+    Data_Get_Struct(self, WrapFloatIntMap, ptr);
+    return ptr->instance;
 }
 
-static void wrap_float_int_map_free(FloatIntMap *ptr) {
-    ptr->~FloatIntMap();
+static void wrap_float_int_map_free(WrapFloatIntMap *ptr) {
+    delete ptr->instance;
     ruby_xfree(ptr);
 }
 
 static VALUE wrap_float_int_map_alloc(VALUE klass) {
-    void *p = ruby_xmalloc(sizeof(FloatIntMap));
-    p = new FloatIntMap;
-    return Data_Wrap_Struct(klass, NULL, wrap_float_int_map_free, p);
+    auto ptr = RB_ALLOC(WrapFloatIntMap);
+    ptr->instance = new FloatIntMap;
+    return Data_Wrap_Struct(klass, NULL, wrap_float_int_map_free, ptr);
 }
 
 static VALUE wrap_float_int_map_init(VALUE self) {
