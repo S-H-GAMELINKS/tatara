@@ -118,24 +118,24 @@ constexpr bool Float::equal(const double var) {
 }
 
 struct WrapFloat {
-    Float* float_instance;
+    Float* instance;
 };
 
 static Float *getFloat(VALUE self) {
     WrapFloat *ptr;
     Data_Get_Struct(self, WrapFloat, ptr);
-    return ptr->float_instance;
+    return ptr->instance;
 }
 
 static void wrap_float_free(WrapFloat *ptr) {
-    delete ptr->float_instance;
+    delete ptr->instance;
     ruby_xfree(ptr);
 }
 
 static VALUE wrap_float_alloc(VALUE klass) {
-    auto wrap_float = RB_ALLOC(WrapFloat);
-    wrap_float->float_instance = new Float;
-    return Data_Wrap_Struct(klass, NULL, wrap_float_free, wrap_float);
+    auto ptr = RB_ALLOC(WrapFloat);
+    ptr->instance = new Float;
+    return Data_Wrap_Struct(klass, NULL, wrap_float_free, ptr);
 }
 
 static VALUE wrap_float_init(VALUE self) {
