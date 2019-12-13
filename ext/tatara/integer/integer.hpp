@@ -125,12 +125,12 @@ constexpr bool Integer::equal(const int var) {
 }
 
 struct WrapInteger {
-    Integer* integer_instance;
+    Integer* instance;
 };
 
 static void wrap_int_free(void *ptr) {
     WrapInteger* p = static_cast<WrapInteger*>(ptr);
-    delete p->integer_instance;
+    delete p->instance;
     ruby_xfree(ptr);
 }
 
@@ -148,13 +148,13 @@ static const rb_data_type_t rb_int_type = {
 static Integer *getInteger(VALUE self) {
     WrapInteger *ptr;
     TypedData_Get_Struct(self, WrapInteger, &rb_int_type, ptr);
-    return ptr->integer_instance;
+    return ptr->instance;
 }
 
 static VALUE wrap_int_alloc(VALUE klass) {
-    auto wrap_integer = RB_ALLOC(WrapInteger);
-    wrap_integer->integer_instance = new Integer;
-    return TypedData_Wrap_Struct(klass, &rb_int_type, wrap_integer);
+    auto ptr = RB_ALLOC(WrapInteger);
+    ptr->instance = new Integer;
+    return TypedData_Wrap_Struct(klass, &rb_int_type, ptr);
 }
 
 static VALUE wrap_int_init(VALUE self) {
