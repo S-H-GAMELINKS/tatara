@@ -75,24 +75,24 @@ std::string CppString::slice_des(const int start, const int end) {
 }
 
 struct WrapCppString {
-    CppString* cpp_string_instance;
+    CppString* instance;
 };
 
 static CppString* getCppString(VALUE self) {
     WrapCppString* ptr;
     Data_Get_Struct(self, WrapCppString, ptr);
-    return ptr->cpp_string_instance;
+    return ptr->instance;
 }
 
 static void wrap_string_free(WrapCppString* ptr) {
-    delete ptr->cpp_string_instance;
+    delete ptr->instance;
     ruby_xfree(ptr);
 }
 
 static VALUE wrap_string_alloc(VALUE klass) {
-    auto p = RB_ALLOC(WrapCppString);
-    p->cpp_string_instance = new CppString;
-    return Data_Wrap_Struct(klass, NULL, wrap_string_free, p);
+    auto ptr = RB_ALLOC(WrapCppString);
+    ptr->instance = new CppString;
+    return Data_Wrap_Struct(klass, NULL, wrap_string_free, ptr);
 }
 
 static VALUE wrap_string_init(VALUE self) {
