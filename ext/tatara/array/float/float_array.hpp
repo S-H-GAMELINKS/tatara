@@ -61,21 +61,33 @@ struct WrapFloatArray {
     FloatArray *instance;
 };
 
-static FloatArray *getFloatArray(VALUE self) {
-    WrapFloatArray *ptr;
-    Data_Get_Struct(self, WrapFloatArray, ptr);
-    return ptr->instance;
+static void wrap_float_array_free(void* ptr) {
+    WrapFloatArray *p = static_cast<WrapFloatArray*>(ptr);
+    delete p->instance;
+    ruby_xfree(p);
 }
 
-static void wrap_float_array_free(WrapFloatArray *ptr) {
-    delete ptr->instance;
-    ruby_xfree(ptr);
+static const rb_data_type_t rb_float_array_type = {
+    "FloatArray",
+    {
+        NULL,
+        wrap_float_array_free,
+        NULL,
+    },
+    NULL,
+    NULL
+};
+
+static FloatArray *getFloatArray(VALUE self) {
+    WrapFloatArray *ptr;
+    TypedData_Get_Struct(self, WrapFloatArray, &rb_float_array_type, ptr);
+    return ptr->instance;
 }
 
 static VALUE wrap_float_array_alloc(VALUE klass) {
     auto ptr= RB_ALLOC(WrapFloatArray);
     ptr->instance = new FloatArray;
-    return Data_Wrap_Struct(klass, NULL, wrap_float_array_free, ptr);
+    return TypedData_Wrap_Struct(klass, &rb_float_array_type, ptr);
 }
 
 static VALUE wrap_float_array_init(VALUE self) {
