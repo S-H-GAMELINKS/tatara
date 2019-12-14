@@ -78,21 +78,33 @@ struct WrapCppString {
     CppString* instance;
 };
 
-static CppString* getCppString(VALUE self) {
-    WrapCppString* ptr;
-    Data_Get_Struct(self, WrapCppString, ptr);
-    return ptr->instance;
+static void wrap_string_free(void* ptr) {
+    WrapCppString *p = static_cast<WrapCppString*>(ptr);
+    delete p->instance;
+    ruby_xfree(p);
 }
 
-static void wrap_string_free(WrapCppString* ptr) {
-    delete ptr->instance;
-    ruby_xfree(ptr);
+static const rb_data_type_t rb_string_type = {
+    "String",
+    {
+        NULL,
+        wrap_string_free,
+        NULL,
+    },
+    NULL,
+    NULL
+};
+
+static CppString* getCppString(VALUE self) {
+    WrapCppString* ptr;
+    TypedData_Get_Struct(self, WrapCppString, &rb_string_type, ptr);
+    return ptr->instance;
 }
 
 static VALUE wrap_string_alloc(VALUE klass) {
     auto ptr = RB_ALLOC(WrapCppString);
     ptr->instance = new CppString;
-    return Data_Wrap_Struct(klass, NULL, wrap_string_free, ptr);
+    return TypedData_Wrap_Struct(klass, &rb_string_type, ptr);
 }
 
 static VALUE wrap_string_init(VALUE self) {
