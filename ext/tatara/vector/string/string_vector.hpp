@@ -62,21 +62,33 @@ struct WrapStringVector {
     StringVector* instance;
 };
 
-static StringVector *getStringVector(VALUE self) {
-    WrapStringVector *ptr;
-    Data_Get_Struct(self, WrapStringVector, ptr);
-    return ptr->instance;
+static void wrap_string_vector_free(void* ptr) {
+    WrapStringVector *p = static_cast<WrapStringVector*>(ptr);
+    delete p->instance;
+    ruby_xfree(p);
+}
+
+static const rb_data_type_t rb_string_vector_type = {
+    "StringVector",
+    {
+        NULL,
+        wrap_string_vector_free,
+        NULL,
+    },
+    NULL,
+    NULL
 };
 
-static void wrap_string_vector_free(WrapStringVector *ptr) {
-    delete ptr->instance;
-    ruby_xfree(ptr);
-}
+static StringVector *getStringVector(VALUE self) {
+    WrapStringVector *ptr;
+    TypedData_Get_Struct(self, WrapStringVector, &rb_string_vector_type, ptr);
+    return ptr->instance;
+};
 
 static VALUE wrap_string_vector_alloc(VALUE klass) {
     auto ptr = RB_ALLOC(WrapStringVector);
     ptr->instance = new StringVector;
-    return Data_Wrap_Struct(klass, NULL, wrap_string_vector_free, ptr);
+    return TypedData_Wrap_Struct(klass, &rb_string_vector_type, ptr);
 }
 
 static VALUE wrap_string_vector_init(VALUE self) {
