@@ -131,7 +131,7 @@ struct WrapInteger {
 static void wrap_int_free(void *ptr) {
     WrapInteger* p = static_cast<WrapInteger*>(ptr);
     delete p->instance;
-    ruby_xfree(ptr);
+    ruby_xfree(p);
 }
 
 static const rb_data_type_t rb_int_type = {
