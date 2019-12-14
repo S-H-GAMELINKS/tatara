@@ -61,21 +61,33 @@ struct WrapFloatVector {
     FloatVector* instance;
 };
 
-static FloatVector *getFloatVector(VALUE self) {
-    WrapFloatVector *ptr;
-    Data_Get_Struct(self, WrapFloatVector, ptr);
-    return ptr->instance;
+static void wrap_float_vector_free(void* ptr) {
+    WrapFloatVector *p = static_cast<WrapFloatVector*>(ptr);
+    delete p->instance;
+    ruby_xfree(p);
 }
 
-static void wrap_float_vector_free(WrapFloatVector *ptr) {
-    delete ptr->instance;
-    ruby_xfree(ptr);
+static const rb_data_type_t rb_float_vector_type = {
+    "FloatVector",
+    {
+        NULL,
+        wrap_float_vector_free,
+        NULL,
+    },
+    NULL,
+    NULL
+};
+
+static FloatVector *getFloatVector(VALUE self) {
+    WrapFloatVector *ptr;
+    TypedData_Get_Struct(self, WrapFloatVector, &rb_float_vector_type, ptr);
+    return ptr->instance;
 }
 
 static VALUE wrap_float_vector_alloc(VALUE klass) {
     auto ptr = RB_ALLOC(WrapFloatVector);
     ptr->instance = new FloatVector;
-    return Data_Wrap_Struct(klass, NULL, wrap_float_vector_free, ptr);
+    return TypedData_Wrap_Struct(klass, &rb_float_vector_type, ptr);
 }
 
 static VALUE wrap_float_vector_init(VALUE self) {
