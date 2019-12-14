@@ -61,21 +61,33 @@ struct WrapIntArray {
     IntArray *instance;
 };
 
-static IntArray *getIntArray(VALUE self) {
-    WrapIntArray *ptr;
-    Data_Get_Struct(self, WrapIntArray, ptr);
-    return ptr->instance;
+static void wrap_int_array_free(void* ptr) {
+    WrapIntArray *p = static_cast<WrapIntArray*>(ptr);
+    delete p->instance;
+    ruby_xfree(p);
 }
 
-static void wrap_int_array_free(WrapIntArray *ptr) {
-    delete ptr->instance;
-    ruby_xfree(ptr);
+static const rb_data_type_t rb_int_array_type = {
+    "IntArray",
+    {
+        NULL,
+        wrap_int_array_free,
+        NULL,
+    },
+    NULL,
+    NULL
+};
+
+static IntArray *getIntArray(VALUE self) {
+    WrapIntArray *ptr;
+    TypedData_Get_Struct(self, WrapIntArray, &rb_int_array_type, ptr);
+    return ptr->instance;
 }
 
 static VALUE wrap_int_array_alloc(VALUE klass) {
     auto ptr = RB_ALLOC(WrapIntArray);
     ptr->instance = new IntArray;
-    return Data_Wrap_Struct(klass, NULL, wrap_int_array_free, ptr);
+    return TypedData_Wrap_Struct(klass, &rb_int_array_type, ptr);
 }
 
 static VALUE wrap_int_array_init(VALUE self) {

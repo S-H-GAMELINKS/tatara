@@ -62,21 +62,33 @@ struct WrapStringArray {
     StringArray *instance;
 };
 
-static StringArray *getStringArray(VALUE self) {
-    WrapStringArray *ptr;
-    Data_Get_Struct(self, WrapStringArray, ptr);
-    return ptr->instance;
+static void wrap_string_array_free(void* ptr) {
+    WrapStringArray *p = static_cast<WrapStringArray*>(ptr);
+    delete p->instance;
+    ruby_xfree(p);
 }
 
-static void wrap_string_array_free(WrapStringArray *ptr) {
-    delete ptr->instance;
-    ruby_xfree(ptr);
+static const rb_data_type_t rb_string_array_type = {
+    "StringArray",
+    {
+        NULL,
+        wrap_string_array_free,
+        NULL,
+    },
+    NULL,
+    NULL
+};
+
+static StringArray *getStringArray(VALUE self) {
+    WrapStringArray *ptr;
+    TypedData_Get_Struct(self, WrapStringArray, &rb_string_array_type, ptr);
+    return ptr->instance;
 }
 
 static VALUE wrap_string_array_alloc(VALUE klass) {
     auto ptr = RB_ALLOC(WrapStringArray);
     ptr->instance = new StringArray;
-    return Data_Wrap_Struct(klass, NULL, wrap_string_array_free, ptr);
+    return TypedData_Wrap_Struct(klass, &rb_string_array_type, ptr);
 }
 
 static VALUE wrap_string_array_init(VALUE self) {
