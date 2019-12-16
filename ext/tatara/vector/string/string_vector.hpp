@@ -144,4 +144,19 @@ static VALUE wrap_string_vector_push_back_object(VALUE self, VALUE value) {
     return self;
 }
 
+static VALUE wrap_string_vector_map(VALUE self) {
+
+    std::size_t size = getStringVector(self)->size();
+
+    VALUE collection = rb_ary_new2(size);
+
+    for(int i = 0; i < size; i++) {
+        const std::string v = getStringVector(self)->bracket(i);
+        VALUE val = rb_str_new(v.c_str(), v.size());
+        rb_ary_push(collection, rb_yield(val));
+    }
+
+    return collection;
+}
+
 #endif
