@@ -3,6 +3,7 @@
 
 #include <ruby.h>
 #include <vector>
+#include <iostream>
 
 class IntArray {
     std::vector<int> container;
@@ -141,6 +142,32 @@ static VALUE wrap_int_array_push_back_object(VALUE self, VALUE value) {
     const int v = NUM2INT(value);
     getIntArray(self)->push_back_object(v);
     return self;
+}
+
+static VALUE
+rb_ary_length(VALUE ary)
+{
+    long len = RARRAY_LEN(ary);
+    return LONG2NUM(len);
+}
+
+static VALUE ary_enum_length(VALUE ary, VALUE args, VALUE eobj)
+{
+    return rb_ary_length(ary);
+}
+
+static VALUE wrap_int_array_map(VALUE self) {
+
+    std::size_t size = getIntArray(self)->size();
+
+    VALUE collection = rb_ary_new2(size);
+
+    for(int i = 0; i < size; i++) {
+        VALUE val = INT2NUM(getIntArray(self)->bracket(i));
+        rb_ary_push(collection, rb_yield(val));
+    }
+
+    return collection;
 }
 
 #endif

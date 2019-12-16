@@ -143,4 +143,18 @@ static VALUE wrap_float_array_push_back_object(VALUE self, VALUE value) {
     return self;
 }
 
+static VALUE wrap_float_array_map(VALUE self) {
+
+    std::size_t size = getFloatArray(self)->size();
+
+    VALUE collection = rb_ary_new2(size);
+
+    for(int i = 0; i < size; i++) {
+        VALUE val = DBL2NUM(getFloatArray(self)->bracket(i));
+        rb_ary_push(collection, rb_yield(val));
+    }
+
+    return collection;
+}
+
 #endif
