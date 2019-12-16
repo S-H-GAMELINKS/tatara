@@ -143,4 +143,18 @@ static VALUE wrap_int_vector_push_back_object(VALUE self, VALUE value) {
     return self;
 }
 
+static VALUE wrap_int_vector_map(VALUE self) {
+
+    std::size_t size = getIntVector(self)->size();
+
+    VALUE collection = rb_ary_new2(size);
+
+    for(int i = 0; i < size; i++) {
+        VALUE val = INT2NUM(getIntVector(self)->bracket(i));
+        rb_ary_push(collection, rb_yield(val));
+    }
+
+    return collection;
+}
+
 #endif
