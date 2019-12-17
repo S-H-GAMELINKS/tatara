@@ -170,4 +170,16 @@ static VALUE wrap_int_array_map(VALUE self) {
     return collection;
 }
 
+static VALUE wrap_int_array_destructive_map(VALUE self) {
+
+    std::size_t size = getIntArray(self)->size();
+
+    for(int i = 0; i < size; i++) {
+        VALUE val = INT2NUM(getIntArray(self)->bracket(i));
+        wrap_int_array_bracket_equal(self, INT2NUM(i), rb_yield(val));
+    }
+
+    return self;
+}
+
 #endif
