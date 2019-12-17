@@ -157,4 +157,17 @@ static VALUE wrap_int_vector_map(VALUE self) {
     return collection;
 }
 
+static VALUE wrap_int_vector_destructive_map(VALUE self) {
+
+    std::size_t size = getIntVector(self)->size();
+
+    for(int i = 0; i < size; i++) {
+        const int v = getIntVector(self)->bracket(i);
+        VALUE val = INT2NUM(v);
+        wrap_int_vector_bracket_equal(self, INT2NUM(i), rb_yield(val));
+    }
+
+    return self;
+}
+
 #endif
