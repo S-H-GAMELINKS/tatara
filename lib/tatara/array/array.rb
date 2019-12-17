@@ -2,10 +2,6 @@ require "tatara/tatara"
 
 module Tatara
     module Array
-        def each(&block)
-            (0...(self.size)).each{|i| block.call(self[i])}
-        end
-
         def each_with_index(&block)
             (0...(self.size)).each{|i| block.call(self[i], i)}
         end
