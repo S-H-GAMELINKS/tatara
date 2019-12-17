@@ -157,4 +157,16 @@ static VALUE wrap_float_array_map(VALUE self) {
     return collection;
 }
 
+static VALUE wrap_float_array_destructive_map(VALUE self) {
+
+    std::size_t size = getFloatArray(self)->size();
+
+    for(int i = 0; i < size; i++) {
+        VALUE val = DBL2NUM(getFloatArray(self)->bracket(i));
+        wrap_float_array_bracket_equal(self, INT2NUM(i), rb_yield(val));
+    }
+
+    return self;
+}
+
 #endif
