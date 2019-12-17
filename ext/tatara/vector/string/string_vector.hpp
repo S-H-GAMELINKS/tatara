@@ -159,4 +159,17 @@ static VALUE wrap_string_vector_map(VALUE self) {
     return collection;
 }
 
+static VALUE wrap_string_vector_destructive_map(VALUE self) {
+
+    std::size_t size = getStringVector(self)->size();
+
+    for(int i = 0; i < size; i++) {
+        const std::string v = getStringVector(self)->bracket(i);
+        VALUE val = rb_str_new(v.data(), v.size());
+        wrap_string_vector_bracket_equal(self, INT2NUM(i), rb_yield(val));
+    }
+
+    return self;
+}
+
 #endif
