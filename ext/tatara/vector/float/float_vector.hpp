@@ -157,4 +157,17 @@ static VALUE wrap_float_vector_map(VALUE self) {
     return collection;
 }
 
+static VALUE wrap_float_vector_destructive_map(VALUE self) {
+
+    std::size_t size = getFloatVector(self)->size();
+
+    for(int i = 0; i < size; i++) {
+        const double v = getFloatVector(self)->bracket(i);
+        VALUE val = DBL2NUM(v);
+        wrap_float_vector_bracket_equal(self, INT2NUM(i), rb_yield(val));
+    }
+
+    return self;
+}
+
 #endif
