@@ -128,6 +128,7 @@ extern "C" {
         rb_define_method(rb_cIntVector, "map", RUBY_METHOD_FUNC(wrap_int_vector_map), 0);
         rb_define_method(rb_cIntVector, "map!", RUBY_METHOD_FUNC(wrap_int_vector_destructive_map), 0);
         rb_define_alias(rb_cIntVector, "each", "map");
+        rb_define_method(rb_cIntVector, "each_with_index", RUBY_METHOD_FUNC(wrap_int_vector_each_with_index), 0);
 
         VALUE rb_cFloatVector = rb_define_class_under(mTatara, "FloatVector", rb_cObject);
 
@@ -144,6 +145,7 @@ extern "C" {
         rb_define_method(rb_cFloatVector, "map", RUBY_METHOD_FUNC(wrap_float_vector_map), 0);
         rb_define_method(rb_cFloatVector, "map!", RUBY_METHOD_FUNC(wrap_float_vector_destructive_map), 0);
         rb_define_alias(rb_cFloatVector, "each", "map");
+        rb_define_method(rb_cFloatVector, "each_with_index", RUBY_METHOD_FUNC(wrap_float_vector_each_with_index), 0);
 
         VALUE rb_cStringVector = rb_define_class_under(mTatara, "StringVector", rb_cObject);
 
@@ -160,6 +162,7 @@ extern "C" {
         rb_define_method(rb_cStringVector, "map", RUBY_METHOD_FUNC(wrap_string_vector_map), 0);
         rb_define_method(rb_cStringVector, "map!", RUBY_METHOD_FUNC(wrap_string_vector_destructive_map), 0);
         rb_define_alias(rb_cStringVector, "each", "map");
+        rb_define_method(rb_cStringVector, "each_with_index", RUBY_METHOD_FUNC(wrap_string_vector_each_with_index), 0);
 
         VALUE rb_cIntArray = rb_define_class_under(mTatara, "IntArray", rb_cObject);
 
