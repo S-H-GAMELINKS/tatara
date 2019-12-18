@@ -3,10 +3,6 @@ require "json"
 
 module Tatara
     module Vector
-        def each_with_index(&block)
-            (0...(self.size)).each{|i| block.call(self[i], i)}
-        end
-
         def intersection(other)
             copy = self.dup
             result = self.to_array & other.to_array
