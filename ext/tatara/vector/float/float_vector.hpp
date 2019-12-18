@@ -170,4 +170,21 @@ static VALUE wrap_float_vector_destructive_map(VALUE self) {
     return self;
 }
 
+static VALUE wrap_float_vector_each_with_index(VALUE self) {
+
+    std::size_t size = getFloatVector(self)->size();
+
+    VALUE collection = rb_ary_new2(size);
+
+    for(int i = 0; i < size; i++) {
+        VALUE val = DBL2NUM(getFloatVector(self)->bracket(i));
+        VALUE key_value = rb_ary_new2(2);
+        rb_ary_push(key_value, val);
+        rb_ary_push(key_value, INT2NUM(i));
+        rb_ary_push(collection, rb_yield(key_value));
+    }
+
+    return collection;
+}
+
 #endif
