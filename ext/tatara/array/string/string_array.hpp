@@ -190,4 +190,19 @@ static VALUE wrap_string_array_each_with_index(VALUE self) {
     return collection;
 }
 
+static VALUE wrap_string_array_convert_array(VALUE self) {
+    
+    std::size_t size = getStringArray(self)->size();
+
+    VALUE collection = rb_ary_new2(size);
+
+    for(int i = 0; i < size; i++) {
+        const std::string v = getStringArray(self)->bracket(i);
+        VALUE val = rb_str_new(v.c_str(), v.size());
+        rb_ary_push(collection, val);
+    }
+
+    return collection;
+}
+
 #endif

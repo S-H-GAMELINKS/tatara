@@ -186,4 +186,18 @@ static VALUE wrap_float_array_each_with_index(VALUE self) {
     return collection;
 }
 
+static VALUE wrap_float_array_convert_array(VALUE self) {
+    
+    std::size_t size = getFloatArray(self)->size();
+
+    VALUE collection = rb_ary_new2(size);
+
+    for(int i = 0; i < size; i++) {
+        VALUE val = DBL2NUM(getFloatArray(self)->bracket(i));
+        rb_ary_push(collection, val);
+    }
+
+    return collection;
+}
+
 #endif
