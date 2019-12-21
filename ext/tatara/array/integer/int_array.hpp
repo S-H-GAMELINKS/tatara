@@ -199,4 +199,18 @@ static VALUE wrap_int_array_each_with_index(VALUE self) {
     return collection;
 }
 
+static VALUE wrap_int_array_convert_array(VALUE self) {
+
+    std::size_t size = getIntArray(self)->size();
+
+    VALUE collection = rb_ary_new2(size);
+
+    for(int i = 0; i < size; i++) {
+        VALUE val = INT2NUM(getIntArray(self)->bracket(i));
+        rb_ary_push(collection, val);
+    }
+
+    return collection;
+}
+
 #endif
