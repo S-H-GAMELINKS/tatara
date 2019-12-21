@@ -78,12 +78,6 @@ module Tatara
             return self
         end
 
-        def to_array
-            result = []
-            self.map{|v| result << v}
-            result
-        end
-
         def to_json
             self.to_array.to_json
         end
