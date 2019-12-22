@@ -213,4 +213,16 @@ static VALUE wrap_int_array_convert_array(VALUE self) {
     return collection;
 }
 
+static VALUE wrap_int_array_import_array(VALUE self, VALUE ary) {
+
+    std::size_t size = RARRAY_LEN(ary);
+
+    for(int i = 0; i < size; i++) {
+        VALUE val = rb_ary_entry(ary, i);
+        getIntArray(self)->emplace_back(NUM2INT(val));
+    }
+
+    return self;
+}
+
 #endif
