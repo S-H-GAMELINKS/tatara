@@ -205,4 +205,17 @@ static VALUE wrap_string_vector_convert_array(VALUE self) {
     return collection;
 }
 
+static VALUE wrap_string_vector_import_array(VALUE self, VALUE ary) {
+
+    std::size_t size = RARRAY_LEN(ary);
+
+    for(int i = 0; i < size; i++) {
+        VALUE val = rb_ary_entry(ary, i);
+        const std::string v = {StringValueCStr(val)};
+        getStringVector(self)->emplace_back(v);
+    }
+
+    return self;
+}
+
 #endif

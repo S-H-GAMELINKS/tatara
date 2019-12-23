@@ -201,4 +201,16 @@ static VALUE wrap_float_vector_convert_array(VALUE self) {
     return collection;
 }
 
+static VALUE wrap_float_vector_import_array(VALUE self, VALUE ary) {
+
+    std::size_t size = RARRAY_LEN(ary);
+
+    for(int i = 0; i < size; i++) {
+        VALUE val = rb_ary_entry(ary, i);
+        getFloatVector(self)->emplace_back(NUM2DBL(val));
+    }
+
+    return self;
+}
+
 #endif
