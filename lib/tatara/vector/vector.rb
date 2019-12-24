@@ -30,10 +30,6 @@ module Tatara
             return self
         end
 
-        def sum
-            self.to_array.inject(:+)
-        end
-
         def uniq
             copy = self.dup
             result = self.to_array.uniq
