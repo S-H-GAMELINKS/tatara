@@ -18,6 +18,7 @@ class FloatVector {
         int size();
         void clear();
         FloatVector& push_back_object(const double var);
+        float sum();
  };
 
 FloatVector::FloatVector() {}
@@ -55,6 +56,10 @@ void FloatVector::clear() {
 FloatVector &FloatVector::push_back_object(const double var) {
     this->container.emplace_back(std::move(var));
     return *this;
+}
+
+float FloatVector::sum() {
+    return std::accumulate(this->container.begin(), this->container.end(), 0.0);
 }
 
 struct WrapFloatVector {
@@ -211,6 +216,11 @@ static VALUE wrap_float_vector_import_array(VALUE self, VALUE ary) {
     }
 
     return self;
+}
+
+static VALUE wrap_float_vector_sum(VALUE self) {
+    float result = getFloatVector(self)->sum();
+    return DBL2NUM(result);
 }
 
 #endif
