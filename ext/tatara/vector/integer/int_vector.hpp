@@ -3,6 +3,7 @@
 
 #include <ruby.h>
 #include <vector>
+#include <numeric>
 
 class IntVector {
     std::vector<int> container;
@@ -18,6 +19,7 @@ class IntVector {
         int size();
         void clear();
         IntVector& push_back_object(const int var);
+        int sum();
  };
 
 IntVector::IntVector() {}
@@ -55,6 +57,10 @@ void IntVector::clear() {
 IntVector &IntVector::push_back_object(const int var) {
     this->container.emplace_back(std::move(var));
     return *this;
+}
+
+int IntVector::sum() {
+    return std::accumulate(this->container.begin(), this->container.end(), 0);
 }
 
 struct WrapIntVector {
@@ -211,6 +217,11 @@ static VALUE wrap_int_vector_import_array(VALUE self, VALUE ary) {
     }
 
     return self;
+}
+
+static VALUE wrap_int_vector_sum(VALUE self) {
+    int result = getIntVector(self)->sum();
+    return INT2NUM(result);
 }
 
 #endif

@@ -19,6 +19,7 @@ class StringVector {
         int size();
         void clear();
         StringVector& push_back_object(const std::string var);
+        std::string sum();
  };
 
 StringVector::StringVector() {}
@@ -56,6 +57,10 @@ void StringVector::clear() {
 StringVector &StringVector::push_back_object(const std::string var) {
     this->container.emplace_back(std::move(var));
     return *this;
+}
+
+std::string StringVector::sum() {
+    return std::accumulate(this->container.begin(), this->container.end(), std::string());
 }
 
 struct WrapStringVector {
@@ -216,6 +221,11 @@ static VALUE wrap_string_vector_import_array(VALUE self, VALUE ary) {
     }
 
     return self;
+}
+
+static VALUE wrap_string_vector_sum(VALUE self) {
+    std::string result = getStringVector(self)->sum();
+    return rb_str_new(result.c_str(), result.size());
 }
 
 #endif
