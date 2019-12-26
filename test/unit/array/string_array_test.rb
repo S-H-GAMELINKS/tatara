@@ -42,6 +42,14 @@ class StringArrayTest < Minitest::Test
     assert_equal 0, @array.size
   end
 
+  def test_tatara_string_array_sum
+    @s = Tatara::StringArray.new
+
+    3.times { @s.push("42") }
+
+    assert_equal @s.sum, "424242"
+  end
+
   def test_push_operator_tatara_string_array
     @array = Tatara::StringArray.new
     @array << "42"
