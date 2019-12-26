@@ -19,6 +19,7 @@ class StringArray {
         int size();
         void clear();
         StringArray& push_back_object(const std::string var);
+        std::string sum();
 };
 
 StringArray::StringArray() {}
@@ -56,6 +57,10 @@ void StringArray::clear() {
 StringArray &StringArray::push_back_object(const std::string var) {
     this->container.emplace_back(std::move(var));
     return *this;
+}
+
+std::string StringArray::sum() {
+    return std::accumulate(this->container.begin(), this->container.end(), std::string());
 }
 
 struct WrapStringArray {
@@ -216,6 +221,11 @@ static VALUE wrap_string_array_import_array(VALUE self, VALUE ary) {
     }
 
     return self;
+}
+
+static VALUE wrap_string_array_sum(VALUE self) {
+    std::string result = getStringArray(self)->sum();
+    return rb_str_new(result.c_str(), result.size());
 }
 
 #endif
