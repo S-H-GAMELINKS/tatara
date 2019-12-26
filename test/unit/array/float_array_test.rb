@@ -42,6 +42,14 @@ class FloatArrayTest < Minitest::Test
     assert_equal 0, @array.size
   end
 
+  def test_tatara_float_array_sum
+    @f = Tatara::FloatArray.new
+
+    3.times { @f.push(4.2) }
+
+    assert_equal 12.6, @f.sum.round(2)
+  end
+
   def test_push_operator_tatara_float_array
     @array = Tatara::FloatArray.new
     @array << 4.2
