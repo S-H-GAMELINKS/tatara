@@ -18,6 +18,7 @@ class FloatArray {
         int size();
         void clear();
         FloatArray& push_back_object(const double var);
+        double sum();
 };
 
 FloatArray::FloatArray() {}
@@ -55,6 +56,10 @@ void FloatArray::clear() {
 FloatArray &FloatArray::push_back_object(const double var) {
     this->container.emplace_back(std::move(var));
     return *this;
+}
+
+double FloatArray::sum() {
+    return std::accumulate(this->container.begin(), this->container.end(), 0.0);
 }
 
 struct WrapFloatArray {
@@ -210,6 +215,11 @@ static VALUE wrap_float_array_import_array(VALUE self, VALUE ary) {
     }
 
     return self;
+}
+
+static VALUE wrap_float_array_sum(VALUE self) {
+    double result = getFloatArray(self)->sum();
+    return DBL2NUM(result);
 }
 
 #endif
