@@ -42,6 +42,14 @@ class IntArrayTest < Minitest::Test
     assert_equal 0, @array.size
   end
 
+  def test_tatara_int_array_sum
+    @i = Tatara::IntArray.new
+
+    3.times { @i.push(42) }
+
+    assert_equal 126, @i.sum
+  end
+
   def test_push_operator_tatara_int_array
     @array = Tatara::IntArray.new
     @array << 42
