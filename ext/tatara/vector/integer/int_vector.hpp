@@ -4,6 +4,8 @@
 #include <ruby.h>
 #include <vector>
 #include <numeric>
+#include <algorithm>
+#include <iterator>
 
 class IntVector {
     std::vector<int> container;
@@ -20,7 +22,8 @@ class IntVector {
         void clear();
         IntVector& push_back_object(const int var);
         int sum();
- };
+        IntVector& intersection(const IntVector* other);
+};
 
 IntVector::IntVector() {}
 
@@ -61,6 +64,13 @@ IntVector &IntVector::push_back_object(const int var) {
 
 int IntVector::sum() {
     return std::accumulate(this->container.begin(), this->container.end(), 0);
+}
+
+IntVector& IntVector::intersection(const IntVector* other) {
+    std::set_intersection(this->container.begin(), this->container.end(),
+                          other->container.begin(), other->container.end(),
+                          std::inserter(this->container, this->container.end()));
+    return *this;
 }
 
 struct WrapIntVector {
@@ -222,6 +232,12 @@ static VALUE wrap_int_vector_import_array(VALUE self, VALUE ary) {
 static VALUE wrap_int_vector_sum(VALUE self) {
     int result = getIntVector(self)->sum();
     return INT2NUM(result);
+}
+
+static VALUE wrap_int_vector_intersection(VALUE self, VALUE other) {
+    VALUE dup = rb_obj_dup(self);
+    getIntVector(dup)->intersection(getIntVector(other));
+    return dup;   
 }
 
 #endif
