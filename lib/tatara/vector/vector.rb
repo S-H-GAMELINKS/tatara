@@ -3,14 +3,6 @@ require "json"
 
 module Tatara
     module Vector
-        def intersection(other)
-            copy = self.dup
-            result = self.to_array & other.to_array
-            copy.clear
-            result.map(&copy.method(:<<))
-            return copy
-        end
-
         def &(other)
             self.intersection other
         end
