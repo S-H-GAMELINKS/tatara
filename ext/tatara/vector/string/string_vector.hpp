@@ -4,6 +4,8 @@
 #include <ruby.h>
 #include <vector>
 #include <string>
+#include <algorithm>
+#include <iterator>
 
 class StringVector {
     std::vector<std::string> container;
@@ -20,7 +22,8 @@ class StringVector {
         void clear();
         StringVector& push_back_object(const std::string var);
         std::string sum();
- };
+        StringVector& intersection(const StringVector* other);
+};
 
 StringVector::StringVector() {}
 
@@ -61,6 +64,13 @@ StringVector &StringVector::push_back_object(const std::string var) {
 
 std::string StringVector::sum() {
     return std::accumulate(this->container.begin(), this->container.end(), std::string());
+}
+
+StringVector& StringVector::intersection(const StringVector* other) {
+    std::set_intersection(this->container.begin(), this->container.end(),
+                          other->container.begin(), other->container.end(),
+                          std::inserter(this->container, this->container.end()));
+    return *this;
 }
 
 struct WrapStringVector {
@@ -226,6 +236,12 @@ static VALUE wrap_string_vector_import_array(VALUE self, VALUE ary) {
 static VALUE wrap_string_vector_sum(VALUE self) {
     std::string result = getStringVector(self)->sum();
     return rb_str_new(result.c_str(), result.size());
+}
+
+static VALUE wrap_string_vector_intersection(VALUE self, VALUE other) {
+    VALUE dup = rb_obj_dup(self);
+    getStringVector(dup)->intersection(getStringVector(other));
+    return dup;   
 }
 
 #endif

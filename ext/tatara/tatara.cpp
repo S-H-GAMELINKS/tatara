@@ -132,6 +132,7 @@ extern "C" {
         rb_define_method(rb_cIntVector, "to_array", RUBY_METHOD_FUNC(wrap_int_vector_convert_array), 0);
         rb_define_method(rb_cIntVector, "import_array", RUBY_METHOD_FUNC(wrap_int_vector_import_array), 1);
         rb_define_method(rb_cIntVector, "sum", RUBY_METHOD_FUNC(wrap_int_vector_sum), 0);
+        rb_define_method(rb_cIntVector, "intersection", RUBY_METHOD_FUNC(wrap_int_vector_intersection), 1);
 
         VALUE rb_cFloatVector = rb_define_class_under(mTatara, "FloatVector", rb_cObject);
 
@@ -152,6 +153,7 @@ extern "C" {
         rb_define_method(rb_cFloatVector, "to_array", RUBY_METHOD_FUNC(wrap_float_vector_convert_array), 0);
         rb_define_method(rb_cFloatVector, "import_array", RUBY_METHOD_FUNC(wrap_float_vector_import_array), 1);
         rb_define_method(rb_cFloatVector, "sum", RUBY_METHOD_FUNC(wrap_float_vector_sum), 0);
+        rb_define_method(rb_cFloatVector, "intersection", RUBY_METHOD_FUNC(wrap_float_vector_intersection), 1);
 
         VALUE rb_cStringVector = rb_define_class_under(mTatara, "StringVector", rb_cObject);
 
@@ -172,6 +174,7 @@ extern "C" {
         rb_define_method(rb_cStringVector, "to_array", RUBY_METHOD_FUNC(wrap_string_vector_convert_array), 0);
         rb_define_method(rb_cStringVector, "import_array", RUBY_METHOD_FUNC(wrap_string_vector_import_array), 1);
         rb_define_method(rb_cStringVector, "sum", RUBY_METHOD_FUNC(wrap_string_vector_sum), 0);
+        rb_define_method(rb_cStringVector, "intersection", RUBY_METHOD_FUNC(wrap_string_vector_intersection), 1);
 
         VALUE rb_cIntArray = rb_define_class_under(mTatara, "IntArray", rb_cObject);
 
