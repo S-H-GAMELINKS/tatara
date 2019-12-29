@@ -3,6 +3,8 @@
 
 #include <ruby.h>
 #include <vector>
+#include <algorithm>
+#include <iterator>
 
 class IntArray {
     std::vector<int> container;
@@ -19,6 +21,7 @@ class IntArray {
         void clear();
         IntArray& push_back_object(const int var);
         int sum();
+        IntArray& intersection(const IntArray* other);
  };
 
 IntArray::IntArray() {}
@@ -60,6 +63,13 @@ IntArray &IntArray::push_back_object(const int var) {
 
 int IntArray::sum() {
     return std::accumulate(this->container.begin(), this->container.end(), 0);
+}
+
+IntArray& IntArray::intersection(const IntArray* other) {
+    std::set_intersection(this->container.begin(), this->container.end(),
+                          other->container.begin(), other->container.end(),
+                          std::inserter(this->container, this->container.end()));
+    return *this;
 }
 
 struct WrapIntArray {
@@ -232,6 +242,12 @@ static VALUE wrap_int_array_import_array(VALUE self, VALUE ary) {
 static VALUE wrap_int_array_sum(VALUE self) {
     int result = getIntArray(self)->sum();
     return INT2NUM(result);
+}
+
+static VALUE wrap_int_array_intersection(VALUE self, VALUE other) {
+    VALUE dup = rb_obj_dup(self);
+    getIntArray(dup)->intersection(getIntArray(other));
+    return dup;
 }
 
 #endif
