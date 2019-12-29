@@ -3,6 +3,8 @@
 
 #include <ruby.h>
 #include <vector>
+#include <algorithm>
+#include <iterator>
 
 class FloatArray {
     std::vector<double> container;
@@ -19,6 +21,7 @@ class FloatArray {
         void clear();
         FloatArray& push_back_object(const double var);
         double sum();
+        FloatArray& intersection(const FloatArray* other);
 };
 
 FloatArray::FloatArray() {}
@@ -60,6 +63,13 @@ FloatArray &FloatArray::push_back_object(const double var) {
 
 double FloatArray::sum() {
     return std::accumulate(this->container.begin(), this->container.end(), 0.0);
+}
+
+FloatArray& FloatArray::intersection(const FloatArray* other) {
+    std::set_intersection(this->container.begin(), this->container.end(),
+                          other->container.begin(), other->container.end(),
+                          std::inserter(this->container, this->container.end()));
+    return *this;
 }
 
 struct WrapFloatArray {
@@ -220,6 +230,12 @@ static VALUE wrap_float_array_import_array(VALUE self, VALUE ary) {
 static VALUE wrap_float_array_sum(VALUE self) {
     double result = getFloatArray(self)->sum();
     return DBL2NUM(result);
+}
+
+static VALUE wrap_float_array_intersection(VALUE self, VALUE other) {
+    VALUE dup = rb_obj_dup(self);
+    getFloatArray(dup)->intersection(getFloatArray(other));
+    return dup;
 }
 
 #endif
