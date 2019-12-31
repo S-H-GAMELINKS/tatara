@@ -123,7 +123,12 @@ static VALUE wrap_int_array_last(VALUE self) {
 
 static VALUE wrap_int_array_bracket(VALUE self, VALUE index) {
     const int i = NUM2INT(index);
-    const int value = getIntArray(self)->bracket(i);
+    int value = 0;
+    if (getIntArray(self)->size() <= i) {
+        rb_raise(rb_eRuntimeError, "Error! Can not get Value!");
+    } else {
+        value = getIntArray(self)->bracket(i);
+    }
     VALUE result = INT2NUM(value);
     return result;
 }
@@ -131,7 +136,11 @@ static VALUE wrap_int_array_bracket(VALUE self, VALUE index) {
 static VALUE wrap_int_array_bracket_equal(VALUE self, VALUE index, VALUE value) {
     const int i = NUM2INT(index);
     const int v = NUM2INT(value);
-    getIntArray(self)->bracket_equal(i, v);
+    if (getIntArray(self)->size() <= i) {
+        rb_raise(rb_eRuntimeError, "Error! Can not set Value!");
+    } else {
+        getIntArray(self)->bracket_equal(i, v);
+    }
     return value;
 }
 
