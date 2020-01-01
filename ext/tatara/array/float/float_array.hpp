@@ -22,6 +22,7 @@ class FloatArray {
         FloatArray& push_back_object(const double var);
         double sum();
         FloatArray& intersection(const FloatArray* other);
+        void sort();
 };
 
 FloatArray::FloatArray() {}
@@ -70,6 +71,10 @@ FloatArray& FloatArray::intersection(const FloatArray* other) {
                           other->container.begin(), other->container.end(),
                           std::inserter(this->container, this->container.end()));
     return *this;
+}
+
+void FloatArray::sort() {
+    std::sort(this->container.begin(), this->container.end());
 }
 
 struct WrapFloatArray {
@@ -244,6 +249,14 @@ static VALUE wrap_float_array_sum(VALUE self) {
 static VALUE wrap_float_array_intersection(VALUE self, VALUE other) {
     VALUE dup = rb_obj_dup(self);
     getFloatArray(dup)->intersection(getFloatArray(other));
+    return dup;
+}
+
+static VALUE wrap_float_array_sort(VALUE self) {
+    VALUE dup = rb_obj_dup(self);
+    VALUE result = wrap_float_array_convert_array(self);
+    dup = wrap_float_array_import_array(dup, result);
+    getFloatArray(dup)->sort();
     return dup;
 }
 
