@@ -6,14 +6,6 @@ module Tatara
             self.intersection other
         end
 
-        def sort
-            copy = self.dup
-            result = self.to_array.sort
-            copy.clear
-            result.each{|v| copy << v}
-            return copy
-        end
-
         def sort!
             result = self.to_array.sort
             self.clear

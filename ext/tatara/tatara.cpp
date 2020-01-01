@@ -196,6 +196,7 @@ extern "C" {
         rb_define_method(rb_cIntArray, "import_array", RUBY_METHOD_FUNC(wrap_int_array_import_array), 1);
         rb_define_method(rb_cIntArray, "sum", RUBY_METHOD_FUNC(wrap_int_array_sum), 0);
         rb_define_method(rb_cIntArray, "intersection", RUBY_METHOD_FUNC(wrap_int_array_intersection), 1);
+        rb_define_method(rb_cIntArray, "sort", RUBY_METHOD_FUNC(wrap_int_array_sort), 0);
 
         VALUE rb_cFloatArray = rb_define_class_under(mTatara, "FloatArray", rb_cObject);
 
@@ -217,6 +218,7 @@ extern "C" {
         rb_define_method(rb_cFloatArray, "import_array", RUBY_METHOD_FUNC(wrap_float_array_import_array), 1);
         rb_define_method(rb_cFloatArray, "sum", RUBY_METHOD_FUNC(wrap_float_array_sum), 0);
         rb_define_method(rb_cFloatArray, "intersection", RUBY_METHOD_FUNC(wrap_float_array_intersection), 1);
+        rb_define_method(rb_cFloatArray, "sort", RUBY_METHOD_FUNC(wrap_float_array_sort), 0);
 
         VALUE rb_cStringArray = rb_define_class_under(mTatara, "StringArray", rb_cObject);
 
@@ -238,6 +240,7 @@ extern "C" {
         rb_define_method(rb_cStringArray, "import_array", RUBY_METHOD_FUNC(wrap_string_array_import_array), 1);
         rb_define_method(rb_cStringArray, "sum", RUBY_METHOD_FUNC(wrap_string_array_sum), 0);
         rb_define_method(rb_cStringArray, "intersection", RUBY_METHOD_FUNC(wrap_string_array_intersection), 1);
+        rb_define_method(rb_cStringArray, "sort", RUBY_METHOD_FUNC(wrap_string_array_sort), 0);
 
         VALUE rb_cStringIntMap = rb_define_class_under(mTatara, "StringIntMap", rb_cObject);
 

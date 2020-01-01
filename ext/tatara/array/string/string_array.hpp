@@ -23,6 +23,7 @@ class StringArray {
         StringArray& push_back_object(const std::string var);
         std::string sum();
         StringArray& intersection(const StringArray* other);
+        void sort();
 };
 
 StringArray::StringArray() {}
@@ -71,6 +72,10 @@ StringArray& StringArray::intersection(const StringArray* other) {
                           other->container.begin(), other->container.end(),
                           std::inserter(this->container, this->container.end()));
     return *this;
+}
+
+void StringArray::sort() {
+    std::sort(this->container.begin(), this->container.end());
 }
 
 struct WrapStringArray {
@@ -250,6 +255,14 @@ static VALUE wrap_string_array_sum(VALUE self) {
 static VALUE wrap_string_array_intersection(VALUE self, VALUE other) {
     VALUE dup = rb_obj_dup(self);
     getStringArray(dup)->intersection(getStringArray(other));
+    return dup;
+}
+
+static VALUE wrap_string_array_sort(VALUE self) {
+    VALUE dup = rb_obj_dup(self);
+    VALUE result = wrap_string_array_convert_array(self);
+    dup = wrap_string_array_import_array(dup, result);
+    getStringArray(dup)->sort();
     return dup;
 }
 
