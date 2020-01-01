@@ -5,6 +5,7 @@
 #include <vector>
 #include <algorithm>
 #include <iterator>
+#include <iostream>
 
 class IntArray {
     std::vector<int> container;
@@ -22,6 +23,7 @@ class IntArray {
         IntArray& push_back_object(const int var);
         int sum();
         IntArray& intersection(const IntArray* other);
+        void sort();
  };
 
 IntArray::IntArray() {}
@@ -70,6 +72,10 @@ IntArray& IntArray::intersection(const IntArray* other) {
                           other->container.begin(), other->container.end(),
                           std::inserter(this->container, this->container.end()));
     return *this;
+}
+
+void IntArray::sort() {
+    std::sort(this->container.begin(), this->container.end());
 }
 
 struct WrapIntArray {
@@ -256,6 +262,14 @@ static VALUE wrap_int_array_sum(VALUE self) {
 static VALUE wrap_int_array_intersection(VALUE self, VALUE other) {
     VALUE dup = rb_obj_dup(self);
     getIntArray(dup)->intersection(getIntArray(other));
+    return dup;
+}
+
+static VALUE wrap_int_array_sort(VALUE self) {
+    VALUE dup = rb_obj_dup(self);
+    VALUE result = wrap_int_array_convert_array(self);
+    dup = wrap_int_array_import_array(dup, result);
+    getIntArray(dup)->sort();
     return dup;
 }
 
