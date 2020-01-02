@@ -36,21 +36,33 @@ struct WrapFloatIntMap {
     FloatIntMap *instance;
 };
 
-static FloatIntMap *getFloatIntMap(VALUE self) {
-    WrapFloatIntMap *ptr;
-    Data_Get_Struct(self, WrapFloatIntMap, ptr);
-    return ptr->instance;
+static void wrap_float_int_map_free(void* ptr) {
+    WrapFloatIntMap *p = static_cast<WrapFloatIntMap*>(ptr);
+    delete p->instance;
+    ruby_xfree(p);
 }
 
-static void wrap_float_int_map_free(WrapFloatIntMap *ptr) {
-    delete ptr->instance;
-    ruby_xfree(ptr);
+static const rb_data_type_t rb_float_int_map_type = {
+    "FloatIntMap",
+    {
+        NULL,
+        wrap_float_int_map_free,
+        NULL,
+    },
+    NULL,
+    NULL
+};
+
+static FloatIntMap *getFloatIntMap(VALUE self) {
+    WrapFloatIntMap *ptr;
+    TypedData_Get_Struct(self, WrapFloatIntMap, &rb_float_int_map_type, ptr);
+    return ptr->instance;
 }
 
 static VALUE wrap_float_int_map_alloc(VALUE klass) {
     auto ptr = RB_ALLOC(WrapFloatIntMap);
     ptr->instance = new FloatIntMap;
-    return Data_Wrap_Struct(klass, NULL, wrap_float_int_map_free, ptr);
+    return TypedData_Wrap_Struct(klass, &rb_float_int_map_type, ptr);
 }
 
 static VALUE wrap_float_int_map_init(VALUE self) {

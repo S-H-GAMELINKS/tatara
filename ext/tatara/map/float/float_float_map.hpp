@@ -36,21 +36,34 @@ struct WrapFloatFloatMap {
     FloatFloatMap *instance;
 };
 
-static FloatFloatMap *getFloatFloatMap(VALUE self) {
-    WrapFloatFloatMap *ptr;
-    Data_Get_Struct(self, WrapFloatFloatMap, ptr);
-    return ptr->instance;
+static void wrap_float_float_map_free(void* ptr) {
+    WrapFloatFloatMap *p = static_cast<WrapFloatFloatMap*>(ptr);
+    delete p->instance;
+    ruby_xfree(p);
 }
 
-static void wrap_float_float_map_free(WrapFloatFloatMap *ptr) {
-    delete ptr->instance;
-    ruby_xfree(ptr);
+
+static const rb_data_type_t rb_float_float_map_type = {
+    "FloatFloatMap",
+    {
+        NULL,
+        wrap_float_float_map_free,
+        NULL,
+    },
+    NULL,
+    NULL
+};
+
+static FloatFloatMap *getFloatFloatMap(VALUE self) {
+    WrapFloatFloatMap *ptr;
+    TypedData_Get_Struct(self, WrapFloatFloatMap, &rb_float_float_map_type, ptr);
+    return ptr->instance;
 }
 
 static VALUE wrap_float_float_map_alloc(VALUE klass) {
     auto ptr = RB_ALLOC(WrapFloatFloatMap);
     ptr->instance = new FloatFloatMap;
-    return Data_Wrap_Struct(klass, NULL, wrap_float_float_map_free, ptr);
+    return TypedData_Wrap_Struct(klass, &rb_float_float_map_type, ptr);
 }
 
 static VALUE wrap_float_float_map_init(VALUE self) {

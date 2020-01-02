@@ -37,21 +37,33 @@ struct WrapStringFloatMap {
     StringFloatMap *instance;
 };
 
-static StringFloatMap *getStringFloatMap(VALUE self) {
-    WrapStringFloatMap *ptr;
-    Data_Get_Struct(self, WrapStringFloatMap, ptr);
-    return ptr->instance;
+static void wrap_string_float_map_free(void* ptr) {
+    WrapStringFloatMap *p = static_cast<WrapStringFloatMap*>(ptr);
+    delete p->instance;
+    ruby_xfree(p);
 }
 
-static void wrap_string_float_map_free(WrapStringFloatMap *ptr) {
-    delete ptr->instance;
-    ruby_xfree(ptr);
+static const rb_data_type_t rb_string_float_map_type = {
+    "StringFloatMap",
+    {
+        NULL,
+        wrap_string_float_map_free,
+        NULL,
+    },
+    NULL,
+    NULL
+};
+
+static StringFloatMap *getStringFloatMap(VALUE self) {
+    WrapStringFloatMap *ptr;
+    TypedData_Get_Struct(self, WrapStringFloatMap, &rb_string_float_map_type, ptr);
+    return ptr->instance;
 }
 
 static VALUE wrap_string_float_map_alloc(VALUE klass) {
     auto ptr = RB_ALLOC(WrapStringFloatMap);
     ptr->instance = new StringFloatMap;
-    return Data_Wrap_Struct(klass, NULL, wrap_string_float_map_free, ptr);
+    return TypedData_Wrap_Struct(klass, &rb_string_float_map_type, ptr);
 }
 
 static VALUE wrap_string_float_map_init(VALUE self) {
