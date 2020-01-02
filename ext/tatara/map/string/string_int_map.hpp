@@ -37,21 +37,33 @@ struct WrapStringIntMap {
     StringIntMap *instance;
 };
 
-static StringIntMap *getStringIntMap(VALUE self) {
-    WrapStringIntMap *ptr;
-    Data_Get_Struct(self, WrapStringIntMap, ptr);
-    return ptr->instance;
+static void wrap_string_int_map_free(void* ptr) {
+    WrapStringIntMap *p = static_cast<WrapStringIntMap*>(ptr);
+    delete p->instance;
+    ruby_xfree(p);
 }
 
-static void wrap_string_int_map_free(WrapStringIntMap *ptr) {
-    delete ptr->instance;
-    ruby_xfree(ptr);
+static const rb_data_type_t rb_string_int_map_type = {
+    "StringIntMap",
+    {
+        NULL,
+        wrap_string_int_map_free,
+        NULL,
+    },
+    NULL,
+    NULL
+};
+
+static StringIntMap *getStringIntMap(VALUE self) {
+    WrapStringIntMap *ptr;
+    TypedData_Get_Struct(self, WrapStringIntMap, &rb_string_int_map_type, ptr);
+    return ptr->instance;
 }
 
 static VALUE wrap_string_int_map_alloc(VALUE klass) {
     auto ptr = RB_ALLOC(WrapStringIntMap);
     ptr->instance = new StringIntMap;
-    return Data_Wrap_Struct(klass, NULL, wrap_string_int_map_free, ptr);
+    return TypedData_Wrap_Struct(klass, &rb_string_int_map_type, ptr);
 }
 
 static VALUE wrap_string_int_map_init(VALUE self) {
