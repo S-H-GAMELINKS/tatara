@@ -281,12 +281,7 @@ extern "C" {
         // require Tatara::FloatFloatMap impl
         Init_float_float_map(mTatara);
 
-        VALUE rb_cFloatStringMap = rb_define_class_under(mTatara, "FloatStringMap", rb_cObject);
-
-        rb_define_alloc_func(rb_cFloatStringMap, wrap_float_string_map_alloc);
-        rb_define_private_method(rb_cFloatStringMap, "initialize", RUBY_METHOD_FUNC(wrap_float_string_map_init), 0);
-        rb_define_method(rb_cFloatStringMap, "[]", RUBY_METHOD_FUNC(wrap_float_string_map_bracket), 1);
-        rb_define_method(rb_cFloatStringMap, "[]=", RUBY_METHOD_FUNC(wrap_float_string_map_bracket_equal), 2);
-        rb_define_method(rb_cFloatStringMap, "insert", RUBY_METHOD_FUNC(wrap_float_string_map_insert_object), 2);
+        // require Tatara::FloatStringMap impl
+        Init_float_string_map(mTatara);
     }
 }
