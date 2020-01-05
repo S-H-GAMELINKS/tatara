@@ -3,14 +3,14 @@
 
 #include <ruby.h>
 
-constexpr bool check_key(VALUE key) {
+constexpr bool int_int_check_key(VALUE key) {
     if (FIXNUM_P(key))
         return true;
     else
         return false;
 }
 
-constexpr bool check_value(VALUE value) {
+constexpr bool int_int_check_value(VALUE value) {
     if (FIXNUM_P(value))
         return true;
     else
@@ -18,7 +18,7 @@ constexpr bool check_value(VALUE value) {
 }
 
 static VALUE int_int_map_bracket(VALUE self, VALUE key) {
-    if (check_key(key)) {
+    if (int_int_check_key(key)) {
         return rb_hash_aref(self, key);
     } else {
         rb_raise(rb_eTypeError, "Worng Type Key! %s", rb_obj_classname(key));
@@ -28,10 +28,10 @@ static VALUE int_int_map_bracket(VALUE self, VALUE key) {
 
 static VALUE int_int_map_bracket_equal(VALUE self, VALUE key, VALUE value) {
 
-    if (!check_key(key))
+    if (!int_int_check_key(key))
         rb_raise(rb_eTypeError, "Worng Type Key! %s", rb_obj_classname(key));
 
-    if (!check_value(value))
+    if (!int_int_check_value(value))
         rb_raise(rb_eTypeError, "Worng Type Value! %s", rb_obj_classname(key));
 
     rb_hash_aset(self, key, value);
