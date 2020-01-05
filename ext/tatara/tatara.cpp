@@ -266,6 +266,7 @@ extern "C" {
         rb_define_method(rb_cStringStringMap, "[]=", RUBY_METHOD_FUNC(wrap_string_string_map_bracket_equal), 2);
         rb_define_method(rb_cStringStringMap, "insert", RUBY_METHOD_FUNC(wrap_string_string_map_insert_object), 2);
 
+        // require Tatara::IntIntMap impl
         Init_int_int_map(mTatara);
 
         VALUE rb_cIntFloatMap = rb_define_class_under(mTatara, "IntFloatMap", rb_cObject);
