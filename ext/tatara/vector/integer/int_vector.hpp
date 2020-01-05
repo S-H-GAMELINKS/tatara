@@ -23,6 +23,7 @@ class IntVector {
         IntVector& push_back_object(const int var);
         int sum();
         IntVector& intersection(const IntVector* other);
+        void sort();
 };
 
 IntVector::IntVector() {}
@@ -71,6 +72,10 @@ IntVector& IntVector::intersection(const IntVector* other) {
                           other->container.begin(), other->container.end(),
                           std::inserter(this->container, this->container.end()));
     return *this;
+}
+
+void IntVector::sort() {
+    std::sort(this->container.begin(), this->container.end());
 }
 
 struct WrapIntVector {
@@ -247,6 +252,14 @@ static VALUE wrap_int_vector_intersection(VALUE self, VALUE other) {
     VALUE dup = rb_obj_dup(self);
     getIntVector(dup)->intersection(getIntVector(other));
     return dup;   
+}
+
+static VALUE wrap_int_vector_sort(VALUE self) {
+    VALUE dup = rb_obj_dup(self);
+    VALUE result = wrap_int_vector_convert_array(self);
+    dup = wrap_int_vector_import_array(dup, result);
+    getIntVector(dup)->sort();
+    return dup;
 }
 
 #endif
