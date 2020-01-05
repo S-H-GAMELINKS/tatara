@@ -269,13 +269,8 @@ extern "C" {
         // require Tatara::IntIntMap impl
         Init_int_int_map(mTatara);
 
-        VALUE rb_cIntFloatMap = rb_define_class_under(mTatara, "IntFloatMap", rb_cObject);
-
-        rb_define_alloc_func(rb_cIntFloatMap, wrap_int_float_map_alloc);
-        rb_define_private_method(rb_cIntFloatMap, "initialize", RUBY_METHOD_FUNC(wrap_int_float_map_init), 0);
-        rb_define_method(rb_cIntFloatMap, "[]", RUBY_METHOD_FUNC(wrap_int_float_map_bracket), 1);
-        rb_define_method(rb_cIntFloatMap, "[]=", RUBY_METHOD_FUNC(wrap_int_float_map_bracket_equal), 2);
-        rb_define_method(rb_cIntFloatMap, "insert", RUBY_METHOD_FUNC(wrap_int_float_map_insert_object), 2);
+        // require Tatara::IntFloatMap impl
+        Init_int_float_map(mTatara);
 
         VALUE rb_cIntStringMap = rb_define_class_under(mTatara, "IntStringMap", rb_cObject);
 
