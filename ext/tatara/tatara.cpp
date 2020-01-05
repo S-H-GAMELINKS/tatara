@@ -241,77 +241,32 @@ extern "C" {
         rb_define_method(rb_cStringArray, "sum", RUBY_METHOD_FUNC(wrap_string_array_sum), 0);
         rb_define_method(rb_cStringArray, "intersection", RUBY_METHOD_FUNC(wrap_string_array_intersection), 1);
         rb_define_method(rb_cStringArray, "sort", RUBY_METHOD_FUNC(wrap_string_array_sort), 0);
+        
+        // require Tatara::StringIntMap impl
+        Init_string_int_map(mTatara);
 
-        VALUE rb_cStringIntMap = rb_define_class_under(mTatara, "StringIntMap", rb_cObject);
+        // require Tatara::StringFloatMap impl
+        Init_string_float_map(mTatara);
 
-        rb_define_alloc_func(rb_cStringIntMap, wrap_string_int_map_alloc);
-        rb_define_private_method(rb_cStringIntMap, "initialize", RUBY_METHOD_FUNC(wrap_string_int_map_init), 0);
-        rb_define_method(rb_cStringIntMap, "[]", RUBY_METHOD_FUNC(wrap_string_int_map_bracket), 1);
-        rb_define_method(rb_cStringIntMap, "[]=", RUBY_METHOD_FUNC(wrap_string_int_map_bracket_equal), 2);
-        rb_define_method(rb_cStringIntMap, "insert", RUBY_METHOD_FUNC(wrap_string_int_map_insert_object), 2);
+        // require Tatara::StringStringMap impl
+        Init_string_string_map(mTatara);
 
-        VALUE rb_cStringFloatMap = rb_define_class_under(mTatara, "StringFloatMap", rb_cObject);
+        // require Tatara::IntIntMap impl
+        Init_int_int_map(mTatara);
 
-        rb_define_alloc_func(rb_cStringFloatMap, wrap_string_float_map_alloc);
-        rb_define_private_method(rb_cStringFloatMap, "initialize", RUBY_METHOD_FUNC(wrap_string_float_map_init), 0);
-        rb_define_method(rb_cStringFloatMap, "[]", RUBY_METHOD_FUNC(wrap_string_float_map_bracket), 1);
-        rb_define_method(rb_cStringFloatMap, "[]=", RUBY_METHOD_FUNC(wrap_string_float_map_bracket_equal), 2);
-        rb_define_method(rb_cStringFloatMap, "insert", RUBY_METHOD_FUNC(wrap_string_float_map_insert_object), 2);
+        // require Tatara::IntFloatMap impl
+        Init_int_float_map(mTatara);
 
-        VALUE rb_cStringStringMap = rb_define_class_under(mTatara, "StringStringMap", rb_cObject);
+        // require Tatara::IntString impl
+        Init_int_string_map(mTatara);
 
-        rb_define_alloc_func(rb_cStringStringMap, wrap_string_string_map_alloc);
-        rb_define_private_method(rb_cStringStringMap, "initialize", RUBY_METHOD_FUNC(wrap_string_string_map_init), 0);
-        rb_define_method(rb_cStringStringMap, "[]", RUBY_METHOD_FUNC(wrap_string_string_map_bracket), 1);
-        rb_define_method(rb_cStringStringMap, "[]=", RUBY_METHOD_FUNC(wrap_string_string_map_bracket_equal), 2);
-        rb_define_method(rb_cStringStringMap, "insert", RUBY_METHOD_FUNC(wrap_string_string_map_insert_object), 2);
+        // require Tatara::FloatIntMap impl
+        Init_float_int_map(mTatara);
 
-        VALUE rb_cIntIntMap = rb_define_class_under(mTatara, "IntIntMap", rb_cObject);
+        // require Tatara::FloatFloatMap impl
+        Init_float_float_map(mTatara);
 
-        rb_define_alloc_func(rb_cIntIntMap, wrap_int_int_map_alloc);
-        rb_define_private_method(rb_cIntIntMap, "initialize", RUBY_METHOD_FUNC(wrap_int_int_map_init), 0);
-        rb_define_method(rb_cIntIntMap, "[]", RUBY_METHOD_FUNC(wrap_int_int_map_bracket), 1);
-        rb_define_method(rb_cIntIntMap, "[]=", RUBY_METHOD_FUNC(wrap_int_int_map_bracket_equal), 2);
-        rb_define_method(rb_cIntIntMap, "insert", RUBY_METHOD_FUNC(wrap_int_int_map_insert_object), 2);
-
-        VALUE rb_cIntFloatMap = rb_define_class_under(mTatara, "IntFloatMap", rb_cObject);
-
-        rb_define_alloc_func(rb_cIntFloatMap, wrap_int_float_map_alloc);
-        rb_define_private_method(rb_cIntFloatMap, "initialize", RUBY_METHOD_FUNC(wrap_int_float_map_init), 0);
-        rb_define_method(rb_cIntFloatMap, "[]", RUBY_METHOD_FUNC(wrap_int_float_map_bracket), 1);
-        rb_define_method(rb_cIntFloatMap, "[]=", RUBY_METHOD_FUNC(wrap_int_float_map_bracket_equal), 2);
-        rb_define_method(rb_cIntFloatMap, "insert", RUBY_METHOD_FUNC(wrap_int_float_map_insert_object), 2);
-
-        VALUE rb_cIntStringMap = rb_define_class_under(mTatara, "IntStringMap", rb_cObject);
-
-        rb_define_alloc_func(rb_cIntStringMap, wrap_int_string_map_alloc);
-        rb_define_private_method(rb_cIntStringMap, "initialize", RUBY_METHOD_FUNC(wrap_int_string_map_init), 0);
-        rb_define_method(rb_cIntStringMap, "[]", RUBY_METHOD_FUNC(wrap_int_string_map_bracket), 1);
-        rb_define_method(rb_cIntStringMap, "[]=", RUBY_METHOD_FUNC(wrap_int_string_map_bracket_equal), 2);
-        rb_define_method(rb_cIntStringMap, "insert", RUBY_METHOD_FUNC(wrap_int_string_map_insert_object), 2);
-
-        VALUE rb_cFloatIntMap = rb_define_class_under(mTatara, "FloatIntMap", rb_cObject);
-
-        rb_define_alloc_func(rb_cFloatIntMap, wrap_float_int_map_alloc);
-        rb_define_private_method(rb_cFloatIntMap, "initialize", RUBY_METHOD_FUNC(wrap_float_int_map_init), 0);
-        rb_define_method(rb_cFloatIntMap, "[]", RUBY_METHOD_FUNC(wrap_float_int_map_bracket), 1);
-        rb_define_method(rb_cFloatIntMap, "[]=", RUBY_METHOD_FUNC(wrap_float_int_map_bracket_equal), 2);
-        rb_define_method(rb_cFloatIntMap, "insert", RUBY_METHOD_FUNC(wrap_float_int_map_insert_object), 2);
-
-        VALUE rb_cFloatFloatMap = rb_define_class_under(mTatara, "FloatFloatMap", rb_cObject);
-
-        rb_define_alloc_func(rb_cFloatFloatMap, wrap_float_float_map_alloc);
-        rb_define_private_method(rb_cFloatFloatMap, "initialize", RUBY_METHOD_FUNC(wrap_float_float_map_init), 0);
-        rb_define_method(rb_cFloatFloatMap, "[]", RUBY_METHOD_FUNC(wrap_float_float_map_bracket), 1);
-        rb_define_method(rb_cFloatFloatMap, "[]=", RUBY_METHOD_FUNC(wrap_float_float_map_bracket_equal), 2);
-        rb_define_method(rb_cFloatFloatMap, "insert", RUBY_METHOD_FUNC(wrap_float_float_map_insert_object), 2);
-
-        VALUE rb_cFloatStringMap = rb_define_class_under(mTatara, "FloatStringMap", rb_cObject);
-
-        rb_define_alloc_func(rb_cFloatStringMap, wrap_float_string_map_alloc);
-        rb_define_private_method(rb_cFloatStringMap, "initialize", RUBY_METHOD_FUNC(wrap_float_string_map_init), 0);
-        rb_define_method(rb_cFloatStringMap, "[]", RUBY_METHOD_FUNC(wrap_float_string_map_bracket), 1);
-        rb_define_method(rb_cFloatStringMap, "[]=", RUBY_METHOD_FUNC(wrap_float_string_map_bracket_equal), 2);
-        rb_define_method(rb_cFloatStringMap, "insert", RUBY_METHOD_FUNC(wrap_float_string_map_insert_object), 2);
+        // require Tatara::FloatStringMap impl
+        Init_float_string_map(mTatara);
     }
 }

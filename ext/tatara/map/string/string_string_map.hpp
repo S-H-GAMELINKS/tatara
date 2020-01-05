@@ -2,93 +2,52 @@
 #define STRING_STRING_MAP_HPP_
 
 #include <ruby.h>
-#include <unordered_map>
-#include <string>
 
-class StringStringMap {
-    std::unordered_map<std::string, std::string> container;
-
-    public:
-        StringStringMap();
-        ~StringStringMap();
-        std::string bracket(const std::string key);
-        std::string bracket_equal(const std::string key, const std::string value);
-        StringStringMap& insert_object(const std::string key, const std::string value);
-};
-
-StringStringMap::StringStringMap() {}
-
-StringStringMap::~StringStringMap() {}
-
-std::string StringStringMap::bracket(const std::string key) {
-    return this->container[key];
+bool string_string_check_key(VALUE key) {
+    if (TYPE(key) == T_STRING)
+        return true;
+    else
+        return false;
 }
 
-std::string StringStringMap::bracket_equal(const std::string key, const std::string value) {
-    return this->container[key] = value;
+bool string_string_check_value(VALUE value) {
+    if (TYPE(value) == T_STRING)
+        return true;
+    else
+        return false;
 }
 
-StringStringMap& StringStringMap::insert_object(const std::string key, const std::string value) {
-    this->container[key] = value;
-    return *this;
+static VALUE string_string_map_bracket(VALUE self, VALUE key) {
+    if (string_string_check_key(key)) {
+        return rb_hash_aref(self, key);
+    } else {
+        rb_raise(rb_eTypeError, "Worng Type Key! %s", rb_obj_classname(key));
+        return self;
+    }
 }
 
-struct WrapStringStringMap {
-    StringStringMap *instance;
-};
+static VALUE string_string_map_bracket_equal(VALUE self, VALUE key, VALUE value) {
 
-static void wrap_string_string_map_free(void* ptr) {
-    WrapStringStringMap *p = static_cast<WrapStringStringMap*>(ptr);
-    delete p->instance;
-    ruby_xfree(p);
-}
+    if (!string_string_check_key(key))
+        rb_raise(rb_eTypeError, "Worng Type Key! %s", rb_obj_classname(key));
 
-static const rb_data_type_t rb_string_string_map_type = {
-    "StringStringMap",
-    {
-        NULL,
-        wrap_string_string_map_free,
-        NULL,
-    },
-    NULL,
-    NULL
-};
+    if (!string_string_check_value(value))
+        rb_raise(rb_eTypeError, "Worng Type Value! %s", rb_obj_classname(value));
 
-static StringStringMap *getStringStringMap(VALUE self) {
-    WrapStringStringMap *ptr;
-    TypedData_Get_Struct(self, WrapStringStringMap, &rb_string_string_map_type, ptr);
-    return ptr->instance;
-}
+    rb_hash_aset(self, key, value);
 
-static VALUE wrap_string_string_map_alloc(VALUE klass) {
-    auto ptr = RB_ALLOC(WrapStringStringMap);
-    ptr->instance = new StringStringMap;
-    return TypedData_Wrap_Struct(klass, &rb_string_string_map_type, ptr);
-}
-
-static VALUE wrap_string_string_map_init(VALUE self) {
-    return Qnil;
-}
-
-static VALUE wrap_string_string_map_bracket(VALUE self, VALUE key) {
-    const std::string k = {StringValueCStr(key)};
-    const std::string value = getStringStringMap(self)->bracket(k);
-    VALUE result = rb_str_new(value.c_str(), value.size());
-    return result;
-}
-
-static VALUE wrap_string_string_map_bracket_equal(VALUE self, VALUE key, VALUE value) {
-    const std::string k = {StringValueCStr(key)};
-    const std::string v = {StringValueCStr(value)};
-    getStringStringMap(self)->bracket_equal(k, v);
     return value;
 }
 
-static VALUE wrap_string_string_map_insert_object(VALUE self, VALUE key, VALUE value) {
-    const std::string k = {StringValueCStr(key)};
-    const std::string v = {StringValueCStr(value)};
-    getStringStringMap(self)->insert_object(k, v);
-    return value;
+extern "C" {
+    void Init_string_string_map(VALUE mTatara) {
+
+        VALUE rb_cStringStringMap = rb_define_class_under(mTatara, "StringStringMap", rb_cHash);
+
+        rb_define_method(rb_cStringStringMap, "[]", string_string_map_bracket, 1);
+        rb_define_method(rb_cStringStringMap, "[]=", string_string_map_bracket_equal, 2);
+        rb_define_alias(rb_cStringStringMap, "insert", "[]=");
+    }
 }
 
 #endif

@@ -2,93 +2,52 @@
 #define FLOAT_FLOAT_MAP_HPP_
 
 #include <ruby.h>
-#include <unordered_map>
 
-class FloatFloatMap {
-    std::unordered_map<double, double> container;
-
-    public:
-        FloatFloatMap();
-        ~FloatFloatMap();
-        double bracket(const double key);
-        double bracket_equal(const double key, const double value);
-        FloatFloatMap& insert_object(const double key, const double value);
-};
-
-FloatFloatMap::FloatFloatMap() {}
-
-FloatFloatMap::~FloatFloatMap() {}
-
-double FloatFloatMap::bracket(const double key) {
-    return this->container[key];
+bool float_float_check_key(VALUE key) {
+    if (TYPE(key) == T_FLOAT)
+        return true;
+    else
+        return false;
 }
 
-double FloatFloatMap::bracket_equal(const double key, const double value) {
-    return this->container[key] = value;
+bool float_float_check_value(VALUE value) {
+    if (TYPE(value) == T_FLOAT)
+        return true;
+    else
+        return false;
 }
 
-FloatFloatMap& FloatFloatMap::insert_object(const double key, const double value) {
-    this->container[key] = value;
-    return *this;
+static VALUE float_float_map_bracket(VALUE self, VALUE key) {
+    if (float_float_check_key(key)) {
+        return rb_hash_aref(self, key);
+    } else {
+        rb_raise(rb_eTypeError, "Worng Type Key! %s", rb_obj_classname(key));
+        return self;
+    }
 }
 
-struct WrapFloatFloatMap {
-    FloatFloatMap *instance;
-};
+static VALUE float_float_map_bracket_equal(VALUE self, VALUE key, VALUE value) {
 
-static void wrap_float_float_map_free(void* ptr) {
-    WrapFloatFloatMap *p = static_cast<WrapFloatFloatMap*>(ptr);
-    delete p->instance;
-    ruby_xfree(p);
-}
+    if (!float_float_check_key(key))
+        rb_raise(rb_eTypeError, "Worng Type Key! %s", rb_obj_classname(key));
 
+    if (!float_float_check_value(value))
+        rb_raise(rb_eTypeError, "Worng Type Value! %s", rb_obj_classname(value));
 
-static const rb_data_type_t rb_float_float_map_type = {
-    "FloatFloatMap",
-    {
-        NULL,
-        wrap_float_float_map_free,
-        NULL,
-    },
-    NULL,
-    NULL
-};
+    rb_hash_aset(self, key, value);
 
-static FloatFloatMap *getFloatFloatMap(VALUE self) {
-    WrapFloatFloatMap *ptr;
-    TypedData_Get_Struct(self, WrapFloatFloatMap, &rb_float_float_map_type, ptr);
-    return ptr->instance;
-}
-
-static VALUE wrap_float_float_map_alloc(VALUE klass) {
-    auto ptr = RB_ALLOC(WrapFloatFloatMap);
-    ptr->instance = new FloatFloatMap;
-    return TypedData_Wrap_Struct(klass, &rb_float_float_map_type, ptr);
-}
-
-static VALUE wrap_float_float_map_init(VALUE self) {
-    return Qnil;
-}
-
-static VALUE wrap_float_float_map_bracket(VALUE self, VALUE key) {
-    const double k = NUM2DBL(key);
-    const double value = getFloatFloatMap(self)->bracket(k);
-    VALUE result = DBL2NUM(value);
-    return result;
-}
-
-static VALUE wrap_float_float_map_bracket_equal(VALUE self, VALUE key, VALUE value) {
-    const double k = NUM2DBL(key);
-    const double v = NUM2DBL(value);
-    getFloatFloatMap(self)->bracket_equal(k, v);
     return value;
 }
 
-static VALUE wrap_float_float_map_insert_object(VALUE self, VALUE key, VALUE value) {
-    const double k = NUM2DBL(key);
-    const double v = NUM2DBL(value);
-    getFloatFloatMap(self)->insert_object(k, v);
-    return value;
+extern "C" {
+    void Init_float_float_map(VALUE mTatara) {
+
+        VALUE rb_cFloatFloatMap = rb_define_class_under(mTatara, "FloatFloatMap", rb_cHash);
+
+        rb_define_method(rb_cFloatFloatMap, "[]", float_float_map_bracket, 1);
+        rb_define_method(rb_cFloatFloatMap, "[]=", float_float_map_bracket_equal, 2);
+        rb_define_alias(rb_cFloatFloatMap, "insert", "[]=");
+    }
 }
 
 #endif
