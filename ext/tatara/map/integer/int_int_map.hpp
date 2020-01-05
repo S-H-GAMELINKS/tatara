@@ -32,7 +32,7 @@ static VALUE int_int_map_bracket_equal(VALUE self, VALUE key, VALUE value) {
         rb_raise(rb_eTypeError, "Worng Type Key! %s", rb_obj_classname(key));
 
     if (!int_int_check_value(value))
-        rb_raise(rb_eTypeError, "Worng Type Value! %s", rb_obj_classname(key));
+        rb_raise(rb_eTypeError, "Worng Type Value! %s", rb_obj_classname(value));
 
     rb_hash_aset(self, key, value);
 
