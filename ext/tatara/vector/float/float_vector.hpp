@@ -22,6 +22,7 @@ class FloatVector {
         FloatVector& push_back_object(const double var);
         float sum();
         FloatVector& intersection(const FloatVector* other);
+        void sort();
 };
 
 FloatVector::FloatVector() {}
@@ -70,6 +71,10 @@ FloatVector& FloatVector::intersection(const FloatVector* other) {
                           other->container.begin(), other->container.end(),
                           std::inserter(this->container, this->container.end()));
     return *this;
+}
+
+void FloatVector::sort() {
+    std::sort(this->container.begin(), this->container.end());
 }
 
 struct WrapFloatVector {
@@ -246,6 +251,14 @@ static VALUE wrap_float_vector_intersection(VALUE self, VALUE other) {
     VALUE dup = rb_obj_dup(self);
     getFloatVector(dup)->intersection(getFloatVector(other));
     return dup;   
+}
+
+static VALUE wrap_float_vector_sort(VALUE self) {
+    VALUE dup = rb_obj_dup(self);
+    VALUE result = wrap_float_vector_convert_array(self);
+    dup = wrap_float_vector_import_array(dup, result);
+    getFloatVector(dup)->sort();
+    return dup;
 }
 
 #endif
