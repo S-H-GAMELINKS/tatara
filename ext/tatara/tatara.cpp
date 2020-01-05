@@ -241,14 +241,9 @@ extern "C" {
         rb_define_method(rb_cStringArray, "sum", RUBY_METHOD_FUNC(wrap_string_array_sum), 0);
         rb_define_method(rb_cStringArray, "intersection", RUBY_METHOD_FUNC(wrap_string_array_intersection), 1);
         rb_define_method(rb_cStringArray, "sort", RUBY_METHOD_FUNC(wrap_string_array_sort), 0);
-
-        VALUE rb_cStringIntMap = rb_define_class_under(mTatara, "StringIntMap", rb_cObject);
-
-        rb_define_alloc_func(rb_cStringIntMap, wrap_string_int_map_alloc);
-        rb_define_private_method(rb_cStringIntMap, "initialize", RUBY_METHOD_FUNC(wrap_string_int_map_init), 0);
-        rb_define_method(rb_cStringIntMap, "[]", RUBY_METHOD_FUNC(wrap_string_int_map_bracket), 1);
-        rb_define_method(rb_cStringIntMap, "[]=", RUBY_METHOD_FUNC(wrap_string_int_map_bracket_equal), 2);
-        rb_define_method(rb_cStringIntMap, "insert", RUBY_METHOD_FUNC(wrap_string_int_map_insert_object), 2);
+        
+        // require Tatara::StringIntMap impl
+        Init_string_int_map(mTatara);
 
         // require Tatara::StringFloatMap impl
         Init_string_float_map(mTatara);
