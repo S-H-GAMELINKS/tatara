@@ -23,6 +23,7 @@ class StringVector {
         StringVector& push_back_object(const std::string var);
         std::string sum();
         StringVector& intersection(const StringVector* other);
+        void sort();
 };
 
 StringVector::StringVector() {}
@@ -71,6 +72,10 @@ StringVector& StringVector::intersection(const StringVector* other) {
                           other->container.begin(), other->container.end(),
                           std::inserter(this->container, this->container.end()));
     return *this;
+}
+
+void StringVector::sort() {
+    std::sort(this->container.begin(), this->container.end());
 }
 
 struct WrapStringVector {
@@ -251,6 +256,14 @@ static VALUE wrap_string_vector_intersection(VALUE self, VALUE other) {
     VALUE dup = rb_obj_dup(self);
     getStringVector(dup)->intersection(getStringVector(other));
     return dup;   
+}
+
+static VALUE wrap_string_vector_sort(VALUE self) {
+    VALUE dup = rb_obj_dup(self);
+    VALUE result = wrap_string_vector_convert_array(self);
+    dup = wrap_string_vector_import_array(dup, result);
+    getStringVector(dup)->sort();
+    return dup;
 }
 
 #endif
