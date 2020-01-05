@@ -123,7 +123,12 @@ static VALUE wrap_float_vector_last(VALUE self) {
 
 static VALUE wrap_float_vector_bracket(VALUE self, VALUE index) {
     const int i = NUM2INT(index);
-    const double value = getFloatVector(self)->bracket(i);
+    double value = 0.0;
+    if (getFloatVector(self)->size() <= i) {
+        rb_raise(rb_eRuntimeError, "Error! Can not get Value!");
+    } else {
+        value = getFloatVector(self)->bracket(i);
+    }
     VALUE result = DBL2NUM(value);
     return result;
 }
@@ -131,7 +136,11 @@ static VALUE wrap_float_vector_bracket(VALUE self, VALUE index) {
 static VALUE wrap_float_vector_bracket_equal(VALUE self, VALUE index, VALUE value) {
     const int i = NUM2INT(index);
     const double v = NUM2DBL(value);
-    getFloatVector(self)->bracket_equal(i, v);
+    if (getFloatVector(self)->size() <= i) {
+        rb_raise(rb_eRuntimeError, "Error! Can not set Value!");
+    } else {
+        getFloatVector(self)->bracket_equal(i, v);
+    }
     return value;
 }
 

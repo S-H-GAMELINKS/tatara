@@ -124,7 +124,12 @@ static VALUE wrap_string_vector_last(VALUE self) {
 
 static VALUE wrap_string_vector_bracket(VALUE self, VALUE index) {
     const int i = NUM2INT(index);
-    const std::string value = getStringVector(self)->bracket(i);
+    std::string value = "";
+    if (getStringVector(self)->size() <= i) {
+        rb_raise(rb_eRuntimeError, "Error! Can not get Value!");
+    } else {
+        value = getStringVector(self)->bracket(i);
+    }
     VALUE result = rb_str_new(value.data(), value.size());
     return result;
 }
@@ -132,7 +137,11 @@ static VALUE wrap_string_vector_bracket(VALUE self, VALUE index) {
 static VALUE wrap_string_vector_bracket_equal(VALUE self, VALUE index, VALUE value) {
     const int i = NUM2INT(index);
     const std::string v = {StringValueCStr(value)};
-    getStringVector(self)->bracket_equal(i, v);
+    if (getStringVector(self)->size() <= i) {
+        rb_raise(rb_eRuntimeError, "Error! Can not set Value!");
+    } else {
+        getStringVector(self)->bracket_equal(i, v);
+    }
     return value;
 }
 
