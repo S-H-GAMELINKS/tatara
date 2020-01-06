@@ -2,193 +2,102 @@
 #define STRING_H_
 
 #include <ruby.h>
-#include <iostream>
-#include <string>
 
-class CppString {
-        std::string value = "";
-    public:
-        CppString();
-        ~CppString();
-        CppString& initialize_object(const std::string var);
-        std::string assignment(const std::string var);
-        std::string return_value();
-        std::string index_access(const int index);
-        int to_integer();
-        double to_float();
-        std::string plus_equal(const std::string var);
-        std::string clear();
-        bool equal(const std::string var);
-        std::string slice(const int start, const int end);
-        std::string slice_des(const int start, const int end);
-};
-
-CppString::CppString() {}
-
-CppString::~CppString() {}
-
-CppString& CppString::initialize_object(const std::string var) {
-    this->value = var;
-    return *this;
-}
-
-std::string CppString::assignment(const std::string var) {
-    return this->value = var;
-}
-
-std::string CppString::return_value() {
-    return this->value;
-}
-
-std::string CppString::index_access(const int index) {
-    std::string s{this->value[index]};
-    return s;
-}
-
-int CppString::to_integer() {
-    return std::stoi(this->value);
-}
-
-double CppString::to_float() {
-    return std::stof(this->value);
-}
-
-std::string CppString::plus_equal(const std::string var) {
-    return this->value += var;
-}
-
-std::string CppString::clear() {
-    return this->value = "";
-}
-
-bool CppString::equal(const std::string var) {
-    return this->value == var;
-}
-
-std::string CppString::slice(const int start, const int end) {
-    return this->value.substr(start, end);
-}
-
-std::string CppString::slice_des(const int start, const int end) {
-    this->value = this->value.substr(start, end);
-    return this->value;
-}
-
-struct WrapCppString {
-    CppString* instance;
-};
-
-static void wrap_string_free(void* ptr) {
-    WrapCppString *p = static_cast<WrapCppString*>(ptr);
-    delete p->instance;
-    ruby_xfree(p);
-}
-
-static const rb_data_type_t rb_string_type = {
-    "String",
-    {
-        NULL,
-        wrap_string_free,
-        NULL,
-    },
-    NULL,
-    NULL
-};
-
-static CppString* getCppString(VALUE self) {
-    WrapCppString* ptr;
-    TypedData_Get_Struct(self, WrapCppString, &rb_string_type, ptr);
-    return ptr->instance;
-}
-
-static VALUE wrap_string_alloc(VALUE klass) {
-    auto ptr = RB_ALLOC(WrapCppString);
-    ptr->instance = new CppString;
-    return TypedData_Wrap_Struct(klass, &rb_string_type, ptr);
-}
-
-static VALUE wrap_string_init(VALUE self) {
-    return Qnil;
-}
-
-static VALUE wrap_string_return_value(VALUE self) {
-    const std::string value = getCppString(self)->return_value();
-    VALUE result = rb_str_new(value.c_str(), value.size());
-    return result;
-}
-
-static VALUE wrap_string_assignment(VALUE self, VALUE value) {
-    const std::string v = {StringValueCStr(value)};
-    getCppString(self)->assignment(v);
-    return value;
-}
-
-static VALUE wrap_string_plus_equal(VALUE self, VALUE value) {
-    const std::string v = {StringValueCStr(value)};
-    const std::string r = getCppString(self)->plus_equal(v);
-    VALUE result = rb_str_new(v.c_str(), v.size());
-    return result;
-}
-
-static VALUE wrap_string_to_integer(VALUE self) {
-    try {
-        const int value = getCppString(self)->to_integer();
-        VALUE result = INT2NUM(value);
-        return result;
-    } catch (...) {
-        std::cout << "Cannot Convert Integer!" << std::endl;
-    }
-}
-
-static VALUE wrap_string_to_float(VALUE self) {
-    try {
-        const double value = getCppString(self)->to_float();
-        VALUE result = DBL2NUM(value);
-        return result;
-    } catch (...) {
-        std::cout << "Cannot Convert Float!" << std::endl;
-    }
-}
-
-static VALUE wrap_string_clear(VALUE self) {
-    const std::string value = getCppString(self)->clear();
-    VALUE result = rb_str_new(value.c_str(), value.size());
-    return result;
-}
-
-static VALUE wrap_string_equal(VALUE self, VALUE value) {
-    const std::string v = {StringValueCStr(value)};
-    bool eval = getCppString(self)->equal(v);
-    return eval ? Qtrue : Qfalse;
-}
-
-static VALUE wrap_string_initialize_object(VALUE self, VALUE value) {
-    const std::string v = {StringValueCStr(value)};
-    getCppString(self)->initialize_object(v);
+static VALUE string_init(VALUE self) {
+    rb_iv_set(self, "value", rb_str_new(0, 0));
     return self;
 }
 
-static VALUE wrap_string_index_access(VALUE self, VALUE index) {
-    const int i = NUM2INT(index);
-    const std::string value = getCppString(self)->index_access(i);
-    VALUE result = rb_str_new(value.c_str(), value.size());
-    return result;
+static VALUE string_return_value(VALUE self) {
+    return rb_iv_get(self, "value");
 }
 
-static VALUE wrap_string_slice(VALUE self, VALUE start, VALUE end) {
+static VALUE string_assignment(VALUE self, VALUE value) {
+    if (TYPE(value) == T_STRING) {
+        rb_iv_set(self, "value", value);
+        return self;
+    } else {
+        rb_raise(rb_eTypeError, "Worng Type! This Args type is %s !", rb_class_name(value));
+        return self;
+    }
+}
+
+static VALUE string_plus_equal(VALUE self, VALUE value) {
+    if (TYPE(value) == T_STRING) {
+        VALUE val = rb_iv_get(self, "value"); 
+        rb_iv_set(self, "value", rb_str_plus(val, value));
+        return self;
+    } else {
+        rb_raise(rb_eTypeError, "Worng Type! This Args type is %s !", rb_class_name(value));
+        return self;
+    }
+}
+
+static VALUE string_to_integer(VALUE self) {
+    VALUE str = rb_iv_get(self, "value");
+    return rb_str_to_inum(str, 10, 0);
+}
+
+static VALUE string_to_float(VALUE self) {
+    VALUE str = rb_iv_get(self, "value");
+    return DBL2NUM(rb_str_to_dbl(str, 0));
+}
+
+static VALUE string_clear(VALUE self) {
+    rb_iv_set(self, "value", rb_str_new(0, 0));
+    return self;
+}
+
+static VALUE string_equal(VALUE self, VALUE value) {
+    VALUE val = rb_iv_get(self, "value");
+    return rb_str_equal(val, value);
+}
+
+static VALUE string_index_access(VALUE self, VALUE index) {
+    const int i = NUM2INT(index);
+    VALUE val = rb_iv_get(self, "value");
+    return rb_str_substr(val, i, 1);
+}
+
+static VALUE string_slice(VALUE self, VALUE start, VALUE end) {
     const int s = NUM2INT(start);
     const int e = NUM2INT(end);
-    const std::string value = getCppString(self)->slice(s, e);
-    VALUE result = rb_str_new(value.c_str(), value.size());
+    VALUE val = rb_iv_get(self, "value");
+    return rb_str_substr(val, s, (e - s));
+}
+
+static VALUE string_destructive_slice(VALUE self, VALUE start, VALUE end) {
+    const int s = NUM2INT(start);
+    const int e = NUM2INT(end);
+    VALUE val = rb_iv_get(self, "value");
+    VALUE result = rb_str_substr(val, s, (e - s));
+    rb_iv_set(self, "value", result);
     return result;
 } 
 
-static VALUE wrap_string_destructive_slice(VALUE self, VALUE start, VALUE end) {
-    const int s = NUM2INT(start);
-    const int e = NUM2INT(end);
-    const std::string value = getCppString(self)->slice_des(s, e);
-    VALUE result = rb_str_new(value.c_str(), value.size());
-    return result;
-} 
+extern "C" {
+    void Init_string(VALUE mTatara) {
+
+        VALUE rb_cString = rb_define_class_under(mTatara, "String", rb_cObject);
+
+        rb_define_private_method(rb_cString, "initialize", string_init, 0);
+        rb_define_method(rb_cString, "value", string_return_value, 0);
+        rb_define_alias(rb_cString, "val", "value");
+        rb_define_method(rb_cString, "value=", string_assignment, 1);
+        rb_define_alias(rb_cString, "val=", "value=");
+        rb_define_method(rb_cString, "value+=", string_plus_equal, 1);
+        rb_define_alias(rb_cString, "val+=", "value+=");
+        rb_define_method(rb_cString, "to_i", string_to_integer, 0);
+        rb_define_method(rb_cString, "to_f", string_to_float, 0);
+        rb_define_method(rb_cString, "clear", string_clear, 0);
+        rb_define_method(rb_cString, "value==", string_equal, 1);
+        rb_define_alias(rb_cString, "val==", "value==");
+        rb_define_alias(rb_cString, "equal?", "value==");
+        rb_define_alias(rb_cString, "<<", "value=");
+        rb_define_method(rb_cString, "[]", string_index_access, 1);
+        rb_define_method(rb_cString, "slice", string_slice, 2);
+        rb_define_method(rb_cString, "slice!", string_destructive_slice, 2);
+    }
+}
 
 #endif
