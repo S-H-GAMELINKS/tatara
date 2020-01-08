@@ -117,7 +117,7 @@ static VALUE int_vector_import_array(VALUE self, VALUE ary) {
 
     for(int i = 0; i < size; i++) {
         VALUE val = rb_ary_entry(ary, i);
-        rb_ary_push(self, val);
+        int_vector_emplace_back(self, val);
     }
 
     return self;
