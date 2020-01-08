@@ -62,7 +62,7 @@ static VALUE int_vector_map(VALUE self) {
 
     for(int i = 0; i < size; i++) {
         VALUE val = int_vector_bracket(self, INT2NUM(i));
-        int_vector_bracket_equal(collection, val, INT2NUM(i));
+        int_vector_bracket_equal(collection, INT2NUM(i), rb_yield(val));
     }
 
     return collection;
@@ -74,7 +74,7 @@ static VALUE int_vector_destructive_map(VALUE self) {
 
     for(int i = 0; i < size; i++) {
         VALUE val = int_vector_bracket(self, INT2NUM(i));
-        int_vector_bracket_equal(self, val, INT2NUM(i));
+        int_vector_bracket_equal(self, INT2NUM(i), rb_yield(val));
     }
 
     return self;
