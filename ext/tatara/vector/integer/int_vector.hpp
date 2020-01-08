@@ -2,212 +2,92 @@
 #define INT_VECTOR_HPP_
 
 #include <ruby.h>
-#include <vector>
-#include <numeric>
 #include <algorithm>
+#include <numeric>
 #include <iterator>
 
-class IntVector {
-    std::vector<int> container;
-
-    public:
-        IntVector();
-        ~IntVector();
-        int first();
-        int last();
-        int bracket(const int index);
-        int bracket_equal(const int index, const int var);
-        void emplace_back(const int var);
-        int size();
-        void clear();
-        IntVector& push_back_object(const int var);
-        int sum();
-        IntVector& intersection(const IntVector* other);
-        void sort();
-};
-
-IntVector::IntVector() {}
-
-IntVector::~IntVector() {}
-
-int IntVector::first() {
-    return this->container.front();
-}
-
-int IntVector::last() {
-    return this->container.back();
-}
-
-int IntVector::bracket(const int index) {
-    return this->container[index];
-}
-
-int IntVector::bracket_equal(const int index, const int var) {
-    return this->container[index] = var;
-}
-
-void IntVector::emplace_back(const int var) {
-    this->container.emplace_back(var);
-}
-
-int IntVector::size() {
-    return this->container.size();
-}
-
-void IntVector::clear() {
-    this->container.clear();
-}
-
-IntVector &IntVector::push_back_object(const int var) {
-    this->container.emplace_back(std::move(var));
-    return *this;
-}
-
-int IntVector::sum() {
-    return std::accumulate(this->container.begin(), this->container.end(), 0);
-}
-
-IntVector& IntVector::intersection(const IntVector* other) {
-    std::set_intersection(this->container.begin(), this->container.end(),
-                          other->container.begin(), other->container.end(),
-                          std::inserter(this->container, this->container.end()));
-    return *this;
-}
-
-void IntVector::sort() {
-    std::sort(this->container.begin(), this->container.end());
-}
-
-struct WrapIntVector {
-    IntVector *instance;
-};
-
-static void wrap_int_vector_free(void* ptr) {
-    WrapIntVector *p = static_cast<WrapIntVector*>(ptr);
-    delete p->instance;
-    ruby_xfree(p);
-}
-
-static const rb_data_type_t rb_int_vector_type = {
-    "IntVector",
-    {
-        NULL,
-        wrap_int_vector_free,
-        NULL,
-    },
-    NULL,
-    NULL
-};
-
-static IntVector *getIntVector(VALUE self) {
-    WrapIntVector *ptr;
-    TypedData_Get_Struct(self, WrapIntVector, &rb_int_vector_type, ptr);
-    return ptr->instance;
-}
-
-static VALUE wrap_int_vector_alloc(VALUE klass) {
-    auto ptr = RB_ALLOC(WrapIntVector);
-    ptr->instance = new IntVector;
-    return TypedData_Wrap_Struct(klass, &rb_int_vector_type, ptr);
-}
-
-static VALUE wrap_int_vector_init(VALUE self) {
-    return Qnil;
-}
-
-static VALUE wrap_int_vector_first(VALUE self) {
-    const int value = getIntVector(self)->first();
-    VALUE result = INT2NUM(value);
-    return result;
-}
-
-static VALUE wrap_int_vector_last(VALUE self) {
-    const int value = getIntVector(self)->last();
-    VALUE result = INT2NUM(value);
-    return result;
-}
-
-static VALUE wrap_int_vector_bracket(VALUE self, VALUE index) {
-    const int i = NUM2INT(index);
-    int value = 0;
-    if (getIntVector(self)->size() <= i) {
-        rb_raise(rb_eRuntimeError, "Error! Can not get Value!");
-    } else {
-        value = getIntVector(self)->bracket(i);
-    }
-    VALUE result = INT2NUM(value);
-    return result;
-}
-
-static VALUE wrap_int_vector_bracket_equal(VALUE self, VALUE index, VALUE value) {
-    const int i = NUM2INT(index);
-    const int v = NUM2INT(value);
-    if (getIntVector(self)->size() <= i) {
-        rb_raise(rb_eRuntimeError, "Error! Can not set Value!");
-    } else {
-        getIntVector(self)->bracket_equal(i, v);
-    }
-    return value;
-}
-
-static VALUE wrap_int_vector_emplace_back(VALUE self, VALUE value) {
-    const int v = NUM2INT(value);
-    getIntVector(self)->emplace_back(v);
-    return Qnil;
-}
-
-static VALUE wrap_int_vector_size(VALUE self) {
-    const int size = getIntVector(self)->size();
-    VALUE result = INT2NUM(size);
-    return result;
-}
-
-static VALUE wrap_int_vector_clear(VALUE self) {
-    getIntVector(self)->clear();
-    return Qnil;
-}
-
-static VALUE wrap_int_vector_push_back_object(VALUE self, VALUE value) {
-    const int v = NUM2INT(value);
-    getIntVector(self)->push_back_object(v);
+static VALUE int_vector_init(VALUE self) {
     return self;
 }
 
-static VALUE wrap_int_vector_map(VALUE self) {
+static VALUE int_vector_first(VALUE self) {
+    return rb_ary_entry(self, 0);
+}
 
-    std::size_t size = getIntVector(self)->size();
+static VALUE int_vector_last(VALUE self) {
+    const long length = RARRAY_LEN(self);
+    if (length == 0) return Qnil;
+    return rb_ary_entry(self, length - 1);
+}
 
-    VALUE collection = rb_ary_new2(size);
+static VALUE int_vector_bracket(VALUE self, VALUE index) {
+    return rb_ary_entry(self, NUM2LONG(index));
+}
+
+static VALUE int_vector_bracket_equal(VALUE self, VALUE index, VALUE value) {
+    if (FIXNUM_P(value)) {
+        long i = NUM2LONG(index);
+        rb_ary_store(self, i, value);
+        return value;
+    } else {
+        rb_raise(rb_eTypeError, "Worng Type! This Value type is %s !", rb_class_name(value));
+        return Qnil;
+    }
+}
+
+static VALUE int_vector_emplace_back(VALUE self, VALUE value) {
+    if (FIXNUM_P(value)) {
+        rb_ary_push(self, value);
+        return self;
+    } else {
+        rb_raise(rb_eTypeError, "Worng Type! This Value type is %s !", rb_class_name(value));
+        return Qnil;
+    }
+}
+
+static VALUE int_vector_size(VALUE self) {
+    return LONG2NUM(RARRAY_LEN(self));
+}
+
+static VALUE int_vector_clear(VALUE self) {
+    rb_ary_clear(self);
+    return self;
+}
+
+static VALUE int_vector_map(VALUE self) {
+
+    std::size_t size = RARRAY_LEN(self);
+
+    VALUE collection = rb_obj_dup(self);
 
     for(int i = 0; i < size; i++) {
-        VALUE val = INT2NUM(getIntVector(self)->bracket(i));
-        rb_ary_push(collection, rb_yield(val));
+        VALUE val = int_vector_bracket(self, INT2NUM(i));
+        int_vector_bracket_equal(collection, val, INT2NUM(i));
     }
 
     return collection;
 }
 
-static VALUE wrap_int_vector_destructive_map(VALUE self) {
+static VALUE int_vector_destructive_map(VALUE self) {
 
-    std::size_t size = getIntVector(self)->size();
+    std::size_t size = RARRAY_LEN(self);
 
     for(int i = 0; i < size; i++) {
-        const int v = getIntVector(self)->bracket(i);
-        VALUE val = INT2NUM(v);
-        wrap_int_vector_bracket_equal(self, INT2NUM(i), rb_yield(val));
+        VALUE val = int_vector_bracket(self, INT2NUM(i));
+        int_vector_bracket_equal(self, val, INT2NUM(i));
     }
 
     return self;
 }
 
-static VALUE wrap_int_vector_each_with_index(VALUE self) {
+static VALUE int_vector_each_with_index(VALUE self) {
 
-    std::size_t size = getIntVector(self)->size();
+    std::size_t size = RARRAY_LEN(self);
 
-    VALUE collection = rb_ary_new2(size);
+    VALUE collection = rb_obj_dup(self);
 
     for(int i = 0; i < size; i++) {
-        VALUE val = INT2NUM(getIntVector(self)->bracket(i));
+        VALUE val = int_vector_bracket(self, INT2NUM(i));
         VALUE key_value = rb_ary_new2(2);
         rb_ary_push(key_value, val);
         rb_ary_push(key_value, INT2NUM(i));
@@ -217,49 +97,72 @@ static VALUE wrap_int_vector_each_with_index(VALUE self) {
     return collection;
 }
 
-static VALUE wrap_int_vector_convert_array(VALUE self) {
+static VALUE int_vector_convert_array(VALUE self) {
 
-    std::size_t size = getIntVector(self)->size();
+    std::size_t size = RARRAY_LEN(self);
 
     VALUE collection = rb_ary_new2(size);
 
     for(int i = 0; i < size; i++) {
-        VALUE val = INT2NUM(getIntVector(self)->bracket(i));
+        VALUE val = int_vector_bracket(self, INT2NUM(i));
         rb_ary_push(collection, val);
     }
 
     return collection;
 }
 
-static VALUE wrap_int_vector_import_array(VALUE self, VALUE ary) {
+static VALUE int_vector_import_array(VALUE self, VALUE ary) {
 
     std::size_t size = RARRAY_LEN(ary);
 
     for(int i = 0; i < size; i++) {
         VALUE val = rb_ary_entry(ary, i);
-        getIntVector(self)->emplace_back(NUM2INT(val));
+        rb_ary_push(self, val);
     }
 
     return self;
 }
 
-static VALUE wrap_int_vector_sum(VALUE self) {
-    int result = getIntVector(self)->sum();
-    return INT2NUM(result);
+static VALUE int_vector_sum(VALUE self) {
+
+    std::size_t size = RARRAY_LEN(self);
+
+    long result = 0;
+
+    for (int i = 0; i < size; i++) {
+        VALUE val = int_vector_bracket(self, INT2NUM(i));
+        result += NUM2LONG(val);
+    }
+    
+    return LONG2NUM(result);
 }
 
-static VALUE wrap_int_vector_intersection(VALUE self, VALUE other) {
-    VALUE dup = rb_obj_dup(self);
-    getIntVector(dup)->intersection(getIntVector(other));
-    return dup;   
+static VALUE int_vector_sort(VALUE self) {
+    return rb_ary_sort(self);
 }
 
-static VALUE wrap_int_vector_sort(VALUE self) {
-    VALUE dup = rb_obj_dup(self);
-    VALUE result = wrap_int_vector_convert_array(self);
-    dup = wrap_int_vector_import_array(dup, result);
-    getIntVector(dup)->sort();
-    return dup;
+extern "C" {
+    void Init_int_vector(VALUE mTatara) {
+        VALUE rb_cIntVector = rb_define_class_under(mTatara, "IntVector", rb_cArray);
+
+        rb_define_private_method(rb_cIntVector, "initialize", int_vector_init, 0);
+        rb_define_method(rb_cIntVector, "first", int_vector_first, 0);
+        rb_define_method(rb_cIntVector, "last", int_vector_last, 0);
+        rb_define_method(rb_cIntVector, "[]", int_vector_bracket, 1);
+        rb_define_method(rb_cIntVector, "[]=", int_vector_bracket_equal, 2);
+        rb_define_method(rb_cIntVector, "emplace_back", int_vector_emplace_back, 1);
+        rb_define_method(rb_cIntVector, "size", int_vector_size, 0);
+        rb_define_method(rb_cIntVector, "clear", int_vector_clear, 0);
+        rb_define_alias(rb_cIntVector, "<<", "emplace_back");
+        rb_define_method(rb_cIntVector, "map", int_vector_map, 0);
+        rb_define_method(rb_cIntVector, "map!", int_vector_destructive_map, 0);
+        rb_define_alias(rb_cIntVector, "each", "map");
+        rb_define_method(rb_cIntVector, "each_with_index", int_vector_each_with_index, 0);
+        rb_define_method(rb_cIntVector, "to_array", int_vector_convert_array, 0);
+        rb_define_method(rb_cIntVector, "import_array", int_vector_import_array, 1);
+        rb_define_method(rb_cIntVector, "sum", int_vector_sum, 0);
+        rb_define_method(rb_cIntVector, "sort", int_vector_sort, 0);
+    }
 }
 
 #endif

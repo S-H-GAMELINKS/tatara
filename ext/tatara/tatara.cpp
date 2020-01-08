@@ -95,27 +95,8 @@ extern "C" {
         // require Tatara::String impl
         Init_string(mTatara);
 
-        VALUE rb_cIntVector = rb_define_class_under(mTatara, "IntVector", rb_cObject);
-
-        rb_define_alloc_func(rb_cIntVector, wrap_int_vector_alloc);
-        rb_define_private_method(rb_cIntVector, "initialize", RUBY_METHOD_FUNC(wrap_int_vector_init), 0);
-        rb_define_method(rb_cIntVector, "first", RUBY_METHOD_FUNC(wrap_int_vector_first), 0);
-        rb_define_method(rb_cIntVector, "last", RUBY_METHOD_FUNC(wrap_int_vector_last), 0);
-        rb_define_method(rb_cIntVector, "[]", RUBY_METHOD_FUNC(wrap_int_vector_bracket), 1);
-        rb_define_method(rb_cIntVector, "[]=", RUBY_METHOD_FUNC(wrap_int_vector_bracket_equal), 2);
-        rb_define_method(rb_cIntVector, "emplace_back", RUBY_METHOD_FUNC(wrap_int_vector_emplace_back), 1);
-        rb_define_method(rb_cIntVector, "size", RUBY_METHOD_FUNC(wrap_int_vector_size), 0);
-        rb_define_method(rb_cIntVector, "clear", RUBY_METHOD_FUNC(wrap_int_vector_clear), 0);
-        rb_define_method(rb_cIntVector, "<<", RUBY_METHOD_FUNC(wrap_int_vector_push_back_object), 1);
-        rb_define_method(rb_cIntVector, "map", RUBY_METHOD_FUNC(wrap_int_vector_map), 0);
-        rb_define_method(rb_cIntVector, "map!", RUBY_METHOD_FUNC(wrap_int_vector_destructive_map), 0);
-        rb_define_alias(rb_cIntVector, "each", "map");
-        rb_define_method(rb_cIntVector, "each_with_index", RUBY_METHOD_FUNC(wrap_int_vector_each_with_index), 0);
-        rb_define_method(rb_cIntVector, "to_array", RUBY_METHOD_FUNC(wrap_int_vector_convert_array), 0);
-        rb_define_method(rb_cIntVector, "import_array", RUBY_METHOD_FUNC(wrap_int_vector_import_array), 1);
-        rb_define_method(rb_cIntVector, "sum", RUBY_METHOD_FUNC(wrap_int_vector_sum), 0);
-        rb_define_method(rb_cIntVector, "intersection", RUBY_METHOD_FUNC(wrap_int_vector_intersection), 1);
-        rb_define_method(rb_cIntVector, "sort", RUBY_METHOD_FUNC(wrap_int_vector_sort), 0);
+        // require Tatara::IntVector
+        Init_int_vector(mTatara);
 
         VALUE rb_cFloatVector = rb_define_class_under(mTatara, "FloatVector", rb_cObject);
 
