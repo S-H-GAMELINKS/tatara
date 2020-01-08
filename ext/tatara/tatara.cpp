@@ -101,27 +101,8 @@ extern "C" {
         // require Tatara::FloatVector
         Init_float_vector(mTatara);
 
-        VALUE rb_cStringVector = rb_define_class_under(mTatara, "StringVector", rb_cObject);
-
-        rb_define_alloc_func(rb_cStringVector, wrap_string_vector_alloc);
-        rb_define_private_method(rb_cStringVector, "initialize", RUBY_METHOD_FUNC(wrap_string_vector_init), 0);
-        rb_define_method(rb_cStringVector, "first", RUBY_METHOD_FUNC(wrap_string_vector_first), 0);
-        rb_define_method(rb_cStringVector, "last", RUBY_METHOD_FUNC(wrap_string_vector_last), 0);
-        rb_define_method(rb_cStringVector, "[]", RUBY_METHOD_FUNC(wrap_string_vector_bracket), 1);
-        rb_define_method(rb_cStringVector, "[]=", RUBY_METHOD_FUNC(wrap_string_vector_bracket_equal), 2);
-        rb_define_method(rb_cStringVector, "emplace_back", RUBY_METHOD_FUNC(wrap_string_vector_emplace_back), 1);
-        rb_define_method(rb_cStringVector, "size", RUBY_METHOD_FUNC(wrap_string_vector_size), 0);
-        rb_define_method(rb_cStringVector, "clear", RUBY_METHOD_FUNC(wrap_string_vector_clear), 0);
-        rb_define_method(rb_cStringVector, "<<", RUBY_METHOD_FUNC(wrap_string_vector_push_back_object), 1);
-        rb_define_method(rb_cStringVector, "map", RUBY_METHOD_FUNC(wrap_string_vector_map), 0);
-        rb_define_method(rb_cStringVector, "map!", RUBY_METHOD_FUNC(wrap_string_vector_destructive_map), 0);
-        rb_define_alias(rb_cStringVector, "each", "map");
-        rb_define_method(rb_cStringVector, "each_with_index", RUBY_METHOD_FUNC(wrap_string_vector_each_with_index), 0);
-        rb_define_method(rb_cStringVector, "to_array", RUBY_METHOD_FUNC(wrap_string_vector_convert_array), 0);
-        rb_define_method(rb_cStringVector, "import_array", RUBY_METHOD_FUNC(wrap_string_vector_import_array), 1);
-        rb_define_method(rb_cStringVector, "sum", RUBY_METHOD_FUNC(wrap_string_vector_sum), 0);
-        rb_define_method(rb_cStringVector, "intersection", RUBY_METHOD_FUNC(wrap_string_vector_intersection), 1);
-        rb_define_method(rb_cStringVector, "sort", RUBY_METHOD_FUNC(wrap_string_vector_sort), 0);
+        // require Tatara::StringVector
+        Init_string_vector(mTatara);
 
         VALUE rb_cIntArray = rb_define_class_under(mTatara, "IntArray", rb_cObject);
 
