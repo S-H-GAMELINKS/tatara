@@ -7,209 +7,88 @@
 #include <algorithm>
 #include <iterator>
 
-class StringVector {
-    std::vector<std::string> container;
-
-    public:
-        StringVector();
-        ~StringVector();
-        std::string first();
-        std::string last();
-        std::string bracket(const int index);
-        std::string bracket_equal(const int index, const std::string var);
-        void emplace_back(const std::string var);
-        int size();
-        void clear();
-        StringVector& push_back_object(const std::string var);
-        std::string sum();
-        StringVector& intersection(const StringVector* other);
-        void sort();
-};
-
-StringVector::StringVector() {}
-
-StringVector::~StringVector() {}
-
-std::string StringVector::first() {
-    return this->container.front();
-}
-
-std::string StringVector::last() {
-    return this->container.back();
-}
-
-std::string StringVector::bracket(const int index) {
-    return this->container[index];
-}
-
-std::string StringVector::bracket_equal(const int index, const std::string var) {
-    return this->container[index] = var;
-}
-
-void StringVector::emplace_back(const std::string var) {
-    this->container.emplace_back(var);
-}
-
-int StringVector::size() {
-    return this->container.size();
-}
-
-void StringVector::clear() {
-    this->container.clear();
-}
-
-StringVector &StringVector::push_back_object(const std::string var) {
-    this->container.emplace_back(std::move(var));
-    return *this;
-}
-
-std::string StringVector::sum() {
-    return std::accumulate(this->container.begin(), this->container.end(), std::string());
-}
-
-StringVector& StringVector::intersection(const StringVector* other) {
-    std::set_intersection(this->container.begin(), this->container.end(),
-                          other->container.begin(), other->container.end(),
-                          std::inserter(this->container, this->container.end()));
-    return *this;
-}
-
-void StringVector::sort() {
-    std::sort(this->container.begin(), this->container.end());
-}
-
-struct WrapStringVector {
-    StringVector* instance;
-};
-
-static void wrap_string_vector_free(void* ptr) {
-    WrapStringVector *p = static_cast<WrapStringVector*>(ptr);
-    delete p->instance;
-    ruby_xfree(p);
-}
-
-static const rb_data_type_t rb_string_vector_type = {
-    "StringVector",
-    {
-        NULL,
-        wrap_string_vector_free,
-        NULL,
-    },
-    NULL,
-    NULL
-};
-
-static StringVector *getStringVector(VALUE self) {
-    WrapStringVector *ptr;
-    TypedData_Get_Struct(self, WrapStringVector, &rb_string_vector_type, ptr);
-    return ptr->instance;
-};
-
-static VALUE wrap_string_vector_alloc(VALUE klass) {
-    auto ptr = RB_ALLOC(WrapStringVector);
-    ptr->instance = new StringVector;
-    return TypedData_Wrap_Struct(klass, &rb_string_vector_type, ptr);
-}
-
-static VALUE wrap_string_vector_init(VALUE self) {
-    return Qnil;
-}
-
-static VALUE wrap_string_vector_first(VALUE self) {
-    const std::string value = getStringVector(self)->first();
-    VALUE result = rb_str_new(value.data(), value.size());
-    return result;
-}
-
-static VALUE wrap_string_vector_last(VALUE self) {
-    const std::string value = getStringVector(self)->last();
-    VALUE result = rb_str_new(value.data(), value.size());
-    return result;
-}
-
-static VALUE wrap_string_vector_bracket(VALUE self, VALUE index) {
-    const int i = NUM2INT(index);
-    std::string value = "";
-    if (getStringVector(self)->size() <= i) {
-        rb_raise(rb_eRuntimeError, "Error! Can not get Value!");
-    } else {
-        value = getStringVector(self)->bracket(i);
-    }
-    VALUE result = rb_str_new(value.data(), value.size());
-    return result;
-}
-
-static VALUE wrap_string_vector_bracket_equal(VALUE self, VALUE index, VALUE value) {
-    const int i = NUM2INT(index);
-    const std::string v = {StringValueCStr(value)};
-    if (getStringVector(self)->size() <= i) {
-        rb_raise(rb_eRuntimeError, "Error! Can not set Value!");
-    } else {
-        getStringVector(self)->bracket_equal(i, v);
-    }
-    return value;
-}
-
-static VALUE wrap_string_vector_emplace_back(VALUE self, VALUE value) {
-    const std::string v = {StringValueCStr(value)};
-    getStringVector(self)->emplace_back(v);
-    return Qnil;
-}
-
-static VALUE wrap_string_vector_size(VALUE self) {
-    const int size = getStringVector(self)->size();
-    VALUE result = INT2NUM(size);
-    return result;
-}
-
-static VALUE wrap_string_vector_clear(VALUE self) {
-    getStringVector(self)->clear();
-    return Qnil;
-}
-
-static VALUE wrap_string_vector_push_back_object(VALUE self, VALUE value) {
-    const std::string v = {StringValueCStr(value)};
-    getStringVector(self)->push_back_object(v);
+static VALUE string_vector_init(VALUE self) {
     return self;
 }
 
-static VALUE wrap_string_vector_map(VALUE self) {
+static VALUE string_vector_first(VALUE self) {
+    return rb_ary_entry(self, 0);
+}
 
-    std::size_t size = getStringVector(self)->size();
+static VALUE string_vector_last(VALUE self) {
+    const long length = RARRAY_LEN(self);
+    if (length == 0) return Qnil;
+    return rb_ary_entry(self, length - 1);
+}
 
-    VALUE collection = rb_ary_new2(size);
+static VALUE string_vector_bracket(VALUE self, VALUE index) {
+    return rb_ary_entry(self, NUM2LONG(index));
+}
+
+static VALUE string_vector_bracket_equal(VALUE self, VALUE index, VALUE value) {
+    if (TYPE(value) == T_STRING) {
+        long i = NUM2LONG(index);
+        rb_ary_store(self, i, value);
+        return value;
+    } else {
+        rb_raise(rb_eTypeError, "Worng Type! This Value type is %s !", rb_class_name(value));
+        return Qnil;
+    }
+}
+
+static VALUE string_vector_emplace_back(VALUE self, VALUE value) {
+    if (TYPE(value) == T_STRING) {
+        rb_ary_push(self, value);
+        return self;
+    } else {
+        rb_raise(rb_eTypeError, "Worng Type! This Value type is %s !", rb_class_name(value));
+        return Qnil;
+    }
+}
+
+static VALUE string_vector_size(VALUE self) {
+    return LONG2NUM(RARRAY_LEN(self));
+}
+
+static VALUE string_vector_clear(VALUE self) {
+    rb_ary_clear(self);
+    return self;
+}
+
+static VALUE string_vector_map(VALUE self) {
+
+    std::size_t size = RARRAY_LEN(self);
+
+    VALUE collection = rb_obj_dup(self);
 
     for(int i = 0; i < size; i++) {
-        const std::string v = getStringVector(self)->bracket(i);
-        VALUE val = rb_str_new(v.c_str(), v.size());
-        rb_ary_push(collection, rb_yield(val));
+        VALUE val = string_vector_bracket(self, INT2NUM(i));
+        string_vector_bracket_equal(collection, INT2NUM(i), rb_yield(val));
     }
 
     return collection;
 }
 
-static VALUE wrap_string_vector_destructive_map(VALUE self) {
+static VALUE string_vector_destructive_map(VALUE self) {
 
-    std::size_t size = getStringVector(self)->size();
+    std::size_t size = RARRAY_LEN(self);
 
     for(int i = 0; i < size; i++) {
-        const std::string v = getStringVector(self)->bracket(i);
-        VALUE val = rb_str_new(v.data(), v.size());
-        wrap_string_vector_bracket_equal(self, INT2NUM(i), rb_yield(val));
+        VALUE val = string_vector_bracket(self, INT2NUM(i));
+        string_vector_bracket_equal(self, INT2NUM(i), rb_yield(val));
     }
 
     return self;
 }
 
-static VALUE wrap_string_vector_each_with_index(VALUE self) {
+static VALUE string_vector_each_with_index(VALUE self) {
 
-    std::size_t size = getStringVector(self)->size();
+    std::size_t size = RARRAY_LEN(self);
 
-    VALUE collection = rb_ary_new2(size);
+    VALUE collection = rb_obj_dup(self);
 
     for(int i = 0; i < size; i++) {
-        const std::string v = getStringVector(self)->bracket(i);
-        VALUE val = rb_str_new(v.data(), v.size());
+        VALUE val = string_vector_bracket(self, INT2NUM(i));
         VALUE key_value = rb_ary_new2(2);
         rb_ary_push(key_value, val);
         rb_ary_push(key_value, INT2NUM(i));
@@ -219,51 +98,72 @@ static VALUE wrap_string_vector_each_with_index(VALUE self) {
     return collection;
 }
 
-static VALUE wrap_string_vector_convert_array(VALUE self) {
-    
-    std::size_t size = getStringVector(self)->size();
+static VALUE string_vector_convert_array(VALUE self) {
+
+    std::size_t size = RARRAY_LEN(self);
 
     VALUE collection = rb_ary_new2(size);
 
     for(int i = 0; i < size; i++) {
-        const std::string v = getStringVector(self)->bracket(i);
-        VALUE val = rb_str_new(v.c_str(), v.size());
+        VALUE val = string_vector_bracket(self, INT2NUM(i));
         rb_ary_push(collection, val);
     }
 
     return collection;
 }
 
-static VALUE wrap_string_vector_import_array(VALUE self, VALUE ary) {
+static VALUE string_vector_import_array(VALUE self, VALUE ary) {
 
     std::size_t size = RARRAY_LEN(ary);
 
     for(int i = 0; i < size; i++) {
         VALUE val = rb_ary_entry(ary, i);
-        const std::string v = {StringValueCStr(val)};
-        getStringVector(self)->emplace_back(v);
+        string_vector_emplace_back(self, val);
     }
 
     return self;
 }
 
-static VALUE wrap_string_vector_sum(VALUE self) {
-    std::string result = getStringVector(self)->sum();
-    return rb_str_new(result.c_str(), result.size());
+static VALUE string_vector_sum(VALUE self) {
+
+    std::size_t size = RARRAY_LEN(self);
+
+    VALUE result = rb_str_new(0, 0);
+
+    for (int i = 0; i < size; i++) {
+        VALUE val = string_vector_bracket(self, INT2NUM(i));
+        result = rb_str_plus(result, val);
+    }
+    
+    return result;
 }
 
-static VALUE wrap_string_vector_intersection(VALUE self, VALUE other) {
-    VALUE dup = rb_obj_dup(self);
-    getStringVector(dup)->intersection(getStringVector(other));
-    return dup;   
+static VALUE string_vector_sort(VALUE self) {
+    return rb_ary_sort(self);
 }
 
-static VALUE wrap_string_vector_sort(VALUE self) {
-    VALUE dup = rb_obj_dup(self);
-    VALUE result = wrap_string_vector_convert_array(self);
-    dup = wrap_string_vector_import_array(dup, result);
-    getStringVector(dup)->sort();
-    return dup;
+extern "C" {
+    void Init_string_vector(VALUE mTatara) {
+        VALUE rb_cStringVector = rb_define_class_under(mTatara, "StringVector", rb_cArray);
+
+        rb_define_private_method(rb_cStringVector, "initialize", string_vector_init, 0);
+        rb_define_method(rb_cStringVector, "first", string_vector_first, 0);
+        rb_define_method(rb_cStringVector, "last", string_vector_last, 0);
+        rb_define_method(rb_cStringVector, "[]", string_vector_bracket, 1);
+        rb_define_method(rb_cStringVector, "[]=", string_vector_bracket_equal, 2);
+        rb_define_method(rb_cStringVector, "emplace_back", string_vector_emplace_back, 1);
+        rb_define_method(rb_cStringVector, "size", string_vector_size, 0);
+        rb_define_method(rb_cStringVector, "clear", string_vector_clear, 0);
+        rb_define_alias(rb_cStringVector, "<<", "emplace_back");
+        rb_define_method(rb_cStringVector, "map", string_vector_map, 0);
+        rb_define_method(rb_cStringVector, "map!", string_vector_destructive_map, 0);
+        rb_define_alias(rb_cStringVector, "each", "map");
+        rb_define_method(rb_cStringVector, "each_with_index", string_vector_each_with_index, 0);
+        rb_define_method(rb_cStringVector, "to_array", string_vector_convert_array, 0);
+        rb_define_method(rb_cStringVector, "import_array", string_vector_import_array, 1);
+        rb_define_method(rb_cStringVector, "sum", string_vector_sum, 0);
+        rb_define_method(rb_cStringVector, "sort", string_vector_sort, 0);
+    }
 }
 
 #endif
