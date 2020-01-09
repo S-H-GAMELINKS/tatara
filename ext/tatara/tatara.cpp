@@ -107,27 +107,8 @@ extern "C" {
         // require Tatara::IntArray
         Init_int_array(mTatara);
 
-        VALUE rb_cFloatArray = rb_define_class_under(mTatara, "FloatArray", rb_cObject);
-
-        rb_define_alloc_func(rb_cFloatArray, wrap_float_array_alloc);
-        rb_define_private_method(rb_cFloatArray, "initialize", RUBY_METHOD_FUNC(wrap_float_array_init), 0);
-        rb_define_method(rb_cFloatArray, "first", RUBY_METHOD_FUNC(wrap_float_array_first), 0);
-        rb_define_method(rb_cFloatArray, "last", RUBY_METHOD_FUNC(wrap_float_array_last), 0);
-        rb_define_method(rb_cFloatArray, "[]", RUBY_METHOD_FUNC(wrap_float_array_bracket), 1);
-        rb_define_method(rb_cFloatArray, "[]=", RUBY_METHOD_FUNC(wrap_float_array_bracket_equal), 2);
-        rb_define_method(rb_cFloatArray, "push", RUBY_METHOD_FUNC(wrap_float_array_emplace_back), 1);
-        rb_define_method(rb_cFloatArray, "size", RUBY_METHOD_FUNC(wrap_float_array_size), 0);
-        rb_define_method(rb_cFloatArray, "clear", RUBY_METHOD_FUNC(wrap_float_array_clear), 0);
-        rb_define_method(rb_cFloatArray, "<<", RUBY_METHOD_FUNC(wrap_float_array_push_back_object), 1);
-        rb_define_method(rb_cFloatArray, "map", RUBY_METHOD_FUNC(wrap_float_array_map), 0);
-        rb_define_method(rb_cFloatArray, "map!", RUBY_METHOD_FUNC(wrap_float_array_destructive_map), 0);
-        rb_define_alias(rb_cFloatArray, "each", "map");
-        rb_define_method(rb_cFloatArray, "each_with_index", RUBY_METHOD_FUNC(wrap_float_array_each_with_index), 0);
-        rb_define_method(rb_cFloatArray, "to_array", RUBY_METHOD_FUNC(wrap_float_array_convert_array), 0);
-        rb_define_method(rb_cFloatArray, "import_array", RUBY_METHOD_FUNC(wrap_float_array_import_array), 1);
-        rb_define_method(rb_cFloatArray, "sum", RUBY_METHOD_FUNC(wrap_float_array_sum), 0);
-        rb_define_method(rb_cFloatArray, "intersection", RUBY_METHOD_FUNC(wrap_float_array_intersection), 1);
-        rb_define_method(rb_cFloatArray, "sort", RUBY_METHOD_FUNC(wrap_float_array_sort), 0);
+        // require Tatara::FloatArray
+        Init_float_array(mTatara);
 
         VALUE rb_cStringArray = rb_define_class_under(mTatara, "StringArray", rb_cObject);
 
