@@ -2,10 +2,6 @@ require "tatara/tatara"
 
 module Tatara
     module Array
-        def &(other)
-            self.intersection other
-        end
-
         def sort!
             result = self.to_array.sort
             self.clear
@@ -26,13 +22,6 @@ module Tatara
             self.clear
             result.each{|v| self << v}
             return self
-        end
-
-        def reverse
-            copy = self.dup
-            result = self.to_array.reverse
-            result.each{|v| copy << v }
-            return copy
         end
 
         def reverse!
@@ -68,13 +57,39 @@ module Tatara
 
     class IntArray
         include Array
+
+        def intersection other
+            self & other
+        end
     end
 
     class FloatArray
         include Array
+
+        def & other
+            self.intersection other
+        end
+
+        def reverse
+            copy = self.dup
+            result = self.to_array.reverse
+            result.each{|v| copy << v }
+            return copy
+        end
     end
 
     class StringArray
         include Array
+
+        def & other
+            self.intersection other
+        end
+
+        def reverse
+            copy = self.dup
+            result = self.to_array.reverse
+            result.each{|v| copy << v }
+            return copy
+        end
     end
 end

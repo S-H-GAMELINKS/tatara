@@ -104,27 +104,8 @@ extern "C" {
         // require Tatara::StringVector
         Init_string_vector(mTatara);
 
-        VALUE rb_cIntArray = rb_define_class_under(mTatara, "IntArray", rb_cObject);
-
-        rb_define_alloc_func(rb_cIntArray, wrap_int_array_alloc);
-        rb_define_private_method(rb_cIntArray, "initialize", RUBY_METHOD_FUNC(wrap_int_array_init), 0);
-        rb_define_method(rb_cIntArray, "first", RUBY_METHOD_FUNC(wrap_int_array_first), 0);
-        rb_define_method(rb_cIntArray, "last", RUBY_METHOD_FUNC(wrap_int_array_last), 0);
-        rb_define_method(rb_cIntArray, "[]", RUBY_METHOD_FUNC(wrap_int_array_bracket), 1);
-        rb_define_method(rb_cIntArray, "[]=", RUBY_METHOD_FUNC(wrap_int_array_bracket_equal), 2);
-        rb_define_method(rb_cIntArray, "push", RUBY_METHOD_FUNC(wrap_int_array_emplace_back), 1);
-        rb_define_method(rb_cIntArray, "size", RUBY_METHOD_FUNC(wrap_int_array_size), 0);
-        rb_define_method(rb_cIntArray, "clear", RUBY_METHOD_FUNC(wrap_int_array_clear), 0);
-        rb_define_method(rb_cIntArray, "<<", RUBY_METHOD_FUNC(wrap_int_array_push_back_object), 1);
-        rb_define_method(rb_cIntArray, "map", RUBY_METHOD_FUNC(wrap_int_array_map), 0);
-        rb_define_method(rb_cIntArray, "map!", RUBY_METHOD_FUNC(wrap_int_array_destructive_map), 0);
-        rb_define_alias(rb_cIntArray, "each", "map");
-        rb_define_method(rb_cIntArray, "each_with_index", RUBY_METHOD_FUNC(wrap_int_array_each_with_index), 0);
-        rb_define_method(rb_cIntArray, "to_array", RUBY_METHOD_FUNC(wrap_int_array_convert_array), 0);
-        rb_define_method(rb_cIntArray, "import_array", RUBY_METHOD_FUNC(wrap_int_array_import_array), 1);
-        rb_define_method(rb_cIntArray, "sum", RUBY_METHOD_FUNC(wrap_int_array_sum), 0);
-        rb_define_method(rb_cIntArray, "intersection", RUBY_METHOD_FUNC(wrap_int_array_intersection), 1);
-        rb_define_method(rb_cIntArray, "sort", RUBY_METHOD_FUNC(wrap_int_array_sort), 0);
+        // require Tatara::IntArray
+        Init_int_array(mTatara);
 
         VALUE rb_cFloatArray = rb_define_class_under(mTatara, "FloatArray", rb_cObject);
 
