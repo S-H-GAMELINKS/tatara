@@ -74,15 +74,8 @@ module Tatara
     class StringArray
         include Array
 
-        def & other
-            self.intersection other
-        end
-
-        def reverse
-            copy = self.dup
-            result = self.to_array.reverse
-            result.each{|v| copy << v }
-            return copy
+        def intersection other
+            self & other
         end
     end
 end
