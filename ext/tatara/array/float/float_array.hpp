@@ -6,206 +6,97 @@
 #include <algorithm>
 #include <iterator>
 
-class FloatArray {
-    std::vector<double> container;
-
-    public:
-        FloatArray();
-        ~FloatArray();
-        double first();
-        double last();
-        double bracket(const int index);
-        double bracket_equal(const int index, const double var);
-        void emplace_back(const double var);
-        int size();
-        void clear();
-        FloatArray& push_back_object(const double var);
-        double sum();
-        FloatArray& intersection(const FloatArray* other);
-        void sort();
-};
-
-FloatArray::FloatArray() {}
-
-FloatArray::~FloatArray() {}
-
-double FloatArray::first() {
-    return this->container.front();
-}
-
-double FloatArray::last() {
-    return this->container.back();
-}
-
-double FloatArray::bracket(const int index) {
-    return this->container[index];
-}
-
-double FloatArray::bracket_equal(const int index, const double var) {
-    return this->container[index] = var;
-}
-
-void FloatArray::emplace_back(const double var) {
-    this->container.emplace_back(var);
-}
-
-int FloatArray::size() {
-    return this->container.size();
-}
-
-void FloatArray::clear() {
-    this->container.clear();
-}
-
-FloatArray &FloatArray::push_back_object(const double var) {
-    this->container.emplace_back(std::move(var));
-    return *this;
-}
-
-double FloatArray::sum() {
-    return std::accumulate(this->container.begin(), this->container.end(), 0.0);
-}
-
-FloatArray& FloatArray::intersection(const FloatArray* other) {
-    std::set_intersection(this->container.begin(), this->container.end(),
-                          other->container.begin(), other->container.end(),
-                          std::inserter(this->container, this->container.end()));
-    return *this;
-}
-
-void FloatArray::sort() {
-    std::sort(this->container.begin(), this->container.end());
-}
-
-struct WrapFloatArray {
-    FloatArray *instance;
-};
-
-static void wrap_float_array_free(void* ptr) {
-    WrapFloatArray *p = static_cast<WrapFloatArray*>(ptr);
-    delete p->instance;
-    ruby_xfree(p);
-}
-
-static const rb_data_type_t rb_float_array_type = {
-    "FloatArray",
-    {
-        NULL,
-        wrap_float_array_free,
-        NULL,
-    },
-    NULL,
-    NULL
-};
-
-static FloatArray *getFloatArray(VALUE self) {
-    WrapFloatArray *ptr;
-    TypedData_Get_Struct(self, WrapFloatArray, &rb_float_array_type, ptr);
-    return ptr->instance;
-}
-
-static VALUE wrap_float_array_alloc(VALUE klass) {
-    auto ptr= RB_ALLOC(WrapFloatArray);
-    ptr->instance = new FloatArray;
-    return TypedData_Wrap_Struct(klass, &rb_float_array_type, ptr);
-}
-
-static VALUE wrap_float_array_init(VALUE self) {
-    return Qnil;
-}
-
-static VALUE wrap_float_array_first(VALUE self) {
-    const double value = getFloatArray(self)->first();
-    VALUE result = DBL2NUM(value);
-    return result;
-}
-
-static VALUE wrap_float_array_last(VALUE self) {
-    const double value = getFloatArray(self)->last();
-    VALUE result = DBL2NUM(value);
-    return result;
-}
-
-static VALUE wrap_float_array_bracket(VALUE self, VALUE index) {
-    const int i = NUM2INT(index);
-    double value = 0.0;
-    if (getFloatArray(self)->size() <= i) {
-        rb_raise(rb_eRuntimeError, "Error! Can not get Value!");
-    } else {
-        value = getFloatArray(self)->bracket(i);
-    }
-    VALUE result = DBL2NUM(value);
-    return result;
-}
-
-static VALUE wrap_float_array_bracket_equal(VALUE self, VALUE index, VALUE value) {
-    const int i = NUM2INT(index);
-    const double v = NUM2DBL(value);
-    if (getFloatArray(self)->size() <= i) {
-        rb_raise(rb_eRuntimeError, "Error! Can not set Value!");
-    } else {
-        getFloatArray(self)->bracket_equal(i, v);
-    }
-    return value;
-}
-
-static VALUE wrap_float_array_emplace_back(VALUE self, VALUE value) {
-    const double v = NUM2DBL(value);
-    getFloatArray(self)->emplace_back(v);
-    return Qnil;
-}
-
-static VALUE wrap_float_array_size(VALUE self) {
-    const int size = getFloatArray(self)->size();
-    VALUE result = INT2NUM(size);
-    return result;
-}
-
-static VALUE wrap_float_array_clear(VALUE self) {
-    getFloatArray(self)->clear();
-    return Qnil;
-}
-
-static VALUE wrap_float_array_push_back_object(VALUE self, VALUE value) {
-    const double v = NUM2DBL(value);
-    getFloatArray(self)->push_back_object(v);
+static VALUE float_array_init(VALUE self) {
     return self;
 }
 
-static VALUE wrap_float_array_map(VALUE self) {
+static VALUE float_array_first(VALUE self) {
+    return rb_ary_entry(self, 0);
+}
 
-    std::size_t size = getFloatArray(self)->size();
+static VALUE float_array_last(VALUE self) {
+    const long length = RARRAY_LEN(self);
+    if (length == 0) return Qnil;
+    return rb_ary_entry(self, length - 1);
+}
 
-    VALUE collection = rb_ary_new2(size);
+static VALUE float_array_bracket(VALUE self, VALUE index) {
+    return rb_ary_entry(self, NUM2LONG(index));
+}
+
+static VALUE float_array_bracket_equal(VALUE self, VALUE index, VALUE value) {
+    if (TYPE(value) == T_FLOAT) {
+        long i = NUM2LONG(index);
+        rb_ary_store(self, i, value);
+        return value;
+    }else if (FIXNUM_P(value)) {
+        double val = NUM2DBL(value);
+        long i = NUM2LONG(index);
+        rb_ary_store(self, i, DBL2NUM(val));
+        return self;
+    } else {
+        rb_raise(rb_eTypeError, "Worng Type! This Value type is %s !", rb_class_name(value));
+        return Qnil;
+    }
+}
+
+static VALUE float_array_push(VALUE self, VALUE value) {
+    if (TYPE(value) == T_FLOAT) {
+        rb_ary_push(self, value);
+        return self;
+    } else if (FIXNUM_P(value)) {
+        double val = NUM2DBL(value);
+        rb_ary_push(self, DBL2NUM(val));
+        return self;
+    } else {
+        rb_raise(rb_eTypeError, "Worng Type! This Value type is %s !", rb_class_name(value));
+        return Qnil;
+    }
+}
+
+static VALUE float_array_size(VALUE self) {
+    return LONG2NUM(RARRAY_LEN(self));
+}
+
+static VALUE float_array_clear(VALUE self) {
+    rb_ary_clear(self);
+    return self;
+}
+
+static VALUE float_array_map(VALUE self) {
+
+    std::size_t size = RARRAY_LEN(self);
+
+    VALUE collection = rb_obj_dup(self);
 
     for(int i = 0; i < size; i++) {
-        VALUE val = DBL2NUM(getFloatArray(self)->bracket(i));
-        rb_ary_push(collection, rb_yield(val));
+        VALUE val = float_array_bracket(self, INT2NUM(i));
+        float_array_bracket_equal(collection, INT2NUM(i), rb_yield(val));
     }
 
     return collection;
 }
 
-static VALUE wrap_float_array_destructive_map(VALUE self) {
+static VALUE float_array_destructive_map(VALUE self) {
 
-    std::size_t size = getFloatArray(self)->size();
+    std::size_t size = RARRAY_LEN(self);
 
     for(int i = 0; i < size; i++) {
-        VALUE val = DBL2NUM(getFloatArray(self)->bracket(i));
-        wrap_float_array_bracket_equal(self, INT2NUM(i), rb_yield(val));
+        VALUE val = float_array_bracket(self, INT2NUM(i));
+        float_array_bracket_equal(self, INT2NUM(i), rb_yield(val));
     }
 
     return self;
 }
 
-static VALUE wrap_float_array_each_with_index(VALUE self) {
+static VALUE float_array_each_with_index(VALUE self) {
 
-    std::size_t size = getFloatArray(self)->size();
+    std::size_t size = RARRAY_LEN(self);
 
-    VALUE collection = rb_ary_new2(size);
+    VALUE collection = rb_obj_dup(self);
 
     for(int i = 0; i < size; i++) {
-        VALUE val = DBL2NUM(getFloatArray(self)->bracket(i));
+        VALUE val = float_array_bracket(self, INT2NUM(i));
         VALUE key_value = rb_ary_new2(2);
         rb_ary_push(key_value, val);
         rb_ary_push(key_value, INT2NUM(i));
@@ -215,49 +106,72 @@ static VALUE wrap_float_array_each_with_index(VALUE self) {
     return collection;
 }
 
-static VALUE wrap_float_array_convert_array(VALUE self) {
-    
-    std::size_t size = getFloatArray(self)->size();
+static VALUE float_array_convert_array(VALUE self) {
+
+    std::size_t size = RARRAY_LEN(self);
 
     VALUE collection = rb_ary_new2(size);
 
     for(int i = 0; i < size; i++) {
-        VALUE val = DBL2NUM(getFloatArray(self)->bracket(i));
+        VALUE val = float_array_bracket(self, INT2NUM(i));
         rb_ary_push(collection, val);
     }
 
     return collection;
 }
 
-static VALUE wrap_float_array_import_array(VALUE self, VALUE ary) {
+static VALUE float_array_import_array(VALUE self, VALUE ary) {
 
     std::size_t size = RARRAY_LEN(ary);
 
     for(int i = 0; i < size; i++) {
         VALUE val = rb_ary_entry(ary, i);
-        getFloatArray(self)->emplace_back(NUM2DBL(val));
+        float_array_push(self, val);
     }
 
     return self;
 }
 
-static VALUE wrap_float_array_sum(VALUE self) {
-    double result = getFloatArray(self)->sum();
+static VALUE float_array_sum(VALUE self) {
+
+    std::size_t size = RARRAY_LEN(self);
+
+    double result = 0.0;
+
+    for (int i = 0; i < size; i++) {
+        VALUE val = float_array_bracket(self, INT2NUM(i));
+        result += NUM2DBL(val);
+    }
+    
     return DBL2NUM(result);
 }
 
-static VALUE wrap_float_array_intersection(VALUE self, VALUE other) {
-    VALUE dup = rb_obj_dup(self);
-    getFloatArray(dup)->intersection(getFloatArray(other));
-    return dup;
+static VALUE float_array_sort(VALUE self) {
+    return rb_ary_sort(self);
 }
 
-static VALUE wrap_float_array_sort(VALUE self) {
-    VALUE dup = rb_obj_dup(self);
-    VALUE result = wrap_float_array_convert_array(self);
-    dup = wrap_float_array_import_array(dup, result);
-    getFloatArray(dup)->sort();
-    return dup;
+extern "C" {
+    void Init_float_array(VALUE mTatara) {
+        VALUE rb_cFloatArray = rb_define_class_under(mTatara, "FloatArray", rb_cArray);
+
+        rb_define_private_method(rb_cFloatArray, "initialize", float_array_init, 0);
+        rb_define_method(rb_cFloatArray, "first", float_array_first, 0);
+        rb_define_method(rb_cFloatArray, "last", float_array_last, 0);
+        rb_define_method(rb_cFloatArray, "[]", float_array_bracket, 1);
+        rb_define_method(rb_cFloatArray, "[]=", float_array_bracket_equal, 2);
+        rb_define_method(rb_cFloatArray, "push", float_array_push, 1);
+        rb_define_method(rb_cFloatArray, "size", float_array_size, 0);
+        rb_define_method(rb_cFloatArray, "clear", float_array_clear, 0);
+        rb_define_alias(rb_cFloatArray, "<<", "push");
+        rb_define_method(rb_cFloatArray, "map", float_array_map, 0);
+        rb_define_method(rb_cFloatArray, "map!", float_array_destructive_map, 0);
+        rb_define_alias(rb_cFloatArray, "each", "map");
+        rb_define_method(rb_cFloatArray, "each_with_index", float_array_each_with_index, 0);
+        rb_define_method(rb_cFloatArray, "to_array", float_array_convert_array, 0);
+        rb_define_method(rb_cFloatArray, "import_array", float_array_import_array, 1);
+        rb_define_method(rb_cFloatArray, "sum", float_array_sum, 0);
+        rb_define_method(rb_cFloatArray, "sort", float_array_sort, 0);
+    }
 }
 
 #endif

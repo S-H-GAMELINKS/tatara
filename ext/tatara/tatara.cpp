@@ -104,71 +104,14 @@ extern "C" {
         // require Tatara::StringVector
         Init_string_vector(mTatara);
 
-        VALUE rb_cIntArray = rb_define_class_under(mTatara, "IntArray", rb_cObject);
+        // require Tatara::IntArray
+        Init_int_array(mTatara);
 
-        rb_define_alloc_func(rb_cIntArray, wrap_int_array_alloc);
-        rb_define_private_method(rb_cIntArray, "initialize", RUBY_METHOD_FUNC(wrap_int_array_init), 0);
-        rb_define_method(rb_cIntArray, "first", RUBY_METHOD_FUNC(wrap_int_array_first), 0);
-        rb_define_method(rb_cIntArray, "last", RUBY_METHOD_FUNC(wrap_int_array_last), 0);
-        rb_define_method(rb_cIntArray, "[]", RUBY_METHOD_FUNC(wrap_int_array_bracket), 1);
-        rb_define_method(rb_cIntArray, "[]=", RUBY_METHOD_FUNC(wrap_int_array_bracket_equal), 2);
-        rb_define_method(rb_cIntArray, "push", RUBY_METHOD_FUNC(wrap_int_array_emplace_back), 1);
-        rb_define_method(rb_cIntArray, "size", RUBY_METHOD_FUNC(wrap_int_array_size), 0);
-        rb_define_method(rb_cIntArray, "clear", RUBY_METHOD_FUNC(wrap_int_array_clear), 0);
-        rb_define_method(rb_cIntArray, "<<", RUBY_METHOD_FUNC(wrap_int_array_push_back_object), 1);
-        rb_define_method(rb_cIntArray, "map", RUBY_METHOD_FUNC(wrap_int_array_map), 0);
-        rb_define_method(rb_cIntArray, "map!", RUBY_METHOD_FUNC(wrap_int_array_destructive_map), 0);
-        rb_define_alias(rb_cIntArray, "each", "map");
-        rb_define_method(rb_cIntArray, "each_with_index", RUBY_METHOD_FUNC(wrap_int_array_each_with_index), 0);
-        rb_define_method(rb_cIntArray, "to_array", RUBY_METHOD_FUNC(wrap_int_array_convert_array), 0);
-        rb_define_method(rb_cIntArray, "import_array", RUBY_METHOD_FUNC(wrap_int_array_import_array), 1);
-        rb_define_method(rb_cIntArray, "sum", RUBY_METHOD_FUNC(wrap_int_array_sum), 0);
-        rb_define_method(rb_cIntArray, "intersection", RUBY_METHOD_FUNC(wrap_int_array_intersection), 1);
-        rb_define_method(rb_cIntArray, "sort", RUBY_METHOD_FUNC(wrap_int_array_sort), 0);
+        // require Tatara::FloatArray
+        Init_float_array(mTatara);
 
-        VALUE rb_cFloatArray = rb_define_class_under(mTatara, "FloatArray", rb_cObject);
-
-        rb_define_alloc_func(rb_cFloatArray, wrap_float_array_alloc);
-        rb_define_private_method(rb_cFloatArray, "initialize", RUBY_METHOD_FUNC(wrap_float_array_init), 0);
-        rb_define_method(rb_cFloatArray, "first", RUBY_METHOD_FUNC(wrap_float_array_first), 0);
-        rb_define_method(rb_cFloatArray, "last", RUBY_METHOD_FUNC(wrap_float_array_last), 0);
-        rb_define_method(rb_cFloatArray, "[]", RUBY_METHOD_FUNC(wrap_float_array_bracket), 1);
-        rb_define_method(rb_cFloatArray, "[]=", RUBY_METHOD_FUNC(wrap_float_array_bracket_equal), 2);
-        rb_define_method(rb_cFloatArray, "push", RUBY_METHOD_FUNC(wrap_float_array_emplace_back), 1);
-        rb_define_method(rb_cFloatArray, "size", RUBY_METHOD_FUNC(wrap_float_array_size), 0);
-        rb_define_method(rb_cFloatArray, "clear", RUBY_METHOD_FUNC(wrap_float_array_clear), 0);
-        rb_define_method(rb_cFloatArray, "<<", RUBY_METHOD_FUNC(wrap_float_array_push_back_object), 1);
-        rb_define_method(rb_cFloatArray, "map", RUBY_METHOD_FUNC(wrap_float_array_map), 0);
-        rb_define_method(rb_cFloatArray, "map!", RUBY_METHOD_FUNC(wrap_float_array_destructive_map), 0);
-        rb_define_alias(rb_cFloatArray, "each", "map");
-        rb_define_method(rb_cFloatArray, "each_with_index", RUBY_METHOD_FUNC(wrap_float_array_each_with_index), 0);
-        rb_define_method(rb_cFloatArray, "to_array", RUBY_METHOD_FUNC(wrap_float_array_convert_array), 0);
-        rb_define_method(rb_cFloatArray, "import_array", RUBY_METHOD_FUNC(wrap_float_array_import_array), 1);
-        rb_define_method(rb_cFloatArray, "sum", RUBY_METHOD_FUNC(wrap_float_array_sum), 0);
-        rb_define_method(rb_cFloatArray, "intersection", RUBY_METHOD_FUNC(wrap_float_array_intersection), 1);
-        rb_define_method(rb_cFloatArray, "sort", RUBY_METHOD_FUNC(wrap_float_array_sort), 0);
-
-        VALUE rb_cStringArray = rb_define_class_under(mTatara, "StringArray", rb_cObject);
-
-        rb_define_alloc_func(rb_cStringArray, wrap_string_array_alloc);
-        rb_define_private_method(rb_cStringArray, "initialize", RUBY_METHOD_FUNC(wrap_string_array_init), 0);
-        rb_define_method(rb_cStringArray, "first", RUBY_METHOD_FUNC(wrap_string_array_first), 0);
-        rb_define_method(rb_cStringArray, "last", RUBY_METHOD_FUNC(wrap_string_array_last), 0);
-        rb_define_method(rb_cStringArray, "[]", RUBY_METHOD_FUNC(wrap_string_array_bracket), 1);
-        rb_define_method(rb_cStringArray, "[]=", RUBY_METHOD_FUNC(wrap_string_array_bracket_equal), 2);
-        rb_define_method(rb_cStringArray, "push", RUBY_METHOD_FUNC(wrap_string_array_emplace_back), 1);
-        rb_define_method(rb_cStringArray, "size", RUBY_METHOD_FUNC(wrap_string_array_size), 0);
-        rb_define_method(rb_cStringArray, "clear", RUBY_METHOD_FUNC(wrap_string_array_clear), 0);
-        rb_define_method(rb_cStringArray, "<<", RUBY_METHOD_FUNC(wrap_string_array_push_back_object), 1);
-        rb_define_method(rb_cStringArray, "map", RUBY_METHOD_FUNC(wrap_string_array_map), 0);
-        rb_define_method(rb_cStringArray, "map!", RUBY_METHOD_FUNC(wrap_string_array_destructive_map), 0);
-        rb_define_alias(rb_cStringArray, "each", "map");
-        rb_define_method(rb_cStringArray, "each_with_index", RUBY_METHOD_FUNC(wrap_string_array_each_with_index), 0);
-        rb_define_method(rb_cStringArray, "to_array", RUBY_METHOD_FUNC(wrap_string_array_convert_array), 0);
-        rb_define_method(rb_cStringArray, "import_array", RUBY_METHOD_FUNC(wrap_string_array_import_array), 1);
-        rb_define_method(rb_cStringArray, "sum", RUBY_METHOD_FUNC(wrap_string_array_sum), 0);
-        rb_define_method(rb_cStringArray, "intersection", RUBY_METHOD_FUNC(wrap_string_array_intersection), 1);
-        rb_define_method(rb_cStringArray, "sort", RUBY_METHOD_FUNC(wrap_string_array_sort), 0);
+        // require Tatara::StringArray
+        Init_string_array(mTatara);
         
         // require Tatara::StringIntMap impl
         Init_string_int_map(mTatara);
