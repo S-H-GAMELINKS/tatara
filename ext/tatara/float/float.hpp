@@ -2,280 +2,276 @@
 #define FLOAT_H_
 
 #include <ruby.h>
+#include <cmath>
 #include <string>
 #include <regex>
 
-class Float {
-        double value = 0.0;
-    public:
-        constexpr Float();
-        ~Float();
-        constexpr Float& initialize_object(const double var);
-        constexpr double assignment(const double var);
-        constexpr double return_value();
-        constexpr double increment_value();
-        constexpr double decrement_value();
-        std::string to_string();
-        constexpr int to_integer();
-        constexpr double plus(const double var);
-        constexpr double plus_equal(const double var);
-        constexpr double minus(const double var);
-        constexpr double minus_equal(const double var);
-        constexpr double multiply(const double var);
-        constexpr double multiply_equal(const double var);
-        constexpr double divided(const double var);
-        constexpr double divided_equal(const double var);
-        constexpr double power(const double var);
-        constexpr double power_equal(const double var);
-        constexpr double clear();
-        constexpr bool equal(const double var);
-};
-
-constexpr Float::Float() {}
-
-Float::~Float() {}
-
-constexpr Float& Float::initialize_object(const double var) {
-    this->value = var;
-    return *this;
+static VALUE float_init(VALUE self) {
+    rb_ivar_set(self, rb_intern("value"), DBL2NUM(0.0));
+    return self;
 }
 
-constexpr double Float::assignment(const double var) {
-    return this->value = var;
+static VALUE float_return_value(VALUE self) {
+    return rb_ivar_get(self, rb_intern("value"));
 }
 
-constexpr double Float::return_value() {
-    return this->value;
+static VALUE float_assignment(VALUE self, VALUE value) {
+    if (TYPE(value) == T_FLOAT) {
+        rb_ivar_set(self, rb_intern("value"), value);
+        return self;
+    } else if (FIXNUM_P(value)) {
+        double val = NUM2DBL(value);
+        rb_ivar_set(self, rb_intern("value"), DBL2NUM(val));
+        return self;
+    } else {
+        rb_raise(rb_eTypeError, "Worng Type! This Value type is %s !", rb_class_name(value));
+        return Qnil;
+    }
 }
 
-constexpr double Float::increment_value() {
-    return this->value++;
+static VALUE float_plus(VALUE self, VALUE value) {
+    if (TYPE(value) == T_FLOAT) {
+        VALUE ivar = rb_ivar_get(self, rb_intern("value"));
+        double result = NUM2DBL(ivar) + NUM2DBL(value);
+        return DBL2NUM(result);
+    } else if (FIXNUM_P(value)) {
+        VALUE ivar = rb_ivar_get(self, rb_intern("value"));
+        double result = NUM2DBL(ivar) + NUM2DBL(value);
+        return DBL2NUM(result);
+    } else {
+        rb_raise(rb_eTypeError, "Worng Type! This Value type is %s !", rb_class_name(value));
+        return Qnil;
+    }
 }
 
-constexpr double Float::decrement_value() {
-    return this->value--;
+static VALUE float_plus_equal(VALUE self, VALUE value) {
+    if (TYPE(value) == T_FLOAT) {
+        VALUE ivar = rb_ivar_get(self, rb_intern("value"));
+        double result = NUM2DBL(ivar) + NUM2DBL(value);
+        rb_ivar_set(self, rb_intern("value"), DBL2NUM(result));
+        return DBL2NUM(result);
+    } else if (FIXNUM_P(value)) {
+        VALUE ivar = rb_ivar_get(self, rb_intern("value"));
+        double result = NUM2DBL(ivar) + NUM2DBL(value);
+        rb_ivar_set(self, rb_intern("value"), DBL2NUM(result));
+        return DBL2NUM(result);
+    } else {
+        rb_raise(rb_eTypeError, "Worng Type! This Value type is %s !", rb_class_name(value));
+        return Qnil;
+    }
 }
 
-std::string Float::to_string() {
+static VALUE float_minus(VALUE self, VALUE value) {
+    if (TYPE(value) == T_FLOAT) {
+        VALUE ivar = rb_ivar_get(self, rb_intern("value"));
+        double result = NUM2DBL(ivar) - NUM2DBL(value);
+        return DBL2NUM(result);
+    } else if (FIXNUM_P(value)) {
+        VALUE ivar = rb_ivar_get(self, rb_intern("value"));
+        double result = NUM2DBL(ivar) - NUM2DBL(value);
+        return DBL2NUM(result);
+    } else {
+        rb_raise(rb_eTypeError, "Worng Type! This Value type is %s !", rb_class_name(value));
+        return Qnil;
+    }
+}
+
+static VALUE float_minus_equal(VALUE self, VALUE value) {
+    if (TYPE(value) == T_FLOAT) {
+        VALUE ivar = rb_ivar_get(self, rb_intern("value"));
+        double result = NUM2DBL(ivar) - NUM2DBL(value);
+        rb_ivar_set(self, rb_intern("value"), DBL2NUM(result));
+        return DBL2NUM(result);
+    } else if (FIXNUM_P(value)) {
+        VALUE ivar = rb_ivar_get(self, rb_intern("value"));
+        double result = NUM2DBL(ivar) - NUM2DBL(value);
+        rb_ivar_set(self, rb_intern("value"), DBL2NUM(result));
+        return DBL2NUM(result);
+    } else {
+        rb_raise(rb_eTypeError, "Worng Type! This Value type is %s !", rb_class_name(value));
+        return Qnil;
+    }
+}
+
+static VALUE float_multiply(VALUE self, VALUE value) {
+    if (TYPE(value) == T_FLOAT) {
+        VALUE ivar = rb_ivar_get(self, rb_intern("value"));
+        double result = NUM2DBL(ivar) * NUM2DBL(value);
+        return DBL2NUM(result);
+    } else if (FIXNUM_P(value)) {
+        VALUE ivar = rb_ivar_get(self, rb_intern("value"));
+        double result = NUM2DBL(ivar) * NUM2DBL(value);
+        return DBL2NUM(result);
+    } else {
+        rb_raise(rb_eTypeError, "Worng Type! This Value type is %s !", rb_class_name(value));
+        return Qnil;
+    }
+}
+
+static VALUE float_multiply_equal(VALUE self, VALUE value) {
+    if (TYPE(value) == T_FLOAT) {
+        VALUE ivar = rb_ivar_get(self, rb_intern("value"));
+        double result = NUM2DBL(ivar) * NUM2DBL(value);
+        rb_ivar_set(self, rb_intern("value"), DBL2NUM(result));
+        return DBL2NUM(result);
+    } else if (FIXNUM_P(value)) {
+        VALUE ivar = rb_ivar_get(self, rb_intern("value"));
+        double result = NUM2DBL(ivar) * NUM2DBL(value);
+        rb_ivar_set(self, rb_intern("value"), DBL2NUM(result));
+        return DBL2NUM(result);
+    } else {
+        rb_raise(rb_eTypeError, "Worng Type! This Value type is %s !", rb_class_name(value));
+        return Qnil;
+    }
+}
+
+static VALUE float_divided(VALUE self, VALUE value) {
+    if (TYPE(value) == T_FLOAT) {
+        VALUE ivar = rb_ivar_get(self, rb_intern("value"));
+        double result = NUM2DBL(ivar) / NUM2DBL(value);
+        return DBL2NUM(result);
+    } else if (FIXNUM_P(value)) {
+        VALUE ivar = rb_ivar_get(self, rb_intern("value"));
+        double result = NUM2DBL(ivar) / NUM2DBL(value);
+        return DBL2NUM(result);
+    } else {
+        rb_raise(rb_eTypeError, "Worng Type! This Value type is %s !", rb_class_name(value));
+        return Qnil;
+    }
+}
+
+static VALUE float_divided_equal(VALUE self, VALUE value) {
+    if (TYPE(value) == T_FLOAT) {
+        VALUE ivar = rb_ivar_get(self, rb_intern("value"));
+        double result = NUM2DBL(ivar) / NUM2DBL(value);
+        rb_ivar_set(self, rb_intern("value"), DBL2NUM(result));
+        return DBL2NUM(result);
+    } else if (FIXNUM_P(value)) {
+        VALUE ivar = rb_ivar_get(self, rb_intern("value"));
+        double result = NUM2DBL(ivar) / NUM2DBL(value);
+        rb_ivar_set(self, rb_intern("value"), DBL2NUM(result));
+        return DBL2NUM(result);
+    } else {
+        rb_raise(rb_eTypeError, "Worng Type! This Value type is %s !", rb_class_name(value));
+        return Qnil;
+    }
+}
+
+static VALUE float_power(VALUE self, VALUE value) {
+    if (TYPE(value) == T_FLOAT) {
+        VALUE ivar = rb_ivar_get(self, rb_intern("value"));
+        double result = std::pow(NUM2DBL(ivar), NUM2DBL(value));
+        return DBL2NUM(result);
+    } else if (FIXNUM_P(value)) {
+        VALUE ivar = rb_ivar_get(self, rb_intern("value"));
+        double result = std::pow(NUM2DBL(ivar), NUM2DBL(value));
+        return DBL2NUM(result);
+    } else {
+        rb_raise(rb_eTypeError, "Worng Type! This Value type is %s !", rb_class_name(value));
+        return Qnil;
+    }
+}
+
+static VALUE float_power_equal(VALUE self, VALUE value) {
+    if (TYPE(value) == T_FLOAT) {
+        VALUE ivar = rb_ivar_get(self, rb_intern("value"));
+        double result = std::pow(NUM2DBL(ivar), NUM2DBL(value));
+        rb_ivar_set(self, rb_intern("value"), DBL2NUM(result));
+        return DBL2NUM(result);
+    } else if (FIXNUM_P(value)) {
+        VALUE ivar = rb_ivar_get(self, rb_intern("value"));
+        double result = std::pow(NUM2DBL(ivar), NUM2DBL(value));
+        rb_ivar_set(self, rb_intern("value"), DBL2NUM(result));
+        return DBL2NUM(result);
+    } else {
+        rb_raise(rb_eTypeError, "Worng Type! This Value type is %s !", rb_class_name(value));
+        return Qnil;
+    }
+}
+
+static VALUE float_increment_value(VALUE self) {
+    VALUE val = rb_ivar_get(self, rb_intern("value"));
+    double result = NUM2DBL(val);
+    result++;
+    rb_ivar_set(self, rb_intern("value"), DBL2NUM(result));
+    return self;
+}
+
+static VALUE float_decrement_value(VALUE self) {
+    VALUE val = rb_ivar_get(self, rb_intern("value"));
+    double result = NUM2DBL(val);
+    result--;
+    rb_ivar_set(self, rb_intern("value"), DBL2NUM(result));
+    return self;
+}
+
+static VALUE float_to_string(VALUE self) {
+    VALUE val = rb_ivar_get(self, rb_intern("value"));
 
     std::string null = "";
 
     std::regex re("0+");
 
-    return std::regex_replace(std::to_string(this->value), re, null);
+    std::string result = std::regex_replace(std::to_string(NUM2DBL(val)), re, null);
+
+    return rb_str_new(result.c_str(), result.size());
 }
 
-constexpr int Float::to_integer() {
-    return static_cast<int>(this->value);
+static VALUE float_to_integer(VALUE self) {
+    VALUE val = rb_ivar_get(self, rb_intern("value"));
+    long result = NUM2LONG(val);
+    return LONG2NUM(result);
 }
 
-constexpr double Float::plus(const double var) {
-    return this->value + var;
-}
-
-constexpr double Float::plus_equal(const double var) {
-    return this->value += var;
-}
-
-constexpr double Float::minus(const double var) {
-    return this->value - var;
-}
-
-constexpr double Float::minus_equal(const double var) {
-    return this->value -= var;
-}
-
-constexpr double Float::multiply(const double var) {
-    return this->value * var;
-}
-
-constexpr double Float::multiply_equal(const double var) {
-    return this->value *= var;
-}
-
-constexpr double Float::divided(const double var) {
-    return this->value / var;
-}
-
-constexpr double Float::divided_equal(const double var) {
-    return this->value /= var;
-}
-
-constexpr double Float::power(const double var) {
-    return std::pow(this->value, var);
-}
-
-constexpr double Float::power_equal(const double var) {
-    return this->value = std::pow(this->value, var);
-}
-
-constexpr double Float::clear() {
-    return this->value = 0.0;
-}
-
-constexpr bool Float::equal(const double var) {
-    return this->value == var;
-}
-
-struct WrapFloat {
-    Float* instance;
-};
-
-static void wrap_float_free(void* ptr) {
-    WrapFloat *p = static_cast<WrapFloat*>(ptr);
-    delete p->instance;
-    ruby_xfree(p);
-}
-
-static const rb_data_type_t rb_float_type = {
-    "Float",
-    {
-        NULL,
-        wrap_float_free,
-        NULL,
-    },
-    NULL,
-    NULL
-};
-
-static Float *getFloat(VALUE self) {
-    WrapFloat *ptr;
-    TypedData_Get_Struct(self, WrapFloat, &rb_float_type, ptr);
-    return ptr->instance;
-}
-
-static VALUE wrap_float_alloc(VALUE klass) {
-    auto ptr = RB_ALLOC(WrapFloat);
-    ptr->instance = new Float;
-    return TypedData_Wrap_Struct(klass, &rb_float_type, ptr);
-}
-
-static VALUE wrap_float_init(VALUE self) {
-    return Qnil;
-}
-
-static VALUE wrap_float_return_value(VALUE self) {
-    const double value = getFloat(self)->return_value();
-    VALUE result = DBL2NUM(value);
-    return result;
-}
-
-static VALUE wrap_float_assignment(VALUE self, VALUE value) {
-    const double v = NUM2DBL(value);
-    getFloat(self)->assignment(v);
-    return value;
-}
-
-static VALUE wrap_float_plus(VALUE self, VALUE value) {
-    const double v = NUM2DBL(value);
-    const double r = getFloat(self)->plus(v);
-    VALUE result = DBL2NUM(r);
-    return result;
-}
-
-static VALUE wrap_float_plus_equal(VALUE self, VALUE value) {
-    const double v = NUM2DBL(value);
-    const double r = getFloat(self)->plus_equal(v);
-    VALUE result = DBL2NUM(r);
-    return result;
-}
-
-static VALUE wrap_float_minus(VALUE self, VALUE value) {
-    const double v = NUM2DBL(value);
-    const double r = getFloat(self)->minus(v);
-    VALUE result = DBL2NUM(r);
-    return result;
-}
-
-static VALUE wrap_float_minus_equal(VALUE self, VALUE value) {
-    const double v = NUM2DBL(value);
-    const double r = getFloat(self)->minus_equal(v);
-    VALUE result = DBL2NUM(r);
-    return result;
-}
-
-static VALUE wrap_float_multiply(VALUE self, VALUE value) {
-    const double v = NUM2DBL(value);
-    const double r = getFloat(self)->multiply(v);
-    VALUE result = DBL2NUM(r);
-    return result;
-}
-
-static VALUE wrap_float_multiply_equal(VALUE self, VALUE value) {
-    const double v = NUM2DBL(value);
-    const double r = getFloat(self)->multiply_equal(v);
-    VALUE result = DBL2NUM(r);
-    return result;
-}
-
-static VALUE wrap_float_divided(VALUE self, VALUE value) {
-    const double v = NUM2DBL(value);
-    const double r = getFloat(self)->divided(v);
-    VALUE result = DBL2NUM(r);
-    return result;
-}
-
-static VALUE wrap_float_divided_equal(VALUE self, VALUE value) {
-    const double v = NUM2DBL(value);
-    const double r = getFloat(self)->divided_equal(v);
-    VALUE result = DBL2NUM(r);
-    return result;
-}
-
-static VALUE wrap_float_power(VALUE self, VALUE value) {
-    const double v = NUM2DBL(value);
-    const double r = getFloat(self)->power(v);
-    VALUE result = DBL2NUM(r);
-    return result;
-}
-
-static VALUE wrap_float_power_equal(VALUE self, VALUE value) {
-    const double v = NUM2DBL(value);
-    const double r = getFloat(self)->power_equal(v);
-    VALUE result = DBL2NUM(r);
-    return result;
-}
-
-static VALUE wrap_float_increment_value(VALUE self) {
-    const double value = getFloat(self)->increment_value();
-    VALUE result = DBL2NUM(value);
-    return result;
-}
-
-static VALUE wrap_float_decrement_value(VALUE self) {
-    const double value = getFloat(self)->decrement_value();
-    VALUE result = DBL2NUM(value);
-    return result;
-}
-
-static VALUE wrap_float_to_string(VALUE self) {
-    const std::string value = getFloat(self)->to_string();
-    VALUE result = rb_str_new(value.c_str(), value.size());
-    return result;
-}
-
-static VALUE wrap_float_to_integer(VALUE self) {
-    const int value = getFloat(self)->to_integer();
-    VALUE result = INT2NUM(value);
-    return result;
-}
-
-static VALUE wrap_float_clear(VALUE self) {
-    const double value = getFloat(self)->clear();
-    VALUE result = DBL2NUM(value);
-    return result;
-}
-
-static VALUE wrap_float_equal(VALUE self, VALUE value) {
-    const double v = NUM2DBL(value);
-    bool eval = getFloat(self)->equal(v);
-    return eval ? Qtrue : Qfalse;
-}
-
-static VALUE wrap_float_initialize_object(VALUE self, VALUE value) {
-    const double v = NUM2DBL(value);
-    getFloat(self)->initialize_object(v);
+static VALUE float_clear(VALUE self) {
+    rb_ivar_set(self, rb_intern("value"), DBL2NUM(0.0));
     return self;
+}
+
+static VALUE float_equal(VALUE self, VALUE other) {
+    VALUE val = rb_ivar_get(self, rb_intern("value"));
+    return rb_equal(val, other);
+}
+
+extern "C" {
+    void Init_float(VALUE mTatara) {
+        VALUE rb_cFloat = rb_define_class_under(mTatara, "Float", rb_cObject);
+
+        rb_define_private_method(rb_cFloat, "initialize", float_init, 0);
+        rb_define_method(rb_cFloat, "value", float_return_value, 0);
+        rb_define_alias(rb_cFloat, "val", "value");
+        rb_define_method(rb_cFloat, "value=", float_assignment, 1);
+        rb_define_alias(rb_cFloat, "val=", "value=");
+        rb_define_method(rb_cFloat, "value+", float_plus, 1);
+        rb_define_alias(rb_cFloat, "val+", "value+");
+        rb_define_method(rb_cFloat, "value+=", float_plus_equal, 1);
+        rb_define_alias(rb_cFloat, "val+=", "value+=");
+        rb_define_method(rb_cFloat, "value-", float_minus, 1);
+        rb_define_alias(rb_cFloat, "val-", "value-");
+        rb_define_method(rb_cFloat, "value-=", float_minus_equal, 1);
+        rb_define_alias(rb_cFloat, "val-=", "value-=");
+        rb_define_method(rb_cFloat, "value*", float_multiply, 1);
+        rb_define_alias(rb_cFloat, "val*", "value*");
+        rb_define_method(rb_cFloat, "value*=", float_multiply_equal, 1);
+        rb_define_alias(rb_cFloat, "val*=", "value*=");
+        rb_define_method(rb_cFloat, "value/", float_divided, 1);
+        rb_define_alias(rb_cFloat, "val/", "value/");
+        rb_define_method(rb_cFloat, "value/=", float_divided_equal, 1);
+        rb_define_alias(rb_cFloat, "val/=", "value/=");
+        rb_define_method(rb_cFloat, "value**", float_power, 1);
+        rb_define_alias(rb_cFloat, "val**", "value**");
+        rb_define_method(rb_cFloat, "value**=", float_power_equal, 1);
+        rb_define_alias(rb_cFloat, "val**=", "value**=");
+        rb_define_method(rb_cFloat, "inc", float_increment_value, 0);
+        rb_define_method(rb_cFloat, "dec", float_decrement_value, 0);
+        rb_define_method(rb_cFloat, "to_s", float_to_string, 0);
+        rb_define_method(rb_cFloat, "to_i", float_to_integer, 0);
+        rb_define_method(rb_cFloat, "clear", float_clear, 0);
+        rb_define_method(rb_cFloat, "value==", float_equal, 1);
+        rb_define_alias(rb_cFloat, "val==", "value==");
+        rb_define_alias(rb_cFloat, "equal?", "value==");
+        rb_define_alias(rb_cFloat, "<<", "value=");
+    }
 }
 
 #endif
