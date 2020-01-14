@@ -10,49 +10,8 @@ extern "C" {
     void Init_tatara() {
         VALUE mTatara = rb_define_module("Tatara");
 
-        VALUE rb_cInteger = rb_define_class_under(mTatara, "Integer", rb_cObject);
-
-        rb_define_alloc_func(rb_cInteger, wrap_int_alloc);
-        rb_define_private_method(rb_cInteger, "initialize", RUBY_METHOD_FUNC(wrap_int_init), 0);
-        rb_define_method(rb_cInteger, "value", RUBY_METHOD_FUNC(wrap_int_return_value), 0);
-        rb_define_alias(rb_cInteger, "val", "value");
-        rb_define_method(rb_cInteger, "value=", RUBY_METHOD_FUNC(wrap_int_assignment), 1);
-        rb_define_alias(rb_cInteger, "val=", "value=");
-        rb_define_method(rb_cInteger, "value+", RUBY_METHOD_FUNC(wrap_int_plus), 1);
-        rb_define_alias(rb_cInteger, "val+", "value+");
-        rb_define_method(rb_cInteger, "value+=", RUBY_METHOD_FUNC(wrap_int_plus_equal), 1);
-        rb_define_alias(rb_cInteger, "val+=", "value+=");
-        rb_define_method(rb_cInteger, "value-", RUBY_METHOD_FUNC(wrap_int_minus), 1);
-        rb_define_alias(rb_cInteger, "val-", "value-");
-        rb_define_method(rb_cInteger, "value-=", RUBY_METHOD_FUNC(wrap_int_minus_equal), 1);
-        rb_define_alias(rb_cInteger, "val-=", "value-=");
-        rb_define_method(rb_cInteger, "value/", RUBY_METHOD_FUNC(wrap_int_divided), 1);
-        rb_define_alias(rb_cInteger, "val/", "value/");
-        rb_define_method(rb_cInteger, "value/=", RUBY_METHOD_FUNC(wrap_int_divided_equal), 1);
-        rb_define_alias(rb_cInteger, "val/=", "value/=");
-        rb_define_method(rb_cInteger, "value*", RUBY_METHOD_FUNC(wrap_int_multiply), 1);
-        rb_define_alias(rb_cInteger, "val*", "value*");
-        rb_define_method(rb_cInteger, "value*=", RUBY_METHOD_FUNC(wrap_int_multiply_equal), 1);
-        rb_define_alias(rb_cInteger, "val*=", "value*=");
-        rb_define_method(rb_cInteger, "value%", RUBY_METHOD_FUNC(wrap_int_mod), 1);
-        rb_define_alias(rb_cInteger, "val%", "value%");
-        rb_define_method(rb_cInteger, "value%=", RUBY_METHOD_FUNC(wrap_int_mod_equal), 1);
-        rb_define_alias(rb_cInteger, "val%=", "value%=");
-        rb_define_method(rb_cInteger, "value**", RUBY_METHOD_FUNC(wrap_int_power), 1);
-        rb_define_alias(rb_cInteger, "val**", "value**");
-        rb_define_method(rb_cInteger, "value**=", RUBY_METHOD_FUNC(wrap_int_power_equal), 1);
-        rb_define_alias(rb_cInteger, "val**=", "value**=");
-        rb_define_method(rb_cInteger, "increment", RUBY_METHOD_FUNC(wrap_int_increment_value), 0);
-        rb_define_alias(rb_cInteger, "inc", "increment");
-        rb_define_method(rb_cInteger, "decrement", RUBY_METHOD_FUNC(wrap_int_decrement_value), 0);
-        rb_define_alias(rb_cInteger, "dec", "decrement");
-        rb_define_method(rb_cInteger, "to_s", RUBY_METHOD_FUNC(wrap_int_to_string), 0);
-        rb_define_method(rb_cInteger, "to_f", RUBY_METHOD_FUNC(wrap_int_to_float), 0);
-        rb_define_method(rb_cInteger, "clear", RUBY_METHOD_FUNC(wrap_int_clear), 0);
-        rb_define_method(rb_cInteger, "value==", RUBY_METHOD_FUNC(wrap_int_equal), 1);
-        rb_define_alias(rb_cInteger, "val==", "value==");
-        rb_define_alias(rb_cInteger, "equal?", "value==");
-        rb_define_method(rb_cInteger, "<<", RUBY_METHOD_FUNC(wrap_int_initialize_object), 1);
+        // require Tatara::Integer
+        Init_integer(mTatara);
 
         // require Tatara::Float
         Init_float(mTatara);
