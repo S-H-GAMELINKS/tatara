@@ -8,3 +8,5 @@
 /tmp/
 /lib/tatara/tatara.so
 Makefile
+
+!/benchmark/result/.keep
