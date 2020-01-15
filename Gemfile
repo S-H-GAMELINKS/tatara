@@ -5,5 +5,7 @@ gemspec
 
 gem "rake-compiler"
 
-# Using Benchmark Driver
-gem "benchmark_driver"
+group :development do
+    # Using Benchmark Driver
+    gem "benchmark_driver"
+end
