@@ -1,0 +1,5 @@
+prelude: |
+  require 'tatara'
+benchmark:
+  new: Tatara::IntVector.new
+loop_count: 10000000
