@@ -10,3 +10,4 @@
 Makefile
 /benchmark/result/*
 !/benchmark/result/.keep
+graph.png
