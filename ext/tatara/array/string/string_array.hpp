@@ -143,7 +143,7 @@ static VALUE string_array_sort(VALUE self) {
 }
 
 extern "C" {
-    void Init_string_array(VALUE mTatara) {
+    inline void Init_string_array(VALUE mTatara) {
         VALUE rb_cStringArray = rb_define_class_under(mTatara, "StringArray", rb_cArray);
 
         rb_define_private_method(rb_cStringArray, "initialize", string_array_init, 0);

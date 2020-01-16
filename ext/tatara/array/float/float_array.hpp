@@ -151,7 +151,7 @@ static VALUE float_array_sort(VALUE self) {
 }
 
 extern "C" {
-    void Init_float_array(VALUE mTatara) {
+    inline void Init_float_array(VALUE mTatara) {
         VALUE rb_cFloatArray = rb_define_class_under(mTatara, "FloatArray", rb_cArray);
 
         rb_define_private_method(rb_cFloatArray, "initialize", float_array_init, 0);
