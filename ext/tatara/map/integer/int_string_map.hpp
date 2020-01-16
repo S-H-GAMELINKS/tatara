@@ -40,7 +40,7 @@ static VALUE int_string_map_bracket_equal(VALUE self, VALUE key, VALUE value) {
 }
 
 extern "C" {
-    void Init_int_string_map(VALUE mTatara) {
+    inline void Init_int_string_map(VALUE mTatara) {
 
         VALUE rb_cIntStringMap = rb_define_class_under(mTatara, "IntStringMap", rb_cHash);
 

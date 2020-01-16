@@ -143,7 +143,7 @@ static VALUE int_array_sort(VALUE self) {
 }
 
 extern "C" {
-    void Init_int_array(VALUE mTatara) {
+    inline void Init_int_array(VALUE mTatara) {
         VALUE rb_cIntArray = rb_define_class_under(mTatara, "IntArray", rb_cArray);
 
         rb_define_private_method(rb_cIntArray, "initialize", int_array_init, 0);

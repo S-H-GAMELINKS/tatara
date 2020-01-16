@@ -146,7 +146,7 @@ static VALUE float_vector_sort(VALUE self) {
 }
 
 extern "C" {
-    void Init_float_vector(VALUE mTatara) {
+    inline void Init_float_vector(VALUE mTatara) {
         VALUE rb_cFloatVector = rb_define_class_under(mTatara, "FloatVector", rb_cArray);
 
         rb_define_private_method(rb_cFloatVector, "initialize", float_vector_init, 0);
