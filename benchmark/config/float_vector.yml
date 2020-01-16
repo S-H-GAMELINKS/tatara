@@ -1,5 +1,5 @@
 prelude: |
-  require 'tatara'
+  require 'tatara/tatara'
 benchmark:
   new: Tatara::FloatVector.new
 loop_count: 10000000
