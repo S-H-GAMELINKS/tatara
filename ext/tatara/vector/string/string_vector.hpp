@@ -143,7 +143,7 @@ static VALUE string_vector_sort(VALUE self) {
 }
 
 extern "C" {
-    void Init_string_vector(VALUE mTatara) {
+    inline void Init_string_vector(VALUE mTatara) {
         VALUE rb_cStringVector = rb_define_class_under(mTatara, "StringVector", rb_cArray);
 
         rb_define_private_method(rb_cStringVector, "initialize", string_vector_init, 0);

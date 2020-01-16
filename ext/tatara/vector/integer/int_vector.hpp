@@ -142,7 +142,7 @@ static VALUE int_vector_sort(VALUE self) {
 }
 
 extern "C" {
-    void Init_int_vector(VALUE mTatara) {
+    inline void Init_int_vector(VALUE mTatara) {
         VALUE rb_cIntVector = rb_define_class_under(mTatara, "IntVector", rb_cArray);
 
         rb_define_private_method(rb_cIntVector, "initialize", int_vector_init, 0);
