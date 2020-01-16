@@ -1,5 +1,5 @@
 prelude: |
   require 'tatara/tatara'
 benchmark:
-  new: Tatara::StringInt.new
+  new: Tatara::StringIntMap.new
 loop_count: 10000000

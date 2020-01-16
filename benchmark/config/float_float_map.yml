@@ -1,5 +1,5 @@
 prelude: |
   require 'tatara/tatara'
 benchmark:
-  new: Tatara::FloatFloat.new
+  new: Tatara::FloatFloatMap.new
 loop_count: 10000000
