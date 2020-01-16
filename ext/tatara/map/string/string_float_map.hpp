@@ -40,7 +40,7 @@ static VALUE string_float_map_bracket_equal(VALUE self, VALUE key, VALUE value) 
 }
 
 extern "C" {
-    void Init_string_float_map(VALUE mTatara) {
+    inline void Init_string_float_map(VALUE mTatara) {
 
         VALUE rb_cStringFloatMap = rb_define_class_under(mTatara, "StringFloatMap", rb_cHash);
 

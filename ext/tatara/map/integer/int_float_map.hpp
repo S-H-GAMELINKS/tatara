@@ -40,7 +40,7 @@ static VALUE int_float_map_bracket_equal(VALUE self, VALUE key, VALUE value) {
 }
 
 extern "C" {
-    void Init_int_float_map(VALUE mTatara) {
+    inline void Init_int_float_map(VALUE mTatara) {
 
         VALUE rb_cIntFloatMap = rb_define_class_under(mTatara, "IntFloatMap", rb_cHash);
 
