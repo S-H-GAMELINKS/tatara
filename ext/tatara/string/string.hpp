@@ -76,7 +76,7 @@ static VALUE string_destructive_slice(VALUE self, VALUE start, VALUE end) {
 } 
 
 extern "C" {
-    void Init_string(VALUE mTatara) {
+    inline void Init_string(VALUE mTatara) {
 
         VALUE rb_cString = rb_define_class_under(mTatara, "String", rb_cObject);
 
