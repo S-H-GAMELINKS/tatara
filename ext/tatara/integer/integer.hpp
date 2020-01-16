@@ -205,7 +205,7 @@ static VALUE int_equal(VALUE self, VALUE other) {
 }
 
 extern "C" {
-    void Init_integer(VALUE mTatara) {
+    inline void Init_integer(VALUE mTatara) {
         VALUE rb_cInteger = rb_define_class_under(mTatara, "Integer", rb_cObject);
 
         rb_define_private_method(rb_cInteger, "initialize", int_init, 0);
