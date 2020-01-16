@@ -234,7 +234,7 @@ static VALUE float_equal(VALUE self, VALUE other) {
 }
 
 extern "C" {
-    void Init_float(VALUE mTatara) {
+    inline void Init_float(VALUE mTatara) {
         VALUE rb_cFloat = rb_define_class_under(mTatara, "Float", rb_cObject);
 
         rb_define_private_method(rb_cFloat, "initialize", float_init, 0);
