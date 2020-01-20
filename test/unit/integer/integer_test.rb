@@ -198,4 +198,11 @@ class IntegerTest < Minitest::Test
     @i = @i1 + @i2
     assert_equal 42, @i.val
   end
+
+  def test_minus_object_tatara_integer
+    @i1 = Tatara::Integer.new << 21
+    @i2 = Tatara::Integer.new << 21
+    @i = @i1 - @i2
+    assert_equal 0, @i.val
+  end
 end
