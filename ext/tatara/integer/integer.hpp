@@ -252,6 +252,18 @@ static VALUE int_object_divided(VALUE self, VALUE other) {
     }
 }
 
+static VALUE int_object_power(VALUE self, VALUE other) {
+    if (TYPE(self) == TYPE(other)) {
+        VALUE dup = rb_obj_dup(self);
+        VALUE result = int_power(self, rb_ivar_get(other, rb_intern("value")));
+        rb_ivar_set(dup, rb_intern("value"), result);
+        return dup;
+    } else {
+        rb_raise(rb_eTypeError, "Worng Type! This Value type is %s !", rb_class_name(other));
+        return Qnil;
+    }
+}
+
 extern "C" {
     inline void Init_integer(VALUE mTatara) {
         VALUE rb_cInteger = rb_define_class_under(mTatara, "Integer", rb_cObject);
@@ -300,6 +312,7 @@ extern "C" {
         rb_define_method(rb_cInteger, "-", int_object_minus, 1);
         rb_define_method(rb_cInteger, "*", int_object_multiply, 1);
         rb_define_method(rb_cInteger, "/", int_object_divided, 1);
+        rb_define_method(rb_cInteger, "**", int_object_power, 1);
     }
 }
 
