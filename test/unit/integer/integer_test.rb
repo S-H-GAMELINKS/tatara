@@ -226,4 +226,11 @@ class IntegerTest < Minitest::Test
     @i = @i1 ** @i2
     assert_equal 16, @i.val    
   end
+
+  def test_mod_object_tatara_integer
+    @i1 = Tatara::Integer.new << 3
+    @i2 = Tatara::Integer.new << 2
+    @i = @i1 % @i2
+    assert_equal 1, @i.val
+  end
 end
