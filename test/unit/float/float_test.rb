@@ -164,4 +164,11 @@ class FloatTest < Minitest::Test
     assert_equal Tatara::Float, @i.class
     assert_equal 4.2, @i.val
   end
+
+  def test_plus_object_tatara_float
+    @f1 = Tatara::Float.new << 2.1
+    @f2 = Tatara::Float.new << 2.1
+    @f = @f1 + @f2
+    assert_equal 4.2, @f.val
+  end
 end
