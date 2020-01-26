@@ -178,4 +178,11 @@ class FloatTest < Minitest::Test
     @f = @f1 - @f2
     assert_equal 0.1, @f.val.round(2)
   end
+
+  def test_multiply_object_tatara_float
+    @f1 = Tatara::Float.new << 2.1
+    @f2 = Tatara::Float.new << 2.0
+    @f = @f1 * @f2
+    assert_equal 4.2, @f.val
+  end
 end
