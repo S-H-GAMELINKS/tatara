@@ -269,6 +269,18 @@ static VALUE float_object_multiply(VALUE self, VALUE other) {
     }
 }
 
+static VALUE float_object_divided(VALUE self, VALUE other) {
+    if(TYPE(other) == TYPE(self)) {
+        VALUE dup = rb_obj_dup(self);
+        VALUE result = float_divided(self, rb_ivar_get(other, rb_intern("value")));
+        rb_ivar_set(dup, rb_intern("value"), result);
+        return dup;
+    } else {
+        rb_raise(rb_eTypeError, "Worng Type! This Value type is %s !", rb_class_name(other));
+        return Qnil;
+    }
+}
+
 extern "C" {
     inline void Init_float(VALUE mTatara) {
         VALUE rb_cFloat = rb_define_class_under(mTatara, "Float", rb_cObject);
@@ -310,6 +322,7 @@ extern "C" {
         rb_define_method(rb_cFloat, "+", float_object_plus, 1);
         rb_define_method(rb_cFloat, "-", float_object_minus, 1);
         rb_define_method(rb_cFloat, "*", float_object_multiply, 1);
+        rb_define_method(rb_cFloat, "/", float_object_divided, 1);
     }
 }
 
