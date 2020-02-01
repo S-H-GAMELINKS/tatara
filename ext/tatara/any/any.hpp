@@ -8,7 +8,7 @@ static VALUE any_init(VALUE self) {
     return self;
 }
 
-static VALUE any_return_value(VALUE) {
+static VALUE any_return_value(VALUE self) {
     return rb_ivar_get(self, rb_intern("value"));
 }
 
