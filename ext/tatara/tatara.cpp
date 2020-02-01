@@ -5,6 +5,7 @@
 #include "integer/integer.hpp"
 #include "float/float.hpp"
 #include "string/string.hpp"
+#include "any/any.hpp"
 
 extern "C" {
     void Init_tatara() {
@@ -63,5 +64,8 @@ extern "C" {
 
         // require Tatara::FloatStringMap impl
         Init_float_string_map(mTatara);
+
+        // require Tatara::Any impl
+        Init_any(mTatara);
     }
 }
