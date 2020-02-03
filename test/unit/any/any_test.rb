@@ -19,4 +19,15 @@ class AnyTest < Minitest::Test
     @a.value = "hello"
     assert_equal "hello", @a.value
   end
+
+  def test_plus_tatara_any
+    @a = Tatara::Any.new
+    assert_nil @a.value
+    @a.value = 42
+    assert_equal 63, @a.value + 21
+    @a.value = "hello"
+    assert_equal "hellohello", @a.value + "hello"
+    @a.value = 4.2
+    assert_equal 6.3, (@a.value + 2.1).round(2)
+  end
 end

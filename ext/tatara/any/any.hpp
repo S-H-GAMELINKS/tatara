@@ -17,6 +17,23 @@ static VALUE any_assignment(VALUE self, VALUE value) {
     return value;
 }
 
+static VALUE any_plus(VALUE self, VALUE value) {
+    VALUE ivar = any_return_value(self);
+
+    if (FIXNUM_P(ivar) && FIXNUM_P(value)) {
+        long result = NUM2INT(ivar) + NUM2INT(value);
+        return INT2NUM(result);
+    } else if (TYPE(ivar) == T_FLOAT && TYPE(ivar) == T_FLOAT) {
+        double result = NUM2DBL(ivar) + NUM2DBL(value);
+        return DBL2NUM(result);
+    } else if (TYPE(ivar) == T_STRING && TYPE(value) == T_STRING) {
+        return rb_str_plus(ivar, value);
+    } else {
+        rb_raise(rb_eTypeError, "Worng Type! This Value type is %s !", rb_class_name(value));
+        return Qnil;
+    }
+}
+
 extern "C" {
     inline void Init_any(VALUE mTatara) {
         VALUE rb_cAny = rb_define_class_under(mTatara, "Any", rb_cObject);
