@@ -41,6 +41,7 @@ extern "C" {
         rb_define_private_method(rb_cAny, "initialize", any_init, 0);
         rb_define_method(rb_cAny, "value", any_return_value, 0);
         rb_define_method(rb_cAny, "value=", any_assignment, 1);
+        rb_define_method(rb_cAny, "value+", any_plus, 1);
     }
 }
 
