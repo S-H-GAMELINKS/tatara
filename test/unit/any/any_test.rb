@@ -42,7 +42,7 @@ class AnyTest < Minitest::Test
     assert_equal 2.1, (@a.value - 2.1).round(2)
   end
 
-  def test_minus_tatara_any
+  def test_multiply_tatara_any
     @a = Tatara::Any.new
     assert_nil @a.value
     @a.value = 42
