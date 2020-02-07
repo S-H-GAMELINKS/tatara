@@ -63,4 +63,15 @@ class AnyTest < Minitest::Test
     @a.value = 4.2
     assert_equal 2.1, (@a.value / 2).round(2)
   end
+
+  def test_divided_tatara_any
+    @a = Tatara::Any.new
+    assert_nil @a.value
+    @a.value = 42
+    assert_equal 2, @a.value % 40
+    @a.value = "hello"
+    assert_raises(TypeError) { @a.value % "hello" }
+    @a.value = 4.2
+    assert_raises(TypeError) { @a.value % 4.0 }
+  end
 end
