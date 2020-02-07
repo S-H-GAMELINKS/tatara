@@ -70,8 +70,8 @@ class AnyTest < Minitest::Test
     @a.value = 42
     assert_equal 2, @a.value % 40
     @a.value = "hello"
-    assert_raises(TypeError) { @a.value % "hello" }
+    assert_equal "hello", @a.value % "hello"
     @a.value = 4.2
-    assert_raises(TypeError) { @a.value % 4.0 }
+    assert_equal 0.2, (@a.value % 4.0).round(2)
   end
 end
