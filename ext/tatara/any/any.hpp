@@ -83,6 +83,23 @@ static VALUE any_divided(VALUE self, VALUE value) {
         rb_raise(rb_eTypeError, "No operator minus for String!!");
         return Qnil;
     } else {
+        return ivar;
+    }
+}
+
+static VALUE any_mod(VALUE self, VALUE value) {
+    VALUE ivar = rb_ivar_get(self, rb_intern("value"));
+
+    if (FIXNUM_P(ivar) && FIXNUM_P(value)) {
+        long result = NUM2INT(ivar) % NUM2INT(value);
+        return INT2NUM(result);
+    } else if (TYPE(ivar) == T_FLOAT && TYPE(ivar) == T_FLOAT) {
+        double result = std::fmod(NUM2DBL(ivar), NUM2DBL(value));
+        return DBL2NUM(result);
+    } else if (TYPE(ivar) == T_STRING && TYPE(value) == T_STRING) {
+        rb_raise(rb_eTypeError, "No operator minus for String!!");
+        return Qnil;
+    } else {
         rb_raise(rb_eTypeError, "Worng Type! This Value type is %s !", rb_class_name(value));
         return Qnil;
     }
@@ -99,6 +116,7 @@ extern "C" {
         rb_define_method(rb_cAny, "value-", any_minus, 1);
         rb_define_method(rb_cAny, "value*", any_multiply, 1);
         rb_define_method(rb_cAny, "value/", any_divided, 1);
+        rb_define_method(rb_cAny, "value%", any_mod, 1);
     }
 }
 
