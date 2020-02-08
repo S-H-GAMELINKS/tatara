@@ -74,4 +74,14 @@ class AnyTest < Minitest::Test
     @a.value = 4.2
     assert_equal 0.2, (@a.value % 4.0).round(2)
   end
+
+  def test_power_tatara_any
+    @a = Tatara::Any.new
+    @a.value = 2
+    assert_equal 4, @a.value ** 2
+    @a.value = "hello"
+    assert_raises(NoMethodError) { @a.value ** "hello" }
+    @a.value = 2.0
+    assert_equal 4.0, (@a.value ** 2.0).round(2)
+  end
 end
