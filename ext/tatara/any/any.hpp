@@ -105,14 +105,14 @@ static VALUE any_mod(VALUE self, VALUE value) {
     }
 }
 
-static VALUE any_power(VALUE self, VALUE value) {
+static VALUE any_power  (VALUE self, VALUE value) {
     VALUE ivar = rb_ivar_get(self, rb_intern("value"));
 
     if (FIXNUM_P(ivar) && FIXNUM_P(value)) {
-        long result = NUM2INT(ivar) ** NUM2INT(value);
+        long result = std::pow(NUM2INT(ivar), NUM2INT(value));
         return INT2NUM(result);
     } else if (TYPE(ivar) == T_FLOAT && TYPE(ivar) == T_FLOAT) {
-        double result = NUM2DBL(ivar) ** NUM2DBL(value);
+        double result = std::pow(NUM2DBL(ivar), NUM2DBL(value));
         return DBL2NUM(result);
     } else if (TYPE(ivar) == T_STRING && TYPE(value) == T_STRING) {
         rb_raise(rb_eNoMethodError, "No operator power for String!!");
