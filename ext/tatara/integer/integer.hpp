@@ -6,16 +6,18 @@
 #include <cmath>
 #include <iostream>
 
+// Init Tatara::Integer instance
 static VALUE int_init(VALUE self) {
     rb_ivar_set(self, rb_intern("value"), INT2NUM(0));
     return self;
 }
 
+// Get instance var 
 static VALUE int_return_value(VALUE self) {
     return rb_ivar_get(self, rb_intern("value"));
 }
 
-
+// Set instance var
 static VALUE int_assignment(VALUE self, VALUE value) {
     if (FIXNUM_P(value) || TYPE(value) == T_FLOAT) {
         rb_ivar_set(self, rb_intern("value"), value);
@@ -26,6 +28,7 @@ static VALUE int_assignment(VALUE self, VALUE value) {
     }
 }
 
+// Add instance var
 static VALUE int_plus(VALUE self, VALUE value) {
     if (FIXNUM_P(value) || TYPE(value) == T_FLOAT) {
         VALUE ivar = rb_ivar_get(self, rb_intern("value"));
@@ -37,6 +40,7 @@ static VALUE int_plus(VALUE self, VALUE value) {
     }
 }
 
+// Add and Set instance var
 static VALUE int_plus_equal(VALUE self, VALUE value) {
     if (FIXNUM_P(value) || TYPE(value) == T_FLOAT) {
         VALUE ivar = rb_ivar_get(self, rb_intern("value"));
@@ -49,6 +53,7 @@ static VALUE int_plus_equal(VALUE self, VALUE value) {
     }
 }
 
+// Subtract instance var
 static VALUE int_minus(VALUE self, VALUE value) {
     if (FIXNUM_P(value) || TYPE(value) == T_FLOAT) {
         VALUE ivar = rb_ivar_get(self, rb_intern("value"));
@@ -60,6 +65,7 @@ static VALUE int_minus(VALUE self, VALUE value) {
     }
 }
 
+// Subtract and Set instance var
 static VALUE int_minus_equal(VALUE self, VALUE value) {
     if (FIXNUM_P(value) || TYPE(value) == T_FLOAT) {
         VALUE ivar = rb_ivar_get(self, rb_intern("value"));
@@ -72,6 +78,7 @@ static VALUE int_minus_equal(VALUE self, VALUE value) {
     }
 }
 
+// Multiply instance var
 static VALUE int_multiply(VALUE self, VALUE value) {
     if (FIXNUM_P(value) || TYPE(value) == T_FLOAT) {
         VALUE ivar = rb_ivar_get(self, rb_intern("value"));
@@ -83,6 +90,7 @@ static VALUE int_multiply(VALUE self, VALUE value) {
     }
 }
 
+// Multiply and Set instance var
 static VALUE int_multiply_equal(VALUE self, VALUE value) {
     if (FIXNUM_P(value) || TYPE(value) == T_FLOAT) {
         VALUE ivar = rb_ivar_get(self, rb_intern("value"));
@@ -95,6 +103,7 @@ static VALUE int_multiply_equal(VALUE self, VALUE value) {
     }
 }
 
+// Mod instance var
 static VALUE int_mod(VALUE self, VALUE value) {
     if (FIXNUM_P(value) || TYPE(value) == T_FLOAT) {
         VALUE ivar = rb_ivar_get(self, rb_intern("value"));
@@ -106,6 +115,7 @@ static VALUE int_mod(VALUE self, VALUE value) {
     }
 }
 
+// Mod and Set instance var
 static VALUE int_mod_equal(VALUE self, VALUE value) {
     if (FIXNUM_P(value) || TYPE(value) == T_FLOAT) {
         VALUE ivar = rb_ivar_get(self, rb_intern("value"));
@@ -118,6 +128,7 @@ static VALUE int_mod_equal(VALUE self, VALUE value) {
     }
 }
 
+// Divide instance var
 static VALUE int_divided(VALUE self, VALUE value) {
     if (FIXNUM_P(value) || TYPE(value) == T_FLOAT) {
         VALUE ivar = rb_ivar_get(self, rb_intern("value"));
@@ -129,6 +140,7 @@ static VALUE int_divided(VALUE self, VALUE value) {
     }
 }
 
+// Divide and Set instance var
 static VALUE int_divided_equal(VALUE self, VALUE value) {
     if (FIXNUM_P(value) || TYPE(value) == T_FLOAT) {
         VALUE ivar = rb_ivar_get(self, rb_intern("value"));
@@ -141,6 +153,7 @@ static VALUE int_divided_equal(VALUE self, VALUE value) {
     }
 }
 
+// Power instance var
 static VALUE int_power(VALUE self, VALUE value) {
     if (FIXNUM_P(value) || TYPE(value) == T_FLOAT) {
         VALUE ivar = rb_ivar_get(self, rb_intern("value"));
@@ -152,6 +165,7 @@ static VALUE int_power(VALUE self, VALUE value) {
     }
 }
 
+// Power and Set instance var
 static VALUE int_power_equal(VALUE self, VALUE value) {
     if (FIXNUM_P(value) || TYPE(value) == T_FLOAT) {
         VALUE ivar = rb_ivar_get(self, rb_intern("value"));
@@ -164,6 +178,7 @@ static VALUE int_power_equal(VALUE self, VALUE value) {
     }
 }
 
+// Increment instance var
 static VALUE int_increment_value(VALUE self) {
     VALUE val = rb_ivar_get(self, rb_intern("value"));
     long result = NUM2INT(val);
@@ -172,6 +187,7 @@ static VALUE int_increment_value(VALUE self) {
     return self;
 }
 
+// Decrement instance var
 static VALUE int_decrement_value(VALUE self) {
     VALUE val = rb_ivar_get(self, rb_intern("value"));
     long result = NUM2INT(val);
@@ -180,6 +196,7 @@ static VALUE int_decrement_value(VALUE self) {
     return self;
 }
 
+// Convert to String
 static VALUE int_to_string(VALUE self) {
     VALUE val = rb_ivar_get(self, rb_intern("value"));
 
@@ -188,22 +205,26 @@ static VALUE int_to_string(VALUE self) {
     return rb_str_new(result.c_str(), result.size());
 }
 
+// Convert to Float
 static VALUE int_to_float(VALUE self) {
     VALUE val = rb_ivar_get(self, rb_intern("value"));
     double result = NUM2DBL(val);
     return DBL2NUM(result);
 }
 
+// Clear instance var
 static VALUE int_clear(VALUE self) {
     rb_ivar_set(self, rb_intern("value"), INT2NUM(0));
     return self;
 }
 
+// Check instance var is equal
 static VALUE int_equal(VALUE self, VALUE other) {
     VALUE val = rb_ivar_get(self, rb_intern("value"));
     return rb_equal(val, other);
 }
 
+// Add Tatara::Integer instance
 static VALUE int_object_plus(VALUE self, VALUE other) {
     if(TYPE(other) == TYPE(self)) {
         VALUE dup = rb_obj_dup(self);
@@ -216,6 +237,7 @@ static VALUE int_object_plus(VALUE self, VALUE other) {
     }
 }
 
+// Subtract Tatara::Integer instance
 static VALUE int_object_minus(VALUE self, VALUE other) {
     if (TYPE(self) == TYPE(other)) {
         VALUE dup = rb_obj_dup(self);
@@ -228,6 +250,7 @@ static VALUE int_object_minus(VALUE self, VALUE other) {
     }
 }
 
+// Multiply Tatara::Integer instance
 static VALUE int_object_multiply(VALUE self, VALUE other) {
     if (TYPE(self) == TYPE(other)) {
         VALUE dup = rb_obj_dup(self);
@@ -240,6 +263,7 @@ static VALUE int_object_multiply(VALUE self, VALUE other) {
     }
 }
 
+// Divide Tatara::Integer instance
 static VALUE int_object_divided(VALUE self, VALUE other) {
     if (TYPE(self) == TYPE(other)) {
         VALUE dup = rb_obj_dup(self);
@@ -252,6 +276,7 @@ static VALUE int_object_divided(VALUE self, VALUE other) {
     }
 }
 
+// Power Tatara::Integer instance
 static VALUE int_object_power(VALUE self, VALUE other) {
     if (TYPE(self) == TYPE(other)) {
         VALUE dup = rb_obj_dup(self);
@@ -264,6 +289,7 @@ static VALUE int_object_power(VALUE self, VALUE other) {
     }
 }
 
+// Mod Tatara::Integer instance
 static VALUE int_object_mod(VALUE self, VALUE other) {
     if (TYPE(self) == TYPE(other)) {
         VALUE dup = rb_obj_dup(self);
